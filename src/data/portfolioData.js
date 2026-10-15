@@ -212,6 +212,7 @@ export const PROJECTS = [
       itch: null,
       video: "https://www.youtube.com/watch?v=t3xmVDuFvZU"
     },
+    youtubeId: "t3xmVDuFvZU",
     shortDesc: "3-player asymmetrical co-op FPS level design awarded 72% (1st Class) with a comprehensive 40-page Game Design Document and video walkthrough.",
     summary: "Complex asymmetrical level architecture requiring complementary player roles (Hacker, Assault, Engineer) to breach a high-security research facility.",
     highlights: [

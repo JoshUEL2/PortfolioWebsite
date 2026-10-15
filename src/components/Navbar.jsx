@@ -127,13 +127,13 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
                   );
                 })}
 
-                {/* Switch to All Projects View */}
+                {/* Switch to All Games View */}
                 <button
                   onClick={() => onViewChange && onViewChange('all-projects')}
                   className="relative px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider text-indigo-300 hover:text-white bg-indigo-950/60 hover:bg-indigo-900/60 border border-indigo-500/35 transition-all ml-1 flex items-center gap-1.5 cursor-pointer shadow-sm"
                 >
-                  <FolderGit2 className="w-3.5 h-3.5 text-indigo-400" />
-                  <span>ALL PROJECTS (40)</span>
+                  <Gamepad2 className="w-3.5 h-3.5 text-indigo-400" />
+                  <span>ALL GAMES (17)</span>
                 </button>
               </>
             ) : (
@@ -146,7 +146,7 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
                   <span>FEATURED SHOWCASE</span>
                 </button>
                 <div className="relative px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider text-white bg-indigo-600/40 border border-indigo-500/50 shadow-md">
-                  ALL PROJECTS ARCHIVE (40)
+                  ALL GAMES ARCHIVE (17)
                 </div>
               </>
             )}
@@ -226,8 +226,8 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
                 }}
                 className="w-full text-left py-2.5 px-4 rounded-xl text-sm font-semibold tracking-wider text-indigo-300 hover:bg-indigo-600/30 hover:text-white transition-all flex items-center justify-between cursor-pointer bg-indigo-950/40 border border-indigo-500/30"
               >
-                <span>ALL 40+ PROJECTS ARCHIVE</span>
-                <FolderGit2 className="w-4 h-4 text-indigo-400" />
+                <span>ALL 17 GAMES & PROTOTYPES</span>
+                <Gamepad2 className="w-4 h-4 text-indigo-400" />
               </button>
 
               {currentView === 'featured' &&

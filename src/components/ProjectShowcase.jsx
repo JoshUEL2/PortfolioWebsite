@@ -77,7 +77,7 @@ export default function ProjectShowcase({ onSelectProject, onViewAllProjects }) 
         </motion.div>
       </AnimatePresence>
 
-      {/* All Projects Archive Banner CTA */}
+      {/* All Games Archive Banner CTA */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -91,13 +91,13 @@ export default function ProjectShowcase({ onSelectProject, onViewAllProjects }) 
         <div className="relative z-10 max-w-xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-semibold mb-3">
             <Library className="w-3.5 h-3.5 text-indigo-400" />
-            <span>Complete 40+ Project Directory</span>
+            <span>Games & Interactive Systems Directory</span>
           </div>
           <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight font-['Syne',sans-serif]">
-            Looking for all games, tools, and research?
+            Looking for all 17 games and prototypes?
           </h3>
           <p className="text-sm text-slate-300 mt-2 leading-relaxed">
-            Browse the comprehensive archive containing all 40 projects migrated from LinkedIn, GitHub repositories, itch.io builds, robotics prototypes, and acting media.
+            Browse the comprehensive games catalogue containing all playable builds on itch.io, UE5 mechanics, game jam prototypes, and level design projects with verified links.
           </p>
         </div>
 
@@ -105,7 +105,7 @@ export default function ProjectShowcase({ onSelectProject, onViewAllProjects }) 
           onClick={onViewAllProjects}
           className="relative z-10 inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-indigo-600/30 hover:scale-105 active:scale-95 transition-all shrink-0 cursor-pointer"
         >
-          <span>Explore All 40+ Projects</span>
+          <span>Explore All 17 Games →</span>
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </button>
       </motion.div>

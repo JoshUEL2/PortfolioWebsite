@@ -32,7 +32,8 @@ export const ALL_PROJECTS = [
       "Expanded into Mod Pack featuring AI-driven Race Mode and dynamic blizzard weather systems"
     ],
     "technicalDeepDive": "Built a procedurally generated ice tube runner using a polar-to-cartesian coordinate system to maintain player positioning across complete 360-degree surface rotations beyond standard engine physics components. Overhauled actor pooling to disable ticks across hundreds of track elements.",
-    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/rastacats_cover.jpg",
+    "video": "/media/rastacats_preview.mp4",
     "links": {
       "github": "https://github.com/JoshUEL2",
       "demo": "https://joshej.itch.io/rastacats",
@@ -40,7 +41,6 @@ export const ALL_PROJECTS = [
       "video": null,
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": null,
     "youtubeId": null,
     "featured": true
   },
@@ -64,7 +64,8 @@ export const ALL_PROJECTS = [
       "Complete PBR texture painting in Substance Painter and custom 3D modeling in Blender"
     ],
     "technicalDeepDive": "Faced with achieving a rich, watercolor aesthetic without sacrificing edge definition or framerates, implemented custom multi-directional Kuwahara filtering. Developed custom vertex displacement via World Position Offset without relying on standard pre-made marketplace packs.",
-    "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/rem_cover.jpg",
+    "video": "/media/rem_preview.mp4",
     "links": {
       "github": "https://github.com/JoshUEL2/REM",
       "demo": "https://github.com/JoshUEL2/REM/releases/latest",
@@ -72,7 +73,6 @@ export const ALL_PROJECTS = [
       "video": null,
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": null,
     "youtubeId": null,
     "featured": true
   },
@@ -96,7 +96,9 @@ export const ALL_PROJECTS = [
       "Skybox environmental storytelling with giant observer scientists framing players as lab subjects"
     ],
     "technicalDeepDive": "Iterated whitebox player metrics, sightlines, and cover angles based on player pacing, using Blueprint interfaces to trigger environmental bulkheads and hazard zones.",
-    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/labraz.jpg",
+    "video": "/media/labraz_preview.mp4",
+    "youtubeId": "t3xmVDuFvZU",
     "links": {
       "github": "https://github.com/JoshUEL2",
       "demo": "https://www.youtube.com/watch?v=t3xmVDuFvZU",
@@ -105,8 +107,6 @@ export const ALL_PROJECTS = [
       "youtubeId": "t3xmVDuFvZU",
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": "https://www.youtube.com/watch?v=t3xmVDuFvZU",
-    "youtubeId": "t3xmVDuFvZU",
     "featured": false
   },
   {
@@ -129,16 +129,20 @@ export const ALL_PROJECTS = [
       "Pacing and claustrophobic two-person power dynamics inspired by Adolescence (Episode 3)"
     ],
     "technicalDeepDive": "Treated dialogue flow with the systemic precision of gameplay scripting: choices manipulate the hidden Agitation state, unlocking guarded confessions through calculated de-escalation pathways.",
-    "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/the_quarry.jpg",
+    "gallery": [
+      "/images/the_quarry.jpg",
+      "/images/the_quarry_flowchart.png"
+    ],
+    "video": null,
+    "youtubeId": null,
     "links": {
       "github": "https://github.com/JoshUEL2",
-      "demo": "https://www.linkedin.com/in/joshua-johnson-485543351/",
+      "demo": "/games/the_quarry/index.html",
       "itch": null,
       "video": null,
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": null,
-    "youtubeId": null,
     "featured": true
   },
   {
@@ -161,7 +165,9 @@ export const ALL_PROJECTS = [
       "Conducted live playtest telemetry tracking and qualitative user experience feedback capture"
     ],
     "technicalDeepDive": "Calibrated room-scale boundaries and runtime headset tracking to eliminate drift and motion sickness across consecutive public playtesting sessions.",
-    "image": "https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/vr_showcase.jpg",
+    "video": null,
+    "youtubeId": null,
     "links": {
       "github": "https://github.com/JoshUEL2",
       "demo": "https://www.linkedin.com/in/joshua-johnson-485543351/",
@@ -169,8 +175,6 @@ export const ALL_PROJECTS = [
       "video": null,
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": null,
-    "youtubeId": null,
     "featured": true
   },
   {
@@ -193,7 +197,9 @@ export const ALL_PROJECTS = [
       "Complex multi-floor elevator with input queue validation and external lock states"
     ],
     "technicalDeepDive": "Structured all game systems via formal flowchart state diagrams, implementing strict hierarchical finite state machines (HFSM) to prevent illegal transitions.",
-    "image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/state_machine_cover.png",
+    "video": null,
+    "youtubeId": null,
     "links": {
       "github": "https://github.com/JoshUEL2",
       "demo": "https://joshej.itch.io/state-machine-showcase",
@@ -201,8 +207,6 @@ export const ALL_PROJECTS = [
       "video": null,
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": null,
-    "youtubeId": null,
     "featured": false
   },
   {
@@ -225,7 +229,9 @@ export const ALL_PROJECTS = [
       "Engineered dynamic procedural spawning systems for enemies, items, and boundary collision"
     ],
     "technicalDeepDive": "Coded a 2D grid walker algorithm that randomly carves pathways and dynamically evaluates neighbor tiles to generate correct autotile borders and collision volumes at runtime.",
-    "image": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/rand_io.jpg",
+    "video": null,
+    "youtubeId": null,
     "links": {
       "github": "https://github.com/JoshUEL2",
       "demo": "https://joshej.itch.io/randio",
@@ -233,8 +239,6 @@ export const ALL_PROJECTS = [
       "video": null,
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": null,
-    "youtubeId": null,
     "featured": false
   },
   {
@@ -257,7 +261,9 @@ export const ALL_PROJECTS = [
       "Built modular biomes including an abandoned school wing and toxic warehouse section"
     ],
     "technicalDeepDive": "Overcame severe performance bottlenecks by replacing heavy Lumen point lights with barn-door rectangle lights and selectively disabling Nanite during mesh editing.",
-    "image": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/baldis_basics.jpg",
+    "video": null,
+    "youtubeId": null,
     "links": {
       "github": "https://github.com/JoshUEL2",
       "demo": null,
@@ -265,8 +271,6 @@ export const ALL_PROJECTS = [
       "video": null,
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": null,
-    "youtubeId": null,
     "featured": false
   },
   {
@@ -289,7 +293,16 @@ export const ALL_PROJECTS = [
       "Integrated all 3D assets, lighting, collision, post-processing, and rigging blendspaces"
     ],
     "technicalDeepDive": "Built an object-oriented blueprint hierarchy for collectible fauna and environmental hazards, pairing custom collision channels with procedural foliage spawner volumes.",
-    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/planet_protectors_lineup.png",
+    "gallery": [
+      "/images/planet_protectors_lineup.png",
+      "/images/Bonnie and Kiwi Concepts.webp",
+      "/images/Haptic Concepts.webp",
+      "/images/Bonnie Model Sheet.webp",
+      "/images/Kiwi Model Sheet.webp"
+    ],
+    "video": null,
+    "youtubeId": null,
     "links": {
       "github": "https://github.com/JoshUEL2/Planet-Protectors",
       "demo": "https://github.com/JoshUEL2/Planet-Protectors",
@@ -297,21 +310,19 @@ export const ALL_PROJECTS = [
       "video": null,
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": null,
-    "youtubeId": null,
     "featured": false
   },
   {
     "id": "pyball",
     "slug": "pyball",
     "catalogNumber": "10",
-    "title": "PyBall: Algorithmic 2D Physics & Viewport Culling Optimization",
+    "title": "PyBall: Algorithmic 2D Physics & Viewport Culling Optimization (MS4005)",
     "discipline": "systems",
-    "engine": "Python (Custom Game Loop)",
+    "engine": "Python (Custom Game Loop / MS4005)",
     "categoryLabel": "Pure Code Game Development & Optimization",
     "dates": "Sep 2024 – Dec 2024",
     "role": "Systems Programmer",
-    "studio": "JoshCorp Interactive Entertainment",
+    "studio": "JoshCorp Interactive Entertainment (MS4005)",
     "shortDesc": "A 2D arcade physics game coded entirely in pure Python from scratch, featuring dynamic bouncing collision physics, escalating difficulty, and viewport-based CPU optimization.",
     "summary": "When enemy counts grew, frame rates plummeted. Completely re-engineered update loops so physics and collision checks execute exclusively on entities within the player's active camera viewport.",
     "highlights": [
@@ -321,7 +332,9 @@ export const ALL_PROJECTS = [
       "Iterated enemy obstacle avoidance AI to eliminate wall-sticking edge cases"
     ],
     "technicalDeepDive": "When enemy counts grew, frame rates plummeted. Completely re-engineered update loops so physics and collision checks execute exclusively on entities within the player's active camera viewport.",
-    "image": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/planet_protectors_cover.png",
+    "video": "/media/pyball_preview.mp4",
+    "youtubeId": null,
     "links": {
       "github": "https://github.com/JoshUEL2",
       "demo": null,
@@ -329,8 +342,6 @@ export const ALL_PROJECTS = [
       "video": null,
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": null,
-    "youtubeId": null,
     "featured": false
   },
   {
@@ -353,7 +364,9 @@ export const ALL_PROJECTS = [
       "Implemented procedural tree distribution and dynamic water swimming systems"
     ],
     "technicalDeepDive": "Engineered radial fall-off mathematical gradients combined with multiple octave noise passes to guarantee natural, concave island coastlines that terminate smoothly into water meshes.",
-    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/project_isla.jpg",
+    "video": null,
+    "youtubeId": null,
     "links": {
       "github": "https://github.com/JoshUEL2",
       "demo": null,
@@ -361,8 +374,6 @@ export const ALL_PROJECTS = [
       "video": null,
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": null,
-    "youtubeId": null,
     "featured": false
   },
   {
@@ -385,7 +396,9 @@ export const ALL_PROJECTS = [
       "Solved map-wide rotation offset by calculating a precise 23.999203° world realignment matrix"
     ],
     "technicalDeepDive": "When photogrammetry meshes proved too irregular, transitioned from raw geometry to architectural whitebox planes, hand-snapping vertices and developing tiling world-aligned master materials.",
-    "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/daydream_believer_cover.png",
+    "video": "/media/daydream_preview.mp4",
+    "youtubeId": null,
     "links": {
       "github": "https://github.com/JoshUEL2",
       "demo": null,
@@ -393,21 +406,19 @@ export const ALL_PROJECTS = [
       "video": null,
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": null,
-    "youtubeId": null,
     "featured": false
   },
   {
     "id": "project-daydream-revisited",
     "slug": "daydream-believer",
     "catalogNumber": "13",
-    "title": "Project Daydream (Revisited): ADHD Sensory Exploration & Physics",
+    "title": "Project Daydream (Revisited): ADHD Sensory Exploration & Physics (MS4035)",
     "discipline": "unreal",
-    "engine": "Unreal Engine 5",
+    "engine": "Unreal Engine 5 (MS4035)",
     "categoryLabel": "Experiential Narrative & Technical Art",
     "dates": "Jan 2025 – Apr 2025",
     "role": "Lead Creator, Technical Artist & Composer",
-    "studio": "JoshCorp Interactive Entertainment / UEL",
+    "studio": "JoshCorp Interactive Entertainment / UEL (MS4035)",
     "shortDesc": "Evolved school environment exploring ADHD sensory perception in school, featuring custom toon distortion shaders, Chaos physics, 15 BandLab original tracks, and ElevenLabs voice modulation.",
     "summary": "Combined custom post-process depth distortions with Chaos physics destructions to create dynamic ludonarrative moments reflecting hyperfocus and sensory overload.",
     "highlights": [
@@ -417,7 +428,9 @@ export const ALL_PROJECTS = [
       "Rigged low-poly characters and produced opening sequences in Premiere Pro and After Effects"
     ],
     "technicalDeepDive": "Combined custom post-process depth distortions with Chaos physics destructions to create dynamic ludonarrative moments reflecting hyperfocus and sensory overload.",
-    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/daydream_believer_cover.png",
+    "video": "/media/daydream_preview.mp4",
+    "youtubeId": null,
     "links": {
       "github": "https://github.com/JoshUEL2",
       "demo": null,
@@ -425,8 +438,6 @@ export const ALL_PROJECTS = [
       "video": null,
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": null,
-    "youtubeId": null,
     "featured": false
   },
   {
@@ -449,7 +460,9 @@ export const ALL_PROJECTS = [
       "Scope management under severe time constraints"
     ],
     "technicalDeepDive": "Rapidly iterated core mechanics within the first 12 hours, locking scope to deliver a polished, bug-free playtestable build on schedule.",
-    "image": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/project_frame.jpg",
+    "video": null,
+    "youtubeId": null,
     "links": {
       "github": "https://github.com/JoshUEL2",
       "demo": null,
@@ -457,8 +470,6 @@ export const ALL_PROJECTS = [
       "video": null,
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": null,
-    "youtubeId": null,
     "featured": false
   },
   {
@@ -481,7 +492,9 @@ export const ALL_PROJECTS = [
       "Dissected mobile market retention models and progression pacing"
     ],
     "technicalDeepDive": "Utilized visual flowchart mapping in Visio to test narrative branch balance and ensure systemic cohesion before prototyping gameplay in Unity.",
-    "image": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/dear_hiring_manager.jpg",
+    "video": null,
+    "youtubeId": null,
     "links": {
       "github": "https://github.com/JoshUEL2",
       "demo": null,
@@ -489,8 +502,6 @@ export const ALL_PROJECTS = [
       "video": null,
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": null,
-    "youtubeId": null,
     "featured": false
   },
   {
@@ -513,7 +524,9 @@ export const ALL_PROJECTS = [
       "Comprehensive theological and psychological research grounded in cult indoctrination dynamics"
     ],
     "technicalDeepDive": "Overhauled initial drafts following table-reading feedback, eliminating exposition and using spatial interactions (such as shielding with an umbrella) to convey power dynamics without spoken words.",
-    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/far_cry_5.jpg",
+    "video": null,
+    "youtubeId": null,
     "links": {
       "github": "https://github.com/JoshUEL2",
       "demo": null,
@@ -521,8 +534,6 @@ export const ALL_PROJECTS = [
       "video": null,
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": null,
-    "youtubeId": null,
     "featured": true
   },
   {
@@ -545,7 +556,9 @@ export const ALL_PROJECTS = [
       "Foundation for subsequent commercial prototypes and university productions"
     ],
     "technicalDeepDive": "Documented mechanical edge-cases, reward loops, and progression pacing in early design documents, establishing a habit of rigorous pre-production planning.",
-    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1400&auto=format&fit=crop",
+    "image": "/images/misc_games.jpg",
+    "video": null,
+    "youtubeId": null,
     "links": {
       "github": "https://github.com/JoshUEL2",
       "demo": null,
@@ -553,8 +566,6 @@ export const ALL_PROJECTS = [
       "video": null,
       "linkedin": "https://www.linkedin.com/in/joshua-johnson-485543351/"
     },
-    "video": null,
-    "youtubeId": null,
     "featured": false
   }
 ];

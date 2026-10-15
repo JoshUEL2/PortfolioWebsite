@@ -157,12 +157,32 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                 className="group relative rounded-2xl bg-[#090b16]/90 border border-white/10 hover:border-indigo-500/40 p-5 backdrop-blur-xl flex flex-col justify-between shadow-xl hover:shadow-[0_8px_35px_rgba(99,102,241,0.15)] transition-all duration-300 hover:-translate-y-1"
               >
                 <div>
-                  {/* Media Viewport: Direct In-Browser YouTube Video OR Clean Gaming Art */}
+                  {/* Media Viewport: Local Coursework Video, YouTube Video, or Gaming Art */}
                   <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-950 border border-white/10 mb-4">
-                    {youtubeId ? (
+                    {project.video ? (
+                      /* Local Gameplay Testing Video Loop */
+                      <div
+                        onClick={() => onSelectProject(project)}
+                        className="w-full h-full cursor-pointer group/thumb relative"
+                      >
+                        <video
+                          src={project.video}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/thumb:opacity-100 transition-opacity" />
+                        <div className="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-black/80 backdrop-blur-md border border-white/20 text-[9px] font-mono text-emerald-300 flex items-center gap-1 shadow-sm">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                          Video
+                        </div>
+                      </div>
+                    ) : youtubeId ? (
                       /* Live Embedded YouTube Video Playing Directly in Browser */
                       <iframe
-                        src={`https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0&modestbranding=1`}
+                        src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=1&rel=0&modestbranding=1`}
                         title={`${project.title} Video Preview`}
                         className="w-full h-full border-0 rounded-xl"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

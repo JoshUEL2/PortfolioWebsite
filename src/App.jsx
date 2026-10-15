@@ -39,7 +39,7 @@ export default function App() {
         history.pushState('', document.title, window.location.pathname + window.location.search);
       }
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   const handleExploreClick = () => {

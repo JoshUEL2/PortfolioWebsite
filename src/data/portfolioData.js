@@ -39,7 +39,8 @@ export const PROJECTS = [
     engine: "Unreal Engine 5",
     dates: "Jan 2026 – May 2026",
     studio: "JoshCorp / UEL",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1400&auto=format&fit=crop",
+    image: "/images/rem_cover.jpg",
+    video: "/media/rem_preview.mp4",
     links: {
       github: "https://github.com/JoshUEL2/REM",
       demo: "https://github.com/JoshUEL2/REM/releases/latest",
@@ -66,10 +67,14 @@ export const PROJECTS = [
     engine: "Twine (SugarCube) / Web",
     dates: "Apr 2026 – May 2026",
     studio: "University of East London",
-    image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1400&auto=format&fit=crop",
+    image: "/images/the_quarry.jpg",
+    gallery: [
+      "/images/the_quarry.jpg",
+      "/images/the_quarry_flowchart.png"
+    ],
     links: {
       github: "https://github.com/JoshUEL2",
-      demo: "https://www.linkedin.com/in/joshua-johnson-485543351/",
+      demo: "/games/the_quarry/index.html",
       itch: null,
       video: null
     },
@@ -93,7 +98,7 @@ export const PROJECTS = [
     engine: "Performance Capture Volume Format",
     dates: "Feb 2026 – May 2026",
     studio: "Ubisoft IP Adaptation / UEL",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1400&auto=format&fit=crop",
+    image: "/images/far_cry_5.jpg",
     links: {
       github: "https://github.com/JoshUEL2",
       demo: "https://www.linkedin.com/in/joshua-johnson-485543351/",
@@ -122,7 +127,8 @@ export const PROJECTS = [
     engine: "Unreal Engine 5.7",
     dates: "Oct 2025 – Dec 2025",
     studio: "JoshCorp / UEL (MS5027)",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1400&auto=format&fit=crop",
+    image: "/images/rastacats_cover.jpg",
+    video: "/media/rastacats_preview.mp4",
     links: {
       github: "https://github.com/JoshUEL2",
       demo: "https://joshej.itch.io/rastacats",
@@ -149,7 +155,7 @@ export const PROJECTS = [
     engine: "Unreal Engine 5 VR",
     dates: "Jan 2026 – Jun 2026",
     studio: "Royal Docks Centre for Sustainability",
-    image: "https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?q=80&w=1400&auto=format&fit=crop",
+    image: "/images/vr_showcase.jpg",
     links: {
       github: "https://github.com/JoshUEL2",
       demo: "https://www.linkedin.com/in/joshua-johnson-485543351/",
@@ -176,7 +182,7 @@ export const PROJECTS = [
     engine: "Unreal Engine 5",
     dates: "2025",
     studio: "JoshCorp / Itch.io",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1400&auto=format&fit=crop",
+    image: "/images/state_machine_cover.png",
     links: {
       github: "https://github.com/JoshUEL2",
       demo: "https://joshej.itch.io/state-machine-showcase",
@@ -205,14 +211,15 @@ export const PROJECTS = [
     engine: "Unreal Engine 5 (MS5028)",
     dates: "Jan 2025 – Apr 2025",
     studio: "JoshCorp / UEL (MS5028)",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1400&auto=format&fit=crop",
+    image: "/images/labraz.jpg",
+    video: "/media/labraz_preview.mp4",
+    youtubeId: "t3xmVDuFvZU",
     links: {
       github: "https://github.com/JoshUEL2",
       demo: "https://www.youtube.com/watch?v=t3xmVDuFvZU",
       itch: null,
       video: "https://www.youtube.com/watch?v=t3xmVDuFvZU"
     },
-    youtubeId: "t3xmVDuFvZU",
     shortDesc: "3-player asymmetrical co-op FPS level design awarded 72% (1st Class) with a comprehensive 40-page Game Design Document and video walkthrough.",
     summary: "Complex asymmetrical level architecture requiring complementary player roles (Hacker, Assault, Engineer) to breach a high-security research facility.",
     highlights: [
@@ -233,7 +240,7 @@ export const PROJECTS = [
     engine: "Xbox Kinect v2 + PSVR + UE5 LiveLink",
     dates: "Jun 2023 – Sep 2023",
     studio: "Independent Engineering",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1400&auto=format&fit=crop",
+    image: "/images/vex_robotics.jpg",
     links: {
       github: "https://github.com/JoshUEL2",
       demo: "https://www.linkedin.com/in/joshua-johnson-485543351/",
@@ -260,7 +267,7 @@ export const PROJECTS = [
     engine: "JavaScript / HTML5 / Leaflet GIS",
     dates: "2024 – 2025",
     studio: "Personal Innovation",
-    image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=1400&auto=format&fit=crop",
+    image: "/images/project_frame.jpg",
     links: {
       github: "https://github.com/JoshUEL2/TFL-Planner",
       demo: "https://joshuel2.github.io/TFL-Planner/",

@@ -43,7 +43,7 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
     if (currentView !== 'featured' && onViewChange) {
       onViewChange('featured');
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   const scrollTo = (id) => {

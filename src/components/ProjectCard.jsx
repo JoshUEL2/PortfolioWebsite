@@ -153,13 +153,48 @@ export default function ProjectCard({ project, onSelectProject }) {
           </div>
         </div>
 
-        {/* Right Column: Visual Media Box or In-Browser YouTube Video */}
+        {/* Right Column: Visual Media Box, Local Coursework Video, or YouTube Video */}
         <div className="lg:col-span-5">
-          {youtubeId ? (
-            /* In-Browser Embedded YouTube Video Preview */
+          {project.video ? (
+            /* Local Coursework Testing Video Loop */
+            <div
+              onClick={() => onSelectProject(project)}
+              className="relative group/vid cursor-pointer overflow-hidden rounded-2xl bg-black border border-white/15 shadow-2xl aspect-[16/10] flex items-center justify-center"
+            >
+              <video
+                src={project.video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover group-hover/vid:scale-105 transition-transform duration-500 ease-out"
+              />
+
+              {/* Gradient Overlay on Hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/vid:opacity-100 transition-opacity" />
+
+              {/* Status Badge */}
+              <div className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-black/80 backdrop-blur-md border border-white/20 text-[10px] font-mono text-white pointer-events-none z-10 flex items-center gap-1.5 shadow-md">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                Gameplay Video
+              </div>
+
+              {/* Top Engine Badge */}
+              <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md border border-white/20 text-[11px] font-mono text-slate-200 z-10 shadow-md">
+                {project.engine}
+              </div>
+
+              {/* Hover Prompt */}
+              <div className="absolute bottom-3 left-3 px-3 py-1.5 rounded-lg bg-[#090b16]/90 backdrop-blur-md border border-indigo-500/40 text-xs text-white opacity-0 group-hover/vid:opacity-100 transition-all duration-300 flex items-center gap-1.5 shadow-lg z-10">
+                <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
+                <span className="font-medium text-[11px]">Click to View Case Study</span>
+              </div>
+            </div>
+          ) : youtubeId ? (
+            /* In-Browser Autoplaying Embedded YouTube Video Preview */
             <div className="relative overflow-hidden rounded-2xl bg-black border border-white/15 shadow-2xl aspect-[16/10] flex items-center justify-center">
               <iframe
-                src={`https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0&modestbranding=1`}
+                src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=1&rel=0&modestbranding=1`}
                 title={`${project.title} Video Preview`}
                 className="w-full h-full border-0 rounded-2xl"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

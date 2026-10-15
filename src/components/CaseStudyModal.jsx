@@ -21,6 +21,12 @@ export default function CaseStudyModal({ project, onClose }) {
 
   const displayNum = project.number || (project.catalogNumber ? `#${project.catalogNumber}` : '');
 
+  const youtubeId =
+    project.youtubeId ||
+    (project.links?.video
+      ? project.links.video.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/)?.[1]
+      : null);
+
   return (
     <AnimatePresence>
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
@@ -65,23 +71,79 @@ export default function CaseStudyModal({ project, onClose }) {
 
           {/* Modal Scrollable Content */}
           <div className="overflow-y-auto p-6 sm:p-8 space-y-8">
-            {/* Hero Image */}
-            <div className="relative rounded-2xl overflow-hidden aspect-[16/9] max-h-80 bg-slate-950 border border-white/10">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f1e] via-transparent to-transparent opacity-80" />
-              <div className="absolute bottom-4 left-6 right-6">
-                <h2 className="text-2xl sm:text-4xl font-black text-white font-['Syne',sans-serif] tracking-tight">
-                  {project.title}
-                </h2>
-                <p className="text-sm font-semibold text-indigo-300 mt-1">
-                  {project.tagline || project.categoryLabel} • <span className="font-mono text-slate-300">{project.engine}</span>
-                </p>
-              </div>
+            {/* Hero Media: Coursework Video, YouTube Video, or Artwork */}
+            <div className="relative rounded-2xl overflow-hidden aspect-[16/9] max-h-96 bg-black border border-white/10 flex items-center justify-center">
+              {project.video ? (
+                <video
+                  src={project.video}
+                  controls
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-contain"
+                />
+              ) : youtubeId ? (
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0&modestbranding=1`}
+                  title={`${project.title} Video Showcase`}
+                  className="w-full h-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f1e] via-transparent to-transparent opacity-80 pointer-events-none" />
+                </>
+              )}
             </div>
+
+            {/* Title & Engine Subtitle */}
+            <div>
+              <h2 className="text-2xl sm:text-4xl font-black text-white font-['Syne',sans-serif] tracking-tight">
+                {project.title}
+              </h2>
+              <p className="text-sm font-semibold text-indigo-300 mt-1">
+                {project.tagline || project.categoryLabel} • <span className="font-mono text-slate-300">{project.engine}</span>
+              </p>
+            </div>
+
+            {/* Concept Artwork & Production Gallery (if available) */}
+            {project.gallery && project.gallery.length > 0 && (
+              <div className="bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6">
+                <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 mb-4 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-indigo-400" />
+                  Authentic Coursework Concept Art & Model Sheets
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {project.gallery.map((artSrc, aIdx) => (
+                    <a
+                      key={aIdx}
+                      href={artSrc}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-xl overflow-hidden border border-white/10 bg-slate-950 aspect-[4/3] group relative block cursor-pointer"
+                      title="Click to view full resolution"
+                    >
+                      <img
+                        src={artSrc}
+                        alt={`${project.title} Artifact ${aIdx + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-xs font-mono text-white/90 font-medium">
+                        View Full Resolution ↗
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Overview & Context */}
             <div>

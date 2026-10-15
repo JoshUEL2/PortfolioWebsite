@@ -22,13 +22,13 @@ export const PERSONAL_INFO = {
 };
 
 export const CATEGORIES = [
-  { id: "concepts", label: "01 / Flagship Concepts", desc: "Technical art, post-processing shaders & narrative systems" },
-  { id: "gameplay", label: "02 / Gameplay & Prototypes", desc: "Engine mechanics, polar gravity math & AI state machines" },
-  { id: "hardware", label: "03 / Hardware & Level Design", desc: "Custom mocap engineering, web apps & asymmetrical FPS" }
+  { id: "concepts", label: "01 / Concepts & Shaders", desc: "Technical art, post-processing shaders & narrative systems" },
+  { id: "gameplay", label: "02 / Gameplay & Physics", desc: "Engine mechanics, polar gravity math & AI state machines" },
+  { id: "level-design", label: "03 / Level Design & Systems", desc: "Asymmetrical level architecture, custom mocap & GIS routing" }
 ];
 
 export const PROJECTS = [
-  // --- CATEGORY 1: CONCEPTS ---
+  // --- CATEGORY 1: CONCEPTS & SHADERS ---
   {
     id: "rem",
     category: "concepts",
@@ -111,7 +111,7 @@ export const PROJECTS = [
     technicalDeepDive: "Designed screenplay scenes with spatial blocking maps for motion capture stages. Directorial annotations specify camera lenses, focal depth shifts, and actor proximity vectors to maximize physical subtext before dialogue is delivered."
   },
 
-  // --- CATEGORY 2: GAMEPLAY & PROTOTYPES ---
+  // --- CATEGORY 2: GAMEPLAY & PHYSICS ---
   {
     id: "rastacats",
     category: "gameplay",
@@ -194,11 +194,38 @@ export const PROJECTS = [
     technicalDeepDive: "Engineered cleanly decoupled state interfaces using Blueprint Interfaces and Event Dispatchers. Guarded against state thrashing through minimum dwell timers and memory queues that retain the player's last known location."
   },
 
-  // --- CATEGORY 3: HARDWARE & LEVEL DESIGN ---
+  // --- CATEGORY 3: LEVEL DESIGN & SYSTEMS ---
+  {
+    id: "labraz",
+    category: "level-design",
+    number: "01",
+    title: "LabR@z",
+    tagline: "3-Player Asymmetrical Co-Op FPS (72% 1st)",
+    discipline: "Level Design & Game Architecture",
+    engine: "Unreal Engine 5 (MS5028)",
+    dates: "Jan 2025 – Apr 2025",
+    studio: "JoshCorp / UEL (MS5028)",
+    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1400&auto=format&fit=crop",
+    links: {
+      github: "https://github.com/JoshUEL2",
+      demo: "https://www.youtube.com/watch?v=t3xmVDuFvZU",
+      itch: null,
+      video: "https://www.youtube.com/watch?v=t3xmVDuFvZU"
+    },
+    shortDesc: "3-player asymmetrical co-op FPS level design awarded 72% (1st Class) with a comprehensive 40-page Game Design Document and video walkthrough.",
+    summary: "Complex asymmetrical level architecture requiring complementary player roles (Hacker, Assault, Engineer) to breach a high-security research facility.",
+    highlights: [
+      "Awarded 72% (1st Class Honours) for MS5028 Level Design at UEL.",
+      "Authored professional 40-page Game Design Document with flow diagrams and beat charts.",
+      "Engineered sightlines, choke points, and vertical flanking routes to balance asymmetrical roles.",
+      "Produced comprehensive video commentary and interactive spatial walkthrough."
+    ],
+    technicalDeepDive: "Balanced encounter pacing using rhythm-tension graphs. Designed modular environmental kits in Blender with clear visual language: yellow conduit cables guide hackers to security nodes, while elevated catwalks provide tactical sightlines for defensive cover."
+  },
   {
     id: "project-kinetic",
-    category: "hardware",
-    number: "01",
+    category: "level-design",
+    number: "02",
     title: "Project K.I.N.E.T.I.C.",
     tagline: "Custom Sensor Mocap Rig Driving MetaHumans",
     discipline: "Hardware & Mocap Engineering",
@@ -224,11 +251,11 @@ export const PROJECTS = [
   },
   {
     id: "tfl-planner",
-    category: "hardware",
-    number: "02",
+    category: "level-design",
+    number: "03",
     title: "TfL Transit Planner",
     tagline: "Full-Stack London Underground Pathfinding",
-    discipline: "Full-Stack Web & Algorithmic Systems",
+    discipline: "Graph Pathfinding & Systems",
     engine: "JavaScript / HTML5 / Leaflet GIS",
     dates: "2024 – 2025",
     studio: "Personal Innovation",
@@ -248,33 +275,6 @@ export const PROJECTS = [
       "Fully responsive and live on GitHub Pages."
     ],
     technicalDeepDive: "Modeled London Underground stations as weighted graph nodes with edges accounting for train travel times and transfer walking penalties. Used priority queue structures to deliver instantaneous route calculations directly in the browser without server dependencies."
-  },
-  {
-    id: "labraz",
-    category: "hardware",
-    number: "03",
-    title: "LabR@z",
-    tagline: "3-Player Asymmetrical Co-Op FPS (72% 1st)",
-    discipline: "Level Design & Game Design Document",
-    engine: "Unreal Engine 5 (MS5028)",
-    dates: "Jan 2025 – Apr 2025",
-    studio: "JoshCorp / UEL (MS5028)",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1400&auto=format&fit=crop",
-    links: {
-      github: "https://github.com/JoshUEL2",
-      demo: "https://www.youtube.com/watch?v=t3xmVDuFvZU",
-      itch: null,
-      video: "https://www.youtube.com/watch?v=t3xmVDuFvZU"
-    },
-    shortDesc: "3-player asymmetrical co-op FPS level design awarded 72% (1st Class) with a comprehensive 40-page Game Design Document and video walkthrough.",
-    summary: "Complex asymmetrical level architecture requiring complementary player roles (Hacker, Assault, Engineer) to breach a high-security research facility.",
-    highlights: [
-      "Awarded 72% (1st Class Honours) for MS5028 Level Design at UEL.",
-      "Authored professional 40-page Game Design Document with flow diagrams and beat charts.",
-      "Engineered sightlines, choke points, and vertical flanking routes to balance asymmetrical roles.",
-      "Produced comprehensive video commentary and interactive spatial walkthrough."
-    ],
-    technicalDeepDive: "Balanced encounter pacing using rhythm-tension graphs. Designed modular environmental kits in Blender with clear visual language: yellow conduit cables guide hackers to security nodes, while elevated catwalks provide tactical sightlines for defensive cover."
   }
 ];
 

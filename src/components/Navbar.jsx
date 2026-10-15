@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Gamepad2, Menu, X, ArrowUpRight, FolderGit2, Sparkles, ArrowLeft } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
-export default function Navbar() {
+export default function Navbar({ currentView = 'featured', onViewChange }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -13,14 +13,16 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      const sections = ['home', 'portfolio', 'disciplines', 'about', 'contact'];
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 250 && rect.bottom >= 250) {
-            setActiveSection(section);
-            break;
+      if (currentView === 'featured') {
+        const sections = ['home', 'portfolio', 'disciplines', 'about', 'contact'];
+        for (const section of sections) {
+          const el = document.getElementById(section);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= 250 && rect.bottom >= 250) {
+              setActiveSection(section);
+              break;
+            }
           }
         }
       }
@@ -28,7 +30,7 @@ export default function Navbar() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [currentView]);
 
   const navLinks = [
     { id: 'portfolio', label: 'PORTFOLIO' },
@@ -37,8 +39,28 @@ export default function Navbar() {
     { id: 'contact', label: 'CONTACT' },
   ];
 
+  const handleBrandClick = () => {
+    if (currentView !== 'featured' && onViewChange) {
+      onViewChange('featured');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const scrollTo = (id) => {
     setMobileMenuOpen(false);
+    if (currentView !== 'featured' && onViewChange) {
+      onViewChange('featured');
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          const yOffset = -90;
+          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 50);
+      return;
+    }
+
     const el = document.getElementById(id);
     if (el) {
       const yOffset = -90;
@@ -56,14 +78,14 @@ export default function Navbar() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className={`pointer-events-auto flex items-center justify-between w-full max-w-5xl px-4 md:px-6 py-2.5 md:py-3 rounded-full transition-all duration-300 ${
             scrolled
-              ? 'bg-[#090b16]/85 backdrop-blur-xl border border-indigo-500/20 shadow-[0_10px_35px_rgba(0,0,0,0.6)]'
-              : 'bg-[#090b16]/60 backdrop-blur-md border border-white/10 shadow-lg'
+              ? 'bg-[#090b16]/90 backdrop-blur-xl border border-indigo-500/30 shadow-[0_10px_35px_rgba(0,0,0,0.6)]'
+              : 'bg-[#090b16]/70 backdrop-blur-md border border-white/10 shadow-lg'
           }`}
         >
-          {/* Brand & Status */}
+          {/* Brand & Instant Home Reset (0s Latency) */}
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-2.5 text-left group"
+            onClick={handleBrandClick}
+            className="flex items-center gap-2.5 text-left group cursor-pointer"
           >
             <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center font-bold text-white text-sm shadow-md shadow-indigo-500/25 group-hover:scale-105 transition-transform">
               JJ
@@ -81,27 +103,53 @@ export default function Navbar() {
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/[0.06] rounded-full p-1">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
-              return (
+            {currentView === 'featured' ? (
+              <>
+                {navLinks.map((link) => {
+                  const isActive = activeSection === link.id;
+                  return (
+                    <button
+                      key={link.id}
+                      onClick={() => scrollTo(link.id)}
+                      className={`relative px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-200 cursor-pointer ${
+                        isActive ? 'text-white' : 'text-slate-400 hover:text-slate-200'
+                      }`}
+                    >
+                      {isActive && (
+                        <motion.div
+                          layoutId="navPill"
+                          transition={{ type: 'spring', stiffness: 450, damping: 30 }}
+                          className="absolute inset-0 bg-indigo-600/30 border border-indigo-500/40 rounded-full -z-10"
+                        />
+                      )}
+                      {link.label}
+                    </button>
+                  );
+                })}
+
+                {/* Switch to All Projects View */}
                 <button
-                  key={link.id}
-                  onClick={() => scrollTo(link.id)}
-                  className={`relative px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-200 ${
-                    isActive ? 'text-white' : 'text-slate-400 hover:text-slate-200'
-                  }`}
+                  onClick={() => onViewChange && onViewChange('all-projects')}
+                  className="relative px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider text-indigo-300 hover:text-white bg-indigo-950/60 hover:bg-indigo-900/60 border border-indigo-500/35 transition-all ml-1 flex items-center gap-1.5 cursor-pointer shadow-sm"
                 >
-                  {isActive && (
-                    <motion.div
-                      layoutId="navPill"
-                      transition={{ type: 'spring', stiffness: 450, damping: 30 }}
-                      className="absolute inset-0 bg-indigo-600/30 border border-indigo-500/40 rounded-full -z-10"
-                    />
-                  )}
-                  {link.label}
+                  <FolderGit2 className="w-3.5 h-3.5 text-indigo-400" />
+                  <span>ALL PROJECTS (40)</span>
                 </button>
-              );
-            })}
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => onViewChange && onViewChange('featured')}
+                  className="relative px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider text-slate-300 hover:text-white flex items-center gap-1.5 cursor-pointer transition-colors"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5 text-indigo-400" />
+                  <span>FEATURED SHOWCASE</span>
+                </button>
+                <div className="relative px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider text-white bg-indigo-600/40 border border-indigo-500/50 shadow-md">
+                  ALL PROJECTS ARCHIVE (40)
+                </div>
+              </>
+            )}
           </div>
 
           {/* Social Links & Mobile Toggle */}
@@ -139,7 +187,7 @@ export default function Navbar() {
             {/* Mobile Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-full bg-white/[0.05] text-slate-200 hover:text-white"
+              className="md:hidden p-2 rounded-full bg-white/[0.05] text-slate-200 hover:text-white cursor-pointer"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -158,16 +206,41 @@ export default function Navbar() {
             className="fixed inset-x-4 top-20 z-40 bg-[#0c0e1a]/95 backdrop-blur-2xl border border-indigo-500/30 rounded-2xl p-5 shadow-2xl md:hidden"
           >
             <div className="flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollTo(link.id)}
-                  className="w-full text-left py-2.5 px-4 rounded-xl text-sm font-semibold tracking-wider text-slate-200 hover:bg-indigo-600/20 hover:text-white transition-all flex items-center justify-between"
-                >
-                  <span>{link.label}</span>
-                  <ArrowUpRight className="w-4 h-4 opacity-50" />
-                </button>
-              ))}
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onViewChange) onViewChange('featured');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="w-full text-left py-2.5 px-4 rounded-xl text-sm font-semibold tracking-wider text-slate-200 hover:bg-indigo-600/20 hover:text-white transition-all flex items-center justify-between cursor-pointer"
+              >
+                <span>FEATURED SHOWCASE</span>
+                <Sparkles className="w-4 h-4 text-indigo-400" />
+              </button>
+
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (onViewChange) onViewChange('all-projects');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="w-full text-left py-2.5 px-4 rounded-xl text-sm font-semibold tracking-wider text-indigo-300 hover:bg-indigo-600/30 hover:text-white transition-all flex items-center justify-between cursor-pointer bg-indigo-950/40 border border-indigo-500/30"
+              >
+                <span>ALL 40+ PROJECTS ARCHIVE</span>
+                <FolderGit2 className="w-4 h-4 text-indigo-400" />
+              </button>
+
+              {currentView === 'featured' &&
+                navLinks.map((link) => (
+                  <button
+                    key={link.id}
+                    onClick={() => scrollTo(link.id)}
+                    className="w-full text-left py-2 px-4 rounded-xl text-xs font-semibold tracking-wider text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-all flex items-center justify-between cursor-pointer"
+                  >
+                    <span>{link.label}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 opacity-50" />
+                  </button>
+                ))}
 
               <div className="pt-4 mt-2 border-t border-white/10 flex items-center justify-around">
                 <a

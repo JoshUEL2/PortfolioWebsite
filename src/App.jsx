@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProjectShowcase from './components/ProjectShowcase';
@@ -8,9 +8,39 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import CaseStudyModal from './components/CaseStudyModal';
 import BackgroundShader from './components/BackgroundShader';
+import AllProjectsPage from './components/AllProjectsPage';
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [currentView, setCurrentView] = useState('featured'); // 'featured' | 'all-projects'
+
+  // Hash-based routing for bookmarking / refreshing directly on #projects
+  useEffect(() => {
+    const handleHash = () => {
+      if (window.location.hash === '#projects') {
+        setCurrentView('all-projects');
+      } else {
+        setCurrentView('featured');
+      }
+    };
+
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  const handleViewChange = (view) => {
+    setCurrentView(view);
+    if (view === 'all-projects') {
+      window.location.hash = 'projects';
+    } else {
+      // Clear hash without reload
+      if (window.location.hash) {
+        history.pushState('', document.title, window.location.pathname + window.location.search);
+      }
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleExploreClick = () => {
     const el = document.getElementById('portfolio');
@@ -33,23 +63,36 @@ export default function App() {
       {/* Main Content Container */}
       <div className="relative z-10 flex flex-col">
         {/* Floating Capsule Header */}
-        <Navbar />
+        <Navbar currentView={currentView} onViewChange={handleViewChange} />
 
-        {/* Hero Section */}
+        {/* View Switching: Featured Showcase vs All Projects Catalog */}
         <main className="flex-1">
-          <Hero onExploreClick={handleExploreClick} />
+          {currentView === 'featured' ? (
+            <>
+              {/* Hero Section */}
+              <Hero onExploreClick={handleExploreClick} />
 
-          {/* Interactive Project Matrix (Accordion tabs) */}
-          <ProjectShowcase onSelectProject={setSelectedProject} />
+              {/* Interactive Project Matrix (3 Disciplines + Wix Overshoot Motion) */}
+              <ProjectShowcase
+                onSelectProject={setSelectedProject}
+                onViewAllProjects={() => handleViewChange('all-projects')}
+              />
 
-          {/* Core Disciplines & Technical Competencies */}
-          <Competencies />
+              {/* Core Disciplines & Technical Competencies */}
+              <Competencies />
 
-          {/* About Me & Operating Philosophy */}
-          <AboutSection />
+              {/* About Me & Operating Philosophy */}
+              <AboutSection />
 
-          {/* Contact & Inquiry */}
-          <ContactSection />
+              {/* Contact & Inquiry */}
+              <ContactSection />
+            </>
+          ) : (
+            <AllProjectsPage
+              onBackToHome={() => handleViewChange('featured')}
+              onSelectProject={setSelectedProject}
+            />
+          )}
         </main>
 
         {/* Footer */}

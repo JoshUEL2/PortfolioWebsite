@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Gamepad2, Sparkles, Terminal, CheckCircle2 } from 'lucide-react';
-import { GithubIcon } from './Icons';
+import { X, ExternalLink, Gamepad2, Sparkles, Terminal, CheckCircle2, Video } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './Icons';
 
 export default function CaseStudyModal({ project, onClose }) {
   useEffect(() => {
@@ -19,6 +19,8 @@ export default function CaseStudyModal({ project, onClose }) {
 
   if (!project) return null;
 
+  const displayNum = project.number || (project.catalogNumber ? `#${project.catalogNumber}` : '');
+
   return (
     <AnimatePresence>
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
@@ -28,7 +30,7 @@ export default function CaseStudyModal({ project, onClose }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 bg-black/80 backdrop-blur-xl"
+          className="fixed inset-0 bg-black/85 backdrop-blur-xl"
         />
 
         {/* Modal Window */}
@@ -42,17 +44,19 @@ export default function CaseStudyModal({ project, onClose }) {
           {/* Top Bar */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#090b16]">
             <div className="flex items-center gap-3">
-              <span className="font-mono text-xl font-bold text-indigo-400">
-                {project.number}
-              </span>
+              {displayNum && (
+                <span className="font-mono text-xl font-bold text-indigo-400">
+                  {displayNum}
+                </span>
+              )}
               <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-950/60 border border-indigo-500/30 text-indigo-300">
-                {project.discipline}
+                {project.discipline || project.categoryLabel}
               </span>
             </div>
 
             <button
               onClick={onClose}
-              className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
+              className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors cursor-pointer"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -70,11 +74,11 @@ export default function CaseStudyModal({ project, onClose }) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f1e] via-transparent to-transparent opacity-80" />
               <div className="absolute bottom-4 left-6 right-6">
-                <h2 className="text-3xl sm:text-4xl font-black text-white font-['Syne',sans-serif] tracking-tight">
+                <h2 className="text-2xl sm:text-4xl font-black text-white font-['Syne',sans-serif] tracking-tight">
                   {project.title}
                 </h2>
                 <p className="text-sm font-semibold text-indigo-300 mt-1">
-                  {project.tagline} • <span className="font-mono text-slate-300">{project.engine}</span>
+                  {project.tagline || project.categoryLabel} • <span className="font-mono text-slate-300">{project.engine}</span>
                 </p>
               </div>
             </div>
@@ -85,36 +89,40 @@ export default function CaseStudyModal({ project, onClose }) {
                 Executive Summary
               </h4>
               <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-normal">
-                {project.summary}
+                {project.summary || project.shortDesc}
               </p>
             </div>
 
             {/* Technical Highlights */}
-            <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6">
-              <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 mb-4 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                Key Innovations & Achievements
-              </h4>
-              <ul className="space-y-3">
-                {project.highlights.map((h, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-2 shrink-0" />
-                    <span>{h}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {project.highlights && project.highlights.length > 0 && (
+              <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6">
+                <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 mb-4 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  Key Innovations & Achievements
+                </h4>
+                <ul className="space-y-3">
+                  {project.highlights.map((h, i) => (
+                    <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
+                      <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-2 shrink-0" />
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* Technical Deep Dive */}
-            <div className="bg-indigo-950/20 border border-indigo-500/20 rounded-2xl p-6">
-              <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 mb-3 flex items-center gap-2">
-                <Terminal className="w-4 h-4 text-indigo-400" />
-                Engineering Problem & Solution
-              </h4>
-              <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
-                {project.technicalDeepDive}
-              </p>
-            </div>
+            {project.technicalDeepDive && (
+              <div className="bg-indigo-950/20 border border-indigo-500/20 rounded-2xl p-6">
+                <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 mb-3 flex items-center gap-2">
+                  <Terminal className="w-4 h-4 text-indigo-400" />
+                  Engineering Problem & Solution
+                </h4>
+                <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
+                  {project.technicalDeepDive}
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Modal Footer Links */}
@@ -123,8 +131,8 @@ export default function CaseStudyModal({ project, onClose }) {
               {project.studio} • {project.dates}
             </span>
 
-            <div className="flex items-center gap-3">
-              {project.links.itch && (
+            <div className="flex flex-wrap items-center gap-3">
+              {project.links?.itch && (
                 <a
                   href={project.links.itch}
                   target="_blank"
@@ -136,7 +144,19 @@ export default function CaseStudyModal({ project, onClose }) {
                 </a>
               )}
 
-              {project.links.github && (
+              {project.links?.video && (
+                <a
+                  href={project.links.video}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-xs tracking-wider uppercase transition-colors"
+                >
+                  <Video className="w-4 h-4" />
+                  <span>Watch Video</span>
+                </a>
+              )}
+
+              {project.links?.github && (
                 <a
                   href={project.links.github}
                   target="_blank"
@@ -148,7 +168,7 @@ export default function CaseStudyModal({ project, onClose }) {
                 </a>
               )}
 
-              {project.links.demo && !project.links.itch && (
+              {project.links?.demo && !project.links?.itch && !project.links?.video && (
                 <a
                   href={project.links.demo}
                   target="_blank"
@@ -156,7 +176,19 @@ export default function CaseStudyModal({ project, onClose }) {
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs tracking-wider uppercase transition-colors"
                 >
                   <ExternalLink className="w-4 h-4" />
-                  <span>External Resource</span>
+                  <span>Live Demo</span>
+                </a>
+              )}
+
+              {project.links?.linkedin && (
+                <a
+                  href={project.links.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600/30 hover:bg-blue-600/50 text-blue-200 font-semibold text-xs tracking-wider uppercase border border-blue-500/40 transition-colors"
+                >
+                  <LinkedinIcon className="w-4 h-4" />
+                  <span>LinkedIn</span>
                 </a>
               )}
             </div>

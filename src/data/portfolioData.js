@@ -220,7 +220,7 @@ export const PROJECTS = [
       "/images/delirium_monster_concept.png"
     ],
     links: {
-      github: "https://github.com/DHirapara/Lev5_VRProject",
+      github: null,
       demo: "https://joshej.itch.io/delirium",
       itch: "https://joshej.itch.io/delirium",
       gdd: "/docs/Delirium_GDD_and_Design_Notes.zip",
@@ -249,7 +249,7 @@ export const PROJECTS = [
     studio: "Royal Docks Centre for Sustainability",
     image: "/images/vr_showcase.jpg",
     links: {
-      github: "https://github.com/DHirapara/Lev5_VRProject",
+      github: null,
       demo: "https://joshej.itch.io/delirium",
       itch: "https://joshej.itch.io/delirium",
       video: "/media/delirium_preview.mp4"

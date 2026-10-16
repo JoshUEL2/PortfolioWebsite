@@ -218,7 +218,7 @@ export const ALL_PROJECTS = [
     "video": "/media/delirium_preview.mp4",
     "youtubeId": null,
     "links": {
-      "github": "https://github.com/DHirapara/Lev5_VRProject",
+      "github": null,
       "demo": "https://joshej.itch.io/delirium",
       "itch": "https://joshej.itch.io/delirium",
       "gdd": "/docs/Delirium_GDD_and_Design_Notes.zip",
@@ -251,7 +251,7 @@ export const ALL_PROJECTS = [
     "video": "/media/delirium_preview.mp4",
     "youtubeId": null,
     "links": {
-      "github": "https://github.com/DHirapara/Lev5_VRProject",
+      "github": null,
       "demo": "https://joshej.itch.io/delirium",
       "itch": "https://joshej.itch.io/delirium",
       "gdd": "/docs/Delirium_GDD_and_Design_Notes.zip",

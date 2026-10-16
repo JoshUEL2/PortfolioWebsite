@@ -175,13 +175,16 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                         className="w-full h-full cursor-pointer group/thumb relative"
                       >
                         <video
-                          src={getAssetUrl(project.video)}
                           autoPlay
                           loop
                           muted
                           playsInline
+                          preload="auto"
+                          poster={project.image ? getAssetUrl(project.image) : undefined}
                           className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500"
-                        />
+                        >
+                          <source src={getAssetUrl(project.video)} type="video/mp4" />
+                        </video>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/thumb:opacity-100 transition-opacity" />
                         <div className="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-black/80 backdrop-blur-md border border-white/20 text-[9px] font-mono text-emerald-300 flex items-center gap-1 shadow-sm">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -239,15 +242,15 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                         </div>
                       )}
                       {isRastacatsL6Showcase && (
-                        <div className="px-2 py-0.5 rounded-md bg-violet-950/90 border border-violet-500/40 text-[10px] font-bold text-violet-300 flex items-center gap-1 shadow-md">
+                        <div className="px-2 py-0.5 rounded-md bg-violet-950/90 border border-violet-500/40 text-[10px] font-bold text-violet-300 flex items-center gap-1 shadow-md" title="Selected as the sole Level 5 project to exhibit downstairs alongside final graduating Level 6 games at the Royal Docks Centre for Sustainability">
                           <Award className="w-3 h-3 text-violet-400" />
-                          <span>Sole L5 in L6 Showcase</span>
+                          <span>Showcased!</span>
                         </div>
                       )}
                       {isDeliriumL5Showcase && (
-                        <div className="px-2 py-0.5 rounded-md bg-purple-950/90 border border-purple-500/40 text-[10px] font-bold text-purple-300 flex items-center gap-1 shadow-md">
+                        <div className="px-2 py-0.5 rounded-md bg-purple-950/90 border border-purple-500/40 text-[10px] font-bold text-purple-300 flex items-center gap-1 shadow-md" title="The sole fully working, playable VR project in the Level 5 showcase, demoed live with custom seated wheelchair physics and OpenXR head tracking">
                           <Award className="w-3 h-3 text-purple-400" />
-                          <span>Sole Working L5 Project</span>
+                          <span>Showcased!</span>
                         </div>
                       )}
                     </div>

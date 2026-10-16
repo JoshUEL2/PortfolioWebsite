@@ -85,15 +85,15 @@ export default function CaseStudyModal({ project, onClose }) {
                 {project.discipline || project.categoryLabel}
               </span>
               {isRastacatsL6Showcase && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-violet-950/80 border border-violet-500/40 text-violet-300">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-violet-950/80 border border-violet-500/40 text-violet-300" title="Selected as the sole Level 5 project to exhibit downstairs alongside final graduating Level 6 games at the Royal Docks Centre for Sustainability">
                   <Award className="w-3.5 h-3.5 text-violet-400" />
-                  Sole L5 in L6 Showcase
+                  Showcased!
                 </span>
               )}
               {isDeliriumL5Showcase && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-purple-950/80 border border-purple-500/40 text-purple-300">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-purple-950/80 border border-purple-500/40 text-purple-300" title="The sole fully working, playable VR project in the Level 5 showcase, demoed live with custom seated wheelchair physics and OpenXR head tracking">
                   <Award className="w-3.5 h-3.5 text-purple-400" />
-                  Sole Working L5 Project
+                  Showcased!
                 </span>
               )}
             </div>
@@ -170,14 +170,17 @@ export default function CaseStudyModal({ project, onClose }) {
               {activeVideo ? (
                 <video
                   key={activeVideo}
-                  src={getAssetUrl(activeVideo)}
                   controls
                   autoPlay
                   loop
                   muted
                   playsInline
+                  preload="auto"
+                  poster={activeImage ? getAssetUrl(activeImage) : undefined}
                   className="w-full h-full object-contain"
-                />
+                >
+                  <source src={getAssetUrl(activeVideo)} type="video/mp4" />
+                </video>
               ) : youtubeId ? (
                 <iframe
                   key={youtubeId}

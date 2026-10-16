@@ -64,15 +64,15 @@ export default function ProjectCard({ project, onSelectProject }) {
                 </span>
               )}
               {isRastacatsL6Showcase && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase bg-violet-950/80 border border-violet-500/40 text-violet-300">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase bg-violet-950/80 border border-violet-500/40 text-violet-300" title="Selected as the sole Level 5 project to exhibit downstairs alongside final graduating Level 6 games at the Royal Docks Centre for Sustainability">
                   <Award className="w-3 h-3 text-violet-400" />
-                  Sole L5 in L6 Showcase
+                  Showcased!
                 </span>
               )}
               {isDeliriumL5Showcase && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase bg-purple-950/80 border border-purple-500/40 text-purple-300">
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase bg-purple-950/80 border border-purple-500/40 text-purple-300" title="The sole fully working, playable VR project in the Level 5 showcase, demoed live with custom seated wheelchair physics and OpenXR head tracking">
                   <Award className="w-3 h-3 text-purple-400" />
-                  Sole Working L5 Project
+                  Showcased!
                 </span>
               )}
 
@@ -204,13 +204,16 @@ export default function ProjectCard({ project, onSelectProject }) {
               className="relative group/vid cursor-pointer overflow-hidden rounded-2xl bg-black border border-white/15 shadow-2xl aspect-[16/10] flex items-center justify-center"
             >
               <video
-                src={getAssetUrl(project.video)}
                 autoPlay
                 loop
                 muted
                 playsInline
+                preload="auto"
+                poster={project.image ? getAssetUrl(project.image) : undefined}
                 className="w-full h-full object-cover group-hover/vid:scale-105 transition-transform duration-500 ease-out"
-              />
+              >
+                <source src={getAssetUrl(project.video)} type="video/mp4" />
+              </video>
 
               {/* Gradient Overlay on Hover */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/vid:opacity-100 transition-opacity" />

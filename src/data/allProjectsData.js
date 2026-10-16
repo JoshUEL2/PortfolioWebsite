@@ -387,7 +387,7 @@ export const ALL_PROJECTS = [
     "gallery": [
       "/images/pyball.jpg"
     ],
-    "video": null,
+    "video": "/videos/pyball_preview.mp4",
     "youtubeId": null,
     "links": {
       "github": null,

@@ -4,7 +4,7 @@ import {
   Search, 
   ArrowLeft, 
   Gamepad2, 
-  Video, 
+  Clapperboard, 
   ExternalLink, 
   Award, 
   X,
@@ -142,6 +142,14 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
             const isTopScore = project.title.includes('92%') || project.shortDesc?.includes('92%');
             const isFirstClass = project.title.includes('72%') || project.shortDesc?.includes('72%');
             const youtubeId = project.youtubeId || (project.links?.video ? project.links.video.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/)?.[1] : null);
+            const isRastacatsL6Showcase =
+              project.id === 'rastacats' || (project.funFact && project.funFact.includes('Level 6'));
+            const isDeliriumL5Showcase =
+              project.id === 'delirium' || (project.funFact && project.funFact.includes('Level 5 showcase'));
+            const isLiveDemo =
+              Boolean(project.links?.demo) &&
+              !project.links.demo.includes('github.com') &&
+              !project.links.demo.includes('itch.io');
 
             return (
               <motion.div
@@ -217,24 +225,32 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                     </div>
 
                     {/* Grade Commendation Ribbons */}
-                    {isTopScore && (
-                      <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-emerald-950/90 border border-emerald-500/40 text-[10px] font-bold text-emerald-300 flex items-center gap-1 shadow-md pointer-events-none z-10">
-                        <Award className="w-3 h-3 text-emerald-400" />
-                        <span>92% 1st Class</span>
-                      </div>
-                    )}
-                    {isFirstClass && !isTopScore && (
-                      <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-emerald-950/90 border border-emerald-500/40 text-[10px] font-bold text-emerald-300 flex items-center gap-1 shadow-md pointer-events-none z-10">
-                        <Award className="w-3 h-3 text-emerald-400" />
-                        <span>72% 1st Class</span>
-                      </div>
-                    )}
-                    {(project.id === 'delirium' || Boolean(project.funFact)) && !isTopScore && !isFirstClass && (
-                      <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-violet-950/90 border border-violet-500/40 text-[10px] font-bold text-violet-300 flex items-center gap-1 shadow-md pointer-events-none z-10">
-                        <Award className="w-3 h-3 text-violet-400" />
-                        <span>Sole L5 Exhibitor</span>
-                      </div>
-                    )}
+                    <div className="absolute bottom-2 left-2 flex flex-wrap gap-1 pointer-events-none z-10 max-w-[85%]">
+                      {isTopScore && (
+                        <div className="px-2 py-0.5 rounded-md bg-emerald-950/90 border border-emerald-500/40 text-[10px] font-bold text-emerald-300 flex items-center gap-1 shadow-md">
+                          <Award className="w-3 h-3 text-emerald-400" />
+                          <span>92% 1st Class</span>
+                        </div>
+                      )}
+                      {isFirstClass && !isTopScore && (
+                        <div className="px-2 py-0.5 rounded-md bg-emerald-950/90 border border-emerald-500/40 text-[10px] font-bold text-emerald-300 flex items-center gap-1 shadow-md">
+                          <Award className="w-3 h-3 text-emerald-400" />
+                          <span>72% 1st Class</span>
+                        </div>
+                      )}
+                      {isRastacatsL6Showcase && (
+                        <div className="px-2 py-0.5 rounded-md bg-violet-950/90 border border-violet-500/40 text-[10px] font-bold text-violet-300 flex items-center gap-1 shadow-md">
+                          <Award className="w-3 h-3 text-violet-400" />
+                          <span>Sole L5 in L6 Showcase</span>
+                        </div>
+                      )}
+                      {isDeliriumL5Showcase && (
+                        <div className="px-2 py-0.5 rounded-md bg-purple-950/90 border border-purple-500/40 text-[10px] font-bold text-purple-300 flex items-center gap-1 shadow-md">
+                          <Award className="w-3 h-3 text-purple-400" />
+                          <span>Sole Working L5 Project</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
 
                   {/* Category & Dates */}
@@ -291,7 +307,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                         className="p-1.5 rounded-lg bg-red-950/60 hover:bg-red-900/80 text-red-300 border border-red-500/30 transition-all hover:scale-110"
                         title="Watch Walkthrough"
                       >
-                        <Video className="w-3.5 h-3.5 text-red-400" />
+                        <Clapperboard className="w-3.5 h-3.5 text-red-400" />
                       </a>
                     )}
 
@@ -308,7 +324,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                       </a>
                     )}
 
-                    {project.links?.demo && !project.links?.itch && !youtubeId && (
+                    {isLiveDemo && (
                       <a
                         href={getAssetUrl(project.links.demo)}
                         target="_blank"

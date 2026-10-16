@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Gamepad2, Sparkles, Terminal, CheckCircle2, Video, Award, History, Layers, BookOpen } from 'lucide-react';
+import { X, ExternalLink, Gamepad2, Sparkles, Terminal, CheckCircle2, Clapperboard, Award, History, Layers, BookOpen } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { getAssetUrl, isSpecificRepo, isSpecificLinkedIn } from '../utils/assetUrl';
 
@@ -43,6 +43,15 @@ export default function CaseStudyModal({ project, onClose }) {
       ? project.links.video.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/)?.[1]
       : null);
 
+  const isRastacatsL6Showcase =
+    project.id === 'rastacats' || (project.funFact && project.funFact.includes('Level 6'));
+  const isDeliriumL5Showcase =
+    project.id === 'delirium' || (project.funFact && project.funFact.includes('Level 5 showcase'));
+
+  const isLiveDemo =
+    Boolean(project.links?.demo) &&
+    !project.links.demo.includes('github.com') &&
+    !project.links.demo.includes('itch.io');
 
   return (
     <AnimatePresence>
@@ -75,10 +84,16 @@ export default function CaseStudyModal({ project, onClose }) {
               <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-950/60 border border-indigo-500/30 text-indigo-300">
                 {project.discipline || project.categoryLabel}
               </span>
-              {(project.id === 'delirium' || Boolean(project.funFact) || project.shortDesc?.includes('Sole Level 5')) && (
+              {isRastacatsL6Showcase && (
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-violet-950/80 border border-violet-500/40 text-violet-300">
                   <Award className="w-3.5 h-3.5 text-violet-400" />
-                  Sole L5 Exhibitor
+                  Sole L5 in L6 Showcase
+                </span>
+              )}
+              {isDeliriumL5Showcase && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-purple-950/80 border border-purple-500/40 text-purple-300">
+                  <Award className="w-3.5 h-3.5 text-purple-400" />
+                  Sole Working L5 Project
                 </span>
               )}
             </div>
@@ -326,7 +341,7 @@ export default function CaseStudyModal({ project, onClose }) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-xs tracking-wider uppercase transition-colors"
                 >
-                  <Video className="w-4 h-4" />
+                  <Clapperboard className="w-4 h-4" />
                   <span>Watch Video</span>
                 </a>
               )}
@@ -366,7 +381,7 @@ export default function CaseStudyModal({ project, onClose }) {
                 </a>
               )}
 
-              {project.links?.demo && !project.links?.itch && !project.links?.video && !youtubeId && (
+              {isLiveDemo && (
                 <a
                   href={getAssetUrl(project.links.demo)}
                   target="_blank"

@@ -21,12 +21,13 @@ export const ALL_PROJECTS = [
       "Secondary procedural animation featuring velocity-driven skeletal bone swaying on character ears and tails"
     ],
     "technicalDeepDive": "Standard UE5 CharacterMovement components assume planar down-vectors and fail when navigating inverted tubular geometry. Solved in Phase 1 by calculating polar coordinates from spline cross-sections, projecting dynamic artificial gravity directly toward the pipe spine. In Phase 2, countered visual vertex displacement shearing by computing real-time decal projection matrices in Event Tick, while slashing frame times by pooling coin actors into distance-culled instanced meshes.",
+    "funFact": "Selected as the sole Level 5 project to exhibit downstairs alongside final graduating Level 6 games at the Royal Docks Centre for Sustainability, demoed live to over 100 industry visitors.",
     "image": "/images/rastacats.jpg",
     "video": "/videos/rastacats_preview.mp4",
     "youtubeId": null,
     "links": {
       "github": null,
-      "demo": "https://joshej.itch.io/rastacats",
+      "demo": null,
       "itch": "https://joshej.itch.io/rastacats",
       "video": null,
       "linkedin": null
@@ -89,7 +90,7 @@ export const ALL_PROJECTS = [
     "role": "Lead Technical Artist & Creative Director",
     "studio": "JoshCorp Interactive / UEL",
     "shortDesc": "An expressive interactive experience rendered with a bespoke multi-directional Kuwahara watercolor post-process filter and dynamic World Position Offset body morphing.",
-    "summary": "Short-form interactive narrative exploring psychological isolation and identity dissolution through real-time painterly rendering and dynamic vertex displacement in Unreal Engine 5.",
+    "summary": "The purpose of REM was to condense an expansive, pre-existing game bible into a focused, short-form interactive experience, while still successfully conveying its core thematic messages. Developed in Unreal Engine 5 with Blender 3D modeling, technical Word documentation, and Substance Painter textures. Overcame complex visual mechanics without third-party tutorials, engineering a custom Kuwahara-based post-process filter balancing painterly watercolor aesthetics with player clarity, alongside an original World Position Offset (WPO) morphing body for the protagonist.",
     "highlights": [
       "Engineered custom multi-directional Kuwahara filtering balancing painterly aesthetics with crisp gameplay legibility",
       "Custom World Position Offset (WPO) morphing body for the protagonist built from scratch without pre-made asset packs",
@@ -102,7 +103,7 @@ export const ALL_PROJECTS = [
     "youtubeId": null,
     "links": {
       "github": "https://github.com/JoshUEL2/REM",
-      "demo": "https://github.com/JoshUEL2/REM/releases/latest",
+      "demo": null,
       "itch": null,
       "video": null,
       "linkedin": null
@@ -189,17 +190,17 @@ export const ALL_PROJECTS = [
     "dates": "Jan 2026 – Jun 2026",
     "role": "Game Designer, GDD/Narrative Author, UI & 4K Intro Sequence Creator",
     "studio": "3J Mad Studios / UEL (MS5021)",
-    "funFact": "Selected as the sole Level 5 project to exhibit downstairs alongside final graduating Level 6 games at the Royal Docks Centre for Sustainability, demoed live to over 100 industry visitors.",
+    "funFact": "The sole fully working, playable VR project in the Level 5 showcase, demoed live with custom seated wheelchair physics and OpenXR head tracking.",
     "shortDesc": "First-person seated VR psychological survival horror game in Unreal Engine 5.6 where you awaken in 'The Institute' confined to a physical wheelchair, forced to choose between looking forward to navigate or looking back to freeze quantum-observation 'Staff' entities.",
-    "summary": "Developed by 3J Mad Studios (Joshua Johnson, Dhrumil Hirapara, Jose Roberto Gálvez Vargas, Aiden Billingham, Matas Narusis, Jasmine Jilley) for MS5021 Game Studio 2—and selected as the sole Level 5 project to exhibit at the Level 6 Graduation Showcase. Originated from Joshua's 'Mental Hospital Idea' concept notes and full Game Design Document (GDD), combining a 5-minute high-turnover walk-up VR loop, weighted tank-control wheelchair inertia across 3 propulsion modes, Quantum-Observation ('Weeping Angel') AI with K-wire split-face & pendulum-stethoscope body horror, reversed speech & mic-noise detection, non-Euclidean 'Geometry Shift' checkpoints, 'The Void' black-fog sanity feedback, and 'The Rainbow Room' contrast safe zone.",
+    "summary": "Developed by 3J Mad Studios (Joshua Johnson, Dhrumil Hirapara, Jose Roberto Gálvez Vargas, Aiden Billingham, Matas Narusis, Jasmine Jilley) for MS5021 Game Studio 2—the sole fully working, playable VR project in the Level 5 showcase. Originated from Joshua's 'Mental Hospital Idea' concept notes and full Game Design Document (GDD), combining a 5-minute high-turnover walk-up VR loop, weighted tank-control wheelchair inertia across 3 propulsion modes, Quantum-Observation ('Weeping Angel') AI with K-wire split-face & pendulum-stethoscope body horror, reversed speech & mic-noise detection, non-Euclidean 'Geometry Shift' checkpoints, 'The Void' black-fog sanity feedback, and 'The Rainbow Room' contrast safe zone.",
     "highlights": [
-      "Sole Level 5 project chosen to exhibit downstairs alongside final graduating Level 6 games at the Royal Docks Centre for Sustainability (supervised live for 100+ industry visitors).",
+      "Sole fully working, playable VR project in the Level 5 showcase, demoed live with custom seated wheelchair physics and OpenXR head tracking.",
       "Originated the 'Mental Hospital Idea' & authored the full GDD, Narrative Template, Brainstorming Bible, Sprint 1–4 Retrospectives, Visio floorplans (modeled on UEL Docklands West Building 1st Floor), custom Illustrator UI menus, and 4K cinematic IntroSequence.mp4.",
       "Core Hook & 3-Mode Wheelchair Physics: Weighted tank-drive inertia forcing players to choose between looking forward to steer or looking back to survive—with Realistic arm-swing, Semi-Realistic pull, and Accessible Dual-Stick modes, plus a Reverse-Gaze Jumpscare Penalty.",
       "Quantum-Observation AI ('The Staff'): Freezes and subtly vibrates with a low-frequency hum inside the VR camera frustum while its pendulum stethoscope swings; stalks with wet footsteps when unobserved or during blackouts, speaking slowed reversed English ('tneitaP ,ereh kcab emoC') with microphone noise detection.",
       "Non-Euclidean Object Permanence & Zero-HUD Sanity: Hallways vanish into solid brick walls or 'The Void' black fog behind your back (acting as internal Geometry Shift level checkpoints from Phase 1 Elevator Admission to Phase 2 Doctor Pursuit and 'The Rainbow Room' surreal safe zone), paired with X-Ray code, fuse, and keypad puzzles."
     ],
-    "technicalDeepDive": "Solved VR simulator sickness and walk-up onboarding by anchoring the player's physical seated posture to an in-game wheelchair chassis with intentional rotational inertia and three selectable propulsion schemes (6-DOF virtual wheel grab tank drive, pull-stroke propulsion, and dual-analog accessibility). Calibrated OpenXR tracking matrices and physics handle components to ensure heavy objects and wheelchair rim propulsion possessed realistic rotational inertia without physics jitter, maintaining 90fps across 100+ live player sessions at the Royal Docks exhibition.",
+    "technicalDeepDive": "Solved VR simulator sickness and walk-up onboarding by anchoring the player's physical seated posture to an in-game wheelchair chassis with intentional rotational inertia and three selectable propulsion schemes (6-DOF virtual wheel grab tank drive, pull-stroke propulsion, and dual-analog accessibility). Calibrated OpenXR tracking matrices and physics handle components to ensure heavy objects and wheelchair rim propulsion possessed realistic rotational inertia without physics jitter, maintaining 90fps across live player sessions.",
     "image": "/images/delirium_cover.png",
     "gallery": [
       "/images/delirium_wheelchair.png",
@@ -222,7 +223,7 @@ export const ALL_PROJECTS = [
     "youtubeId": null,
     "links": {
       "github": null,
-      "demo": "https://joshej.itch.io/delirium",
+      "demo": null,
       "itch": "https://joshej.itch.io/delirium",
       "gdd": "/docs/Delirium_GDD_and_Design_Notes.zip",
       "video": "/media/delirium_preview.mp4",
@@ -255,7 +256,7 @@ export const ALL_PROJECTS = [
     "youtubeId": null,
     "links": {
       "github": null,
-      "demo": "https://joshej.itch.io/state-machine-showcase",
+      "demo": null,
       "itch": "https://joshej.itch.io/state-machine-showcase",
       "video": null,
       "linkedin": null
@@ -288,7 +289,7 @@ export const ALL_PROJECTS = [
     "links": {
       "github": null,
       "demo": null,
-      "itch": null,
+      "itch": "https://joshej.itch.io/randio",
       "video": null,
       "linkedin": null
     },
@@ -356,7 +357,7 @@ export const ALL_PROJECTS = [
     "links": {
       "github": "https://github.com/JoshUEL2/PlanetProtectors",
       "demo": null,
-      "itch": null,
+      "itch": "https://joshej.itch.io/planet-protectors",
       "video": null,
       "linkedin": null
     },
@@ -458,7 +459,7 @@ export const ALL_PROJECTS = [
     "links": {
       "github": null,
       "demo": null,
-      "itch": null,
+      "itch": "https://joshej.itch.io/daydream-believer",
       "video": null,
       "linkedin": null
     },
@@ -510,41 +511,9 @@ export const ALL_PROJECTS = [
     ]
   },
   {
-    "id": "global-game-jam-2026",
-    "slug": "ggj-2026",
-    "catalogNumber": "13",
-    "title": "Global Game Jam 2026 @ Goldsmiths: 48-Hour Rapid Prototyping",
-    "discipline": "unreal",
-    "engine": "Unity / Unreal Engine",
-    "categoryLabel": "Rapid Prototyping & Game Jam",
-    "dates": "Jan 2026 \u2013 Feb 2026",
-    "role": "Rapid Prototyper & Gameplay Designer",
-    "studio": "Goldsmiths / Game Dev Local (GDL)",
-    "shortDesc": "Shipped a complete playable game from scratch over a 48-hour development sprint at the UK's premier game jam location at Goldsmiths, collaborating with Game Dev Local (GDL).",
-    "summary": "Rapidly iterated core mechanics within the first 12 hours, locking scope to deliver a polished, bug-free playtestable build on schedule.",
-    "highlights": [
-      "Conceptualized, developed, and delivered a complete playable game in 48 hours",
-      "Collaborated within a cross-disciplinary on-site development team at the UK's #1 jam site",
-      "Delivered playable build for live Sunday evening playtest showcase with zero fatal bugs",
-      "Scope management under severe time constraints"
-    ],
-    "technicalDeepDive": "Triaged feature backlog using MoSCoW prioritization. Built mechanic prototypes with blockout geometry within the first 6 hours, freezing mechanics at hour 24 to dedicate remaining time entirely to game feel, audio mixing, and bug remediation.",
-    "image": "/images/ggj_2026.jpg",
-    "video": null,
-    "youtubeId": null,
-    "links": {
-      "github": null,
-      "demo": null,
-      "itch": null,
-      "video": null,
-      "linkedin": null
-    },
-    "featured": false
-  },
-  {
     "id": "dear-hiring-manager-gdd",
     "slug": "dear-hiring-manager",
-    "catalogNumber": "14",
+    "catalogNumber": "13",
     "title": "Dear, Hiring Manager: Satirical Mobile Systems GDD & Screenplay",
     "discipline": "narrative",
     "engine": "Figma / Twine / Google Docs Format",
@@ -576,7 +545,7 @@ export const ALL_PROJECTS = [
   {
     "id": "far-cry-5-dlc-faith-over-fear",
     "slug": "faith-over-fear",
-    "catalogNumber": "15",
+    "catalogNumber": "14",
     "title": "Far Cry 5 DLC: 'Faith Over Fear' Screenplay & Narrative Prequel",
     "discipline": "narrative",
     "engine": "Industry Screenplay & Mocap Format",
@@ -598,7 +567,7 @@ export const ALL_PROJECTS = [
     "youtubeId": null,
     "links": {
       "github": null,
-      "demo": "https://www.linkedin.com/in/joshgamedev",
+      "demo": null,
       "itch": null,
       "video": null,
       "linkedin": null
@@ -608,7 +577,7 @@ export const ALL_PROJECTS = [
   {
     "id": "misc-games-planning",
     "slug": "misc-games",
-    "catalogNumber": "16",
+    "catalogNumber": "15",
     "title": "Misc Games: Concept Archives & Systems Design Portfolio",
     "discipline": "level-design",
     "engine": "Various Engines & Design Formats",

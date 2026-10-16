@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Gamepad2, Sparkles, BookOpen, Video, Award } from 'lucide-react';
+import { ExternalLink, Gamepad2, Sparkles, BookOpen, Clapperboard, Award } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { getAssetUrl, isSpecificRepo, isSpecificLinkedIn } from '../utils/assetUrl';
 
@@ -11,16 +11,20 @@ export default function ProjectCard({ project, onSelectProject }) {
       ? project.links.video.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/)?.[1]
       : null);
 
-  // Grade commendations
+  // Grade & Exhibition commendations
   const isTopScore =
     project.tagline?.includes('92%') || project.title?.includes('92%') || project.shortDesc?.includes('92%');
   const isFirstClass =
     project.tagline?.includes('72%') || project.title?.includes('72%') || project.shortDesc?.includes('72%');
-  const isSelectedShowcase =
-    project.id === 'delirium' ||
-    project.id === 'vr-showcase' ||
-    Boolean(project.funFact) ||
-    project.shortDesc?.includes('Sole Level 5');
+  const isRastacatsL6Showcase =
+    project.id === 'rastacats' || (project.funFact && project.funFact.includes('Level 6'));
+  const isDeliriumL5Showcase =
+    project.id === 'delirium' || (project.funFact && project.funFact.includes('Level 5 showcase'));
+
+  const isLiveDemo =
+    Boolean(project.links?.demo) &&
+    !project.links.demo.includes('github.com') &&
+    !project.links.demo.includes('itch.io');
 
   return (
     <motion.div
@@ -59,10 +63,16 @@ export default function ProjectCard({ project, onSelectProject }) {
                   72% 1st Class
                 </span>
               )}
-              {isSelectedShowcase && (
+              {isRastacatsL6Showcase && (
                 <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase bg-violet-950/80 border border-violet-500/40 text-violet-300">
                   <Award className="w-3 h-3 text-violet-400" />
-                  Sole L5 Exhibitor
+                  Sole L5 in L6 Showcase
+                </span>
+              )}
+              {isDeliriumL5Showcase && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase bg-purple-950/80 border border-purple-500/40 text-purple-300">
+                  <Award className="w-3 h-3 text-purple-400" />
+                  Sole Working L5 Project
                 </span>
               )}
 
@@ -134,7 +144,7 @@ export default function ProjectCard({ project, onSelectProject }) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-semibold text-xs tracking-wider uppercase shadow-md shadow-red-900/40 hover:scale-105 active:scale-95 transition-all"
               >
-                <Video className="w-4 h-4" />
+                <Clapperboard className="w-4 h-4" />
                 <span>Watch Walkthrough</span>
               </a>
             )}
@@ -163,7 +173,7 @@ export default function ProjectCard({ project, onSelectProject }) {
               </a>
             )}
 
-            {project.links?.demo && !project.links?.itch && !project.links?.video && !youtubeId && (
+            {isLiveDemo && (
               <a
                 href={getAssetUrl(project.links.demo)}
                 target="_blank"
@@ -171,7 +181,7 @@ export default function ProjectCard({ project, onSelectProject }) {
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 font-semibold text-xs tracking-wider uppercase border border-indigo-500/30 hover:scale-105 active:scale-95 transition-all"
               >
                 <ExternalLink className="w-4 h-4" />
-                <span>Live Release</span>
+                <span>Live Demo</span>
               </a>
             )}
 

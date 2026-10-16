@@ -189,15 +189,17 @@ export const ALL_PROJECTS = [
     "dates": "Jan 2026 – Jun 2026",
     "role": "Game Designer, GDD/Narrative Author, UI & 4K Intro Sequence Creator",
     "studio": "3J Mad Studios / UEL (MS5021)",
+    "funFact": "Selected as the sole Level 5 project to exhibit downstairs alongside final graduating Level 6 games at the Royal Docks Centre for Sustainability, demoed live to over 100 industry visitors.",
     "shortDesc": "First-person seated VR psychological survival horror game in Unreal Engine 5.6 where you awaken in 'The Institute' confined to a physical wheelchair, forced to choose between looking forward to navigate or looking back to freeze quantum-observation 'Staff' entities.",
     "summary": "Developed by 3J Mad Studios (Joshua Johnson, Dhrumil Hirapara, Jose Roberto Gálvez Vargas, Aiden Billingham, Matas Narusis, Jasmine Jilley) for MS5021 Game Studio 2—and selected as the sole Level 5 project to exhibit at the Level 6 Graduation Showcase. Originated from Joshua's 'Mental Hospital Idea' concept notes and full Game Design Document (GDD), combining a 5-minute high-turnover walk-up VR loop, weighted tank-control wheelchair inertia across 3 propulsion modes, Quantum-Observation ('Weeping Angel') AI with K-wire split-face & pendulum-stethoscope body horror, reversed speech & mic-noise detection, non-Euclidean 'Geometry Shift' checkpoints, 'The Void' black-fog sanity feedback, and 'The Rainbow Room' contrast safe zone.",
     "highlights": [
+      "Sole Level 5 project chosen to exhibit downstairs alongside final graduating Level 6 games at the Royal Docks Centre for Sustainability (supervised live for 100+ industry visitors).",
       "Originated the 'Mental Hospital Idea' & authored the full GDD, Narrative Template, Brainstorming Bible, Sprint 1–4 Retrospectives, Visio floorplans (modeled on UEL Docklands West Building 1st Floor), custom Illustrator UI menus, and 4K cinematic IntroSequence.mp4.",
       "Core Hook & 3-Mode Wheelchair Physics: Weighted tank-drive inertia forcing players to choose between looking forward to steer or looking back to survive—with Realistic arm-swing, Semi-Realistic pull, and Accessible Dual-Stick modes, plus a Reverse-Gaze Jumpscare Penalty.",
       "Quantum-Observation AI ('The Staff'): Freezes and subtly vibrates with a low-frequency hum inside the VR camera frustum while its pendulum stethoscope swings; stalks with wet footsteps when unobserved or during blackouts, speaking slowed reversed English ('tneitaP ,ereh kcab emoC') with microphone noise detection.",
       "Non-Euclidean Object Permanence & Zero-HUD Sanity: Hallways vanish into solid brick walls or 'The Void' black fog behind your back (acting as internal Geometry Shift level checkpoints from Phase 1 Elevator Admission to Phase 2 Doctor Pursuit and 'The Rainbow Room' surreal safe zone), paired with X-Ray code, fuse, and keypad puzzles."
     ],
-    "technicalDeepDive": "Solved VR simulator sickness and walk-up onboarding by anchoring the player's physical seated posture to an in-game wheelchair chassis with intentional rotational inertia and three selectable propulsion schemes (6-DOF virtual wheel grab tank drive, pull-stroke propulsion, and dual-analog accessibility). Engineered non-Euclidean object-permanence level streaming where turning around seals prior corridors into walls ('Geometry Shift' checkpoints), while camera-frustum raycasts govern 'The Staff' state machine (State A: Observed/Frozen with vibrating mesh & swinging stethoscope; State B: Unobserved/High-Speed Pursuit with degrading room lights and zero-HUD chromatic aberration / black-fog sanity cues).",
+    "technicalDeepDive": "Solved VR simulator sickness and walk-up onboarding by anchoring the player's physical seated posture to an in-game wheelchair chassis with intentional rotational inertia and three selectable propulsion schemes (6-DOF virtual wheel grab tank drive, pull-stroke propulsion, and dual-analog accessibility). Calibrated OpenXR tracking matrices and physics handle components to ensure heavy objects and wheelchair rim propulsion possessed realistic rotational inertia without physics jitter, maintaining 90fps across 100+ live player sessions at the Royal Docks exhibition.",
     "image": "/images/delirium_cover.png",
     "gallery": [
       "/images/delirium_wheelchair.png",
@@ -213,41 +215,9 @@ export const ALL_PROJECTS = [
       "/images/delirium_ui_control_menu.png",
       "/images/delirium_ui_pause_menu.png",
       "/images/delirium_floorplan.png",
-      "/images/delirium_monster_concept.png"
+      "/images/delirium_monster_concept.png",
+      "/images/vr_showcase.jpg"
     ],
-    "video": "/media/delirium_preview.mp4",
-    "youtubeId": null,
-    "links": {
-      "github": null,
-      "demo": "https://joshej.itch.io/delirium",
-      "itch": "https://joshej.itch.io/delirium",
-      "gdd": "/docs/Delirium_GDD_and_Design_Notes.zip",
-      "video": "/media/delirium_preview.mp4",
-      "linkedin": null
-    },
-    "featured": true
-  },
-  {
-    "id": "personal-project-showcase-2026",
-    "slug": "vr-showcase",
-    "catalogNumber": "05B",
-    "title": "Personal Project Showcase 2026: Royal Docks Sustainability VR (Delirium Exhibition)",
-    "discipline": "unreal",
-    "engine": "Unreal Engine 5 VR",
-    "categoryLabel": "VR Systems & Exhibition",
-    "dates": "Jun 2026 \u2013 Present",
-    "role": "Lead VR Technical Designer & Spatial Systems Architect",
-    "studio": "Royal Docks Centre for Sustainability / UEL",
-    "shortDesc": "The sole Level 5 project (Delirium) selected to exhibit downstairs alongside graduating Level 6 games, demonstrating advanced room-scale VR interaction physics, user comfort locomotion, and real-time telemetry.",
-    "summary": "Demonstrated Delirium's seated wheelchair locomotion, spatial hand-tracking, ergonomic interaction boundaries, and zero-latency physics interactions in room-scale VR for over 100 industry visitors at the Royal Docks Centre for Sustainability.",
-    "highlights": [
-      "Sole Level 5 project (Delirium) chosen to exhibit downstairs alongside Level 6 final graduating games",
-      "Configured and supervised the room-scale VR test suite for over 100 industry visitors",
-      "Calibrated 6-DOF hand presence with tactile haptic falloff curves for virtual wheelchair rims",
-      "Engineered comfort-first locomotion reducing simulator sickness through dynamic peripheral FOV vignetting"
-    ],
-    "technicalDeepDive": "Calibrated OpenXR tracking matrices and physics handle components to ensure heavy objects and wheelchair rim propulsion possessed realistic rotational inertia without causing physics hitching or jitter. Implemented real-time framerate telemetry logging to prevent 90fps drop spikes.",
-    "image": "/images/vr_showcase.jpg",
     "video": "/media/delirium_preview.mp4",
     "youtubeId": null,
     "links": {

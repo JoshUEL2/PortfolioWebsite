@@ -229,6 +229,12 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                         <span>72% 1st Class</span>
                       </div>
                     )}
+                    {(project.id === 'delirium' || Boolean(project.funFact)) && !isTopScore && !isFirstClass && (
+                      <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-violet-950/90 border border-violet-500/40 text-[10px] font-bold text-violet-300 flex items-center gap-1 shadow-md pointer-events-none z-10">
+                        <Award className="w-3 h-3 text-violet-400" />
+                        <span>Sole L5 Exhibitor</span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Category & Dates */}
@@ -246,9 +252,17 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-xs text-slate-300 leading-relaxed line-clamp-3 mb-4 font-normal">
+                  <p className="text-xs text-slate-300 leading-relaxed line-clamp-3 mb-3 font-normal">
                     {project.shortDesc}
                   </p>
+
+                  {/* Exhibition Brag / Fun Fact */}
+                  {project.funFact && (
+                    <div className="mb-4 p-2.5 rounded-xl bg-violet-950/50 border border-violet-500/30 text-[11px] text-violet-200 flex items-start gap-2">
+                      <span className="text-violet-400 font-bold shrink-0">★ Brag:</span>
+                      <span className="line-clamp-2">{project.funFact}</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Card Footer: Action Links & Deep Dive */}

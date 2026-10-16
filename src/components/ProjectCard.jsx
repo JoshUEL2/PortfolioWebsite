@@ -16,7 +16,11 @@ export default function ProjectCard({ project, onSelectProject }) {
     project.tagline?.includes('92%') || project.title?.includes('92%') || project.shortDesc?.includes('92%');
   const isFirstClass =
     project.tagline?.includes('72%') || project.title?.includes('72%') || project.shortDesc?.includes('72%');
-  const isSelectedShowcase = project.id === 'vr-showcase' || project.shortDesc?.includes('Sole Level 5');
+  const isSelectedShowcase =
+    project.id === 'delirium' ||
+    project.id === 'vr-showcase' ||
+    Boolean(project.funFact) ||
+    project.shortDesc?.includes('Sole Level 5');
 
   return (
     <motion.div
@@ -92,6 +96,21 @@ export default function ProjectCard({ project, onSelectProject }) {
                 </div>
               ))}
             </div>
+
+            {/* Exhibition Brag / Fun Fact Callout */}
+            {project.funFact && (
+              <div className="mb-5 p-3.5 rounded-2xl bg-gradient-to-r from-violet-950/60 via-purple-900/30 to-indigo-950/60 border border-violet-500/30 backdrop-blur-md flex items-start gap-3 shadow-lg">
+                <span className="p-1.5 rounded-lg bg-violet-500/20 text-violet-300 shrink-0 mt-0.5">
+                  <Sparkles className="w-4 h-4 text-violet-300" />
+                </span>
+                <div className="text-xs text-slate-200 leading-relaxed">
+                  <span className="font-bold text-violet-300 uppercase tracking-wider block text-[10px] mb-0.5 font-mono">
+                    Did You Know? • Exhibition Recognition
+                  </span>
+                  {project.funFact}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Action Buttons */}

@@ -75,6 +75,12 @@ export default function CaseStudyModal({ project, onClose }) {
               <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-950/60 border border-indigo-500/30 text-indigo-300">
                 {project.discipline || project.categoryLabel}
               </span>
+              {(project.id === 'delirium' || Boolean(project.funFact) || project.shortDesc?.includes('Sole Level 5')) && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-violet-950/80 border border-violet-500/40 text-violet-300">
+                  <Award className="w-3.5 h-3.5 text-violet-400" />
+                  Sole L5 Exhibitor
+                </span>
+              )}
             </div>
 
             <button
@@ -243,6 +249,23 @@ export default function CaseStudyModal({ project, onClose }) {
                 {activeSummary}
               </p>
             </div>
+
+            {/* Did You Know? Exhibition Brag & Recognition */}
+            {project.funFact && (
+              <div className="bg-gradient-to-r from-violet-950/70 via-purple-900/40 to-indigo-950/70 border border-violet-500/40 rounded-2xl p-5 shadow-xl flex items-start gap-4">
+                <span className="p-2.5 rounded-xl bg-violet-500/20 text-violet-300 shrink-0 mt-0.5">
+                  <Sparkles className="w-5 h-5 text-violet-300" />
+                </span>
+                <div>
+                  <h4 className="text-xs sm:text-sm font-bold text-violet-300 uppercase tracking-wider font-mono mb-1">
+                    Did You Know? • Exhibition Brag & Industry Recognition
+                  </h4>
+                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
+                    {project.funFact}
+                  </p>
+                </div>
+              </div>
+            )}
 
             {/* Technical Highlights */}
             {activeHighlights && activeHighlights.length > 0 && (

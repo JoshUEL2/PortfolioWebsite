@@ -308,13 +308,13 @@ export const PROJECTS = [
     dates: "Jan 2025 – Apr 2025",
     studio: "JoshCorp / UEL (MS5028)",
     image: "/images/labraz.jpg",
-    video: null,
-    youtubeId: "t3xmVDuFvZU",
+    video: "/media/labraz_preview.mp4",
+    youtubeId: null,
     links: {
       github: null,
       demo: null,
       itch: null,
-      video: "https://www.youtube.com/watch?v=t3xmVDuFvZU",
+      video: null,
       linkedin: null
     },
     shortDesc: "3-player asymmetrical co-op FPS level design awarded 72% (1st Class) with a comprehensive 40-page Game Design Document and video walkthrough.",

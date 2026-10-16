@@ -130,13 +130,13 @@ export const ALL_PROJECTS = [
     ],
     "technicalDeepDive": "Balanced encounter pacing using rhythm-tension graphs. Designed modular environmental kits in Blender with clear visual language: yellow conduit cables guide hackers to security nodes, while elevated catwalks provide tactical sightlines for defensive cover.",
     "image": "/images/labraz.jpg",
-    "video": null,
-    "youtubeId": "t3xmVDuFvZU",
+    "video": "/media/labraz_preview.mp4",
+    "youtubeId": null,
     "links": {
       "github": null,
       "demo": null,
       "itch": null,
-      "video": "https://www.youtube.com/watch?v=t3xmVDuFvZU",
+      "video": null,
       "linkedin": null
     },
     "featured": true

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { ArrowUp, Heart, Code2 } from 'lucide-react';
-import { PERSONAL_INFO } from '../data/portfolioData';
+import { ArrowUp, Code2 } from 'lucide-react';
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 export default function Footer() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -41,7 +42,7 @@ export default function Footer() {
           </div>
 
           <div className="text-xs text-slate-400">
-            © {new Date().getFullYear()} Joshua Johnson. All rights reserved.
+            © {CURRENT_YEAR} Joshua Johnson. All rights reserved.
           </div>
         </div>
       </footer>

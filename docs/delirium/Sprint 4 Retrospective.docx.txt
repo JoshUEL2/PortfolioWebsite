@@ -1,0 +1,11 @@
+Planner - MS5021 VR Game
+Team B | MS5021 2526 T2 (OC) Game Studio 2
+Sprint: 4
+Name: Joshua Johnson
+Role(s): Game Designer
+What went well
+This sprint the team was much better at communication, and overall we pulled together to ensure we made a video game we all were happy with. Throughout the sprint, numerous team members helped each other out when there were shortfalls, and final progress and what needs to be done for it has been very clear. 
+What didn't go well
+Unfortunately the main bottleneck this sprint was actually myself, I was sick for a couple of weeks and as hard as I tried couldn’t produce much good quality work which I feel may have set the team back. On top of this, I also feel as though certan issues with character models nto being rigged, or sent in a T-pose could have been easily avoided. On top of this, collating character models into the same shared one drive would’ve been helpful for organisation, and keeping the planer updated was increasingly challenging this sprint. We did also have a small issue with github corrupting some game files, but these were resolved almost instantly
+Solutions/best practices
+I would say a lot of the issues faced this sprint are easily fixable by just keeping on top of what we have been doing the entire term, that is, ensuring files are in their correct places, and are usable in engine. This, to me, would help us create in future, an even better game. 

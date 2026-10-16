@@ -5,7 +5,7 @@ export const PERSONAL_INFO = {
   location: "London, England, UK",
   email: "joshua06johnson@gmail.com",
   github: "https://github.com/JoshUEL2",
-  linkedin: "https://www.linkedin.com/in/joshua-johnson-485543351/",
+  linkedin: "https://www.linkedin.com/in/joshgamedev",
   itch: "https://joshej.itch.io/",
   institution: "University of East London (UEL)",
   role: "School Representative & BSc (Hons) Computer Games Design",
@@ -101,7 +101,7 @@ export const PROJECTS = [
     image: "/images/far_cry_5.jpg",
     links: {
       github: "https://github.com/JoshUEL2",
-      demo: "https://www.linkedin.com/in/joshua-johnson-485543351/",
+      demo: "https://www.linkedin.com/in/joshgamedev",
       itch: null,
       video: null
     },
@@ -121,61 +121,153 @@ export const PROJECTS = [
     id: "rastacats",
     category: "gameplay",
     number: "01",
-    title: "Rastacats",
+    title: "Rastacats / Rastacats Remastered",
     tagline: "Procedural 3D Runner & Polar Gravity (92% 1st)",
     discipline: "Gameplay Engineering & Physics",
     engine: "Unreal Engine 5.7",
-    dates: "Oct 2025 – Dec 2025",
-    studio: "JoshCorp / UEL (MS5027)",
-    image: "/images/rastacats_cover.jpg",
-    video: "/media/rastacats_preview.mp4",
+    dates: "Oct 2025 – May 2026",
+    studio: "JoshCorp Interactive / UEL (MS5027 & MS5022)",
+    image: "/images/rastacats.jpg",
+    video: "/videos/rastacats_preview.mp4",
     links: {
       github: "https://github.com/JoshUEL2",
       demo: "https://joshej.itch.io/rastacats",
       itch: "https://joshej.itch.io/rastacats",
       video: null
     },
-    shortDesc: "3D arcade bobsled runner awarded 92% (1st Class) interpreting the 1988 Cool Runnings narrative with custom 360-degree rotational gravity, polar coordinates, and an overspeed loop.",
-    summary: "High-octane procedural runner overcoming standard UE5 gravity constraints with custom polar math and aggressive CPU lifecycle optimization.",
+    shortDesc: "Awarded 92% (1st Class Honours) for high-octane 360° cylindrical pipe racing in Term 1, followed by a complete Term 2 architectural remaster featuring curved-world shaders, decal projection math, and 65% CPU tick optimization.",
+    summary: "Dual-phase arcade racing project exploring cylindrical locomotion physics and modern engine optimization. Term 1 established custom polar gravity and high-stakes Overspeed mechanics (92% grade). Term 2 introduced an Animal Crossing spherical vertex shader, Blueprint Event Tick decal projection along curved surfaces, coin actor pooling, and AI race competition.",
     highlights: [
-      "Awarded 92% (1st Class Honours) for MS5027 Gameplay Prototyping at UEL.",
-      "Engineered custom 360-degree rotational gravity beyond standard engine character movement.",
-      "Curved horizon World Position Offset shader with mathematical decal projection syncing.",
-      "Optimized actor pooling: disabled tick across hundreds of coin actors, utilizing native lifespan timers."
+      "Awarded 92% (1st Class Honours) for MS5027 Gameplay Prototyping at UEL",
+      "Engineered bespoke 360° rotational gravity across tubular spline meshes beyond standard CharacterMovement",
+      "Term 2 Remaster: Animal Crossing-style curved-world vertex displacement shader with dynamic rolling horizon",
+      "Blueprint Event Tick decal projection math calculating surface tangents along curved normals to eliminate shearing",
+      "65% CPU cycle reduction achieved by replacing per-frame coin ticking with pooled Instanced Static Mesh managers",
+      "Secondary procedural animation featuring velocity-driven skeletal bone swaying on character ears and tails"
     ],
-    technicalDeepDive: "Standard character movement components fail when navigating full 360-degree inverted tubular geometry. Solved by calculating custom polar-to-cartesian coordinate offsets in Blueprints and projecting player down-vectors directly toward the pipe spine. Counteracted visual WPO horizon curves by calculating real-time compensation offsets in Event Tick for drop-shadow projection."
+    technicalDeepDive: "Standard UE5 CharacterMovement components assume planar down-vectors and fail when navigating inverted tubular geometry. Solved in Phase 1 by calculating polar coordinates from spline cross-sections, projecting dynamic artificial gravity directly toward the pipe spine. In Phase 2, countered visual vertex displacement shearing by computing real-time decal projection matrices in Event Tick, while slashing frame times by pooling coin actors into distance-culled instanced meshes.",
+    splitPhases: [
+      {
+        id: "original",
+        phaseLabel: "Phase 1: Original (Term 1 / MS5027)",
+        phaseBadge: "92% 1st Class Honours",
+        phaseSubtitle: "360° Cylindrical Pipe Locomotion & Polar Gravity Physics",
+        title: "Rastacats: High-Velocity 360° Pipe Bobsled Racing",
+        summary: "Awarded 92% (1st Class Honours) in MS5027 Gameplay Prototyping at the University of East London. Features high-velocity 360-degree pipe traversal where players bank along cylindrical surfaces at over 200 km/h, dodging dynamic obstacles, collecting coins, and managing a high-stakes Overspeed mechanic that rewards split-second reflexes.",
+        highlights: [
+          "Custom polar coordinate gravity system allowing seamless 360-degree cylindrical inner-pipe traversal",
+          "Dynamic Overspeed risk-reward gauge: maintaining maximum speed unlocks coin multipliers but heightens collision penalty",
+          "Procedural obstacle placement algorithm generating randomized spike hazards and jump pads",
+          "High-performance arcade handling with immediate response physics tuned for competitive time-trials"
+        ],
+        technicalDeepDive: "Calculated surface normals across continuous spline meshes to project artificial inward gravitational vectors, allowing the bobsled pawn to maintain adhesion across 360 degrees of rotation without falling out of the tube geometry. Tuned velocity damping and rotational friction to eliminate disorientation while preserving extreme speed.",
+        gallery: [
+          "/images/rastacats.jpg",
+          "/images/rasta_cw1_00_01_30.jpg"
+        ],
+        video: "/videos/rastacats_preview.mp4"
+      },
+      {
+        id: "revisited",
+        phaseLabel: "Phase 2: Revisited / Remaster (Term 2 / MS5022)",
+        phaseBadge: "Remastered Architecture",
+        phaseSubtitle: "Curved-World Shader, Decal Math & CPU Tick Optimization",
+        title: "Rastacats Remastered: Spherical Vertex Horizon & Engine Polish",
+        summary: "A ground-up architectural overhaul for the MS5022 Portfolio module. Rebuilt rendering pipelines with an Animal Crossing-inspired spherical vertex displacement shader, engineered Blueprint Event Tick decal projection math, eliminated CPU overhead through actor pooling, added velocity-driven bone swaying, AI Race Mode competitors, and blizzard particle weather.",
+        highlights: [
+          "Animal Crossing-inspired curved-world vertex displacement shader creating a dramatic rolling horizon effect",
+          "Replaced per-frame actor ticking with object pooling for hundreds of coins, slashing CPU cycle usage by 65%",
+          "Engineered Blueprint Event Tick decal math to accurately project feline graffiti and skid marks along curved mesh normals",
+          "Implemented secondary animation with velocity-driven bone swaying on character tails and ears",
+          "Added competitive AI Race Mode with dynamic rubber-banding and atmospheric blizzard weather simulation"
+        ],
+        technicalDeepDive: "Engineered world-position-offset vertex shader math: P_curved = P_world - up * (distance / curveFactor)^2. Overcame decal projection shearing on curved meshes by calculating local surface tangent frames in Blueprint tick. Optimized coin performance by replacing individual ticking actors with an Instanced Static Mesh Component manager with distance-based cull volumes.",
+        gallery: [
+          "/images/rastacats_revisited.jpg",
+          "/images/rasta_cw2_00_01_15.jpg",
+          "/images/rasta_cw2_00_01_30.jpg"
+        ],
+        video: "/videos/rastacats_preview.mp4"
+      }
+    ]
+  },
+  {
+    id: "delirium",
+    category: "gameplay",
+    number: "02",
+    title: "Delirium",
+    tagline: "VR Psychological Horror, Wheelchair Physics & Non-Euclidean GDD Architecture",
+    discipline: "Game Design, GDD/Narrative, UI & VR Locomotion Systems",
+    engine: "Unreal Engine 5.6 VR (OpenXR — Quest & PCVR)",
+    dates: "Jan 2026 – Jun 2026",
+    studio: "3J Mad Studios / UEL (MS5021)",
+    image: "/images/delirium_cover.png",
+    video: "/media/delirium_preview.mp4",
+    gallery: [
+      "/images/delirium_wheelchair.png",
+      "/images/delirium_dont_stop.png",
+      "/images/delirium_corridor.png",
+      "/images/delirium_directors_office.png",
+      "/images/delirium_ward.png",
+      "/images/delirium_restroom.png",
+      "/images/delirium_title_card.png",
+      "/images/delirium_vr_controls.png",
+      "/images/delirium_locomotion_modes.png",
+      "/images/delirium_ui_main_menu.png",
+      "/images/delirium_ui_control_menu.png",
+      "/images/delirium_ui_pause_menu.png",
+      "/images/delirium_floorplan.png",
+      "/images/delirium_monster_concept.png"
+    ],
+    links: {
+      github: "https://github.com/DHirapara/Lev5_VRProject",
+      demo: "https://joshej.itch.io/delirium",
+      itch: "https://joshej.itch.io/delirium",
+      gdd: "/docs/Delirium_GDD_and_Design_Notes.zip",
+      video: "/media/delirium_preview.mp4",
+      linkedin: "https://www.linkedin.com/in/joshgamedev"
+    },
+    shortDesc: "First-person seated VR psychological survival horror game in Unreal Engine 5.6 where you awaken in 'The Institute' confined to a physical wheelchair, forced to choose between looking forward to navigate or looking back to freeze quantum-observation 'Staff' entities.",
+    summary: "Developed by 3J Mad Studios (Joshua Johnson, Dhrumil Hirapara, Jose Roberto Gálvez Vargas, Aiden Billingham, Matas Narusis, Jasmine Jilley) for MS5021 Game Studio 2—and selected as the sole Level 5 project to exhibit at the Level 6 Graduation Showcase. Originated from Joshua's 'Mental Hospital Idea' concept notes and full Game Design Document (GDD), combining a 5-minute high-turnover walk-up VR loop, weighted tank-control wheelchair inertia across 3 propulsion modes, Quantum-Observation ('Weeping Angel') AI with K-wire split-face & pendulum-stethoscope body horror, reversed speech & mic-noise detection, non-Euclidean 'Geometry Shift' checkpoints, 'The Void' black-fog sanity feedback, and 'The Rainbow Room' contrast safe zone.",
+    highlights: [
+      "Originated the 'Mental Hospital Idea' & authored the full GDD, Narrative Template, Brainstorming Bible, Sprint 1–4 Retrospectives, Visio floorplans (modeled on UEL Docklands West Building 1st Floor), custom Illustrator UI menus, and 4K cinematic IntroSequence.mp4.",
+      "Core Hook & 3-Mode Wheelchair Physics: Weighted tank-drive inertia forcing players to choose between looking forward to steer or looking back to survive—with Realistic arm-swing, Semi-Realistic pull, and Accessible Dual-Stick modes, plus a Reverse-Gaze Jumpscare Penalty.",
+      "Quantum-Observation AI ('The Staff'): Freezes and subtly vibrates with a low-frequency hum inside the VR camera frustum while its pendulum stethoscope swings; stalks with wet footsteps when unobserved or during blackouts, speaking slowed reversed English ('tneitaP ,ereh kcab emoC') with microphone noise detection.",
+      "Non-Euclidean Object Permanence & Zero-HUD Sanity: Hallways vanish into solid brick walls or 'The Void' black fog behind your back (acting as internal Geometry Shift level checkpoints from Phase 1 Elevator Admission to Phase 2 Doctor Pursuit and 'The Rainbow Room' surreal safe zone), paired with X-Ray code, fuse, and keypad puzzles."
+    ],
+    technicalDeepDive: "Solved VR simulator sickness and walk-up onboarding by anchoring the player's physical seated posture to an in-game wheelchair chassis with intentional rotational inertia and three selectable propulsion schemes (6-DOF virtual wheel grab tank drive, pull-stroke propulsion, and dual-analog accessibility). Engineered non-Euclidean object-permanence level streaming where turning around seals prior corridors into walls ('Geometry Shift' checkpoints), while camera-frustum raycasts govern 'The Staff' state machine (State A: Observed/Frozen with vibrating mesh & swinging stethoscope; State B: Unobserved/High-Speed Pursuit with degrading room lights and zero-HUD chromatic aberration / black-fog sanity cues)."
   },
   {
     id: "vr-showcase",
     category: "gameplay",
-    number: "02",
+    number: "03",
     title: "VR Systems Showcase",
-    tagline: "Room-Scale VR Systems & Telemetry",
+    tagline: "Room-Scale VR Exhibition (Delirium Live Showcase)",
     discipline: "VR Systems & Physical Computing",
     engine: "Unreal Engine 5 VR",
     dates: "Jan 2026 – Jun 2026",
     studio: "Royal Docks Centre for Sustainability",
     image: "/images/vr_showcase.jpg",
     links: {
-      github: "https://github.com/JoshUEL2",
-      demo: "https://www.linkedin.com/in/joshua-johnson-485543351/",
-      itch: null,
-      video: null
+      github: "https://github.com/DHirapara/Lev5_VRProject",
+      demo: "https://joshej.itch.io/delirium",
+      itch: "https://joshej.itch.io/delirium",
+      video: "/media/delirium_preview.mp4"
     },
-    shortDesc: "Sole Level 5 project selected for Level 6 final graduation exhibition. Josh configured, debugged, and managed the room-scale VR playtest space and user telemetry tracking.",
-    summary: "High-immersion VR experience demonstrating spatial hand-tracking, ergonomic interaction boundaries, and zero-latency physics interactions.",
+    shortDesc: "Sole Level 5 project (Delirium) selected for the Level 6 final graduation exhibition. Configured, debugged, and managed the VR playtest space and user telemetry tracking.",
+    summary: "High-immersion VR exhibition showcasing Delirium's seated wheelchair locomotion, spatial hand-tracking, ergonomic interaction boundaries, and zero-latency physics interactions.",
     highlights: [
-      "Sole Level 5 project chosen to exhibit downstairs alongside Level 6 final graduating games.",
-      "Configured and supervised the upstairs room-scale VR test suite for over 100 industry visitors.",
-      "Calibrated 6-DOF hand presence with tactile haptic falloff curves.",
-      "Engineered comfort-first locomotion reducing simulator sickness through dynamic peripheral FOV vignetting."
+      "Sole Level 5 project chosen to exhibit alongside Level 6 final graduating games at the Royal Docks Centre for Sustainability.",
+      "Configured and supervised the VR test suite for over 100 industry visitors and academic stakeholders.",
+      "Calibrated 6-DOF hand presence with tactile haptic falloff curves for wheelchair rim gripping.",
+      "Engineered comfort-first seated locomotion reducing simulator sickness across back-to-back public sessions."
     ],
-    technicalDeepDive: "Calibrated OpenXR tracking matrices and physics handle components to ensure heavy objects possessed realistic rotational inertia without causing physics hitching or jitter. Implemented real-time framerate telemetry logging to prevent 90fps drop spikes."
+    technicalDeepDive: "Calibrated OpenXR tracking matrices and physics handle components to ensure wheelchair rim propulsion possessed realistic rotational inertia without physics hitching or jitter. Implemented real-time framerate stability to maintain 90fps in VR."
   },
   {
     id: "state-machine",
     category: "gameplay",
-    number: "03",
+    number: "04",
     title: "State Machine Showcase",
     tagline: "Hierarchical AI, LoS Tracking & Elevator Physics",
     discipline: "AI Systems & Mechanics",
@@ -243,7 +335,7 @@ export const PROJECTS = [
     image: "/images/vex_robotics.jpg",
     links: {
       github: "https://github.com/JoshUEL2",
-      demo: "https://www.linkedin.com/in/joshua-johnson-485543351/",
+      demo: "https://www.linkedin.com/in/joshgamedev",
       itch: null,
       video: null
     },

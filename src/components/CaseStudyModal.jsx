@@ -1,9 +1,11 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Gamepad2, Sparkles, Terminal, CheckCircle2, Video } from 'lucide-react';
+import { X, ExternalLink, Gamepad2, Sparkles, Terminal, CheckCircle2, Video, Award, History, Layers } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 
 export default function CaseStudyModal({ project, onClose }) {
+  const [activePhaseIndex, setActivePhaseIndex] = useState(0);
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
@@ -21,11 +23,25 @@ export default function CaseStudyModal({ project, onClose }) {
 
   const displayNum = project.number || (project.catalogNumber ? `#${project.catalogNumber}` : '');
 
+  const hasSplitPhases = Boolean(project?.splitPhases && project.splitPhases.length > 0);
+  const currentPhase = hasSplitPhases ? project.splitPhases[activePhaseIndex] : null;
+
+  const activeTitle = currentPhase ? currentPhase.title : project.title;
+  const activeSubtitle = currentPhase ? currentPhase.phaseSubtitle : (project.tagline || project.categoryLabel);
+  const activeSummary = currentPhase ? currentPhase.summary : (project.summary || project.shortDesc);
+  const activeHighlights = currentPhase ? currentPhase.highlights : project.highlights;
+  const activeDeepDive = currentPhase ? currentPhase.technicalDeepDive : project.technicalDeepDive;
+  const activeVideo = currentPhase?.video !== undefined ? currentPhase.video : project.video;
+  const activeImage = currentPhase?.image || project.image;
+  const activeGallery = currentPhase?.gallery || project.gallery;
+
   const youtubeId =
+    currentPhase?.youtubeId ||
     project.youtubeId ||
     (project.links?.video
       ? project.links.video.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/)?.[1]
       : null);
+
 
   return (
     <AnimatePresence>
@@ -71,11 +87,68 @@ export default function CaseStudyModal({ project, onClose }) {
 
           {/* Modal Scrollable Content */}
           <div className="overflow-y-auto p-6 sm:p-8 space-y-8">
+            {/* Dual-Phase Evolution Switcher (for Daydream and Rastacats) */}
+            {hasSplitPhases && (
+              <div className="bg-[#080a15] border border-indigo-500/30 rounded-2xl p-3 sm:p-4 shadow-xl">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-3 px-1">
+                  <div className="flex items-center gap-2">
+                    <span className="p-1.5 rounded-lg bg-indigo-500/20 text-indigo-400">
+                      <History className="w-4 h-4" />
+                    </span>
+                    <div>
+                      <h4 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider">
+                        Project Evolution & Version History
+                      </h4>
+                      <p className="text-[11px] text-slate-400">
+                        Toggle between the original academic submission and the revisited remaster
+                      </p>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-slate-300">
+                    Phase {activePhaseIndex + 1} of {project.splitPhases.length}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {project.splitPhases.map((phase, idx) => {
+                    const isSelected = activePhaseIndex === idx;
+                    return (
+                      <button
+                        key={phase.id || idx}
+                        onClick={() => setActivePhaseIndex(idx)}
+                        className={`py-3.5 px-4 rounded-xl text-left transition-all cursor-pointer border flex flex-col justify-between gap-2 ${
+                          isSelected
+                            ? 'bg-gradient-to-r from-indigo-950/90 via-indigo-900/80 to-violet-950/90 border-indigo-400 text-white shadow-lg shadow-indigo-950/60 ring-1 ring-indigo-400/50'
+                            : 'bg-white/[0.03] hover:bg-white/[0.07] border-white/5 text-slate-300 hover:text-white'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="text-xs sm:text-sm font-extrabold tracking-wide flex items-center gap-2">
+                            <span className={`w-2.5 h-2.5 rounded-full ${isSelected ? 'bg-indigo-400 animate-pulse' : 'bg-slate-600'}`} />
+                            {phase.phaseLabel}
+                          </span>
+                          {phase.phaseBadge && (
+                            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-950/90 text-emerald-300 border border-emerald-500/40 shrink-0">
+                              {phase.phaseBadge}
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-[11px] text-slate-400 line-clamp-1 font-medium">
+                          {phase.phaseSubtitle}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
             {/* Hero Media: Coursework Video, YouTube Video, or Artwork */}
             <div className="relative rounded-2xl overflow-hidden aspect-[16/9] max-h-96 bg-black border border-white/10 flex items-center justify-center">
-              {project.video ? (
+              {activeVideo ? (
                 <video
-                  src={project.video}
+                  key={activeVideo}
+                  src={activeVideo}
                   controls
                   autoPlay
                   loop
@@ -85,8 +158,9 @@ export default function CaseStudyModal({ project, onClose }) {
                 />
               ) : youtubeId ? (
                 <iframe
+                  key={youtubeId}
                   src={`https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0&modestbranding=1`}
-                  title={`${project.title} Video Showcase`}
+                  title={`${activeTitle} Video Showcase`}
                   className="w-full h-full border-0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -94,8 +168,8 @@ export default function CaseStudyModal({ project, onClose }) {
               ) : (
                 <>
                   <img
-                    src={project.image}
-                    alt={project.title}
+                    src={activeImage}
+                    alt={activeTitle}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f1e] via-transparent to-transparent opacity-80 pointer-events-none" />
@@ -105,23 +179,37 @@ export default function CaseStudyModal({ project, onClose }) {
 
             {/* Title & Engine Subtitle */}
             <div>
+              <div className="flex flex-wrap items-center gap-2 mb-2">
+                {currentPhase?.phaseBadge && (
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold tracking-wide uppercase bg-emerald-950/80 border border-emerald-500/40 text-emerald-300">
+                    <Award className="w-3.5 h-3.5 text-emerald-400" />
+                    {currentPhase.phaseBadge}
+                  </span>
+                )}
+                {hasSplitPhases && (
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold tracking-wide uppercase bg-indigo-950/80 border border-indigo-500/40 text-indigo-300">
+                    <Layers className="w-3.5 h-3.5 text-indigo-400" />
+                    {currentPhase ? currentPhase.phaseLabel : 'Evolution View'}
+                  </span>
+                )}
+              </div>
               <h2 className="text-2xl sm:text-4xl font-black text-white font-['Syne',sans-serif] tracking-tight">
-                {project.title}
+                {activeTitle}
               </h2>
               <p className="text-sm font-semibold text-indigo-300 mt-1">
-                {project.tagline || project.categoryLabel} • <span className="font-mono text-slate-300">{project.engine}</span>
+                {activeSubtitle} • <span className="font-mono text-slate-300">{project.engine}</span>
               </p>
             </div>
 
             {/* Concept Artwork & Production Gallery (if available) */}
-            {project.gallery && project.gallery.length > 0 && (
+            {activeGallery && activeGallery.length > 0 && (
               <div className="bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6">
                 <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 mb-4 flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-indigo-400" />
                   Authentic Coursework Concept Art & Model Sheets
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {project.gallery.map((artSrc, aIdx) => (
+                  {activeGallery.map((artSrc, aIdx) => (
                     <a
                       key={aIdx}
                       href={artSrc}
@@ -132,7 +220,7 @@ export default function CaseStudyModal({ project, onClose }) {
                     >
                       <img
                         src={artSrc}
-                        alt={`${project.title} Artifact ${aIdx + 1}`}
+                        alt={`${activeTitle} Artifact ${aIdx + 1}`}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
                       />
@@ -150,20 +238,20 @@ export default function CaseStudyModal({ project, onClose }) {
               <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 mb-2">
                 Executive Summary
               </h4>
-              <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-normal">
-                {project.summary || project.shortDesc}
+              <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-normal whitespace-pre-line">
+                {activeSummary}
               </p>
             </div>
 
             {/* Technical Highlights */}
-            {project.highlights && project.highlights.length > 0 && (
+            {activeHighlights && activeHighlights.length > 0 && (
               <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6">
                 <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 mb-4 flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                   Key Innovations & Achievements
                 </h4>
                 <ul className="space-y-3">
-                  {project.highlights.map((h, i) => (
+                  {activeHighlights.map((h, i) => (
                     <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
                       <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-2 shrink-0" />
                       <span>{h}</span>
@@ -174,17 +262,18 @@ export default function CaseStudyModal({ project, onClose }) {
             )}
 
             {/* Technical Deep Dive */}
-            {project.technicalDeepDive && (
+            {activeDeepDive && (
               <div className="bg-indigo-950/20 border border-indigo-500/20 rounded-2xl p-6">
                 <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 mb-3 flex items-center gap-2">
                   <Terminal className="w-4 h-4 text-indigo-400" />
-                  Engineering Problem & Solution
+                  Engineering Problem & Architecture Solution
                 </h4>
-                <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
-                  {project.technicalDeepDive}
+                <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal whitespace-pre-line">
+                  {activeDeepDive}
                 </p>
               </div>
             )}
+
           </div>
 
           {/* Modal Footer Links */}

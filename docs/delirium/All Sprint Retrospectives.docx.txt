@@ -1,0 +1,38 @@
+Planner - MS5021 VR Game
+Team B | MS5021 2526 T2 (OC) Game Studio 2
+Sprint: 1
+Name: Joshua Johnson
+Role(s): Game Designer
+What went well
+We got off to a very good start planning some great ideas for a horror game. We have a clear plan for who is going to make what, and we all feel. As though we have the technical capability to bring it to life. Paper prototyping went very well and it seems as though we are all on the same page. 
+What didn't go well
+Throughout this sprint most things went smoothly, there was some lack of engagement from team members being on the other side of the class, but these engagement issues were resolved and we made sure everyone’s voices were heard.
+Solutions/best practices
+A lot of the issues faced this sprint are easily fixable, and we did take proactive steps to fix them in class, namely the engagement issues. Going forwards, we will monitor this further to ensure that in all aspects of the game people are being equally represented.  
+Sprint: 2
+Name: Joshua Johnson
+Role(s): Game Designer
+What went well
+The work we have produced thus far has been of very high quality, the game design document was completed very quickly and in great detail, and the concept art produced so far is of professional quality. It is clear everyone in the group is an expert in their respective role, so I am hopeful for what we can all do together, as long as we keep a clear vision of what we’re making. 
+What didn't go well
+Many ideas spoken about in sprint 1 were simply disregarded this sprint without much communication to the rest of the team, and it seems as though everyone has a different idea of what the game were making at this point is even after a detailed game design document was made. The planner could have been utilised more, and the things that weren’t added weren’t in great detail, as mentioned through lecturer feedback. 
+Solutions/best practices
+Going forwards I will do weekly checkups to ensure that everyone is on the same page about what we’re making, and I will encourage use of the game design document as a reference for anyone with questions about what to do in this project. On top of this I will also personally ensure the planenr is kept up to date with detaled reflections of my contributions, whilst adding tasks and completing tasks for people whenever possible. 
+Sprint: 3
+Name: Joshua Johnson
+Role(s): Game Designer
+What went well
+The planner was updated to have far more information this sprint, and older parts which required clarification or updating were resolved. Jose’s map looks amazing, and Dhrumil has coded almost everything. The menu also works better than I could’ve ever imagined, and the implemented movement is great as well.
+What didn't go well
+Communication has still been lacking, and pushes haven’t been consistent so not everyone is working on the same project. Some changes have also been made without full communication towards the rest of the team, but these issued seem to be being addressed in the next sprint. 
+Solutions/best practices
+To ensure we’re on the same project and improve communication via official channels, and have a clear goal for people to do things and have them achieve it properly and in time, whilst ensuring any changes are properly communicated to the rest of the team and updated in the planner. 
+Sprint: 4
+Name: Joshua Johnson
+Role(s): Game Designer
+What went well
+This sprint the team was much better at communication, and overall we pulled together to ensure we made a video game we all were happy with. Throughout the sprint, numerous team members helped each other out when there were shortfalls, and final progress and what needs to be done for it has been very clear. 
+What didn't go well
+Unfortunately the main bottleneck this sprint was actually myself, I was sick for a couple of weeks and as hard as I tried couldn’t produce much good quality work which I feel may have set the team back. On top of this, I also feel as though certan issues with character models nto being rigged, or sent in a T-pose could have been easily avoided. On top of this, collating character models into the same shared one drive would’ve been helpful for organisation, and keeping the planer updated was increasingly challenging this sprint. We did also have a small issue with github corrupting some game files, but these were resolved almost instantly
+Solutions/best practices
+I would say a lot of the issues faced this sprint are easily fixable by just keeping on top of what we have been doing the entire term, that is, ensuring files are in their correct places, and are usable in engine. This, to me, would help us create in future, an even better game. 

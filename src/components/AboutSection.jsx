@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Award, UserCheck, ShieldCheck, HeartHandshake, Briefcase, GraduationCap, ArrowUpRight } from 'lucide-react';
+import { Award, UserCheck, ShieldCheck, Briefcase, GraduationCap, ArrowUpRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 export default function AboutSection() {

@@ -1,0 +1,46 @@
+Concept:
+Player is escaping a mental hospital
+Game starts with elevator door opening
+Making way through mental hospital whilst they hallucinate the environment changing and disappearing/reappearing
+Doctors turn into monsters then back again
+Rooms with certain features eg rainbow room contrasting, music leads players to it
+Player is in a wheelchair, user needs to use controllers to wheel themselves around
+Get from elevator to exit 
+Ending:
+Player escapes
+Player wheels off edge of map – leans into insanity?
+Doctors capture player
+Mechanics:
+Doctors only move when player is looking at them
+Environment disappears behind player so when they look around its gone
+Art Design:
+Lab
+Grey
+White
+Black
+rainbow
+chromatic aberration at times?
+Fog?
+ALL OF THIS CAN CHANGE AT ANY POINT IN THE GAME, ITS IN THE PLAYERS MIND!
+Monster design:
+Speak English reversed and slowed down
+Only move when not looking at them, come after player
+Different designs?
+Monster based off of a doctor -> stethoscope etc
+Don’t be completely still, be vibrating slightly when in place
+Names: 
+Mental hospital related
+Escaping
+Insanity 
+Names:
+Lunacy
+Instability 
+Delirium 
+Yeah idk
+Notes:
+Needs to be easily picked up by people walking by – can do this with immediate mechanics not just relying on slow narrative  scaling idea would work for this but doesn’t fit with narrative
+We can do literally anything we want as long as we format it under the guise of hallucination
+Need to make sure the setting isn’t too uninteresting – divert common horror tropes, almost make the player feel safe at first with lighting lack of fog until mental state takes over  ceiling and floor visible at first but as levels change and settings disappear its got black fog  makes player uneasy
+Images:
+Start of game
+End of game 

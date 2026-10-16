@@ -1,0 +1,71 @@
+--- ppt/slides/slide1.xml ---
+CW2_TeamB_Submission Link to one drive folder -  CW2_TeamB  
+
+--- ppt/slides/slide10.xml ---
+GAMEPLAY MECHANICS: PUZZLE SOLVING MECHANICS Find keys/codes The long er the puzzle takes the enemy movement speed increases. Room lighting degrades. 9 Hidd en inside desk drawer.  X-Ray Sheets code reveal. Spot the difference between objects in two identical rooms. Hidden time countdown Door i s locked and need the key/code to enter.  the enemy spawns when finding a puzzle to resolve.  Exit unlocks only after finishing the puzzle. Locked Room
+
+--- ppt/slides/slide11.xml ---
+THE TEAM 10 JOSE AIDEN JAY JOSH MATAS DHRUMIL PROGRAMMER PROGRAMMER GAME DESIGNER 3D ARTIST 3D ARTIST 3D ARTIST
+
+--- ppt/slides/slide12.xml ---
+MOODBOARDS: ENVIRONMENT AND PROPS 11
+
+--- ppt/slides/slide13.xml ---
+ENVIRONMENT AND PROPS DESIGN 12
+
+--- ppt/slides/slide14.xml ---
+MOODBOARDS: ENEMY  13
+
+--- ppt/slides/slide15.xml ---
+ ENEMY ART 14
+
+--- ppt/slides/slide16.xml ---
+ENEMY: FINAL DESIGN 15
+
+--- ppt/slides/slide17.xml ---
+ENEMY: FINAL DESIGN 16 Entity has a face carved in half, thefront part faces forward at an angleon the entity’s head. It stays in placeusing K wires. The cut in half faceshows the entire flesh makeup of itsface. When the entity would talk andcall out to the player, it tilts its headso that the front faces them. Thechest is hollowed out and the skinpeeled back; guts sit at the bottom ofthe opening and hang out loosely.The entity stands on abnormallyformed feet and moves aroundslightly animalistically, though stillon two feet. In its hands, it holds astethoscope, in which, upon theplayer gazing upon the entity andcausing it to freeze, will continue toswing back and forth like apendulum. ​
+
+--- ppt/slides/slide18.xml ---
+DEVELOPTMENT ROADMAP 17 PROGRAMMING Wheelchair Physics Controller (Tank drive).​ Enemy AI (Line-of-Sight movement logic).​ Dynamic Level Streaming (Object permanence system).​​ ART Wheelchair model (arms/hands visible).​ Monster model (with morph targets for "Glitch" effect).​ Modular Hospital Kit (Walls, Floors, Doors).​ SOUND Wheel squeaks (looping).​ Reversed voice lines.​ Ambient drone.​
+
+--- ppt/slides/slide19.xml ---
+RISK AND MITIGATION STRATEGY 18 Risk: Walk-Up Accessibility & Slow Onboarding​ Concern: Because the target session time is only 5 minutes, the game needs to be easily picked up andunderstood by people walking by.​ Mitigation: We will focus entirely on immediate, intuitive gameplay mechanics rather than relying on aslow narrative build-up. While a player-scaling mechanic was briefly considered to achieve this, it wasdiscarded as it did not fit the asylum narrative. Instead, the tension of the physical wheelchairmovement and the immediate "don't look away" observation mechanics serve as the instant hook.​ ​ Risk: VR Motion Sickness ​ Concern: Features designed to communicate dropping sanity, specifically FOV warping to simulatepanic, run the risk of making the player physically sick.​ Mitigation: The core game is anchored as a First-Person Seated VR Experience, which naturally helpsground the player. We will experiment carefully with the FOV warping during playtesting and can relyon alternative visual cues, like black fog obstructing the floor and ceiling, if the camera stretchingproves too nauseating.​ ​ Risk: Physical Fatigue & Control Accessibility​ Concern: The primary immersive control scheme requires players to physically reach down, grab virtualwheels, and use tank controls to move. This is intentionally designed to induce panic and physicalfatigue.​ Mitigation: Keeping the target session length strictly to 5 minutes prevents long-term overexertion.Additionally, for players who cannot perform the physical motions, we are implementing a secondaryaccessibility control scheme utilizing dual analogue sticks with the same tank drive logic.​
+
+--- ppt/slides/slide2.xml ---
+Delirium Game Pitch
+
+--- ppt/slides/slide20.xml ---
+ESRB RATING 19 Mature 17+​ Frightening/Intense Graphics: The game relies heavily on an immersiveatmosphere of fear and tension. The player is stalked by relentlesspursuers. As these enemies get closer, their models glitch and becomemore monster-esque, featuring elongated limbs and stethoscopes thatfuse into their flesh.​ Violence: There is no combat in the game. However, if an enemytouches the player, it triggers an immediate jumpscare that kills theplayer and resets the level.​ Thematic Elements: The experience is defined as psychological survivalhorror. It takes place in a labyrinthine mental ward , and the corenarrative involves the player character experiencing paranoia andhallucinating that their environment is changing. ​
+
+--- ppt/slides/slide21.xml ---
+MONETIZATION STRATEGY 20 Due to Delirium's short, intense five-minute target session time and its design focus on  immediatemechanics  that are easily picked up by walk-up players, our  monetisation  strategy pivots  awayfrom  a traditional full-price retail model. ​ ​ Instead, we will focus on high-turnover environments by licensing the game to commercial  VRarcades  and pop-up events, where the rapid gameplay loop  maximises  revenue potential  perheadset . ​ ​ For home users on Quest and PCVR platforms , the game will be released as a low-cost  premiumdigital  experience, positioning it as an impulse buy that strongly appeals to streamers  andinfluencers  looking to generate highly watchable reaction content from the game's  physicalpanic  and sudden  jumpscares . ​ ​ Finally, should the team decide to expand Delirium into a full-length title in the future,  thiscompact  version can seamlessly transition into a free 'prologue' or vertical slice, serving as  apowerful  marketing funnel to build community interest, secure crowdfunding, and drive  digitalstorefront   wishlists .​
+
+--- ppt/slides/slide22.xml ---
+MARKETING STRATEGY: FUNDING REQUIREMENTS, RETURN ON INVESTMENT 21 Developing Delirium requires a highly focused budget tailored to its compact, five- minutetarget  session time. The primary funding requirements will be allocated toward  specialisedlabour  and bespoke asset creation, specifically programming the tank-drive  wheelchairphysics  and the complex line-of-sight enemy AI, alongside 3D modelling for the  modularhospital  environment and the glitching, morphing "Staff" models. ​ ​ Because the design intentionally omits complex crafting, combat systems, and heavy UI,  theproject's  scope remains tightly controlled, significantly mitigating development costs. ​ ​ In terms of Return on Investment (ROI), this exceptionally short and intense gameplay loop  isthe  game's greatest financial asset. It guarantees a rapid player turnover rate, making it  ahighly  lucrative and attractive licensing prospect for commercial VR arcades that thrive  onhigh  throughput. ​ ​ Furthermore, the initial development overhead will be offset by targeting high-volume  digitalsales  on Quest and PCVR platforms, where a low entry price and inherent scare factors  willnaturally  drive organic marketing and fast returns.
+
+--- ppt/slides/slide23.xml ---
+MARKETING STRATEGY: BUDGET OVERVIEW AND BREAKDOWN 22 Wheelchair Physics Controller: £1,200​ Enemy AI: £1,500​ Secondary accessibility controls (Dual Analog): £400​ Monster model: £1,400​ Modular Hospital Kit: £1,000​ Wheelchair model: £600​ Diegetic sound design: £400​ Enemy audio: £350​ Software Licenses: £650​ VR Hardware: £800​ QA & Comfort Playtesting: £600​ Estimated Total: £8,900​
+
+--- ppt/slides/slide24.xml ---
+THE END Thank Your For Listening
+
+--- ppt/slides/slide3.xml ---
+TABLE OF CONTENTS Overview 3 Why this game? 4 Gameplay mechanics 5 The team 10 Moodboards and designs 11 Development roadmap 17 Risk and mitigation strategy 18 ESRB Rating 19 Monetization strategy 20 Marketing strategy 21
+
+--- ppt/slides/slide4.xml ---
+A tens ion-based VR horror experience where physical effort meets paranoia. The player is a patient confined to a wheelchair in a “crumbling” mental health institute. Confined to a wheelchair, they must physically wheel themselves forward to escape. However, they aren’t alone.  The game combines the physical struggle of tank-control wheelchair movement with the modern style horror mechanic, forcing players to react quickly and solve puzzles to survive. The control scheme of the game is designed to induce panic and physical fatigue. OVERVIEW 3
+
+--- ppt/slides/slide5.xml ---
+We  needed a game concept that could be easily picked up by  peoplewalking  by, which meant we had to focus on immediate  mechanicsrather  than relying on a slow narrative buildup. By combining  thephysical  struggle of tank-control wheelchair movement with a " WeepingAngel " observation mechanic, we force players into a panicked  choice:look  forward to navigate, or look backward to survive. Ultimately,  settingthe  game inside the shifting mind of a patient allowed us to defy  physicsand  freely manipulate the environment under the guise of  hallucinations,giving  us total creative freedom while keeping the player fully  immersedin  the horror.​ WHY THIS GAME? 4
+
+--- ppt/slides/slide6.xml ---
+GAMEPLAY MECHANICS: THE WHEELCHAIR Pushing hand s forward/backward moves the chair. The player r eaches down to grab the virtual wheels of the chair.​ Pushing one hand  forward and the other back rotates the chair. 5
+
+--- ppt/slides/slide7.xml ---
+GAMEPLAY MECHANICS: THE WHEELCHAIR D ual Analog Sticks to interact with props and environment. 6 The wheelchair has "weight." It does not acc elerate instantly. This inertia creates vulnerability when moving. DESIGN NOTE
+
+--- ppt/slides/slide8.xml ---
+GAMEPLAY MECHANICS: ENEMY AND PUZZLE LOGIC If  the enemy reaches wheelchair The enemy  appears suddenly in front of player for <1 second 7 Proximity Jumpscare Hallucination Pop-In Observation-Dependent Stalking The enemy moves toward you when you're not looking at him and stops when you are
+
+--- ppt/slides/slide9.xml ---
+GAMEPLAY MECHANICS: SANITY SYSTEM No health bar, no HUD: As sanity slip s (or the player progresses), the player experiences environmental changes and paranormal activity situations. Healthy The c amera fades, simulating panic, so the vision is reduced. 8 World i s solid, no paranormal activity. Insane/Endangered FOV fading

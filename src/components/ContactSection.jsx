@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Copy, Check, Send, Sparkles, MapPin, Gamepad2 } from 'lucide-react';
+import { Mail, Copy, Check, Send, MapPin, Gamepad2 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import confetti from 'canvas-confetti';
 import { PERSONAL_INFO } from '../data/portfolioData';

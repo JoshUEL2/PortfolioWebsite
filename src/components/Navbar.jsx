@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, Menu, X, ArrowUpRight, FolderGit2, Sparkles, ArrowLeft } from 'lucide-react';
+import { Gamepad2, Menu, X, ArrowUpRight, Sparkles, ArrowLeft } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { PERSONAL_INFO } from '../data/portfolioData';
 

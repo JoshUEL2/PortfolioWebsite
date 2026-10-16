@@ -1,0 +1,105 @@
+GAME DESIGN DOCUMENT: 
+Genre: Psychological Horror 
+Perspective: First-Person
+Platform: Oculus/PCVR
+Target Session Time: 5 Minutes 
+1. Summary
+Concept
+A tension-based horror experience where physical effort meets psychological paranoia. The player takes on the role of a patient in a “crumbling” mental hospital, confined to a wheelchair. They must physically wheel themselves to freedom, but the environment and the enemies (The Staff) try to catch them.
+Hook
+The game combines the physical struggle of tank-control wheelchair movement with the "Weeping Angel" horror mechanic, forcing players to choose between looking forward to navigate or looking backward to survive. If the player reverses the wheelchair to look at the scientists they get jumpscared and start over from the level (where the map last got changed, these act as checkpoints)
+2. Gameplay Mechanics
+2.1. Controls: The Wheelchair (Tank Controls)
+To simulate the physical struggle, the game uses a dual-stick control scheme.
+Left Analog Stick (Up/Down): Controls the Left Wheel.
+Right Analog Stick (Up/Down): Controls the Right Wheel.
+Moving Forward: Push both sticks up.
+Alt movement: swing arms like a real wheelchair
+Turning: Push one stick up, pull the other down 
+Looking: Head tracking / Camera is controlled by controller gyro (if available) or by holding a trigger to enter "Look Mode" while stationary.
+Design Note: The awkwardness of the controls is intentional. It creates vulnerability.
+2.2. The "Sight" Mechanic (Enemy Logic)
+The enemies ("The Staff") adhere to strict "Quantum Observation" rules.
+State A (Observed): When the enemy is within the player’s camera frustum (field of view), the enemy is frozen.
+Visual: Enemy vibrates/twitches slightly. – only visible when very close to them.
+Audio: Low-frequency hum.
+State B (Unobserved): When the enemy is off-screen (behind the player or around a corner), they move at high speed toward the player.
+Audio: Rapid, wet footsteps or shuffling.
+2.3. The "Sanity" System (No HUD)
+There is no health bar. The player's status is communicated entirely through the environment.
+Healthy: World is solid, geometry is stable.
+Insane/Endangered:
+The Void: As sanity slips (or the player progresses), the floor and ceiling of the map become obstructed by black fog.
+Chromatic Aberration: Intensity increases as enemies get closer?
+FOV Warping: The camera stretches, simulating panic – this might make the player sick so we can experiment with this
+3. Characters
+3.1. The Protagonist
+Identity: Blank Slate. No voice, no face seen.
+Backstory: Ambiguous. Notes found in the world say "GET OUT" or "IT'S NOT REAL," but it is unclear if these are warnings from others or the patient's own subconscious projections.
+Capabilities: Non-combatant. Can only move and observe.
+3.2. The Antagonists (The Staff)
+Appearance: Figures in medical scrubs and lab coats. Features are blurred or indistinguishable, can become more monster-esque as the game moves on.
+Behavior: Relentless pursuers.
+Monster Evolution:
+beginning: Look like normal doctors.
+end: As they get closer, they glitch. Stethoscopes fuse into flesh, limbs elongate.
+Audio: They speak English reversed and slowed down (e.g., "tneitaP ,ereh kcab emoC" for "Come back here, Patient").
+4. Environment & Level Design
+Setting: The Institute. A labyrinthine mental ward that defies physics.
+4.1. Environmental Logic (Object Permanence)
+The world only exists where the player looks.
+The vanishing: If the player wheels down a hallway and looks back, the hallway they just came from may be gone—replaced by a solid wall or a sheer drop into the void. As they turn back the map could change again? This can also extend to rooms
+The Loops: Looking away and looking back might change a door into a brick wall, forcing the player to find a new path.
+4.2. Level Aesthetics
+The Ward (Primary): Sterile white tiles, grey walls, harsh fluorescent lighting.
+The Rainbow Room (Special Zone):
+Purpose: Narrative pacing / "Safe" Room.
+Visuals: Hyper-saturated colors, floating objects, impossible geometry. A stark contrast to the grey ward.
+Audio: Distorted, dream-like music.
+Function: No enemies enter here?
+5. Narrative Progression (The Run)
+Phase 1: Admission (Tutorial)
+Start: Elevator doors open.
+Goal: Reach the end of the corridor
+Atmosphere: Quiet, sterile. Floor and ceiling are visible.
+Learning: Player masters the wheelchair controls.
+Phase 2: 
+Event: Player turns a corner. When they look back, the corridor is gone (wall sealed shut).
+Threat: The first Doctor spawns behind the player.
+Action: Player must alternate between wheeling frantically and looking back to freeze the pursuer.
+Environmental Storytelling: Notes appear on walls: "THEY AREN'T REAL," "DON'T LET THEM TOUCH YOU."
+Rooms: offices etc to go into 
+7. Audio
+Audio Landscape
+Diegetic: Squeaky wheels (feedback for movement speed), heavy breathing (increases with proximity to enemies).
+Enemies: Reversed speech, wet footsteps, vibrating hum when frozen.
+Music:
+Ward: Low, industrial drone.
+Rainbow Room: Warped, music-box style melody.
+8. Development Roadmap 
+Programming:
+Wheelchair Physics Controller (Tank drive).
+Enemy AI (Line-of-Sight movement logic).
+Dynamic Level Streaming (Object permanence system).
+Art:
+Wheelchair model (arms/hands visible).
+Doctor/Monster model (with morph targets for "Glitch" effect).
+Modular Hospital Kit (Walls, Floors, Doors).
+"Rainbow Room" unique assets.
+Sound:
+Wheel squeaks (looping).
+Reversed voice lines.
+Ambient drone.
+Proximity mic so more sound from player makes enemies move towards them or find them faster?
+Names:
+Peripheral
+Oculus
+Lunacy
+Instability 
+Delirium 
+Dead weight
+Headspace
+Placebo
+Prognosis
+Notes:
+The geometry switching when the player turns around will act like checkpoints, internally we will refer to them as levels e.g. level 1 the player walks from the elevator to a door, when they go through it if they turn around it disappears, and they’re now in level 2, when they turn a corner and the path behind them becomes a wall they’re now in level 3. In each level we will have the environment get more horror-esque and further from a hospital, enemies get faster etc. 

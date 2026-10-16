@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CATEGORIES, PROJECTS } from '../data/portfolioData';
 import ProjectCard from './ProjectCard';
-import { Layers, ArrowRight, Library, Sparkles } from 'lucide-react';
+import { Layers, ArrowRight, Library } from 'lucide-react';
 
 export default function ProjectShowcase({ onSelectProject, onViewAllProjects }) {
   const [activeCategory, setActiveCategory] = useState('concepts');

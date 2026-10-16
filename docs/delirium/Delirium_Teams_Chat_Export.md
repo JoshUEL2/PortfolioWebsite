@@ -1,0 +1,428 @@
+# Microsoft Teams Chat Export — Delirium (3J Mad Studios / MS5021)
+
+- **Project:** Delirium (Level 5 VR Psychological Horror Game)
+- **Module:** MS5021 Game Studio 2 (Year 2 Term 2, University of East London)
+- **GitHub Repository:** `https://github.com/DHirapara/Lev5_VRProject`
+- **Team Members (3J Mad Studios / Team B):**
+  - **Joshua Johnson** (`u2696032@uel.ac.uk`) — Game Designer, UI/Menu Designer, Intro Sequence & Narrative/GDD Author, Level Flowchart Architect
+  - **Dhrumil Nitinbhai Hirapara** (`u2622450@uel.ac.uk`) — Lead VR & Gameplay Systems Programmer (Wheelchair Locomotion, Weeping Angel AI, Puzzle Logic)
+  - **Jose Roberto Gálvez Vargas** (`u2752698@uel.ac.uk`) — Environment Artist & UE5 Level Builder
+  - **Aiden Thomas Billingham** (`u2714057@uel.ac.uk`) — 3D Prop & Wheelchair/Keypad Artist
+  - **Matas Narusis** (`u2716763@uel.ac.uk`) — Programmer & Technical Support
+  - **Jasmine Rose Jilley** (`u2716492@uel.ac.uk`) — Concept & Character Artist ('The Staff' Entity)
+
+---
+## MS5021 Team B — Delirium Group Chat (Joshua, Dhrumil, Jose, Aiden, Matas, Jasmine)
+**Thread ID:** `19:970263dddcff4fcb96293b5fe51ede46@thread.v2` | **Exported Messages:** 175
+
+- **[2025-02-04 09:12:38 UTC] Milly Gunn:** Hi MS4035 2425 T2 (OC) ! Running about 5 mins late today, sorry, be there soon!
+- **[2026-02-11 00:20:01 UTC] Dhrumil Nitinbhai HIRAPARA:** @Aiden Thomas BILLINGHAM @Jasmine Rose JILLEY @Jose Roberto GÁLVEZ VARGAS @Joshua JOHNSON @Matas NARUSIS — So, I've finally added all of you to the github repo (DHirapara/Lev5_VRProject), sry it took a bit of time. And this is going to be our main project file for VR Game. Next Things to Do: 1) Download GitHub Desktop App and Unreal Engine 5.6.1 if you haven't already. 2) Login to your GitHub Desktop and clone the repository, save it wherever you like in your PC. 3) Follow this link and watch this video which shows the setup of version control in UE5: https://dev.epicgames.com/community/learning/tutorials/Yo1O/setting-up-git-and-git-lfs-for-unreal-engine-5-using-github-desktop
+- **[2026-03-20 14:10:23 UTC] Joshua JOHNSON:** [Image / Screenshot Shared]
+- **[2026-05-25 23:05:44 UTC] Joshua JOHNSON:** ? all UI buttons have been replaced to match the new style
+- **[2026-05-25 23:05:55 UTC] Jose Roberto GÁLVEZ VARGAS:** hey
+- **[2026-05-25 23:05:56 UTC] Jose Roberto GÁLVEZ VARGAS:** I
+- **[2026-05-25 23:05:59 UTC] Jose Roberto GÁLVEZ VARGAS:** I
+- **[2026-05-25 23:06:05 UTC] Jose Roberto GÁLVEZ VARGAS:** I'm changing the ui
+- **[2026-05-25 23:06:06 UTC] Jose Roberto GÁLVEZ VARGAS:** hahahahha
+- **[2026-05-25 23:06:24 UTC] Joshua JOHNSON:** I i did do a pull beforehand to check you hadn't already but oh well
+- **[2026-05-25 23:06:30 UTC] Joshua JOHNSON:** * big D can pick which one he prefers
+- **[2026-05-25 23:06:41 UTC] Jose Roberto GÁLVEZ VARGAS:** * I was using the main for now branch
+- **[2026-05-25 23:06:49 UTC] Joshua JOHNSON:** yeah i did check that one
+- **[2026-05-25 23:06:52 UTC] Joshua JOHNSON:** " again doesn't really matter
+- **[2026-05-25 23:06:56 UTC] Joshua JOHNSON:** . better to have too much than not enough
+- **[2026-05-25 23:07:34 UTC] Jose Roberto GÁLVEZ VARGAS:** [Image / Screenshot Shared]
+- **[2026-05-25 23:07:35 UTC] Jose Roberto GÁLVEZ VARGAS:** new font
+- **[2026-05-25 23:07:50 UTC] Joshua JOHNSON:** looks great
+- **[2026-05-25 23:08:30 UTC] Jose Roberto GÁLVEZ VARGAS:** [Image / Screenshot Shared]
+- **[2026-05-25 23:08:50 UTC] Jose Roberto GÁLVEZ VARGAS:** ( I don't have a VR set to test it
+- **[2026-05-25 23:09:29 UTC] Joshua JOHNSON:** Z just to double check did you also redo the actual ingame menus or just the main one
+- **[2026-05-25 23:09:56 UTC] Jose Roberto GÁLVEZ VARGAS:** I've done them two so far
+- **[2026-05-25 23:09:58 UTC] Jose Roberto GÁLVEZ VARGAS:** I
+- **[2026-05-25 23:10:12 UTC] Jose Roberto GÁLVEZ VARGAS:** ) I'm doing the calibration menu now
+- **[2026-05-25 23:10:45 UTC] Joshua JOHNSON:** H okay great if you leave the calib menu ive done all of those ones
+- **[2026-05-25 23:10:49 UTC] Joshua JOHNSON:** & but i didn't do the two you did
+- **[2026-05-25 23:11:07 UTC] Joshua JOHNSON:** just because dhrumil has some functions for switching text etc which is a bit weird to work around so to save the poor boy time
+- **[2026-05-25 23:11:15 UTC] Joshua JOHNSON:** 1 we should be done with all UI then i think
+- **[2026-05-25 23:12:12 UTC] Jose Roberto GÁLVEZ VARGAS:** _ I'm finishing this one today and push it. Then Dhrumil can decide if he wants to keep it
+- **[2026-05-25 23:12:21 UTC] Joshua JOHNSON:** yeah sure thing
+- **[2026-05-25 23:13:36 UTC] Joshua JOHNSON:** J controlscheme, gameover, and controltext are all done on my end too
+- **[2026-05-25 23:37:47 UTC] Joshua JOHNSON:** just a reminder that we also have these two graphics available for use anywhere in the UI of the game, i can send the photoshop files if anything needs editing. we can still just have them be implemented in a sort of 3d intro video thing for the player, which i can make pretty easily (and personally recommend we do) but i'd say we leave that down to a group vote
+- **[2026-05-25 23:38:29 UTC] Joshua JOHNSON:** { if we were to do that it'd be the introductory video to the game before transitioning the player into the menu level
+- **[2026-05-26 16:59:50 UTC] Jose Roberto GÁLVEZ VARGAS:** Dhrumil Nitinbhai HIRAPARA did you Have time to check the menus in theMain for now branch?
+- **[2026-05-26 17:03:50 UTC] Dhrumil Nitinbhai HIRAPARA:** ! Okay I'll in like 30 mins
+- **[2026-05-26 17:04:27 UTC] Dhrumil Nitinbhai HIRAPARA:** ` Btw guys on thursday, I can only be at uni until like max 4:15 pm after that I have to go
+- **[2026-05-26 17:05:25 UTC] Dhrumil Nitinbhai HIRAPARA:** I tried but it couldn't be an off day from work, for the next one on 2nd of June I am free all day so that won't be a problem
+- **[2026-05-26 20:58:26 UTC] Dhrumil Nitinbhai HIRAPARA:** okay Jose Roberto GÁLVEZ VARGAS you have not uploaded the actual font file
+- **[2026-05-26 20:58:42 UTC] Jose Roberto GÁLVEZ VARGAS:** What
+- **[2026-05-26 20:58:53 UTC] Jose Roberto GÁLVEZ VARGAS:** Let me check quickly
+- **[2026-05-26 20:59:26 UTC] Dhrumil Nitinbhai HIRAPARA:** _ yeah so all the fonts are invalid, so they dont know which fonts to use in the widget bp
+- **[2026-05-26 20:59:45 UTC] Dhrumil Nitinbhai HIRAPARA:** 5 just sent the font file and it should be fixed
+- **[2026-05-26 21:01:44 UTC] Dhrumil Nitinbhai HIRAPARA:** curntly there are three fonts that i can choose one is 'roboto', 'roboto tiny' and 'droid san mono' have you used any one of these
+- **[2026-05-26 21:02:25 UTC] Joshua JOHNSON:** :If you installed a new one it should just be the .ttf file
+- **[2026-05-26 21:02:34 UTC] Joshua JOHNSON:** 3I think you can just send it into the chat here tbh
+- **[2026-05-26 21:02:48 UTC] Dhrumil Nitinbhai HIRAPARA:** yeah
+- **[2026-05-26 21:03:27 UTC] Jose Roberto GÁLVEZ VARGAS:** [Image / Screenshot Shared]
+- **[2026-05-26 21:03:30 UTC] Joshua JOHNSON:** 'Like as in for the portfolio submission
+- **[2026-05-26 21:03:36 UTC] Jose Roberto GÁLVEZ VARGAS:** # it should be in engine fonts
+- **[2026-05-26 21:03:47 UTC] Joshua JOHNSON:** 'We need to install it to our pcs aswell
+- **[2026-05-26 21:03:56 UTC] Joshua JOHNSON:** HSo whichever file you used to install it to the engine just send it here
+- **[2026-05-26 21:04:15 UTC] Jose Roberto GÁLVEZ VARGAS:** aaah ok
+- **[2026-05-26 21:04:44 UTC] Dhrumil Nitinbhai HIRAPARA:** w omg jose, if you want to use engine font just copy them and put it in our content folder and it should be fine,
+- **[2026-05-26 21:05:32 UTC] Jose Roberto GÁLVEZ VARGAS:** C I just inported the new font there, where the other ones are
+- **[2026-05-26 21:05:51 UTC] Joshua JOHNSON:** Thank you pookie
+- **[2026-05-26 21:05:55 UTC] Joshua JOHNSON:** It should be fine now
+- **[2026-05-26 21:06:01 UTC] Jose Roberto GÁLVEZ VARGAS:** Them 2
+- **[2026-05-26 21:06:34 UTC] Dhrumil Nitinbhai HIRAPARA:** okay just do this, there is a folder called text in content folder, copy whatever font you are using in there and check if all the menus you have done is look fine and than push to the branch
+- **[2026-05-26 21:06:56 UTC] Jose Roberto GÁLVEZ VARGAS:** ok.
+- **[2026-05-26 21:08:50 UTC] Dhrumil Nitinbhai HIRAPARA:** this is just going to be for show case and if anybody asked where you get the font or any other artwork, we just have to tell them verbely i guess
+- **[2026-05-26 21:09:34 UTC] Jose Roberto GÁLVEZ VARGAS:** Pushed
+- **[2026-05-26 21:09:36 UTC] Jose Roberto GÁLVEZ VARGAS:** try now
+- **[2026-05-26 21:12:28 UTC] Dhrumil Nitinbhai HIRAPARA:** [Reply] yep jose its working now
+- **[2026-05-26 21:36:40 UTC] Jose Roberto GÁLVEZ VARGAS:** } just pushed the calibration menu. I used some of the images josh sent the other day but they dont show up in the menu
+- **[2026-05-26 21:38:10 UTC] Dhrumil Nitinbhai HIRAPARA:** [Reply] let me check
+- **[2026-05-26 21:39:57 UTC] Dhrumil Nitinbhai HIRAPARA:** $ mate it just the ancor point
+- **[2026-05-26 21:40:02 UTC] Dhrumil Nitinbhai HIRAPARA:** anchor point
+- **[2026-05-26 21:41:01 UTC] Dhrumil Nitinbhai HIRAPARA:** i selected the center one and it showed because the whole menu need to have same achor point and the other elements are using center point
+- **[2026-05-26 22:47:09 UTC] Jose Roberto GÁLVEZ VARGAS:** - No idea. Thats why I told you to check
+- **[2026-05-26 22:47:18 UTC] Jose Roberto GÁLVEZ VARGAS:** Is It ok now?
+- **[2026-05-26 22:47:27 UTC] Jose Roberto GÁLVEZ VARGAS:** 2 I'll try and finish all the menus tomorrow
+- **[2026-05-26 22:48:02 UTC] Dhrumil Nitinbhai HIRAPARA:** N Yeah yeah all done, just do the menus Tommorow and I'll fix this later
+- **[2026-05-27 02:13:43 UTC] Joshua JOHNSON:** i'm also gonna push a new level in my branch that contains the intro video with code leading into the main menu, we dont need to use it but i can make it anyway just in case
+- **[2026-05-27 02:13:59 UTC] Joshua JOHNSON:** > ignore the fact that it's 3:00AM but I've pushed it now
+- **[2026-05-27 12:57:12 UTC] Jose Roberto GÁLVEZ VARGAS:** Ok, the Showcase is 15-18
+- **[2026-05-27 12:58:12 UTC] Jose Roberto GÁLVEZ VARGAS:** But Patrick said if we can get there a bit early to prepare everything. I'll confirm the place later when Patrick comes back to me
+- **[2026-05-27 12:58:52 UTC] Dhrumil Nitinbhai HIRAPARA:** X Sry guys than I am just going to be there for like an hour and half for showcase
+- **[2026-05-27 12:59:22 UTC] Dhrumil Nitinbhai HIRAPARA:** [Reply] Yes we have to be there like at least 2 hr early
+- **[2026-05-27 13:00:58 UTC] Jose Roberto GÁLVEZ VARGAS:** What time can you arrive?
+- **[2026-05-27 13:01:25 UTC] Dhrumil Nitinbhai HIRAPARA:** Idk maybe like at 1 pm
+- **[2026-05-27 13:02:32 UTC] Jose Roberto GÁLVEZ VARGAS:** - Ok, that should be enough to get ready
+- **[2026-05-27 13:15:46 UTC] Jose Roberto GÁLVEZ VARGAS:** > Also, we Will need the VR sets. Maybe a couple of them?
+- **[2026-05-27 21:59:28 UTC] Jose Roberto GÁLVEZ VARGAS:** Dhrumil Nitinbhai HIRAPARA just pushed the menus to the main branch for now
+- **[2026-05-27 22:00:23 UTC] Jose Roberto GÁLVEZ VARGAS:** u please check them when you have time for errors. Let me know when you're in campus tomorrow and i'll meet you
+- **[2026-05-27 22:41:24 UTC] Dhrumil Nitinbhai HIRAPARA:** Okay
+- **[2026-05-28 12:19:13 UTC] Dhrumil Nitinbhai HIRAPARA:** | Jose Roberto GÁLVEZ VARGAS where you at
+- **[2026-05-28 12:19:25 UTC] Dhrumil Nitinbhai HIRAPARA:** I am here
+- **[2026-05-28 12:19:38 UTC] Jose Roberto GÁLVEZ VARGAS:** I'm in campus as well
+- **[2026-05-28 12:19:50 UTC] Jose Roberto GÁLVEZ VARGAS:** 6 haven't seen anyone and don't know where to go
+- **[2026-05-28 12:19:58 UTC] Jose Roberto GÁLVEZ VARGAS:** maybe the VR room?
+- **[2026-05-28 12:20:10 UTC] Dhrumil Nitinbhai HIRAPARA:** Well okay see you there
+- **[2026-05-28 12:26:24 UTC] Dhrumil Nitinbhai HIRAPARA:** $ Nobody's in the vr room mate
+- **[2026-05-28 12:26:24 UTC] Dhrumil Nitinbhai HIRAPARA:** It's locked a
+- **[2026-05-28 12:26:59 UTC] Jose Roberto GÁLVEZ VARGAS:** On my way
+- **[2026-05-28 12:27:02 UTC] Jose Roberto GÁLVEZ VARGAS:** 3 min
+- **[2026-05-28 12:27:02 UTC] Dhrumil Nitinbhai HIRAPARA:** Okay
+- **[2026-05-29 10:17:58 UTC] Jose Roberto GÁLVEZ VARGAS:** ) changed the animation of the enemy
+- **[2026-05-29 10:19:17 UTC] Dhrumil Nitinbhai HIRAPARA:** ; Okay di you do it already or just imported the asset
+- **[2026-05-29 10:19:43 UTC] Jose Roberto GÁLVEZ VARGAS:** = I did it in unreal retargeting another animation model
+- **[2026-05-29 10:19:49 UTC] Jose Roberto GÁLVEZ VARGAS:** $ it looks like is working fine
+- **[2026-05-29 10:21:13 UTC] Dhrumil Nitinbhai HIRAPARA:** Okay so our enemy Is just using singleanimation anyway, so just go to enemy bp and select the enemy skeletal mesh and there should be an drop-down menu to change animation
+- **[2026-05-29 10:21:15 UTC] Jose Roberto GÁLVEZ VARGAS:** Also, let me know when you are available later in the afternoon and see if we can make a teams call. I want to discuss what we talked the other day about the events
+- **[2026-05-29 10:21:32 UTC] Jose Roberto GÁLVEZ VARGAS:** yep, I did it already
+- **[2026-05-29 10:21:49 UTC] Dhrumil Nitinbhai HIRAPARA:** [Reply] Yeah, I am free all day today, we can have it anytime
+- **[2026-05-29 10:21:52 UTC] Jose Roberto GÁLVEZ VARGAS:** ; but can not test it properly as I dont have a vr set
+- **[2026-05-29 10:21:58 UTC] Jose Roberto GÁLVEZ VARGAS:** ! Im not rich like you guys
+- **[2026-05-29 10:22:46 UTC] Dhrumil Nitinbhai HIRAPARA:** ! it works well in simulate
+- **[2026-05-29 10:22:54 UTC] Jose Roberto GÁLVEZ VARGAS:** ! it works well in simulate
+- **[2026-05-29 10:25:32 UTC] Jose Roberto GÁLVEZ VARGAS:** A how can I remove the movement and leave only the animation
+- **[2026-05-29 10:25:34 UTC] Jose Roberto GÁLVEZ VARGAS:** ?
+- **[2026-05-29 11:02:13 UTC] Dhrumil Nitinbhai HIRAPARA:** " sry i went to take a shower
+- **[2026-05-29 11:02:31 UTC] Dhrumil Nitinbhai HIRAPARA:** [Reply] you mean enemy movement
+- **[2026-05-29 11:11:02 UTC] Jose Roberto GÁLVEZ VARGAS:** ) nevermind. I have another question
+- **[2026-05-29 11:11:49 UTC] Jose Roberto GÁLVEZ VARGAS:** I have a walking animation but stops when the animation finishes(obviously) How can I make it so the character doesn't stop walking
+- **[2026-05-29 11:14:26 UTC] Dhrumil Nitinbhai HIRAPARA:** U So your end of the animation has stop animation and that it looks again right
+- **[2026-05-29 11:14:43 UTC] Jose Roberto GÁLVEZ VARGAS:** yes
+- **[2026-05-29 11:14:56 UTC] Jose Roberto GÁLVEZ VARGAS:** B let's say I want the enemy to go to the end of the corridor
+- **[2026-05-29 11:15:44 UTC] Dhrumil Nitinbhai HIRAPARA:** 2 Mate did you drag and drop the enemy there
+- **[2026-05-29 11:16:44 UTC] Dhrumil Nitinbhai HIRAPARA:** k Which animation it self does not have any movement it plays Animation by standing still In one place
+- **[2026-05-29 11:17:37 UTC] Dhrumil Nitinbhai HIRAPARA:** k Which animation it self does not have any movement it plays Animation by standing still In one place
+- **[2026-05-29 11:18:13 UTC] Dhrumil Nitinbhai HIRAPARA:** b Than you have to make a actor bp or something and tell it to move to a position in the map
+- **[2026-05-29 11:18:25 UTC] Dhrumil Nitinbhai HIRAPARA:** + Than it will stop after it finishes
+- **[2026-05-29 11:19:11 UTC] Dhrumil Nitinbhai HIRAPARA:** q Oooor maybe you can try find the option that say looping in the animation editor somewhere and turn it off
+- **[2026-05-29 11:19:46 UTC] Jose Roberto GÁLVEZ VARGAS:** % aaaah. I'm just testing things
+- **[2026-05-29 11:19:50 UTC] Jose Roberto GÁLVEZ VARGAS:** I'll try that
+- **[2026-05-29 11:22:26 UTC] Matas NARUSIS:** 3 Where did u get the animation? It looks nice
+- **[2026-05-29 12:22:32 UTC] Jose Roberto GÁLVEZ VARGAS:** Aha!!
+- **[2026-05-30 15:22:23 UTC] Aiden Thomas BILLINGHAM:** ,Hell yeah the enemy looks so good. Well done
+- **[2026-05-31 20:33:17 UTC] Jose Roberto GÁLVEZ VARGAS:** Dhrumil Nitinbhai HIRAPARA I'm doing to upload a few sfx for the door
+- **[2026-05-31 20:33:58 UTC] Dhrumil Nitinbhai HIRAPARA:** Okay do it
+- **[2026-05-31 20:48:14 UTC] Dhrumil Nitinbhai HIRAPARA:** Just Pushed
+- **[2026-05-31 20:48:26 UTC] Jose Roberto GÁLVEZ VARGAS:** Just Pushed
+- **[2026-05-31 20:48:42 UTC] Dhrumil Nitinbhai HIRAPARA:** Everyone This is from Imraan: Hello Jose, how's it going? are you and the guys around today? there is a meeting at 1pm- 1:30 today on Teams about the sugarcrete architects project. Let me know if you guys can join
+- **[2026-06-01 08:53:19 UTC] Jose Roberto GÁLVEZ VARGAS:** Everyone This is from Imraan: Hello Jose, how's it going? are you and the guys around today? there is a meeting at 1pm- 1:30 today on Teams about the sugarcrete architects project. Let me know if you guys can join
+- **[2026-06-01 08:53:46 UTC] Jose Roberto GÁLVEZ VARGAS:** M Let me know if you're available to attend to send you the meeting link
+- **[2026-06-01 08:54:46 UTC] Dhrumil Nitinbhai HIRAPARA:** Yeah I'll be able to join
+- **[2026-06-01 09:34:04 UTC] Jose Roberto GÁLVEZ VARGAS:** [Image / Screenshot Shared]
+- **[2026-06-01 09:34:09 UTC] Jose Roberto GÁLVEZ VARGAS:** Tomorrow
+- **[2026-06-01 09:34:46 UTC] Jose Roberto GÁLVEZ VARGAS:** q Who is going to come? This is a great opportunity for us for networking so I would recommend you to attend
+- **[2026-06-01 09:35:26 UTC] Jose Roberto GÁLVEZ VARGAS:** D They're interested in working with the games team more often
+- **[2026-06-01 17:18:45 UTC] Joshua JOHNSON:** I'm 100% going to go, sorry I've not been around the last few days and couldn't go on Thursday, I had to leave London for a few days to sort some stuff out but I'm back for a while now
+- **[2026-06-01 17:18:54 UTC] Joshua JOHNSON:** * anything you guys need me to do lmk
+- **[2026-06-01 17:34:58 UTC] Jose Roberto GÁLVEZ VARGAS:** 3 We've met tomorrow around 9:00 am in campus
+- **[2026-06-01 17:35:21 UTC] Jose Roberto GÁLVEZ VARGAS:** F Need to set up the computer and everything in the RDCS building
+- **[2026-06-01 21:49:32 UTC] Joshua JOHNSON:** Works for me
+- **[2026-06-01 21:49:56 UTC] Jose Roberto GÁLVEZ VARGAS:** % Great, see you tomorrow fellas
+- **[2026-06-02 08:07:01 UTC] Jose Roberto GÁLVEZ VARGAS:** N Good morning! let me know when you guys are in campus and Ill meet you
+- **[2026-06-02 08:07:43 UTC] Joshua JOHNSON:** "Just about to head to the RDCS now
+- **[2026-06-02 08:07:55 UTC] Dhrumil Nitinbhai HIRAPARA:** 0 Go to WB better as the computer is there
+- **[2026-06-02 08:09:03 UTC] Jose Roberto GÁLVEZ VARGAS:** 0 Go to WB better as the computer is there
+- **[2026-06-02 08:09:42 UTC] Jose Roberto GÁLVEZ VARGAS:** h Then we will go to RDCS and speak with the guy as we dont know where are we going to be located
+- **[2026-06-02 08:18:10 UTC] Jose Roberto GÁLVEZ VARGAS:** $ What's the code for the door?
+- **[2026-06-02 08:18:52 UTC] Dhrumil Nitinbhai HIRAPARA:** That's the one
+- **[2026-06-02 08:19:16 UTC] Jose Roberto GÁLVEZ VARGAS:** That's the one
+- **[2026-06-02 08:31:15 UTC] Dhrumil Nitinbhai HIRAPARA:** Where you guys at
+- **[2026-06-02 08:34:06 UTC] Dhrumil Nitinbhai HIRAPARA:** Joshua JOHNSON Jose Roberto GÁLVEZ VARGAS
+- **[2026-06-02 08:40:58 UTC] Joshua JOHNSON:** <About to head to class sorry had to go home and do something
+- **[2026-06-02 08:41:07 UTC] Joshua JOHNSON:** Will be at wb.1.07 in like 5
+- **[2026-06-02 12:05:47 UTC] Joshua JOHNSON:** finally finished
+- **[2026-06-02 12:05:59 UTC] Joshua JOHNSON:** ) this can go on the vertical screen
+- **[2026-06-02 12:10:51 UTC] Joshua JOHNSON:** Im also gonna print this
+- **[2026-06-02 15:51:53 UTC] Joshua JOHNSON:** .Been waiting 7.5 years for this food holy moly
+- **[2026-06-02 15:51:57 UTC] Joshua JOHNSON:** Haha no worries
+- **[2026-06-02 15:52:15 UTC] Jose Roberto GÁLVEZ VARGAS:** Haha no worries
+- **[2026-06-02 18:41:49 UTC] Aiden Thomas BILLINGHAM:** -You should see the size of the screen we have
+- **[2026-06-02 18:42:32 UTC] Joshua JOHNSON:** -You should see the size of the screen we have
+- **[2026-06-02 18:42:44 UTC] Joshua JOHNSON:** Josh for scale
+- **[2026-06-02 18:42:58 UTC] Aiden Thomas BILLINGHAM:** Dayummmmm
+- **[2026-06-02 18:43:14 UTC] Aiden Thomas BILLINGHAM:** That looks crazy
+- **[2026-06-02 18:43:50 UTC] Joshua JOHNSON:** [Image / Screenshot Shared]
+- **[2026-06-02 18:43:53 UTC] Joshua JOHNSON:** In spirit
+- **[2026-06-02 18:43:55 UTC] Joshua JOHNSON:** In spirit
+- **[2026-06-02 18:44:12 UTC] Aiden Thomas BILLINGHAM:** Ayyyy thank you
+- **[2026-06-02 18:44:24 UTC] Aiden Thomas BILLINGHAM:** Means a lot im there in spirit
+- **[2026-06-02 18:47:39 UTC] Dhrumil Nitinbhai HIRAPARA:** [Image / Screenshot Shared]
+
+---
+## Studio Group Chat (Joshua, Dhrumil, Jasmine, Dean, Romel)
+**Thread ID:** `19:8372cdf8c0dd4dbaa0c46953c4c720ce@thread.v2` | **Exported Messages:** 29
+
+- **[2024-11-01 20:09:29 UTC] Imraan Younas:** The week beginning Monday 4th November is Week 6 - Lessons as normal. However, being week 6, I would also like to review your current work to better support you in the remaining weeks before submission in the form of extra sessions this week (for those that need them). Please have ready Your latest game code running in codeskulptor Your current documentation in Draw.io - please make sure you have a single document, with multiple tabs for pages (this should include the complete Axially Aligned bounding box (AABB) collision example we have been using these past weeks) In Draw.io there should be an overview diagram of the AABB collision process the separate diagrams to show the collision process per X and Y axes checks A written algorithm (no more than 10 lines) of the "recipe" for collision check between 2 (AAB) boxes A flow chart diagram that matches the written algorithm with the correct symbols used Example code of the AABB collision algorithm example ( with your comments and any changes added) Also Please check the assessment LINK . I will be happy to answer any questions in next week's lessons.
+- **[2026-09-07 12:13:20 UTC] Joshua JOHNSON:** Joshua JOHNSON - just @ you so it pings
+- **[2026-10-06 10:10:03 UTC] Joshua JOHNSON:** 1791281403389 8:orgid:04329a4c-dcde-4745-85a5-73e3bff04290 1791281403127 8:orgid:04329a4c-dcde-4745-85a5-73e3bff04290 8:orgid:04329a4c-dcde-4745-85a5-73e3bff04290 8:orgid:035813ca-5f27-48ff-bd3d-62d9d5605896 8:orgid:035813ca-5f27-48ff-bd3d-62d9d5605896 8:orgid:85133d85-525e-4f35-ada1-2ab2dc19f0eb 8:orgid:85133d85-525e-4f35-ada1-2ab2dc19f0eb 8:orgid:33262a83-6d1f-4b1e-b263-ed3e5766448c 8:orgid:33262a83-6d1f-4b1e-b263-ed3e5766448c 8:orgid:87cbad0c-ba0e-45a6-9c2a-9f88d8369d08 8:orgid:87cbad0c-ba0e-45a6-9c2a-9f88d8369d08
+- **[2026-10-06 10:10:03 UTC] Joshua JOHNSON:** 1791281403434 8:orgid:04329a4c-dcde-4745-85a5-73e3bff04290 Level 6
+- **[2026-10-06 10:10:03 UTC] Joshua JOHNSON:** Planner - Level 6 Project
+- **[2026-10-06 10:23:40 UTC] Joshua JOHNSON:** okay
+- **[2026-10-06 10:23:40 UTC] Joshua JOHNSON:** 1791282220496 8:orgid:04329a4c-dcde-4745-85a5-73e3bff04290 1791282220464 8:orgid:510730ac-0905-4136-8de5-74c320712a99 8:orgid:510730ac-0905-4136-8de5-74c320712a99
+- **[2026-10-06 11:10:52 UTC] Dean DANCY:** Deano-420 - github
+- **[2026-10-08 04:24:48 UTC] Joshua JOHNSON:** Initial GDD for everyone, anything we wanna remove/add lmk ASAP, this obviously isn't everything but just so we're all somewhat on the same page of what we were all saying
+- **[2026-10-08 04:28:09 UTC] Joshua JOHNSON:** okay i already made a better version of the one above lol, ill make a shared word doc later so i dont have to keep sending them locally
+- **[2026-10-10 17:16:15 UTC] Dhrumil Nitinbhai HIRAPARA:** First Person Rendering | Unreal Engine 5.8 Documentation | Epic Developer Community
+- **[2026-10-10 17:18:03 UTC] Dhrumil Nitinbhai HIRAPARA:** [Reply] this is the article from epic about first person rendering, which is helpfull in setting up FPCharacter for the game, have a read it has good information, and we can think about how we want to set our character up
+- **[2026-10-10 17:27:28 UTC] Joshua JOHNSON:** Sounds good
+- **[2026-10-10 17:27:34 UTC] Joshua JOHNSON:** *Has everyone has a chance to read the GDD?
+- **[2026-10-11 15:21:40 UTC] Dhrumil Nitinbhai HIRAPARA:** # yeah I've read it look good
+- **[2026-10-13 10:32:56 UTC] Joshua JOHNSON:** 6032 GDD.docx
+- **[2026-10-13 10:48:15 UTC] Dhrumil Nitinbhai HIRAPARA:** https://youtu.be/qgn4a3W8XHQ?si=e8-ZHVbtKQ3gPbk_
+- **[2026-10-13 11:22:59 UTC] Dhrumil Nitinbhai HIRAPARA:** Planner - Lev6 Shooter Game : Project PC
+- **[2026-10-13 13:22:13 UTC] Joshua JOHNSON:** [Image / Screenshot Shared]
+- **[2026-10-13 13:22:18 UTC] Joshua JOHNSON:** dhrumil you silly billy
+- **[2026-10-13 13:23:38 UTC] Dhrumil Nitinbhai HIRAPARA:** Yeah I'll fix this
+- **[2026-10-13 13:23:56 UTC] Joshua JOHNSON:** ty bbgrl
+- **[2026-10-13 15:04:54 UTC] Dhrumil Nitinbhai HIRAPARA:** J Can you check if you got any email or something or check the planer
+- **[2026-10-13 19:00:16 UTC] Dhrumil Nitinbhai HIRAPARA:** Joshua JOHNSON Jasmine Rose JILLEY I have sent you guys invitation to github repo again, can you guys try again see if it works
+- **[2026-10-13 19:01:16 UTC] Dhrumil Nitinbhai HIRAPARA:** i and you all should have access to planer to as well check that as well and tell if you dont have.
+- **[2026-10-13 19:02:20 UTC] Dhrumil Nitinbhai HIRAPARA:** Romel TERAN CANDO Could I have your github user name as well so I could send you the invitation as well
+- **[2026-10-13 19:05:02 UTC] Dhrumil Nitinbhai HIRAPARA:** [Reply] link for the planer here
+- **[2026-10-14 11:41:22 UTC] Joshua JOHNSON:** C planners working, github isn't but ill check when i get home
+- **[2026-10-14 13:28:41 UTC] Dhrumil Nitinbhai HIRAPARA:** [Reply] okay
+
+---
+## Course Rep & Studio Chat (Joshua & Jose)
+**Thread ID:** `19:54cf9d41d5a14e0e97ec1ca4be722c88@thread.v2` | **Exported Messages:** 197
+
+- **[2024-10-01 11:33:50 UTC] Dean DANCY:** Race N Chase (GTA): https://www.gamedevs.org/uploads/grand-theft-auto.pdf Diablo: https://gamescrye.com//wp-content/uploads/2016/08/diablo_pitch.pdf
+- **[2026-02-04 09:52:40 UTC] Joshua JOHNSON:** =Patrick doesn't know either unfortunately. I tried to ask him
+- **[2026-02-06 19:29:33 UTC] Adeline Choo:** Is this still the case? Because I was told that this has now been resolved for Term 2 and there are lecturers for all modules now
+- **[2026-02-06 19:54:54 UTC] Adeline Choo:** Okay, depending on what Jose Roberto GÁLVEZ VARGAS says, if they have got someone in place then hold on first and give it a chance to see what the situation is like and if your coursemates are happy. If there is still no lecturer, then get in touch with Dekan to find out what is happening. You can say that Valeria had a meeting with Clare Qualman and was informed that the issue was supposed to be resolved, but you still don't have a lecturer. What is the uni going to do to support students through this and ensure they actually get the foundation they need to succeed in the next two years. I should be back by then and we can take it from there
+- **[2026-02-06 20:03:31 UTC] Jose Roberto GÁLVEZ VARGAS:** [Reply] Yes, our lecture for today was cancelled due to lack of staff. Also, we have issues in all games courses, with hardware and software. We discussed this in the meeting last week and mention that the computers we have now are outdated and struggle to process even simple rendering tasks. Further more, the software like unreal, maya, substance painter and many more are not Updated or missing, causing disruptions in a few of our lectures last term
+- **[2026-02-06 20:05:20 UTC] Jose Roberto GÁLVEZ VARGAS:** V The lecture cancelled was MS5004 and the module lead is Patrick Girard Quinnell
+- **[2026-02-06 20:06:01 UTC] Adeline Choo:** k hmm.. and that's the module that has been impacted all along? Or is this an unfortunate one-off case
+- **[2026-02-06 20:07:22 UTC] Jose Roberto GÁLVEZ VARGAS:** h No, this is a new one. As far as we know, Dan is not involved in any of the modules for this term
+- **[2026-02-06 20:08:28 UTC] Adeline Choo:** o ok. this might be a one-off unfortunate instance then. Give it another week and we'll get back in touch
+- **[2026-02-06 20:10:08 UTC] Adeline Choo:** The software issue has been raised and clare will be looking into solutions around that. Valeria will give a more detailed update once she's cleaned up her notes
+- **[2026-02-06 20:11:10 UTC] Jose Roberto GÁLVEZ VARGAS:** Ok. Please keep us updated on the equipment/software issue. For now, lets wait until Next Friday and see if someone shows up. Thank you for your time and Have a great break!
+- **[2026-02-19 09:15:32 UTC] Adeline Choo:** Hi both, sorry I forgo to check-in last week, how has it been going? Have those issues been sorted? Did the lecturer show up and was the missing class replaced?
+- **[2026-02-19 09:17:23 UTC] Jose Roberto GÁLVEZ VARGAS:** Good morning Adeline. Yes, the lecturer issue has been sorted by bringing back Tosin, the HPL we had last term. We still have issues with the software though. There are few apps still missing or unable to open.
+- **[2026-02-19 09:35:17 UTC] Adeline Choo:** Great. I think Valeria is making a list of this. Could you send me a list of the apps and software you're having issues with but also speak to your respective course leaders in the interim
+- **[2026-02-19 09:35:53 UTC] Adeline Choo:** Sure. Ill be in class from 10:00 and Ill speak with the course lead about when this can be fixed. Ill update you later.
+- **[2026-02-19 09:36:34 UTC] Jose Roberto GÁLVEZ VARGAS:** Sure. Ill be in class from 10:00 and Ill speak with the course lead about when this can be fixed. Ill update you later.
+- **[2026-02-19 09:36:53 UTC] Jose Roberto GÁLVEZ VARGAS:** ? Thank you very much for your help. Ill keep you updated
+- **[2026-02-19 09:37:08 UTC] Jose Roberto GÁLVEZ VARGAS:** ? Thank you very much for your help. Ill keep you updated
+- **[2026-02-19 09:38:31 UTC] Adeline Choo:** I No worries. And well done Jose for escalating the lecturer issues
+- **[2026-02-20 10:24:21 UTC] Jose Roberto GÁLVEZ VARGAS:** [Image / Screenshot Shared]
+- **[2026-02-20 10:58:14 UTC] Adeline Choo:** oh yes, this seems to be a campus-wide problem. Raise a ticket with IT as well. I had to send my laptop into IT because it suddenly stopped connecting to the campus wifi. And the IT guy told me they've gotten like over a 100 similar issues since Jan
+- **[2026-02-20 11:00:57 UTC] Jose Roberto GÁLVEZ VARGAS:** The internet connection seems to be working fine. This is an installation issue. They tried to fix the previous issues we had with maya2025 by installing Maya2026 but they actually made it worst because now we can not even open the sofware
+- **[2026-02-20 11:02:26 UTC] Adeline Choo:** Raise a ticket with IT. Can you also make a simple sheet on excel or something to keep track of no. times you've been disrupted. Just have the following columns: Date Description of issue Impact on students (cancelled class/changed lessons...etc) Action taken Status Date resolved
+- **[2026-02-20 11:03:07 UTC] Adeline Choo:** I mean the Teams not loading. That happened to me too yesterday So in general it looks like there's been massive IT issues across all campuses
+- **[2026-02-20 11:03:53 UTC] Jose Roberto GÁLVEZ VARGAS:** Yeah, the teams issue is not really a problem as I can log in with the internet browser. It's just another thing not working haha
+- **[2026-02-20 11:04:09 UTC] Jose Roberto GÁLVEZ VARGAS:** @ Sure, i'll do the document and try to keep it up to date
+- **[2026-02-20 11:04:39 UTC] Adeline Choo:** [Reply] Share this with me. So I can show it to Deans and DEEs next time I see them as well and we have a very clear record of how much this is impacting students
+- **[2026-02-20 11:05:07 UTC] Jose Roberto GÁLVEZ VARGAS:** I'll do. Thank you!
+- **[2026-03-05 09:48:27 UTC] Adeline Choo:** Hi both, quick question, Jose Roberto GÁLVEZ VARGAS your course has been merged right?
+- **[2026-03-05 09:49:16 UTC] Adeline Choo:** Can you talk me through how this happened? As in, did someone come in, speak to you and was anything signed? Happy to hop onto a call if it's quicker to explain that way. Joshua JOHNSON if you have any insights, would like to hear as well
+- **[2026-03-05 09:50:37 UTC] Jose Roberto GÁLVEZ VARGAS:** k Hi Adeline, We're in class from 10:00 to 13:00 today. We can Have a call later if you're available.
+- **[2026-03-05 09:52:38 UTC] Joshua JOHNSON:** Great, I'll put something in for 14:30. Thanks both!
+- **[2026-03-05 09:55:26 UTC] Adeline Choo:** Great, I'll put something in for 14:30. Thanks both!
+- **[2026-03-05 14:32:26 UTC] Jose Roberto GÁLVEZ VARGAS:** ? Hi, just gove me 10 min I'm talking with the course lead
+- **[2026-03-05 17:15:25 UTC] Adeline Choo:** [ Heya Josh, Valeria mentioned that you know someone from L4 Games. Who is that please
+- **[2026-03-06 12:04:08 UTC] Joshua JOHNSON:** Hey Adeline, I do know a level 4 but I'm not 100% sure what he studies as it was a few months ago when we met. I remember his name was Josh and I believe he studies Game Design (bit of a coincidence I know). I'll try and get in contact with him if you'd like me to, I don't know any other level 4's though unfortunately.
+- **[2026-03-06 12:19:36 UTC] Adeline Choo:** , Sure, do you remember his last name?
+- **[2026-03-06 12:20:21 UTC] Joshua JOHNSON:** M Not off the top of my head, if you bear with me i can try and find it.
+- **[2026-03-06 12:20:30 UTC] Adeline Choo:** Thanks Josh
+- **[2026-03-06 12:28:17 UTC] Joshua JOHNSON:** In a very annoying turn of events it seems his Instagram has been deleted so I'd just be guessing surnames unfortunately. I do see him around campus sometimes, alternatively if it wouldn't be problematic I can reach out to my course lead to see if there's anything he can provide to me in terms of his name (though I doubt this would be allowed). I'll keep asking around to see what I can find.
+- **[2026-03-06 12:52:12 UTC] Joshua JOHNSON:** hmmm yeah, I have Joshua Parry listed as a rep for psychology. Perhaps someone who is just interested in games? ha No worries but thanks Josh. If you do come across any L4s please let me know
+- **[2026-03-06 12:54:24 UTC] Adeline Choo:** hmmm yeah, I have Joshua Parry listed as a rep for psychology. Perhaps someone who is just interested in games? ha No worries but thanks Josh. If you do come across any L4s please let me know
+- **[2026-03-06 12:57:11 UTC] Joshua JOHNSON:** : Do you know who the course leader is for L4 Games?
+- **[2026-03-06 12:57:41 UTC] Adeline Choo:** : Do you know who the course leader is for L4 Games?
+- **[2026-03-06 12:57:52 UTC] Adeline Choo:** Is it Imran?
+- **[2026-03-06 13:02:12 UTC] Jose Roberto GÁLVEZ VARGAS:** E I think that Imraan is not the course lead for that new course
+- **[2026-03-10 16:00:00 UTC] Adeline Choo:** Hi both, I'm going to email the Games students because following some of the issues you've mentioned, especially around software not being updated and the disruption this has caused. Would you be ok with me making your emails visible? I think this is worth you raising as a collective, for this to be sorted ahead of the next academic year. I mentioned to Jose collating a list of the issues and the number of times this has been raised
+- **[2026-03-10 18:02:28 UTC] Jose Roberto GÁLVEZ VARGAS:** Sure. no problem. I'm talking with Valeria right now and updating her. I'll share the Excell document with you as soon as I can. Thank you!
+- **[2026-03-12 10:29:58 UTC] Joshua JOHNSON:** yep perfectly fine with me, just to make you aware as well, as far as I'm aware we haven't received module guides for one of our modules yet so outside of what we've been told theres no info on moodle about what is actually required for the module. I'll double check today, but just wanted to let you know.
+- **[2026-03-12 10:30:58 UTC] Adeline Choo:** n Thanks Josh. Please get in touch with the course leader. Is this a module running in Term 2 right now?
+- **[2026-03-12 10:31:21 UTC] Joshua JOHNSON:** l yes it is, he's covering the class today so i'll speak with him in a few minutes and get back to you.
+- **[2026-03-12 10:31:25 UTC] Adeline Choo:** ' Have you mentioned it already?
+- **[2026-03-12 10:32:16 UTC] Joshua JOHNSON:** not yet i wanted to give a chance for it to be uploaded somewhere but i'll bring it up now as we're now on week 6 i believe?
+- **[2026-03-12 10:32:44 UTC] Joshua JOHNSON:** in fairness the module leader is away at the moment on medical leave which is why i gave some leeway but it is a hinderance not having a confirmed module guide
+- **[2026-03-12 10:33:40 UTC] Adeline Choo:** ok. they still need to make sure it's up though. Someone else in the course I mean. But yeah, let me know what happens. Thanks Josh
+- **[2026-03-12 10:40:10 UTC] Joshua JOHNSON:** It's just been uploaded to teams a few minutes before I had a chance to speak to him! It's still not live on Moodle, but we do all have a module guide to follow now. Thanks
+- **[2026-03-12 10:40:57 UTC] Adeline Choo:** h ok, can you take note and maybe submit that as a written comment to your course committee meeting
+- **[2026-03-12 10:41:12 UTC] Adeline Choo:** 9 That your module guide only got uploaded in Week 6
+- **[2026-03-12 10:41:31 UTC] Joshua JOHNSON:** yep absolutely
+- **[2026-03-12 10:41:59 UTC] Adeline Choo:** Doesn't really need big disucssion, but they should minute and note that this is happening and they need to ensure this happens earlier in future
+- **[2026-03-12 10:42:03 UTC] Adeline Choo:** Thanks Josh
+- **[2026-03-12 10:42:24 UTC] Joshua JOHNSON:** no worries
+- **[2026-03-13 18:22:51 UTC] Jose Roberto GÁLVEZ VARGAS:** Hi adeline. Just an update from the 3d art course. I'm so happy to let you know that the missing software/features issue is now resolved. Imraan has been working hard and constantly reporting the issue to the IT department so a big thanks to him. On other side, we still having hardware related issues as mentioned in this chat. Today, one of my peers experienced this issue again and it took him like 30 min to be able to start the lesson due to the software loading time. This is our big concern right now as we want to create high quality content to showcase our work but, at the moment, we are very limited when working with the University hardware. We can discuss this further next week if you have time. Thank you very much for your help and support. Enjoy the weekend!!!
+- **[2026-03-17 10:20:31 UTC] Jose Roberto GÁLVEZ VARGAS:** Nice, i'll do that. Also, how can I nominate Imraan for the lecturer's award. His help and involvement has been crucial to inprove the quality of the course and I don't see any options that fits something like that. About the other student reps,no one contactes me so far...
+- **[2026-03-17 10:40:11 UTC] Adeline Choo:** https://www.eastlondonsu.com/whatson/awards/staff/ - the form is at the bottom of the pg
+- **[2026-03-17 10:40:54 UTC] Jose Roberto GÁLVEZ VARGAS:** P Yeah, I was looking yesterday but couldn't find the right options for him
+- **[2026-03-17 10:41:00 UTC] Jose Roberto GÁLVEZ VARGAS:** I'll double check later
+- **[2026-03-17 10:41:33 UTC] Adeline Choo:** ) Could go under outstanding teacher
+- **[2026-03-17 10:42:55 UTC] Jose Roberto GÁLVEZ VARGAS:** Z As this is not really a teaching thing, I want sure If that one was the correct one
+- **[2026-03-17 10:43:12 UTC] Jose Roberto GÁLVEZ VARGAS:** Z As this is not really a teaching thing, I want sure If that one was the correct one
+- **[2026-03-17 11:29:18 UTC] Adeline Choo:** is he a good teacher ? You could talk about the teaching and also how he has gone over and above to ensure you have the resources you require to learn well. Think of teaching in a more broad way
+- **[2026-03-17 12:02:30 UTC] Jose Roberto GÁLVEZ VARGAS:** Oh yeah, he is. But just wanted to highlight all the work Hes been doing to keep the course running.I'll do It that way. Thank you!
+- **[2026-03-26 09:00:23 UTC] Adeline Choo:** m Hi both, could you pleaase check to see if you have an invitation to your course committee meeting yet
+- **[2026-03-26 09:05:47 UTC] Jose Roberto GÁLVEZ VARGAS:** Q Hi Adeline. I have an email from March the 3rd but I can not see any dates
+- **[2026-03-26 09:06:15 UTC] Jose Roberto GÁLVEZ VARGAS:** [Image / Screenshot Shared]
+- **[2026-03-26 09:06:47 UTC] Adeline Choo:** @ oh that's from us which is a reminder to collect feedback
+- **[2026-03-26 09:07:03 UTC] Jose Roberto GÁLVEZ VARGAS:** ok, I found it
+- **[2026-03-26 09:07:08 UTC] Adeline Choo:** E Did you get anything from QAE. Should be a calendar invitation
+- **[2026-03-26 09:07:43 UTC] Jose Roberto GÁLVEZ VARGAS:** # I have one for 11th of April
+- **[2026-03-26 09:08:08 UTC] Adeline Choo:** on a saturday?!
+- **[2026-03-26 09:08:25 UTC] Jose Roberto GÁLVEZ VARGAS:** [Image / Screenshot Shared]
+- **[2026-03-26 09:08:49 UTC] Jose Roberto GÁLVEZ VARGAS:** It says Tuesday
+- **[2026-03-26 09:09:08 UTC] Jose Roberto GÁLVEZ VARGAS:** oh sorry the 7th
+- **[2026-03-26 09:09:10 UTC] Jose Roberto GÁLVEZ VARGAS:** hjajja
+- **[2026-03-26 09:09:13 UTC] Adeline Choo:** it's for 7th April
+- **[2026-03-26 09:09:21 UTC] Jose Roberto GÁLVEZ VARGAS:** yeah, 11 is the time
+- **[2026-03-26 09:09:33 UTC] Adeline Choo:** @ hahah a little less bad but still within your holidays ha
+- **[2026-03-26 09:10:01 UTC] Jose Roberto GÁLVEZ VARGAS:** , Do you think it can be moved forward?
+- **[2026-03-26 09:10:27 UTC] Jose Roberto GÁLVEZ VARGAS:** H I guess that a lot of students/staff will be in my situation ahha
+- **[2026-03-26 11:07:48 UTC] Adeline Choo:** Could you email Tanzina in the email and say it's during the holidays. Can it be moved? Check with the other reps in that invitation. Cause it's better when it comes from students saying I want to attend, please move it. You can cc me for visibility
+- **[2026-03-26 11:20:23 UTC] Jose Roberto GÁLVEZ VARGAS:** I'll do, thanks
+- **[2026-03-30 14:34:28 UTC] Adeline Choo:** G Heya, any chance you've emailed Tanzina about moving the meeting
+- **[2026-03-30 14:40:27 UTC] Jose Roberto GÁLVEZ VARGAS:** [ Hi! I couldn't do It yet. But I just seen that there is a new meeting for the 15/04?
+- **[2026-03-30 14:44:24 UTC] Adeline Choo:** - oh good, they must have rescheduled it
+- **[2026-03-30 14:44:51 UTC] Adeline Choo:** h Well make sure you take note of it and attend. I think you've got quite important things to raise
+- **[2026-03-30 15:05:59 UTC] Jose Roberto GÁLVEZ VARGAS:** @ Yes,i'll definitely attend that one.Thank you Adeline
+- **[2026-08-20 12:55:59 UTC] Jose Roberto GALVEZ VARGAS:** Hi Adeline Choo hope you are well and having a great summer. We have some news about our course. We have received an email informing us that we are enrolled in a different course now..... can we have a meeting to discuss this and other concerns as soon as possible? Thanks in advance.
+- **[2026-08-20 13:04:48 UTC] Joshua JOHNSON:** Seconded!
+- **[2026-08-20 13:30:15 UTC] Adeline Choo:** ( What have you been enrolled onto?
+- **[2026-08-20 13:31:14 UTC] Joshua JOHNSON:** _Both game art and design and I believe programming are all on BA HONS Animation and Game Design
+- **[2026-08-20 13:31:43 UTC] Jose Roberto GALVEZ VARGAS:** { So we all have been transferred (Game design, Game Programming and Game 3d Art) to BA HONS Animation and Game Design
+- **[2026-08-20 13:32:35 UTC] Jose Roberto GALVEZ VARGAS:** = It doesn't make sense for 3D Artist and Programmers. I
+- **[2026-08-20 13:33:03 UTC] Joshua JOHNSON:** LOr design either really, animation is a completely different branch of study
+- **[2026-08-20 13:33:25 UTC] Joshua JOHNSON:** This has been done without any notice or consultation
+- **[2026-08-20 13:33:45 UTC] Jose Roberto GALVEZ VARGAS:** This has been done without any notice or consultation
+- **[2026-08-20 13:34:40 UTC] Joshua JOHNSON:** I have checker my UEL direct and it doesn't show any modules for next academic year. I use to have all the modules for level 6 already assigned before this
+- **[2026-08-20 13:35:52 UTC] Jose Roberto GALVEZ VARGAS:** I have checker my UEL direct and it doesn't show any modules for next academic year. I use to have all the modules for level 6 already assigned before this
+- **[2026-08-20 13:37:46 UTC] Jose Roberto GALVEZ VARGAS:** [Image / Screenshot Shared]
+- **[2026-08-20 13:38:37 UTC] Jose Roberto GALVEZ VARGAS:** This was the email the sent me beginning of August
+- **[2026-08-20 13:40:06 UTC] Jose Roberto GALVEZ VARGAS:** This is the one the sent me this morning
+- **[2026-08-20 13:40:34 UTC] Joshua JOHNSON:** [Reply] Ditto. All my previous grades have also been wiped from UEL direct in the results section
+- **[2026-08-20 13:43:12 UTC] Jose Roberto GALVEZ VARGAS:** same for me
+- **[2026-08-20 13:44:47 UTC] Joshua JOHNSON:** [Image / Screenshot Shared]
+- **[2026-08-20 13:44:53 UTC] Joshua JOHNSON:** G I have notices my student number changed at the en and now is /2
+- **[2026-08-20 13:44:58 UTC] Jose Roberto GALVEZ VARGAS:** G I have notices my student number changed at the en and now is /2
+- **[2026-08-20 13:45:05 UTC] Joshua JOHNSON:** Oh yeah same
+- **[2026-08-20 14:01:03 UTC] Jose Roberto GALVEZ VARGAS:** Adeline Choo just sent you an email with all the info we have so far
+- **[2026-08-20 15:23:30 UTC] Adeline Choo:** hey both! thanks for this. Sorry, was in a meeting. Let me check with Dekan what's happening. Might be an administrative thing because as far as we've been told, there is no change for L6 Games students and for Animation they had the option to choose which degree title they wanted
+- **[2026-08-20 15:25:09 UTC] Adeline Choo:** where are you getting these emails from? Joshua JOHNSON can you email them too to say that you didn't agree to this and that the information you received is that Games students will be carrying on in their respective streams
+- **[2026-08-20 16:11:25 UTC] Jusete Gv:** [Image / Screenshot Shared]
+- **[2026-08-20 16:11:26 UTC] Jusete Gv:** 7 From Rosemary (ACI Dean) let's see what they say
+- **[2026-08-20 16:13:26 UTC] Joshua JOHNSON:** * Great, hopefully it's only an error
+- **[2026-08-20 16:14:11 UTC] Jusete Gv:** * Great, hopefully it's only an error
+- **[2026-08-21 07:59:23 UTC] Adeline Choo:** Heya, yeah I checked with Dekan as well. It's just an error. Can you let me know when it's resolved please. Thanks for raising this
+- **[2026-08-21 09:26:01 UTC] Adeline Choo:** thanks Jose. Do you know if those upgrades will still be relevant for the new iteration of the course? Because the course is closing in its current form but they'll still be running an Animation and Games Design course. Would those requirements be needed for that as well?
+- **[2026-08-21 09:28:11 UTC] Adeline Choo:** H If I'm not mistaken there still is meant to be elements of 3D Art
+- **[2026-08-21 13:17:09 UTC] Adeline Choo:** r I think the email should come from you because it's harder for them to ignore when it's what students want
+- **[2026-08-21 13:17:27 UTC] Adeline Choo:** but keep us in the loop
+- **[2026-08-21 13:21:03 UTC] Jusete Gv:** G Sure. Thank you very much for your help. I'll keep you informed
+- **[2026-08-21 14:12:37 UTC] Joshua JOHNSON:** I strongly agree with Jose's points. Over the past two years, the only direct expenditure for our cohort was for Comic Con tickets, and even those were not confirmed until days beforehand. Last year's Level 6 students saw practically no budget allocation due to the course merger, and we are concerned that a similar situation is unfolding for us. Since our cohort began, all we have received has been cuts, be that to lecturers, spaces available to us to use, events to attend, or just things as basic as computers fit for the tasks that are set for us to complete, essentially none of it has been smooth for anyone. While I am not personally affected, I know several Game Art students who are literally unable to work to the same potential of others because they lack sufficient hardware at home and the university's equipment is no longer fit for purpose. For a 27,000 degree, it is reasonable to expect at least one modern computer from this decade; currently the computers rely on graphics cards released in 2018. I am more than willing to draft an email outlining these shared concerns to management. However, given our history of requesting improvements only to face further cuts, I'm sceptic about how effective it will be without a unified push.
+- **[2026-08-21 14:16:53 UTC] Adeline Choo:** hmmm... because we have been having conversations with them I'd say send an email first. The email should highlight the points you have both raised, and asking Dekan and Clare to detail out what the school plans to do ahead of students returning next month
+- **[2026-08-21 14:18:22 UTC] Adeline Choo:** See what their response is, if it's not satisfactory next step might be try to get all affected students to sign a petition
+- **[2026-08-21 14:26:27 UTC] Joshua JOHNSON:** sounds good
+- **[2026-09-01 09:15:22 UTC] Adeline Choo:** E Hi both, any chance you've sent that email to Dekan and Clare?
+- **[2026-09-01 09:16:56 UTC] Adeline Choo:** Hi Adeline. Plan have changed. Apparently Josh won't be School rep because of the school merging (he will need to do another application for the new one). So I think I'll just send the email as Course rep and see what they say
+- **[2026-09-01 09:20:15 UTC] Jusete Gv:** Hi Adeline. Plan have changed. Apparently Josh won't be School rep because of the school merging (he will need to do another application for the new one). So I think I'll just send the email as Course rep and see what they say
+- **[2026-09-01 09:21:14 UTC] Adeline Choo:** [Reply] sounds like Josh is drafting an email as well, maybe you could jointly send it as 25/26 reps from games design and 3d art courses
+- **[2026-09-01 09:21:16 UTC] Joshua JOHNSON:** [Reply] Before you do still let me show it to Patrick later today to see if he has anything to add that I missed
+- **[2026-09-01 09:21:38 UTC] Joshua JOHNSON:** [Reply] sounds good to me
+- **[2026-09-01 09:22:12 UTC] Jusete Gv:** [Reply] What time you meeting him?
+- **[2026-09-01 09:22:12 UTC] Adeline Choo:** o heard about this btw. Sorry Josh! it's such an unfortunate thing that we didn't know was going to happen
+- **[2026-09-01 09:22:34 UTC] Joshua JOHNSON:** [Reply] 12-1ish
+- **[2026-09-01 09:23:33 UTC] Jusete Gv:** [Reply] We even don't know who's going to teach us... a month before lessons start.
+- **[2026-09-01 09:24:01 UTC] Joshua JOHNSON:** c They did it that way for us to no have time to react as the course will start in a few weeks
+- **[2026-09-01 09:24:42 UTC] Jusete Gv:** c They did it that way for us to no have time to react as the course will start in a few weeks
+- **[2026-09-01 09:25:01 UTC] Jusete Gv:** _ Even lecturers still waiting for a confirmation if they are going to be redundant or not
+- **[2026-09-01 09:25:19 UTC] Jusete Gv:** ' This university is unbelievable
+- **[2026-09-01 09:25:43 UTC] Joshua JOHNSON:** [Reply] Not sure if you got the email or not but jets gone
+- **[2026-09-01 09:27:51 UTC] Adeline Choo:** [Reply] is that a good lecturer?
+- **[2026-09-01 09:30:57 UTC] Jusete Gv:** [Reply] Yeah, I have it
+- **[2026-09-01 09:31:07 UTC] Joshua JOHNSON:** [Reply] When we only have 2-3 lecturers good sorta leaves the equation after a while I just hope we have someone to teach us
+- **[2026-09-01 09:31:07 UTC] Joshua JOHNSON:** WBut she was the only one to specialise in all the narrative stuff for us game designers
+- **[2026-09-01 09:31:49 UTC] Joshua JOHNSON:** WBut she was the only one to specialise in all the narrative stuff for us game designers
+- **[2026-09-01 09:31:53 UTC] Jusete Gv:** [Reply] Nothing to worry about here...hahaha
+- **[2026-09-01 09:32:50 UTC] Joshua JOHNSON:** S They working out how to bring Nate, an hpl that was replacing Dan in Level 4
+- **[2026-09-01 09:33:25 UTC] Jusete Gv:** S They working out how to bring Nate, an hpl that was replacing Dan in Level 4
+- **[2026-09-01 09:33:53 UTC] Jusete Gv:** I It was kind of approved but with the new situation now who knows..
+- **[2026-09-01 09:34:03 UTC] Jusete Gv:** This is for 3d Art
+- **[2026-09-01 09:34:51 UTC] Jusete Gv:** C Also, do you guys know who's the Course rep for programming?
+- **[2026-09-01 09:35:19 UTC] Jusete Gv:** = So all the three course rep can send the email to them
+- **[2026-09-01 09:35:28 UTC] Joshua JOHNSON:** I can ask imraan when I see him
+- **[2026-09-01 09:35:32 UTC] Joshua JOHNSON:** I can ask imraan when I see him
+- **[2026-09-01 09:35:37 UTC] Jusete Gv:** I'll ask Imraan
+- **[2026-09-01 09:36:01 UTC] Joshua JOHNSON:** Sure whichever works
+- **[2026-09-01 10:44:22 UTC] Adeline Choo:** Do you know Laura? That's the programming rep Laura Buitrago Lamar
+- **[2026-09-01 10:50:56 UTC] Jusete Gv:** ' Yep, I'll contact her. Thank you
+- **[2026-09-07 12:23:28 UTC] Adeline Choo:** 6 Any chance anyone has responded to your email?
+- **[2026-09-07 12:27:14 UTC] Joshua JOHNSON:** G yeah I haven't heard anything. What did Dekan ask staff members?
+- **[2026-09-07 12:28:13 UTC] Adeline Choo:** G yeah I haven't heard anything. What did Dekan ask staff members?
+- **[2026-09-07 12:29:52 UTC] Joshua JOHNSON:** b Ah right. Thanks Josh. He's probably trying to find out some info before responding to you
+- **[2026-09-07 12:32:02 UTC] Adeline Choo:** b Ah right. Thanks Josh. He's probably trying to find out some info before responding to you
+- **[2026-09-07 12:33:33 UTC] Joshua JOHNSON:** } will give it till midweek. I'll send a polite query to Dekan to check that these students concerns are being addressed
+- **[2026-09-07 12:35:43 UTC] Adeline Choo:** } will give it till midweek. I'll send a polite query to Dekan to check that these students concerns are being addressed
+- **[2026-09-07 14:11:58 UTC] Jusete Gv:** Hi. Yes, so it's what Josh said. Dekan sent an email to Imraan specifically cc-ing Patrick and a few members of the staff asking for clarification on what stage they're about this. This is strange because Imraan has been asking and dealing with IT and managers/dean from a year ago. Imraan said he's going to speak with IT again but this will need to be approved from theanager/dean at the end of the day. We will let you know with any news that happens.
+- **[2026-09-07 14:15:13 UTC] Adeline Choo:** Thanks both!
+- **[2026-09-17 09:01:32 UTC] Adeline Choo:** hello Joshua JOHNSON , Jose Roberto GALVEZ VARGAS - SU have a meeting about the merge. We're putting together some questions. Is Imraan the only games lecturer left?
+- **[2026-09-17 09:01:54 UTC] Adeline Choo:** d What other kind of specialism do you need from staff to actually properly have a good degree?
+- **[2026-09-17 09:02:16 UTC] Adeline Choo:** J E.g. you mentioned someone to teach narrative. what other elements?
+- **[2026-09-17 09:18:25 UTC] Jusete Gv:** Hi Adeline. Imraan and Patrick Quinnell are the lecturers left from last year. Imraan was in conversations with a HPL, Nate Orona, who was teaching us level 4 and he was the best one we had so far haha. Last news I have is that he agreed but Imraan put it on hold due to the merge.
+- **[2026-09-17 09:19:25 UTC] Jusete Gv:** " That's for the 3d art side.
+- **[2026-09-17 09:20:18 UTC] Jusete Gv:** Also Imraan has been asking for quotes for the new hardware but need to be approved by the managers/dean or whoever is in charge of the budget.
+- **[2026-09-17 09:20:45 UTC] Jusete Gv:** V If Imraan is in that meeting, he will be able to confirm and clarify a bit more
+- **[2026-09-17 10:16:38 UTC] Adeline Choo:** [Reply] he won't be
+- **[2026-09-17 10:19:42 UTC] Adeline Choo:** So for example, take a law programme, most law academics would be able to teach L4 cause it's quite general. But when we get into electives, I'd like a lecturer with a background specifically in international human rights law to teach a module on that rather than a random corporate lawyer trying to talk about international treaties and human rights
+- **[2026-09-17 10:47:55 UTC] Jusete Gv:** Yes, Imraan, Patrick and the HPLwill definitely have the skills we need. Nate has industry experience as he worked for a few studios doing 3d art, texturing and even SFX. He also has teaching experience in University and College.
+- **[2026-09-17 10:49:03 UTC] Jusete Gv:** { That's the profile we where looking at. Someone that can tell us how the industry works and taught us using tha base
+- **[2026-09-18 19:17:47 UTC] Joshua JOHNSON:** Ditto for game design, the main things we need is better hardware, and I think overall as a cluster more of our budget being allocated towards marketing opportunities. Ideally a lecturer with a writing background would be good as Patrick is more technically focused, but the priority at this point is hardware and events.
+- **[2026-10-01 08:54:46 UTC] Jusete Gv:** Hi Adeline Choo . So we have a new course lead, her name is Pooja Pottenkulam, and she is one of the lecturers for the Animation course. I'm afraid that she won't follow Imraan's work on requesting the new hardware we need. Everything else appears to be sorted (software and hpl lecturers) for the 3d art course. Do you think we should ask her about the hardware issues or shall we let the Union contact her first?
+- **[2026-10-01 08:58:18 UTC] Adeline Choo:** I think you can ask her. Send her a list of things you were working on with Imraan. She's still working closely with Patrick so tell her Patrick is aware of all this too
+- **[2026-10-01 08:58:26 UTC] Adeline Choo:** " has imraan officially left?
+- **[2026-10-01 08:59:01 UTC] Adeline Choo:** btw, do you know any newly recruited L4 students btw?
+- **[2026-10-01 09:00:17 UTC] Jusete Gv:** [Reply] No, as far as I know. He is still the lecturer for the programming course but I'm not sure what his situation is atm. I hear that he may be affected by the redundancies but nothing is official yet
+- **[2026-10-01 09:01:18 UTC] Jusete Gv:** [Reply] No, but the other day in the induction a few students for the new course where a bit confused on where they have to go (their induction was the day before) and apparently they're where told that their course was stil games?
+- **[2026-10-01 09:03:28 UTC] Adeline Choo:** ) I'll ask Patrick and let you know
+- **[2026-10-01 09:43:11 UTC] Joshua JOHNSON:** hey Joshua JOHNSON for tomorrow, I'll have to make the training at DL instead of ST because we have a PGR induction that I need to be around for
+- **[2026-10-01 09:55:53 UTC] Jusete Gv:** ) I'll ask Patrick and let you know
+- **[2026-10-01 09:56:34 UTC] Adeline Choo:** E Patrick doesn't know either unfortunately. I tried to ask him

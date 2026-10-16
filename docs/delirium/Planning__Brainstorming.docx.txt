@@ -1,0 +1,90 @@
+Idea 1: Scaling thingy
+Audio: we could have it so that your size depends how you hear things (for lore reasons because of the size of your eardrums depending on size) e.g. air conditioning for normal size, floorboards creaking is very loud for smaller size etc. 
+Theme: Brutalism, Fog, Contrasting lighting 
+Theme examples: Portal, Abiotic Factor, yeah idk any games lol
+Mechanics (Note, we want to try to have them be not only usable, but better in VR): - Scaling player up and down
+- Hiding
+- sight mechanic for enemies?
+Microphone: Dynamic sound – make more noise when large, less when small (for the levels where there's a choice between small and big, this won't be all levels)
+--
+Idea 2: Scaling, but leaning into the sci-fi (escape room-esque) plot (not sure if the first idea is similar)
+Themes: Sci-fi, dystopian, horror, first person
+Mechanics: Scaling – Player must collect items that change their scale accordingly, eg. grabs an item that scales them up so that they can cross large distances of a room, grabs an item that scales them down, and allows them to hide from enemies easier. 
+Enemies themselves – specific enemies per room and then enemies that follow the player throughout the entire game; specific room enemies could be akin to weeping angels, where you need to keep looking at the enemy to stop them moving (this is where a larger scale for the player would be handy) or game enemies, in which they constantly roam around and once they see you, charge at you (being smaller would help here, hide behind small objects)
+Features: VHS effect over the game (would hide the low-poly aspect a bit more, would mean we could implement more in a scene?)
+Loose Narrative: :/ 
+Similar games: SCP style games, 
+--
+Idea 3: Brutalist atmospheric horror
+Themes: Horror, first person, atmospheric, psychological 
+Mechanics: Enemies - 
+Features: Not necessarily scaling the player themselves, but with brutalist architecture, it's easy to create a sense of megalophobia with large, towering buildings. Things such as empty or desolate cityscapes can also be used to elevate a sense of being alone. Play with the scaling of the surroundings basically. 
+Loose Narrative: Player is sent to explore the empty city and must navigate through this maze of brutalist architecture whilst shadowy things chase after them. If leaning more into more psychological and atmospheric themes, the player could stumble upon scenes through the landscape (eg. Standing out in it all is a tiny patch of nature; something related to the death of people in the city; supernatural/out of this world beings) that tell the story of why everything occurred there. At the end of the game, the player would ascend to a large viewing platform, where they would look down at the city (would be quite fun in VR) and make a choice like Concrete Tremor or something different (lol, im not a narrative designer). 
+Similar games: The Lightkeeper, Concrete Tremor, Tsutomu Nihei (Not game, but interesting themes of brutalism throughout his manga)
+Idea 4: Escape UEL
+Ideas: 
+Superliminal -> scaling?
+Viewfinder – perspective alignment?
+Graphic theme of like dredge in terms of portraying monsters as mental shit..? like the oil visual effect (do something unique and isn’t generic ahhhhh. Blood scary shadows etc
+Mechanics:
+Turn around and different setting – transition levels
+Player only moves when looking at you -> works with the “looking at makes a difference” theme
+Player in wheelchair – mental hospital
+Monster is in patient (player)’s mind  just a doctor
+Idea 2
+Atmospheric Horror Game
+Inpiration
+Obey the voice, a chair in the room, Supernormal, paranormal, alien isolation, outlast, PT
+first-person survival horror game where the player must escape a haunted-like building while avoiding a scary and creepy shadow/entity that reacts to in-game and real-life microphone sounds.
+In-Game sound mechanics
+Microphone-Responsive Mechanics.
+Psychological Horror, Fear and tension, immersive atmosphere
+stealth/hiding gameplay
+Exploration and Puzzles
+Low Resource Management
+Minimal UI
+DON’T LOOK AWAY mechanics
+Inspired by Supernormal and SCP-style horror.
+Behaviour
+The ghost/monster only moves when the player is NOT looking at it
+In VR, this is terrifying because the player physically turns their head
+When looked at → freezes
+When not looked at → teleports or slowly moves closer
+MICROPHONE / NOISE SYSTEM
+Basic System
+Use mic input level (threshold-based)
+If player speaks or breathes loudly → monster enters hunt mode
+Light Mechanic
+Torch is VR controller-based
+Light reveals clues
+Light repelsthe entity
+Lights turn on → monster reacts differently
+Puzzle Types (Easy to Build)
+Key & Keycard Doors
+Physical key models
+Keycard swipe panels
+Player must search rooms
+Symbol / Code Puzzle
+Notes on walls
+Numbers on photos
+Combination lock in VR
+ Environmental Puzzle
+Arrange objects
+Align mirrors
+Turn mannequins (but they move back when not watched)
+PSYCHOLOGICAL HORROR
+Environmental Changes When Not Looked At
+Photos change
+Writing appears
+Doors move
+Chairs shift position
+VOICE GUIDANCE
+AI voice guides player
+Sometimes lies
+Gives objectives
+Talks directly to player
+RESOURCE MANAGEMENT 
+Very simple:
+Torch battery
+Phone battery, notes and one time use items (keys, cards...)
+No crafting. No combat.

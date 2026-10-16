@@ -1,0 +1,128 @@
+GAME DESIGN DOCUMENT: Delirium
+Genre: Psychological Survival Horror 
+Perspective: First-Person (Seated VR Experience)
+Platform: Quest/PCVR
+Target Session Time: 5 Minutes 
+Core Loop: Physically manoeuvre a wheelchair through a shifting asylum while managing line-of-sight with enemies who only move when unobserved.
+Setting: The Institute. A labyrinthine mental ward that defies physics in the mind of the patient.
+Concerns: Needs to be easily picked up by people walking by – can do this with immediate mechanics not just relying on slow narrative  scaling idea would work for this but doesn’t fit with narrative
+1. Summary
+Concept
+A tension-based VR horror experience where physical effort meets paranoia. The player is a patient confined to a wheelchair in a “crumbling” mental institute. Confined to a wheelchair, to escape, they must physically wheel themselves forward. However, the environment changes when they look away, and the "Staff" (enemies) only move when they aren't being watched. The player makes their way through this mental hospital whilst they hallucinate the environment changing and disappearing/reappearing.
+Hook
+The game combines the physical struggle of tank-control wheelchair movement with the "Weeping Angel" horror mechanic, forcing players to choose between looking forward to navigate or looking backward to survive. They cannot do both effectively at the same time. The control scheme of the game is designed to induce panic and physical fatigue.
+2. Gameplay Mechanics
+2.1. Controls: The Wheelchair 
+Primary Control (Immersive): 
+The player reaches down to grab the virtual wheels of the chair.
+Move: Pushing hands forward/backward moves the chair.
+Turn: Pushing one hand forward and the other back rotates the chair 
+Secondary Control (Accessibility): 
+Dual Analog Stick
+Design Note: 
+The wheelchair has "weight." It does not accelerate instantly. This inertia creates vulnerability when fleeing.
+2.2. The Sight Mechanic (Enemy Logic)
+The enemies ("The Staff") adhere to strict "Quantum Observation" rules.
+State A - Observed: Safe): 
+When within the Player’s Camera Frustum, the enemy is frozen.
+Feedback: Enemy twitches/vibrates; low-frequency audio hum.
+State B - Unobserved (Danger): 
+When off-screen, the enemy moves at high speed toward the player.
+Feedback: Rapid, wet footsteps; shuffling sounds.
+Game Over: 
+If the enemy touches the player -> Jumpscare -> Reset to last "Geometry Shift" (Checkpoint).
+If the player swings the wheelchair in reverse when looking at the enemy, the enemy immediately jumpscares and kills them.
+2.3. The Sanity System (How feedback’s communicated with no HUD)
+As there is no health bar, the player's status is communicated entirely through the environment.
+Healthy: World is solid, geometry is stable.
+Insane/Endangered:
+The Void: 
+As sanity slips (or the player progresses), the floor and ceiling of the map become obstructed by black fog.
+Chromatic Aberration:
+ Intensity increases as enemies get closer?
+FOV Warping: 
+The camera stretches, simulating panic – this might make the player sick so we can experiment with this#
+3. Characters
+3.1. The Protagonist
+Identity: 
+Blank Slate. No voice, no face seen.
+Backstory: 
+Ambiguous. Notes found in the world say "GET OUT" or "IT'S NOT REAL," but it is unclear if these are warnings from others or the patient's own subconscious projections.
+Capabilities: 
+Non-combatant. Can only move and observe.
+3.2. The Antagonists (The Staff)
+Appearance: 
+Figures in medical scrubs and lab coats. Features are blurred or indistinguishable, can become more monster-esque as the game moves on.
+Behavior: 
+Relentless pursuers.
+Evolution:
+Beginning: Look like normal doctors.
+End: As they get closer, they glitch. Stethoscopes fuse into flesh, limbs elongate.
+Audio: They speak English reversed and slowed down (e.g., "tneitaP ,ereh kcab emoC" for "Come back here, Patient").
+4. Environment & Level Design
+4.1. Environmental Logic (Object Permanence)
+The world only exists where the player looks.
+The vanishing: 
+If the player wheels down a hallway and looks back, the hallway they just came from may be gone, replaced by a solid wall or a sheer drop into the void. As they turn back the map could change again? This can also extend to rooms. The geometry switching when the player turns around will act like checkpoints, internally we will refer to them as levels e.g. level 1 the player walks from the elevator to a door, when they go through it if they turn around it disappears, and they’re now in level 2, when they turn a corner and the path behind them becomes a wall they’re now in level 3. 
+The Loops: 
+Looking away and looking back might change a door into a brick wall, forcing the player to find a new path.
+4.2. Level Aesthetics
+The Ward (Primary): 
+Sterile white tiles, grey walls, harsh fluorescent lighting.
+The Rainbow Room (Special Zone):
+Purpose: Narrative pacing / "Safe" Room.
+Visuals: Hyper-saturated colors, floating objects, impossible geometry. A stark contrast to the grey ward.
+Audio: Distorted, dream-like music.
+Function: No enemies enter here?
+Notes: 
+In each level we will have the environment get more horror-esque and further from a hospital, enemies get faster etc. 
+Need to make sure the setting isn’t too uninteresting – divert common horror tropes, almost make the player feel safe at first with lighting lack of fog
+Reminders: We can do literally anything we want as long as we format it under the guise of hallucination
+5. Narrative Progression
+Phase 1: Admission (Tutorial)
+Start: Elevator doors open.
+Goal: Reach the end of the corridor
+Atmosphere: Quiet, sterile. Floor and ceiling are visible.
+Learning: Player masters the wheelchair controls.
+Phase 2: 
+Event: Player turns a corner. When they look back, the corridor is gone (wall sealed shut).
+Threat: The first Doctor spawns behind the player.
+Action: Player must alternate between wheeling frantically and looking back to freeze the pursuer.
+Environmental Storytelling: Notes appear on walls: "THEY AREN'T REAL," "DON'T LET THEM TOUCH YOU."
+Rooms: offices etc to go into 
+7. Audio
+Audio Landscape
+Diegetic: 
+Squeaky wheels (feedback for movement speed), heavy breathing (increases with proximity to enemies).
+Enemies: 
+Reversed speech, wet footsteps, vibrating hum when frozen.
+Monster based off of a doctor -> stethoscope etc
+Music:
+Ward: Low, industrial drone.
+Rainbow Room: Warped, music-box style melody.
+8. Development Roadmap 
+Programming:
+Wheelchair Physics Controller (Tank drive).
+Enemy AI (Line-of-Sight movement logic).
+Dynamic Level Streaming (Object permanence system).
+Art:
+Wheelchair model (arms/hands visible).
+Doctor/Monster model (with morph targets for "Glitch" effect).
+Modular Hospital Kit (Walls, Floors, Doors).
+"Rainbow Room" unique assets.
+Sound:
+Wheel squeaks (looping).
+Reversed voice lines.
+Ambient drone.
+Proximity mic so more sound from player makes enemies move towards them or find them faster?
+Game names:
+Peripheral
+Oculus
+Lunacy
+Instability 
+Delirium 
+Dead weight
+Headspace
+Placebo
+Prognosis
+Notes:

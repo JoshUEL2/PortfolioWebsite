@@ -1,0 +1,59 @@
+--- ppt/slides/slide1.xml ---
+GAME TITLE: Delirium (working title) SUBTITLE Team NAME
+
+--- ppt/slides/slide10.xml ---
+ Character Art Asset Screenshots Final design Entity has a face carved in half, the front part faces forward at an angle on the entity’s head. It stays in place using K wires. The cut in half face shows the entire flesh makeup of its face. When the entity would talk and call out to the player, it tilts its head so that the front faces them. The chest is hollowed out and the skin peeled back; guts sit at the bottom of the opening and hang out loosely. The entity stands on abnormally formed feet and moves around slightly animalistically, though still on two feet. In its hands, it holds a stethoscope, in which, upon the player gazing upon the entity and causing it to freeze, will continue to swing back and forth like a pendulum. 
+
+--- ppt/slides/slide11.xml ---
+Visual inspirations
+
+--- ppt/slides/slide12.xml ---
+Art Asset screenshots
+
+--- ppt/slides/slide13.xml ---
+Development Roadmap Programming: Wheelchair Physics Controller (Tank drive). Enemy AI (Line-of-Sight movement logic). Dynamic Level Streaming (Object permanence system). Art: Wheelchair model (arms/hands visible). Doctor/Monster model (with morph targets for "Glitch" effect). Modular Hospital Kit (Walls, Floors, Doors). "Rainbow Room" unique assets. Sound: Wheel squeaks (looping). Reversed voice lines. Ambient drone. Proximity mic so more sound from player makes enemies move towards them or find them faster?
+
+--- ppt/slides/slide14.xml ---
+Risks & mitigation strategy Risk: Walk-Up Accessibility & Slow Onboarding Concern: Because the target session time is only 5 minutes, the game needs to be easily picked up and understood by people walking by. Mitigation: We will focus entirely on immediate, intuitive gameplay mechanics rather than relying on a slow narrative build-up. While a player-scaling mechanic was briefly considered to achieve this, it was discarded as it did not fit the asylum narrative. Instead, the tension of the physical wheelchair movement and the immediate "don't look away" observation mechanics serve as the instant hook. Risk: VR Motion Sickness  Concern: Features designed to communicate dropping sanity, specifically FOV warping to simulate panic, run the risk of making the player physically sick. Mitigation: The core game is anchored as a First-Person Seated VR Experience, which naturally helps ground the player. We will experiment carefully with the FOV warping during playtesting and can rely on alternative visual cues, like black fog obstructing the floor and ceiling, if the camera stretching proves too nauseating. Risk: Physical Fatigue & Control Accessibility Concern: The primary immersive control scheme requires players to physically reach down, grab virtual wheels, and use tank controls to move. This is intentionally designed to induce panic and physical fatigue. Mitigation: Keeping the target session length strictly to 5 minutes prevents long-term overexertion. Additionally, for players who cannot perform the physical motions, we are implementing a secondary accessibility control scheme utilizing dual analogue sticks with the same tank drive logic.
+
+--- ppt/slides/slide15.xml ---
+ESRB Rating Mature 17+ Frightening/Intense Graphics: The game relies heavily on an immersive atmosphere of fear and tension. The player is stalked by relentless pursuers. As these enemies get closer, their models glitch and become more monster- esque , featuring elongated limbs and stethoscopes that fuse into their flesh. Violence: There is no combat in the game. However, if an enemy touches the player, it triggers an immediate  jumpscare  that kills the player and resets the level. Thematic Elements: The experience is defined as psychological survival horror. It takes place in a labyrinthine mental ward , and the core narrative involves the player character experiencing paranoia and hallucinating that their environment is changing. 
+
+--- ppt/slides/slide16.xml ---
+Monetization Strategy Due to  Delirium 's short, intense five-minute target session time and its design focus on immediate mechanics that are easily picked up by walk-up players, our monetisation strategy pivots away from a traditional full-price retail model.  Instead, we will focus on high-turnover environments by licensing the game to commercial VR arcades and pop-up events, where the rapid gameplay loop maximises revenue potential per headset.  For home users on Quest and PCVR platforms , the game will be released as a low-cost premium digital experience, positioning it as an impulse buy that strongly appeals to streamers and influencers looking to generate highly watchable reaction content from the game's physical panic and sudden  jumpscares .  Finally, should the team decide to expand  Delirium  into a full-length title in the future, this compact version can seamlessly transition into a free 'prologue' or vertical slice, serving as a powerful marketing funnel to build community interest, secure crowdfunding, and drive digital storefront  wishlists .
+
+--- ppt/slides/slide17.xml ---
+Marketing Strategy Highkey we just market it lol
+
+--- ppt/slides/slide18.xml ---
+Funding Requirements, Return on Investment Developing  Delirium  requires a highly focused budget tailored to its compact, five-minute target session time. The primary funding requirements will be allocated toward specialised labour and bespoke asset creation, specifically programming the tank-drive wheelchair physics and the complex line-of-sight enemy AI, alongside 3D modelling for the modular hospital environment and the glitching, morphing "Staff" models.  Because the design intentionally omits complex crafting, combat systems, and heavy UI, the project's scope remains tightly controlled, significantly mitigating development costs.  In terms of Return on Investment (ROI), this exceptionally short and intense gameplay loop is the game's greatest financial asset. It guarantees a rapid player turnover rate, making it a highly lucrative and attractive licensing prospect for commercial VR arcades that thrive on high throughput.  Furthermore, the initial development overhead will be offset by targeting high-volume digital sales on Quest and PCVR platforms, where a low entry price and inherent scare factors will naturally drive organic marketing and fast returns.
+
+--- ppt/slides/slide19.xml ---
+Budget Overview and Breakdown Money Laundering: £3,909,467.00 Wheelchair Physics Controller: £1,200 Enemy AI: £1,500 Secondary accessibility controls (Dual Analog): £400 Monster model: £1,400 Modular Hospital Kit: £1,000 Wheelchair model: £600 Diegetic sound design: £400 Enemy audio: £350 Software Licenses: £650 VR Hardware: £800 QA & Comfort Playtesting: £600 Estimated Total: £8,900
+
+--- ppt/slides/slide2.xml ---
+Overview A tension-based VR horror experience where physical effort meets paranoia. The player is a patient confined to a wheelchair in a “crumbling” mental institute. Confined to a wheelchair, to escape, they must physically wheel themselves forward. However, they aren’t alone. The game combines the physical struggle of tank-control wheelchair movement with a "Weeping Angel" horror mechanic, forcing players to choose between looking forward to navigate or looking backwards to survive at some points in the game. They cannot do both effectively at the same time. The control scheme of the game is designed to induce panic and physical fatigue.
+
+--- ppt/slides/slide20.xml ---
+References Pls tell me you guys saved links to your inspiration or I’ll cry – josh Aiden references,  (Diaz; London; modernator; Posterazzi; Singh; Wikipedia Contributors) (Navarro; roekburi; Stockton; to; Tsintziras) (DepositPhotos, 2024; Gabbert, 2021; Shevchenko, 2016; Stock, 2018; SunHo, 2024; www.facebook.com/casualurbex, 2016)
+
+--- ppt/slides/slide3.xml ---
+Why This Game? Why not We needed a game concept that could be easily picked up by people walking by, which meant we had to focus on immediate mechanics rather than relying on a slow narrative buildup. By combining the physical struggle of tank-control wheelchair movement with a "Weeping Angel" observation mechanic, we force players into a panicked choice: look forward to navigate, or look backward to survive. Ultimately, setting the game inside the shifting mind of a patient allowed us to defy physics and freely manipulate the environment under the guise of hallucinations, giving us total creative freedom while keeping the player fully immersed in the horror.
+
+--- ppt/slides/slide4.xml ---
+Gameplay Mechanics Controls: The Wheelchair  Primary Control (Immersive):   The player reaches down to grab the virtual wheels of the chair. Move:  Pushing hands forward/backward moves the chair. Turn:  Pushing one hand forward and the other back rotates the chair. Secondary Control (Accessibility):   Dual Analog Sticks Design Note:   The wheelchair has "weight." It does not accelerate instantly. This inertia creates vulnerability when fleeing.
+
+--- ppt/slides/slide5.xml ---
+Mechanics - Continued The Sight Mechanic (Enemy Logic) The enemies ("The Staff") adhere to strict "Quantum Observation" rules. State A - Observed:   Safe):   When within the Player’s Camera Frustum, the enemy is frozen. Feedback:  Enemy twitches/vibrates; low-frequency audio hum. State B - Unobserved (Danger):  When off-screen, the enemy moves at high speed toward the player. Feedback:  Rapid, wet footsteps; shuffling sounds. Game Over:   If the enemy touches the player ->  Jumpscare  -> Reset to last "Geometry Shift" (Checkpoint). If the player swings the wheelchair in reverse when looking at the enemy, the enemy immediately  jumpscares  and kills them.
+
+--- ppt/slides/slide6.xml ---
+Mechanics - Continued The Sanity System (How feedback’s communicated with no HUD) As there is no health bar, the player's status is communicated entirely through the environment. Healthy:  World is solid, geometry is stable. Insane/Endangered: The Void:   As sanity slips (or the player progresses), the floor and ceiling of the map become obstructed by black fog. Chromatic Aberration:  Intensity increases as enemies get closer? FOV Warping:   The camera stretches, simulating panic – this might make the player sick so we can experiment with this#
+
+--- ppt/slides/slide7.xml ---
+The Team Aiden – Prop Artist Dhrumil - Programmer Jay – Character Artist Jose – Environment Artist Josh – Game Designer Matas - Programmer
+
+--- ppt/slides/slide8.xml ---
+Moodboards
+
+--- ppt/slides/slide9.xml ---
+  Character Art Asset Screenshots WIP: Digital concept art of a humanoid character, leans into themes of uncanny and (after completing) body horror. (it has a hollow chest  (,,> ヮ <,,)! ) Physical drawing of a monster that leans more into the mental health hospital feel, hence the straight jacket. Sunglasses added a contrasting touch which I feel might make the thing scarier (maybe... or maybe have the opposite effect) Physical drawing of a monster that has more themes of body horror (inspired a lot by Still Wakes the Deep!); I was recommended by a team member to add more things to it that relate to doctors or nurses, will review and make changes

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Gamepad2, Sparkles, BookOpen, Video, Award, Play } from 'lucide-react';
+import { ExternalLink, Gamepad2, Sparkles, BookOpen, Video, Award } from 'lucide-react';
 import { GithubIcon } from './Icons';
 
 export default function ProjectCard({ project, onSelectProject }) {

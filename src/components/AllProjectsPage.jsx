@@ -74,7 +74,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
           All Games & Prototypes
         </h1>
         <p className="text-slate-300 text-base sm:text-lg max-w-3xl leading-relaxed">
-          The complete 17-game engineering and prototyping catalogue migrated from LinkedIn, GitHub repositories, itch.io builds, and University of East London coursework—spanning Unreal Engine 5 gameplay physics, AI state machines, procedural generation, and ludonarrative design.
+          The complete {ALL_PROJECTS.length}-game engineering and prototyping catalogue migrated from LinkedIn, GitHub repositories, itch.io builds, and University of East London coursework—spanning Unreal Engine 5 gameplay physics, AI state machines, procedural generation, and ludonarrative design.
         </p>
       </div>
 

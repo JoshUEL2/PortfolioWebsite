@@ -102,6 +102,7 @@ export default function App() {
       {/* Full-screen Case Study Modal */}
       {selectedProject && (
         <CaseStudyModal
+          key={selectedProject.id}
           project={selectedProject}
           onClose={() => setSelectedProject(null)}
         />

@@ -1,0 +1,9 @@
+Sprint: 1
+Name: Joshua Johnson
+Role(s): Game Designer
+What went well
+We got off to a very good start planning some great ideas for a horror game. We have a clear plan for who is going to make what, and we all feel. As though we have the technical capability to bring it to life. Paper prototyping went very well and it seems as though we are all on the same page. 
+What didn't go well
+Throughout this sprint most things went smoothly, there was some lack of engagement from team members being on the other side of the class, but these engagement issues were resolved and we made sure everyone’s voices were heard.
+Solutions/best practices
+A lot of the issues faced this sprint are easily fixable, and we did take proactive steps to fix them in class, namely the engagement issues. Going forwards, we will monitor this further to ensure that in all aspects of the game people are being equally represented.  

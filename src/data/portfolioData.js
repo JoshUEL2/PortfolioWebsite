@@ -73,10 +73,11 @@ export const PROJECTS = [
       "/images/the_quarry_flowchart.png"
     ],
     links: {
-      github: "https://github.com/JoshUEL2",
+      github: "https://github.com/JoshUEL2/The-Quarry",
       demo: "/games/the_quarry/index.html",
       itch: null,
-      video: null
+      video: null,
+      linkedin: null
     },
     shortDesc: "Psychological interrogation thriller exploring manipulation in a single consultation room using Jon Ingold's Accept/Reject/Deflect triads and an internal Agitation meter.",
     summary: "Claustrophobic two-character power dynamic where players interrogate an unpredictable adversary, treating conversational subtext with the systemic rigor of combat mechanics.",
@@ -100,10 +101,11 @@ export const PROJECTS = [
     studio: "Ubisoft IP Adaptation / UEL",
     image: "/images/far_cry_5.jpg",
     links: {
-      github: "https://github.com/JoshUEL2",
-      demo: "https://www.linkedin.com/in/joshgamedev",
+      github: null,
+      demo: null,
       itch: null,
-      video: null
+      video: null,
+      linkedin: null
     },
     shortDesc: "Industry-standard AAA prequel screenplay exploring the calculated indoctrination of Rachel Jessop ('Faith Seed') through spatial environmental storytelling and restrained psychological subtext.",
     summary: "A masterclass in character entrapment, replacing bombastic villain monologues with grounded paternal stillness, indexical rain/mud metaphors, and parenthetical actor direction.",
@@ -130,10 +132,11 @@ export const PROJECTS = [
     image: "/images/rastacats.jpg",
     video: "/videos/rastacats_preview.mp4",
     links: {
-      github: "https://github.com/JoshUEL2",
+      github: null,
       demo: "https://joshej.itch.io/rastacats",
       itch: "https://joshej.itch.io/rastacats",
-      video: null
+      video: null,
+      linkedin: null
     },
     shortDesc: "Awarded 92% (1st Class Honours) for high-octane 360° cylindrical pipe racing in Term 1, followed by a complete Term 2 architectural remaster featuring curved-world shaders, decal projection math, and 65% CPU tick optimization.",
     summary: "Dual-phase arcade racing project exploring cylindrical locomotion physics and modern engine optimization. Term 1 established custom polar gravity and high-stakes Overspeed mechanics (92% grade). Term 2 introduced an Animal Crossing spherical vertex shader, Blueprint Event Tick decal projection along curved surfaces, coin actor pooling, and AI race competition.",
@@ -225,7 +228,7 @@ export const PROJECTS = [
       itch: "https://joshej.itch.io/delirium",
       gdd: "/docs/Delirium_GDD_and_Design_Notes.zip",
       video: "/media/delirium_preview.mp4",
-      linkedin: "https://www.linkedin.com/in/joshgamedev"
+      linkedin: null
     },
     shortDesc: "First-person seated VR psychological survival horror game in Unreal Engine 5.6 where you awaken in 'The Institute' confined to a physical wheelchair, forced to choose between looking forward to navigate or looking back to freeze quantum-observation 'Staff' entities.",
     summary: "Developed by 3J Mad Studios (Joshua Johnson, Dhrumil Hirapara, Jose Roberto Gálvez Vargas, Aiden Billingham, Matas Narusis, Jasmine Jilley) for MS5021 Game Studio 2—and selected as the sole Level 5 project to exhibit at the Level 6 Graduation Showcase. Originated from Joshua's 'Mental Hospital Idea' concept notes and full Game Design Document (GDD), combining a 5-minute high-turnover walk-up VR loop, weighted tank-control wheelchair inertia across 3 propulsion modes, Quantum-Observation ('Weeping Angel') AI with K-wire split-face & pendulum-stethoscope body horror, reversed speech & mic-noise detection, non-Euclidean 'Geometry Shift' checkpoints, 'The Void' black-fog sanity feedback, and 'The Rainbow Room' contrast safe zone.",
@@ -276,10 +279,11 @@ export const PROJECTS = [
     studio: "JoshCorp / Itch.io",
     image: "/images/state_machine_cover.png",
     links: {
-      github: "https://github.com/JoshUEL2",
+      github: null,
       demo: "https://joshej.itch.io/state-machine-showcase",
       itch: "https://joshej.itch.io/state-machine-showcase",
-      video: null
+      video: null,
+      linkedin: null
     },
     shortDesc: "Playable itch.io build featuring hierarchical finite state machines (HFSM), line-of-sight visual perception cones, and dynamic physics-driven elevator systems.",
     summary: "Clean systems architecture demonstration implementing modular AI behavioral states (Patrol, Investigate, Pursue, Search) with clean state transitions.",
@@ -304,13 +308,14 @@ export const PROJECTS = [
     dates: "Jan 2025 – Apr 2025",
     studio: "JoshCorp / UEL (MS5028)",
     image: "/images/labraz.jpg",
-    video: "/media/labraz_preview.mp4",
+    video: null,
     youtubeId: "t3xmVDuFvZU",
     links: {
-      github: "https://github.com/JoshUEL2",
-      demo: "https://www.youtube.com/watch?v=t3xmVDuFvZU",
+      github: null,
+      demo: null,
       itch: null,
-      video: "https://www.youtube.com/watch?v=t3xmVDuFvZU"
+      video: "https://www.youtube.com/watch?v=t3xmVDuFvZU",
+      linkedin: null
     },
     shortDesc: "3-player asymmetrical co-op FPS level design awarded 72% (1st Class) with a comprehensive 40-page Game Design Document and video walkthrough.",
     summary: "Complex asymmetrical level architecture requiring complementary player roles (Hacker, Assault, Engineer) to breach a high-security research facility.",
@@ -334,10 +339,11 @@ export const PROJECTS = [
     studio: "Independent Engineering",
     image: "/images/vex_robotics.jpg",
     links: {
-      github: "https://github.com/JoshUEL2",
-      demo: "https://www.linkedin.com/in/joshgamedev",
+      github: null,
+      demo: null,
       itch: null,
-      video: null
+      video: null,
+      linkedin: null
     },
     shortDesc: "A bespoke DIY motion capture pipeline bypassing £10,000 commercial suits by combining Xbox One Kinect v2 depth sensors with PSVR Move optical trackers and Brekel Body to drive real-time MetaHumans.",
     summary: "Bypassed astronomical commercial mocap costs by engineering an ingenious hybrid sensor fusion rig that delivers clean, calibrated skeletal data into Unreal Engine 5.",

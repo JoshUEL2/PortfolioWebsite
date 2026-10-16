@@ -25,11 +25,11 @@ export const ALL_PROJECTS = [
     "video": "/videos/rastacats_preview.mp4",
     "youtubeId": null,
     "links": {
-      "github": "https://github.com/JoshUEL2",
+      "github": null,
       "demo": "https://joshej.itch.io/rastacats",
       "itch": "https://joshej.itch.io/rastacats",
       "video": null,
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": true,
     "splitPhases": [
@@ -105,7 +105,7 @@ export const ALL_PROJECTS = [
       "demo": "https://github.com/JoshUEL2/REM/releases/latest",
       "itch": null,
       "video": null,
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": true
   },
@@ -133,11 +133,11 @@ export const ALL_PROJECTS = [
     "video": null,
     "youtubeId": "t3xmVDuFvZU",
     "links": {
-      "github": "https://github.com/JoshUEL2",
-      "demo": "https://www.youtube.com/watch?v=t3xmVDuFvZU",
+      "github": null,
+      "demo": null,
       "itch": null,
       "video": "https://www.youtube.com/watch?v=t3xmVDuFvZU",
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": true
   },
@@ -170,11 +170,11 @@ export const ALL_PROJECTS = [
     "video": null,
     "youtubeId": null,
     "links": {
-      "github": "https://github.com/JoshUEL2",
+      "github": "https://github.com/JoshUEL2/The-Quarry",
       "demo": "/games/the_quarry/index.html",
       "itch": null,
       "video": null,
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": true
   },
@@ -223,7 +223,7 @@ export const ALL_PROJECTS = [
       "itch": "https://joshej.itch.io/delirium",
       "gdd": "/docs/Delirium_GDD_and_Design_Notes.zip",
       "video": "/media/delirium_preview.mp4",
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": true
   },
@@ -256,7 +256,7 @@ export const ALL_PROJECTS = [
       "itch": "https://joshej.itch.io/delirium",
       "gdd": "/docs/Delirium_GDD_and_Design_Notes.zip",
       "video": "/media/delirium_preview.mp4",
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": true
   },
@@ -284,11 +284,11 @@ export const ALL_PROJECTS = [
     "video": null,
     "youtubeId": null,
     "links": {
-      "github": "https://github.com/JoshUEL2",
+      "github": null,
       "demo": "https://joshej.itch.io/state-machine-showcase",
       "itch": "https://joshej.itch.io/state-machine-showcase",
       "video": null,
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": false
   },
@@ -316,11 +316,11 @@ export const ALL_PROJECTS = [
     "video": null,
     "youtubeId": null,
     "links": {
-      "github": "https://github.com/JoshUEL2",
+      "github": null,
       "demo": null,
       "itch": null,
       "video": null,
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": false
   },
@@ -349,11 +349,11 @@ export const ALL_PROJECTS = [
     "video": null,
     "youtubeId": null,
     "links": {
-      "github": "https://github.com/JoshUEL2",
+      "github": null,
       "demo": null,
       "itch": null,
       "video": null,
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": false
   },
@@ -384,11 +384,11 @@ export const ALL_PROJECTS = [
     "video": null,
     "youtubeId": null,
     "links": {
-      "github": "https://github.com/JoshUEL2",
+      "github": "https://github.com/JoshUEL2/PlanetProtectors",
       "demo": null,
       "itch": null,
       "video": null,
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": false
   },
@@ -419,11 +419,11 @@ export const ALL_PROJECTS = [
     "video": null,
     "youtubeId": null,
     "links": {
-      "github": "https://github.com/JoshUEL2",
+      "github": null,
       "demo": null,
       "itch": null,
       "video": null,
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": false
   },
@@ -452,11 +452,11 @@ export const ALL_PROJECTS = [
     "video": null,
     "youtubeId": null,
     "links": {
-      "github": "https://github.com/JoshUEL2",
+      "github": null,
       "demo": null,
       "itch": null,
       "video": null,
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": false
   },
@@ -486,11 +486,11 @@ export const ALL_PROJECTS = [
     "video": "/videos/daydream_preview.mp4",
     "youtubeId": null,
     "links": {
-      "github": "https://github.com/JoshUEL2",
+      "github": null,
       "demo": null,
       "itch": null,
       "video": null,
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": true,
     "splitPhases": [
@@ -563,11 +563,11 @@ export const ALL_PROJECTS = [
     "video": null,
     "youtubeId": null,
     "links": {
-      "github": "https://github.com/JoshUEL2",
+      "github": null,
       "demo": null,
       "itch": null,
       "video": null,
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": false
   },
@@ -595,11 +595,11 @@ export const ALL_PROJECTS = [
     "video": null,
     "youtubeId": null,
     "links": {
-      "github": "https://github.com/JoshUEL2",
+      "github": null,
       "demo": null,
       "itch": null,
       "video": null,
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": false
   },
@@ -627,11 +627,11 @@ export const ALL_PROJECTS = [
     "video": null,
     "youtubeId": null,
     "links": {
-      "github": "https://github.com/JoshUEL2",
+      "github": null,
       "demo": "https://www.linkedin.com/in/joshgamedev",
       "itch": null,
       "video": null,
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": false
   },
@@ -659,11 +659,11 @@ export const ALL_PROJECTS = [
     "video": null,
     "youtubeId": null,
     "links": {
-      "github": "https://github.com/JoshUEL2",
+      "github": null,
       "demo": null,
       "itch": null,
       "video": null,
-      "linkedin": "https://www.linkedin.com/in/joshgamedev"
+      "linkedin": null
     },
     "featured": false
   }

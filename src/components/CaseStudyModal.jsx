@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Gamepad2, Sparkles, Terminal, CheckCircle2, Video, Award, History, Layers } from 'lucide-react';
+import { X, ExternalLink, Gamepad2, Sparkles, Terminal, CheckCircle2, Video, Award, History, Layers, BookOpen } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
+import { getAssetUrl, isSpecificRepo, isSpecificLinkedIn } from '../utils/assetUrl';
 
 export default function CaseStudyModal({ project, onClose }) {
   const [activePhaseIndex, setActivePhaseIndex] = useState(0);
@@ -148,7 +149,7 @@ export default function CaseStudyModal({ project, onClose }) {
               {activeVideo ? (
                 <video
                   key={activeVideo}
-                  src={activeVideo}
+                  src={getAssetUrl(activeVideo)}
                   controls
                   autoPlay
                   loop
@@ -168,7 +169,7 @@ export default function CaseStudyModal({ project, onClose }) {
               ) : (
                 <>
                   <img
-                    src={activeImage}
+                    src={getAssetUrl(activeImage)}
                     alt={activeTitle}
                     className="w-full h-full object-cover"
                   />
@@ -212,14 +213,14 @@ export default function CaseStudyModal({ project, onClose }) {
                   {activeGallery.map((artSrc, aIdx) => (
                     <a
                       key={aIdx}
-                      href={artSrc}
+                      href={getAssetUrl(artSrc)}
                       target="_blank"
                       rel="noreferrer"
                       className="rounded-xl overflow-hidden border border-white/10 bg-slate-950 aspect-[4/3] group relative block cursor-pointer"
                       title="Click to view full resolution"
                     >
                       <img
-                        src={artSrc}
+                        src={getAssetUrl(artSrc)}
                         alt={`${activeTitle} Artifact ${aIdx + 1}`}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
@@ -295,7 +296,7 @@ export default function CaseStudyModal({ project, onClose }) {
                 </a>
               )}
 
-              {project.links?.video && (
+              {project.links?.video && !youtubeId && (
                 <a
                   href={project.links.video}
                   target="_blank"
@@ -307,7 +308,18 @@ export default function CaseStudyModal({ project, onClose }) {
                 </a>
               )}
 
-              {project.links?.github && (
+              {project.links?.gdd && (
+                <a
+                  href={getAssetUrl(project.links.gdd)}
+                  download
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-600/30 hover:bg-amber-600/50 text-amber-200 font-semibold text-xs tracking-wider uppercase border border-amber-500/40 transition-colors"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  <span>Download GDD</span>
+                </a>
+              )}
+
+              {isSpecificRepo(project.links?.github) && (
                 <a
                   href={project.links.github}
                   target="_blank"
@@ -319,19 +331,7 @@ export default function CaseStudyModal({ project, onClose }) {
                 </a>
               )}
 
-              {project.links?.demo && !project.links?.itch && !project.links?.video && (
-                <a
-                  href={project.links.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs tracking-wider uppercase transition-colors"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  <span>Live Demo</span>
-                </a>
-              )}
-
-              {project.links?.linkedin && (
+              {isSpecificLinkedIn(project.links?.linkedin) && (
                 <a
                   href={project.links.linkedin}
                   target="_blank"
@@ -340,6 +340,18 @@ export default function CaseStudyModal({ project, onClose }) {
                 >
                   <LinkedinIcon className="w-4 h-4" />
                   <span>LinkedIn</span>
+                </a>
+              )}
+
+              {project.links?.demo && !project.links?.itch && !project.links?.video && !youtubeId && (
+                <a
+                  href={getAssetUrl(project.links.demo)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs tracking-wider uppercase transition-colors"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  <span>Live Demo</span>
                 </a>
               )}
             </div>

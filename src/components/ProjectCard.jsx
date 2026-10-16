@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Gamepad2, Sparkles, BookOpen, Video, Award } from 'lucide-react';
-import { GithubIcon } from './Icons';
+import { GithubIcon, LinkedinIcon } from './Icons';
+import { getAssetUrl, isSpecificRepo, isSpecificLinkedIn } from '../utils/assetUrl';
 
 export default function ProjectCard({ project, onSelectProject }) {
   // Extract YouTube ID if present
@@ -95,7 +96,7 @@ export default function ProjectCard({ project, onSelectProject }) {
 
           {/* Action Buttons */}
           <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/10">
-            {project.links.itch && (
+            {project.links?.itch && (
               <a
                 href={project.links.itch}
                 target="_blank"
@@ -107,7 +108,7 @@ export default function ProjectCard({ project, onSelectProject }) {
               </a>
             )}
 
-            {project.links.video && !youtubeId && (
+            {project.links?.video && !youtubeId && (
               <a
                 href={project.links.video}
                 target="_blank"
@@ -119,7 +120,7 @@ export default function ProjectCard({ project, onSelectProject }) {
               </a>
             )}
 
-            {project.links.github && (
+            {isSpecificRepo(project.links?.github) && (
               <a
                 href={project.links.github}
                 target="_blank"
@@ -131,9 +132,21 @@ export default function ProjectCard({ project, onSelectProject }) {
               </a>
             )}
 
-            {project.links.demo && !project.links.itch && !project.links.video && (
+            {isSpecificLinkedIn(project.links?.linkedin) && (
               <a
-                href={project.links.demo}
+                href={project.links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0077b5]/20 hover:bg-[#0077b5]/30 text-sky-300 hover:text-white font-semibold text-xs tracking-wider uppercase border border-[#0077b5]/30 hover:scale-105 active:scale-95 transition-all"
+              >
+                <LinkedinIcon className="w-4 h-4" />
+                <span>LinkedIn</span>
+              </a>
+            )}
+
+            {project.links?.demo && !project.links?.itch && !project.links?.video && !youtubeId && (
+              <a
+                href={getAssetUrl(project.links.demo)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 font-semibold text-xs tracking-wider uppercase border border-indigo-500/30 hover:scale-105 active:scale-95 transition-all"
@@ -162,7 +175,7 @@ export default function ProjectCard({ project, onSelectProject }) {
               className="relative group/vid cursor-pointer overflow-hidden rounded-2xl bg-black border border-white/15 shadow-2xl aspect-[16/10] flex items-center justify-center"
             >
               <video
-                src={project.video}
+                src={getAssetUrl(project.video)}
                 autoPlay
                 loop
                 muted
@@ -213,7 +226,7 @@ export default function ProjectCard({ project, onSelectProject }) {
               className="relative group/img cursor-pointer overflow-hidden rounded-2xl bg-slate-950 border border-white/15 shadow-2xl aspect-[16/10] flex items-center justify-center"
             >
               <img
-                src={project.image}
+                src={getAssetUrl(project.image)}
                 alt={project.title}
                 className="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform duration-500 ease-out"
                 loading="lazy"

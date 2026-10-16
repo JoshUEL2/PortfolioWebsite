@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { ALL_PROJECTS, GAME_FILTER_DISCIPLINES } from '../data/allProjectsData';
+import { getAssetUrl, isSpecificRepo, isSpecificLinkedIn } from '../utils/assetUrl';
 
 export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -166,7 +167,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                         className="w-full h-full cursor-pointer group/thumb relative"
                       >
                         <video
-                          src={project.video}
+                          src={getAssetUrl(project.video)}
                           autoPlay
                           loop
                           muted
@@ -196,7 +197,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                         className="w-full h-full cursor-pointer group/thumb relative"
                       >
                         <img
-                          src={project.image}
+                          src={getAssetUrl(project.image)}
                           alt={project.title}
                           className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500"
                           loading="lazy"
@@ -280,7 +281,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                       </a>
                     )}
 
-                    {project.links?.github && (
+                    {isSpecificRepo(project.links?.github) && (
                       <a
                         href={project.links.github}
                         target="_blank"
@@ -293,9 +294,9 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                       </a>
                     )}
 
-                    {project.links?.demo && !project.links?.itch && (
+                    {project.links?.demo && !project.links?.itch && !youtubeId && (
                       <a
-                        href={project.links.demo}
+                        href={getAssetUrl(project.links.demo)}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Live Demo / Web App"
@@ -306,7 +307,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                       </a>
                     )}
 
-                    {project.links?.linkedin && (
+                    {isSpecificLinkedIn(project.links?.linkedin) && (
                       <a
                         href={project.links.linkedin}
                         target="_blank"

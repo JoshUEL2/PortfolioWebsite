@@ -16,7 +16,7 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
       setScrolled(window.scrollY > 40);
 
       if (currentView === 'featured') {
-        const sections = ['home', 'portfolio', 'vault', 'toolkit', 'about', 'contact'];
+        const sections = ['home', 'portfolio', 'research', 'toolkit', 'about', 'contact'];
         for (const section of sections) {
           const el = document.getElementById(section);
           if (el) {
@@ -35,8 +35,8 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
   }, [currentView]);
 
   const navLinks = [
-    { id: 'portfolio', label: 'FLAGSHIPS' },
-    { id: 'vault', label: `GAME VAULT (${ALL_PROJECTS.length})` },
+    { id: 'portfolio', label: `PROJECTS (${ALL_PROJECTS.length})` },
+    { id: 'research', label: 'RESEARCH' },
     { id: 'toolkit', label: 'TOOLKIT' },
     { id: 'about', label: 'ABOUT' },
     { id: 'contact', label: 'CONTACT' }

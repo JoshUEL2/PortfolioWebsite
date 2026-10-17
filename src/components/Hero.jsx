@@ -62,7 +62,7 @@ export default function Hero({ onExploreClick, onSelectProject }) {
 
             {/* First-Person Grounded Bio */}
             <p className="text-sm sm:text-base md:text-lg text-slate-300 mb-6 leading-relaxed font-normal max-w-xl">
-              I&apos;m <strong className="text-white font-semibold">Josh Johnson</strong>, a London-based Technical Game Designer and BSc Computer Games Design School Representative. I love solving the awkward problems where design and maths collide—like overriding Unreal Engine 5&apos;s planar gravity for{' '}
+              I&apos;m <strong className="text-white font-semibold">Josh Johnson</strong>, a London-based Technical Game Designer and BSc Computer Games Design School Representative. I love solving the awkward problems where design and maths collide, whether that means overriding Unreal Engine 5&apos;s planar gravity for{' '}
               <strong className="text-indigo-200 font-semibold">360° cylindrical pipe racing</strong>, writing{' '}
               <strong className="text-indigo-200 font-semibold">multi-directional Kuwahara watercolour shaders</strong>, or anchoring seated VR horror to{' '}
               <strong className="text-indigo-200 font-semibold">physical wheelchair inertia</strong>.

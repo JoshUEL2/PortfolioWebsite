@@ -11,12 +11,12 @@ export const PERSONAL_INFO = {
   institution: "University of East London (UEL)",
   role: "BSc (Hons) Computer Games Design • School Representative",
   motto: "If I don't know it, I learn it; if I need it, I build it.",
-  bio: "I'm a London-based Technical Game Designer focused on Unreal Engine 5 gameplay programming, HLSL/Material Graph shaders, and systemic narrative design. I like solving the awkward technical problems where design and engineering collide—whether that's overriding UE5's planar gravity for 360° pipe racing, projecting decals onto vertex-displaced meshes, or anchoring seated VR horror to physical wheelchair inertia.",
+  bio: "I am a London-based Technical Game Designer focused on Unreal Engine 5 gameplay programming, HLSL and Material Graph shaders, and interactive narrative design. I enjoy solving the technical problems where design and maths meet, whether that means overriding Unreal Engine's default planar gravity for 360° pipe racing, projecting decals onto vertex-displaced meshes, or anchoring seated VR horror to physical wheelchair inertia.",
   stats: [
     { label: "Games & Prototypes", value: "15", sub: "UE5, Unity, Python & Web" },
-    { label: "Gameplay Prototyping", value: "92%", sub: "1st Class Honours (MS5027)" },
+    { label: "Gameplay Prototyping", value: "92%", sub: "1st Class Honours Top Mark" },
     { label: "CPU Tick Reduction", value: "-65%", sub: "ISM Actor Pooling (UE 5.7)" },
-    { label: "Live Exhibitions", value: "2×", sub: "Sole L5 in L6 Hall & Sole VR" }
+    { label: "Live Exhibitions", value: "2×", sub: "Sole Year 2 in Final Year Hall" }
   ]
 };
 
@@ -50,7 +50,7 @@ export const HERO_REELS = [
     telemetry: [
       { label: "GRAVITY VECTOR", value: "Spline Cross-Section Polar Normals" },
       { label: "MECHANIC", value: "200+ km/h Overspeed Multiplier" },
-      { label: "RECOGNITION", value: "92% (1st) • Sole L5 in L6 Hall" }
+      { label: "RECOGNITION", value: "92% (1st) • Exhibited in Final Year Hall" }
     ]
   },
   {
@@ -88,471 +88,690 @@ export const HERO_REELS = [
 ];
 
 export const CATEGORIES = [
-  { id: "flagships", label: "★ Flagship Deep-Dives (4)", desc: "My strongest playable builds & technical breakdowns" },
-  { id: "gameplay", label: "01 / Gameplay & VR Physics", desc: "Polar spline gravity, OpenXR wheelchair physics & AI state machines" },
-  { id: "concepts", label: "02 / Shaders & Photogrammetry", desc: "Kuwahara watercolour filters, WPO morphing & 1:1 digital twins" },
-  { id: "level-narrative", label: "03 / Level & Dialogue Systems", desc: "Asymmetrical co-op FPS architecture & Jon Ingold dialogue engines" }
+  {
+    id: "gameplay",
+    label: "Gameplay & Systems (5)",
+    desc: "360° polar gravity, AI state machines, custom physics & networked co-op"
+  },
+  {
+    id: "vr",
+    label: "VR & Immersive Tech (1)",
+    desc: "OpenXR seated wheelchair locomotion & frustum-locked horror systems"
+  },
+  {
+    id: "shaders",
+    label: "Shaders & Technical Art (1)",
+    desc: "Multi-directional Kuwahara watercolour filters & WPO vertex rigs"
+  },
+  {
+    id: "level",
+    label: "Level & Environment Design (3)",
+    desc: "Asymmetrical co-op FPS maps, photogrammetric digital twins & blockouts"
+  },
+  {
+    id: "narrative",
+    label: "Narrative Design & GDDs (5)",
+    desc: "Twine Harlowe 3.3 dialogue engines, mocap scripts & systems GDD bibles"
+  },
+  {
+    id: "all",
+    label: "All 15 Projects",
+    desc: "View or search the complete 15-project catalogue in one grid"
+  }
 ];
 
 export const PROJECTS = [
-  // --- CATEGORY 1: GAMEPLAY & VR PHYSICS ---
+  // ==========================================
+  // CATEGORY 1: GAMEPLAY & SYSTEMS (5 Projects)
+  // ==========================================
   {
     id: "rastacats",
     slug: "rastacats",
+    catalogNumber: "01",
     category: "gameplay",
-    isFlagship: true,
-    statusTag: { label: "Playable Build + Dual-Phase", color: "emerald" },
-    gradeBadge: "MS5027 • 92% (1st Class)",
-    exhibitionBadge: "Exhibited in L6 Grad Hall",
+    categoryLabel: "Gameplay & Systems",
+    isPrimaryCard: true,
     number: "01",
-    title: "Rastacats & Rastacats Remastered",
-    tagline: "360° Cylindrical Pipe Physics & Curved-World Shader Overhaul",
-    discipline: "Gameplay Engineering & Shaders",
-    engine: "Unreal Engine 5.7",
-    dates: "Oct 2025 – May 2026",
-    studio: "Solo Developer • UEL (MS5027 & MS5022)",
-    image: "/images/rastacats.jpg",
+    title: "Rastacats",
+    tagline: "360° Cylindrical Pipe Physics & Curved-World WPO Shader Remaster",
+    role: "Lead Systems Programmer & Technical Designer",
+    discipline: "Gameplay Physics & Shader Maths",
+    statusTag: { label: "Playable Build + Remaster", color: "emerald" },
+    gradeBadge: "Gameplay Prototyping • 92% (1st Class)",
+    exhibitionBadge: "Sole Year 2 Build in Final Year Exhibition Hall",
+    engine: "Unreal Engine 5.7 (Blueprints & WPO Shaders)",
+    dates: "Oct 2025 to Jan 2026",
+    studio: "Solo Developer • UEL",
     video: "/media/rastacats_preview.mp4",
+    image: "/images/rastacats.jpg",
+    tools: ["Unreal Engine 5.7", "Blueprints", "Polar Coordinate Maths", "WPO Shaders", "ISM Actor Pooling"],
     gallery: [
       "/images/rastacats.jpg",
-      "/images/rasta_cw1_00_01_05.jpg",
-      "/images/rasta_cw1_00_01_15.jpg",
-      "/images/rasta_cw1_00_01_30.jpg",
       "/images/rastacats_revisited.jpg",
-      "/images/rasta_cw2_00_01_05.jpg",
-      "/images/rasta_cw2_00_01_15.jpg",
-      "/images/rasta_cw2_00_01_30.jpg",
-      "/images/test_rasta_cw2_40s.jpg"
+      "/images/rastacats_02.png",
+      "/images/rastacats_03.png"
     ],
-    funFact: "Faculty selected Rastacats as the only Level 5 game invited to exhibit downstairs alongside graduating Level 6 projects at the Royal Docks Centre for Sustainability, where I demoed it live to 100+ visitors.",
     links: {
-      github: null,
-      demo: null,
+      github: "https://github.com/JoshUEL2/MS5027-CW-Rastacats",
+      demo: "https://joshej.itch.io/rastacats",
       itch: "https://joshej.itch.io/rastacats",
-      video: null,
-      linkedin: null
+      video: "/media/rastacats_preview.mp4",
+      linkedin: "https://www.linkedin.com/in/joshgamedev"
     },
-    shortDesc: "A two-phase Unreal Engine 5.7 arcade bobsled runner. In Term 1, I bypassed UE5's planar CharacterMovement to build 360° inner-pipe gravity at 200+ km/h. In Term 2, I rebuilt the rendering and tick architecture—adding an Animal Crossing-style curved horizon shader, tangent-aligned decal maths, and coin pooling that cut CPU tick time by 65%.",
-    summary: "I built Rastacats across two terms to push custom locomotion physics and shader optimisation in Unreal Engine 5.7. Phase 1 focused on high-speed 360° cylindrical pipe adhesion and a risk-reward Overspeed gauge. Phase 2 overhauled the entire technical pipeline: I wrote a spherical World Position Offset (WPO) horizon shader, solved deferred decal shearing on curved geometry via Blueprint Event Tick tangent projections, pooled hundreds of coin actors into Instanced Static Meshes, and added AI race rivals.",
+    funFact: "Selected by faculty as the only Year 2 project invited to exhibit downstairs alongside graduating final-year games at the Royal Docks Centre for Sustainability.",
+    shortDesc: "A high-speed cylindrical pipe racer in Unreal Engine 5.7. In Phase 1, I overrode UE5's default planar gravity with polar cross-section normals so the board can ride 360° around walls and ceilings at 200+ km/h. In Phase 2, I refactored the track into an Instanced Static Mesh pool (-65% CPU tick cost) and wrote a curved-world World Position Offset shader with tangent-aligned decal projection.",
+    summary: "Built for my Gameplay Prototyping module (awarded 92%, 1st Class Honours). Use the Phase 1 and Phase 2 buttons on this card to switch live between my original cylindrical spline prototype and my revisited curved-world shader remaster.",
     highlights: [
-      "Overrode UE5's default planar Z-down assumptions by computing polar coordinates from spline cross-sections, projecting artificial gravity radially towards the pipe spine.",
-      "Wrote an Animal Crossing-style spherical World Position Offset (WPO) shader to bend the horizon dynamically as the bobsled races forward.",
-      "Solved deferred decal stretching on WPO-curved tracks by calculating local surface tangent frames in Event Tick before projecting skid marks and graffiti.",
-      "Cut CPU tick overhead by 65% by replacing individual ticking coin actors with a single distance-culled Instanced Static Mesh (ISM) manager.",
-      "Added velocity-driven secondary bone animation on the cats' ears and tails, AI rubber-banding competitors, and Niagara blizzard particles."
+      "Overrode UE5's default Z-axis gravity with continuous polar normal vectors calculated from the pipe's cross-sectional spline centre.",
+      "Built an uncapped overspeed risk-reward loop where collecting rings pushes velocity past 200+ km/h and scales jump air-time.",
+      "Refactored obstacle spawning into a fixed Instanced Static Mesh (ISM) actor pool in Phase 2, cutting CPU tick overhead by 65%.",
+      "Solved decal clipping on vertex-displaced curved tracks by computing exact surface tangent angles on Event Tick."
     ],
-    technicalDeepDive: "Standard UE5 CharacterMovement assumes a flat world with a fixed -Z gravity vector, causing pawns to detach when banking past 90° inside a tube. In Phase 1, I sampled the nearest spline point each frame, derived the radial vector from the pipe centre to the pawn, and aligned both the pawn's Up-vector and artificial gravity impulse to that normal. In Phase 2, bending the world via WPO broke standard deferred decals (which project in world space before vertex displacement). I fixed this by computing the parabolic derivative of the WPO curve in Blueprint Tick to rotate decal projection boxes flush against the displaced surface.",
-    codeSnippet: `// Curved-World WPO Displacement & Decal Tangent Compensation (UE 5.7)
-float DistZ = WorldPos.x - CameraPos.x;
-float CurveOffset = -pow(DistZ / CurveRadius, 2.0) * CurveStrength;
-WorldPositionOffset = float3(0.0, 0.0, CurveOffset);
+    technicalDeepDive: "In Phase 1, standard Unreal CharacterMovement relies on a flat Z-down vector, which breaks when riding past 90° on a cylinder. I replaced planar gravity with radial normal vectors pointing from the spline centre to the board's current polar angle. In Phase 2, bending the world downward with a quadratic World Position Offset shader left CPU collision boxes and score decals floating in flat world space. I solved this by mirroring the vertex shader's parabolic drop formula inside Blueprint Event Tick and rotating decal projectors to match the derivative tangent slope.",
+    codeSnippet: `// Phase 2: Curved-World WPO & Decal Tangent Compensation
+float Dist = max(0.0, WorldPos.x - CameraPos.x - FlatHorizonBias);
+float DropZ = (Dist * Dist) / CurvatureRadius; // Parabolic vertex offset
+WorldPositionOffset = float3(0.0, 0.0, -DropZ);
 
-// Blueprint Tick: Analytical derivative dZ/dX for Decal Pitch alignment
-float Slope = (-2.0 * DistZ / (CurveRadius * CurveRadius)) * CurveStrength;
-FRotator DecalRot = FMath::RInterpTo(CurrentRot, FRotator(FMath::RadiansToDegrees(atan(Slope)), Yaw, Roll), DeltaTime, 18.0f);`,
+// Blueprint Tick: Aligning CPU Decal Pitch to GPU Vertex Slope
+float SlopeDerivative = (2.0 * Dist) / CurvatureRadius;
+float PitchDegrees = -atan(SlopeDerivative) * (180.0 / PI);`,
     splitPhases: [
       {
-        id: "original",
-        phaseLabel: "Phase 1: 360° Pipe Physics (Term 1 / MS5027)",
-        phaseBadge: "92% • 1st Class",
-        phaseSubtitle: "Cylindrical Spline Gravity & 200 km/h Overspeed Loop",
-        title: "Rastacats (Phase 1): 360° Cylindrical Pipe Racing",
-        summary: "Built for MS5027 Gameplay Prototyping (92%). Players pilot a bobsled around the inside and outside of cylindrical pipes at over 200 km/h, banking full 360° loops while managing an Overspeed multiplier that boosts coin yield at the cost of tighter obstacle reaction windows.",
-        highlights: [
-          "Polar coordinate gravity solver keeping the pawn locked to inner and outer pipe walls across 360° rotations",
-          "Risk-reward Overspeed gauge: holding top speed multiplies score and FOV feedback but narrows steering recovery",
-          "Procedural obstacle spawner placing spike barricades, speed pads, and coin arcs along spline segments",
-          "Tuned angular damping and lateral friction so inverted steering never flips camera orientation unexpectedly"
-        ],
-        technicalDeepDive: "Because UE5's CharacterMovementComponent hardcodes vertical capsule orientation, I built a custom Pawn physics tick that queries the track spline's cross-sectional normal, applies a centripetal adhesion force proportional to forward velocity, and smoothly slerps camera roll so loop-the-loops feel responsive rather than nauseating.",
+        id: "phase-1-original",
+        phaseLabel: "Phase 1: Original Prototype",
+        phaseBadge: "92% (1st Class)",
+        phaseSubtitle: "360° Cylindrical Pipe Adhesion & Uncapped Velocity",
+        title: "Rastacats (Original Submission)",
+        video: "/media/rastacats_preview.mp4",
+        image: "/images/rastacats.jpg",
         gallery: [
           "/images/rastacats.jpg",
-          "/images/rasta_cw1_00_01_05.jpg",
-          "/images/rasta_cw1_00_01_15.jpg",
-          "/images/rasta_cw1_00_01_30.jpg"
+          "/images/rastacats_02.png",
+          "/images/rastacats_03.png"
         ],
-        video: "/media/rastacats_preview.mp4"
+        summary: "My original submission for Gameplay Prototyping (92%). Inspired by Rush'n Attack and Skate 3, I built a high-velocity cylindrical pipe runner in Unreal Engine 5.7 where players carve 360° around the interior and exterior of a procedural spline tube while chaining overspeed rings.",
+        highlights: [
+          "Custom polar coordinate physics controller allowing smooth 360° traversal across walls and ceilings without gimbal lock.",
+          "Uncapped overspeed multiplier system where chaining speed rings pushes the board past 200+ km/h.",
+          "Dynamic camera FOV warp and audio pitch-shifting tied directly to forward velocity.",
+          "Selected as the sole Year 2 game to exhibit in the graduating Final Year hall at the Royal Docks."
+        ],
+        technicalDeepDive: "Unreal's default movement component assumes gravity always points along (0, 0, -1). To let the cat ride seamlessly up walls and upside-down on ceilings, I sampled the nearest point on the track spline each frame, computed the radial vector from the spline centre to the player, and applied a custom centring force along that normal while slerping the actor's Up-vector."
       },
       {
-        id: "revisited",
-        phaseLabel: "Phase 2: Curved-World Remaster (Term 2 / MS5022)",
-        phaseBadge: "-65% CPU Tick",
-        phaseSubtitle: "Spherical WPO Horizon Shader, Decal Maths & ISM Pooling",
-        title: "Rastacats Remastered: Shader Overhaul & Engine Optimisation",
-        summary: "For MS5022 Portfolio 1, I tore down and rebuilt the game's rendering and actor lifecycle. I engineered a curved-world vertex shader, fixed decal projection shearing along displaced normals, pooled all collectibles into Instanced Static Meshes, and added an AI Race Mode, a cosmetic shop, and custom Substance Painter ice materials.",
-        highlights: [
-          "Spherical World Position Offset (WPO) shader bending the track over a rolling horizon like Animal Crossing",
-          "Replaced hundreds of Blueprint coin actors running Event Tick with a single ISM manager, cutting CPU tick cost by 65%",
-          "Calculated surface tangent frames in Blueprint Tick so graffiti and skid-mark decals project cleanly onto WPO-bent meshes",
-          "Added velocity-driven spring-damper bone rotation on the cats' tails and ears for tactile speed feedback",
-          "Built an AI Race Mode with spline-distance rubber-banding and custom Niagara snowstorms"
-        ],
-        technicalDeepDive: "World Position Offset shifts vertices on the GPU after the CPU collision and decal passes have already run. To stop deferred decals from shearing off the bent track, I mirrored the GPU quadratic curve equation `P_z = -(d / R)^2` on the CPU in Event Tick, computing the local tangent slope to pitch each decal projector into alignment with the displaced mesh.",
+        id: "phase-2-remaster",
+        phaseLabel: "Phase 2: Revisited Remaster",
+        phaseBadge: "WPO Shader + -65% CPU",
+        phaseSubtitle: "Curved-World Vertex Shader, Decal Tangent Maths & ISM Pooling",
+        title: "Rastacats Remastered (Technical Upgrade)",
+        video: "/media/rastacats_cw2_preview.mp4",
+        image: "/images/rastacats_revisited.jpg",
         gallery: [
           "/images/rastacats_revisited.jpg",
-          "/images/rasta_cw2_00_01_05.jpg",
-          "/images/rasta_cw2_00_01_15.jpg",
-          "/images/rasta_cw2_00_01_30.jpg",
-          "/images/test_rasta_cw2_40s.jpg"
+          "/images/rastacats_02.png",
+          "/images/rastacats_03.png",
+          "/images/rastacats.jpg"
         ],
-        video: "/media/rastacats_cw2_preview.mp4"
+        summary: "For my subsequent portfolio upgrade, I rebuilt Rastacats from the ground up to solve the performance and visual bottlenecks of the original prototype. I replaced actor-spawning loops with an Instanced Static Mesh (ISM) object pool (-65% CPU tick time), authored a curved-world World Position Offset (WPO) shader, and rigged procedural bone-sway animations.",
+        highlights: [
+          "Cut CPU tick time by 65% by replacing runtime Actor Spawn/Destroy calls with a recycled Instanced Static Mesh (ISM) pool.",
+          "Authored a GPU World Position Offset (WPO) shader that bends the horizon downward quadratically with distance.",
+          "Derived tangent-angle compensation maths on Event Tick so projected score decals hug the curved shader surface without clipping.",
+          "Added procedural AnimGraph bone transforms that tilt the character's spine, tail, and ears based on lateral velocity."
+        ],
+        technicalDeepDive: "Because World Position Offset (WPO) displaces vertices purely on the GPU, the CPU collision geometry and deferred decal projectors remain on the flat Z=0 plane, causing decals to clip and vanish at a distance. I duplicated the shader's quadratic drop equation P' = P - Up * ((dist - bias) / R)^2 inside the Blueprint Event Tick and calculated the first derivative to pitch each decal projector onto the exact visual curve."
       }
     ]
   },
   {
-    id: "delirium",
-    slug: "delirium",
+    id: "state-machine-showcase",
+    slug: "state-machine-showcase",
+    catalogNumber: "02",
     category: "gameplay",
-    isFlagship: true,
-    statusTag: { label: "Playable VR + Full GDD", color: "emerald" },
-    gradeBadge: "MS5021 • 78% (1st Class)",
-    exhibitionBadge: "Sole Playable L5 VR Build",
+    categoryLabel: "Gameplay & Systems",
+    isPrimaryCard: true,
     number: "02",
-    title: "Delirium VR",
-    tagline: "Seated OpenXR Wheelchair Horror, Frustum-Locked AI & Non-Euclidean Hallways",
-    discipline: "VR Systems Design, GDD & UI",
-    engine: "Unreal Engine 5.6 VR (OpenXR)",
-    dates: "Jan 2026 – Jun 2026",
-    studio: "3J Mad Studios (6-Person Team) • UEL (MS5021)",
-    image: "/images/delirium_cover.png",
-    video: "/media/delirium_preview.mp4",
+    title: "Unreal Engine 5 AI State Machine Showcase",
+    tagline: "Hierarchical Finite State Machines & Enum Combat Controllers",
+    role: "Gameplay & AI Systems Programmer",
+    discipline: "Gameplay & AI Architecture",
+    statusTag: { label: "Playable Build + Source", color: "emerald" },
+    gradeBadge: "Clean HFSM Architecture",
+    engine: "Unreal Engine 5 (Blueprints & AI Systems)",
+    dates: "Oct 2025 to Jan 2026",
+    studio: "Solo Developer • UEL",
+    youtubeId: "fUvg3b93-bfb",
+    image: "/images/state_machine_cover.png",
+    tools: ["Unreal Engine 5", "Finite State Machines", "AnimNotifies", "Blueprint Interfaces", "AI Perception"],
     gallery: [
-      "/images/delirium_wheelchair.png",
-      "/images/delirium_dont_stop.png",
-      "/images/delirium_corridor.png",
-      "/images/delirium_directors_office.png",
-      "/images/delirium_ward.png",
-      "/images/delirium_restroom.png",
-      "/images/delirium_title_card.png",
-      "/images/delirium_vr_controls.png",
-      "/images/delirium_locomotion_modes.png",
-      "/images/delirium_ui_main_menu.png",
-      "/images/delirium_ui_control_menu.png",
-      "/images/delirium_ui_pause_menu.png",
-      "/images/delirium_floorplan.png",
-      "/images/delirium_monster_concept.png",
-      "/images/vr_showcase.jpg"
+      "/images/state_machine_cover.png",
+      "/images/state_machine_01.png",
+      "/images/state_machine_02.png",
+      "/images/state_machine_03.png"
     ],
-    funFact: "Delirium was the only fully working, playable VR project in the entire Level 5 showcase—running at a locked 90 FPS with physical seated wheelchair onboarding for walk-up visitors.",
     links: {
-      github: null,
-      demo: null,
-      itch: "https://joshej.itch.io/delirium",
-      gdd: "/docs/Delirium_GDD_and_Design_Notes.zip",
-      video: "/media/delirium_preview.mp4",
-      linkedin: null
+      github: "https://github.com/JoshUEL2/State-Machine-Showcase",
+      demo: "https://joshej.itch.io/state-machine-showcase",
+      itch: "https://joshej.itch.io/state-machine-showcase",
+      video: "https://youtu.be/fUvg3b93-bfb",
+      linkedin: "https://www.linkedin.com/in/joshgamedev"
     },
-    shortDesc: "A seated first-person VR survival horror game in Unreal Engine 5.6 where you wake up confined to a hospital wheelchair. Because you have to look forward to steer the wheels—and look backward to freeze the quantum-locked 'Staff'—every corridor forces a physical choice between navigation and survival.",
-    summary: "Created by our 6-person team (3J Mad Studios) for MS5021 Game Studio 2. I originated the 'Mental Hospital' concept, wrote the full Game Design Document (GDD), designed the Visio floorplans (modelled on UEL's Docklands West Building 1st Floor), built the Illustrator UI menus, produced the 4K IntroSequence.mp4, and co-designed the 3-mode wheelchair locomotion and Quantum-Observation AI rulesets.",
+    shortDesc: "A technical demonstration of decoupled, enum-driven Hierarchical Finite State Machines (HFSM) in Unreal Engine 5. I built this to replace messy Blueprint boolean spaghetti with strict Enter, Execute, and Exit state lifecycles governing player locomotion, stamina recovery, and AI combat transitions.",
+    summary: "Early prototypes often break when locomotion and combat logic rely on dozens of overlapping booleans (bIsJumping, bIsAttacking, bCanRoll). I built this playable Unreal Engine 5 sandbox to demonstrate a clean, scalable Hierarchical Finite State Machine (HFSM) pattern where transitions are validated at a single gatekeeper node and animations drive hitboxes through deterministic AnimNotifies.",
     highlights: [
-      "My Role (6-Person Team): Originated the core pitch, authored the full GDD & Sprint 1–4 docs, mapped the Visio level floorplans, designed all in-headset UI menus, and rendered the 4K cinematic intro.",
-      "Core Tension Loop: Heavy tank-drive wheelchair inertia forces you to look ahead to avoid obstacles, while the 'Staff' enemies only freeze when held inside your VR headset's camera frustum.",
-      "3 Wheelchair Propulsion Modes: 6-DOF physical wheel-grab tank steering, semi-realistic pull-stroke propulsion, and accessible dual-stick mode to prevent VR motion sickness.",
-      "Quantum-Observation AI ('The Staff'): Freezes with a low-frequency hum and swinging pendulum stethoscope when watched; stalks with wet footsteps and reversed speech ('tneitaP ,ereh kcab emoC') in the dark or when you look away.",
-      "Non-Euclidean Geometry Shifts: Hallways seal into brick walls or 'The Void' black fog behind your back whenever you turn your head, acting as zero-HUD level checkpoints and sanity feedback."
+      "Replaced tangled boolean branches with a strict enum-driven state dispatcher handling Idle, Locomotion, Dodge, Attack, Stagger, and Recovery.",
+      "Synchronised weapon hitboxes and stamina drain to animation montage frames using custom AnimNotifyState windows.",
+      "Built an on-screen real-time debug HUD that visualises active state stacks, transition locks, and AI perception cones.",
+      "Published both the playable sandbox on itch.io and the full commented Blueprint repository on GitHub."
     ],
-    technicalDeepDive: "Walk-up VR horror usually fails at exhibitions because artificial thumbstick walking causes instant vestibular sickness. We solved this by seating the physical player in a real chair and anchoring their OpenXR camera inside a virtual wheelchair chassis with high angular damping. For the Quantum-Observation AI and Geometry Shift checkpoints, dot-product and camera-frustum checks verify whether an actor's bounding box intersects the HMD view cone—allowing corridors and walls behind the player to swap meshes seamlessly at 90 FPS without visual pop-in.",
-    codeSnippet: `// Quantum-Observation Frustum Check & Behind-Back Geometry Shift
-FVector ToTarget = (StaffActor->GetActorLocation() - HMDLocation).GetSafeNormal();
-float ViewDot = FVector::DotProduct(HMDForwardVector, ToTarget);
-bool bInFrustum = (ViewDot > FMath::Cos(FMath::DegreesToRadians(HalfFOV))) && HasLineOfSight(HMDLocation, StaffActor);
+    technicalDeepDive: "To prevent race conditions when a playermashes dodge and attack on the same frame, all input events request a transition through TrySetState(NewState). That function checks a data-driven CanTransitionFrom(CurrentState, NewState) lookup table, runs OnStateExit(CurrentState) to clean up active hitboxes or timers, and only then initialises OnStateEnter(NewState).",
+    codeSnippet: `// Deterministic State Transition Gatekeeper
+bool UCombatStateComponent::TrySetState(ECharacterState NewState) {
+    if (CurrentState == NewState || !CanTransition(CurrentState, NewState))
+        return false;
 
-if (bInFrustum && AmbientLightLevel > BlackoutThreshold) {
-    StaffAI->FreezePoseAndVibrate(PendulumStethoscopePhysics = true);
-} else {
-    StaffAI->AdvanceTowardWheelchair(Speed = StalkSpeed, Audio = ReversedSpeechCue);
+    OnStateExit(CurrentState); // Guarantees hitbox & timer cleanup
+    PreviousState = CurrentState;
+    CurrentState = NewState;
+    OnStateEnter(CurrentState);
+    return true;
 }`
   },
   {
-    id: "rem",
-    slug: "rem",
-    category: "concepts",
-    isFlagship: true,
-    statusTag: { label: "UE5 Vertical Slice + Shaders", color: "indigo" },
-    gradeBadge: "MS5022 • Portfolio Vertical Slice",
+    id: "pyball-physics",
+    slug: "pyball",
+    catalogNumber: "03",
+    category: "gameplay",
+    categoryLabel: "Gameplay & Systems",
+    isPrimaryCard: false,
     number: "03",
-    title: "REM",
-    tagline: "Multi-Directional Kuwahara Watercolour Shader & WPO Morphing Body",
-    discipline: "Technical Art & Custom Shaders",
-    engine: "Unreal Engine 5",
-    dates: "Jan 2026 – May 2026",
-    studio: "Solo Developer • UEL (MS5022)",
-    image: "/images/rem_cover.jpg",
-    video: "/media/rem_preview.mp4",
+    title: "PyBall: 2D Arcade Football Physics Engine",
+    tagline: "Custom Elastic Collision Maths, AABB Goal Detection & Controller Input",
+    role: "Solo Programmer",
+    discipline: "Physics & Gameplay Programming",
+    statusTag: { label: "Source + Gameplay Video", color: "emerald" },
+    gradeBadge: "Programming Fundamentals • 78% (1st Class)",
+    engine: "Python (SimpleGUI & Pygame Controller API)",
+    dates: "Nov 2024 to Jan 2025",
+    studio: "Solo Programmer • UEL",
+    video: "/media/pyball_preview.mp4",
+    image: "/images/pyball.jpg",
+    tools: ["Python", "2D Vector Physics", "Pygame Joystick API", "SimpleGUI", "Collision Maths"],
     gallery: [
-      "/images/rem_cover.jpg"
+      "/images/pyball.jpg",
+      "/images/pyball_circle_collision.png",
+      "/images/pyball_box_collision.png"
     ],
     links: {
-      github: "https://github.com/JoshUEL2/REM",
-      demo: "https://joshuel2.github.io/REM-Marketing-Website/",
+      github: "https://github.com/JoshUEL2/PyBall-2D-Football",
+      demo: null,
       itch: null,
-      video: null
+      video: "/media/pyball_preview.mp4",
+      linkedin: "https://www.linkedin.com/in/joshgamedev"
     },
-    shortDesc: "A short-form Unreal Engine 5 vertical slice built around two custom technical art systems I wrote from scratch without tutorials: a multi-directional Kuwahara post-process material that turns the viewport into a living watercolour painting, and a World Position Offset (WPO) morphing body for the protagonist.",
-    summary: "For REM, my goal was to condense a massive narrative game bible into a tight, playable UE5 vertical slice where the rendering pipeline itself carries the psychological mood. I modelled the environments in Blender, authored custom colour-bleed PBR textures in Substance Painter, wrote an original World Position Offset vertex-morphing shader for the protagonist's body, and engineered a Kuwahara post-process volume that looks like wet watercolour without blurring readable UI or silhouettes.",
+    shortDesc: "A 2-player 2D arcade football game written from scratch in Python (78%, 1st Class). Rather than using a pre-built physics engine, I wrote the circle-vs-circle elastic impulse equations, pitch boundary restitution, AABB goal-line detection, and dual-controller analogue input polling myself.",
+    summary: "Built for my Fundamentals of Programming module (awarded 78%, 1st Class Honours). Inspired by HaxBall, I wanted to understand how 2D physics engines work under the hood, so I wrote the vector maths, penetration resolution, velocity damping, and gamepad input polling from first principles in Python.",
     highlights: [
-      "Wrote a custom multi-directional Kuwahara post-process filter in HLSL/UE5 Material Graph that groups pixel variance by sector to create brushstrokes while keeping object edges sharp at 60+ FPS.",
-      "Built the protagonist's shifting, unstable silhouette from scratch using animated 3D noise fields wired into World Position Offset (WPO).",
-      "Modelled and UV-unwrapped modular interior kits in Blender and painted custom watercolour-bleed PBR materials in Substance Painter.",
-      "Designed and deployed an accompanying interactive promotional website to pitch the world and tone."
+      "Implemented circle-vs-circle collision detection and positional penetration resolution from scratch using Euclidean distance vectors.",
+      "Wrote elastic momentum transfer and surface friction damping for weighty ball control and angled shots.",
+      "Integrated Pygame's joystick API alongside SimpleGUI to support simultaneous 2-player PS4/Xbox controller and keyboard play.",
+      "Built a custom sprite-sheet frame clock for animated goal celebrations, referee whistles, and live scoreboard tracking."
     ],
-    technicalDeepDive: "Standard box or Gaussian blurs destroy silhouette readability in first/third-person games, while naive Kuwahara filters cause blocky stepping artefacts on high-contrast edges. I solved this by sampling regional mean and variance across four overlapping quadrant kernels in the Post-Process Material and outputting the colour of the quadrant with the minimum variance—preserving razor-sharp character and doorway silhouettes while giving flat surfaces a hand-painted watercolour wash.",
-    codeSnippet: `// Multi-Quadrant Kuwahara Post-Process Kernel (HLSL Custom Node)
-float4 BestMean = float4(0,0,0,0);
-float MinVariance = 1e10;
-
-[unroll] for (int k = 0; k < 4; ++k) {
-    float3 Mean = SampleQuadrantMean(UV, k, KernelRadius);
-    float Variance = SampleQuadrantVariance(UV, k, KernelRadius, Mean);
-    if (Variance < MinVariance) {
-        MinVariance = Variance;
-        BestMean = float4(Mean, 1.0);
-    }
-}
-return lerp(BestMean, WatercolourPaperGrain(UV), CanvasBleedWeight);`
+    technicalDeepDive: "When two circular rigidbodies overlap at high speed in a discrete timestep, simply reversing velocity causes them to stick together on the next frame. Before applying the impulse vector, I calculate the overlap depth (r1 + r2 - dist) and push both bodies apart along the normalised collision normal proportional to their inverse masses.",
+    codeSnippet: `# Circle-vs-Circle Penetration Resolution & Impulse
+ delta = ball.pos - player.pos
+ dist = math.hypot(delta.x, delta.y)
+ if dist < (ball.radius + player.radius) and dist > 0:
+     normal = delta / dist
+     overlap = (ball.radius + player.radius) - dist
+     ball.pos += normal * overlap # Resolve overlap before impulse
+     ball.vel = normal * player.kick_power + player.vel * 0.65`
   },
   {
-    id: "the-quarry",
-    slug: "the-quarry",
-    category: "level-narrative",
-    isFlagship: true,
-    statusTag: { label: "Playable in Browser", color: "emerald" },
-    gradeBadge: "MS5029 • 78% (1st Class)",
+    id: "procedural-road-gen",
+    slug: "procedural-road-generator",
+    catalogNumber: "04",
+    category: "gameplay",
+    categoryLabel: "Gameplay & Systems",
+    isPrimaryCard: false,
     number: "04",
-    title: "The Quarry",
-    tagline: "Safeguarding Interrogation State Machine & Jon Ingold Dialogue Triads",
-    discipline: "Narrative Systems & Dialogue Scripting",
-    engine: "Twine (Harlowe 3.3 / HTML5 / CSS3)",
-    dates: "Apr 2026 – May 2026",
-    studio: "Solo Developer • UEL (MS5029)",
-    image: "/images/the_quarry.jpg",
+    title: "Procedural Arcade Racer & Road Spline Generator",
+    tagline: "Procedural Bezier Spline Mesh Extrusion & Arcade Drift Physics",
+    role: "Solo Systems & Tools Programmer",
+    discipline: "Procedural Generation & Vehicle Physics",
+    statusTag: { label: "Playable WebGL Build", color: "emerald" },
+    engine: "Unity (C# & Procedural Mesh API)",
+    dates: "2024",
+    studio: "Solo Developer",
+    image: "/images/road_gen_01.jpg",
+    tools: ["Unity", "C#", "Procedural Mesh API", "Bezier Splines", "Arcade Vehicle Physics"],
     gallery: [
-      "/images/the_quarry.jpg",
-      "/images/the_quarry_flowchart.png"
+      "/images/road_gen_01.jpg",
+      "/images/road_gen_02.jpg",
+      "/images/road_gen_03.jpg"
     ],
     links: {
-      github: "https://github.com/JoshUEL2/The-Quarry",
-      demo: "/games/the_quarry/index.html",
+      github: null,
+      demo: "https://joshej.itch.io/procedural-arcade-racer-and-road-generator",
+      itch: "https://joshej.itch.io/procedural-arcade-racer-and-road-generator",
+      video: null,
+      linkedin: "https://www.linkedin.com/in/joshgamedev"
+    },
+    shortDesc: "A procedural track generator and arcade drift racer built in Unity (C#) and playable in the browser on itch.io. Generates continuous road meshes, kerbs, and barriers at runtime from cubic Bezier splines with custom lateral tyre-grip physics.",
+    summary: "I built this Unity C# tool and playable prototype to explore runtime procedural track generation. Instead of hand-modelling static race tracks, the generator extrudes road cross-sections, UV-mapped kerbs, and guardrails along procedural Bezier curves and pairs them with a custom raycast suspension and drift controller.",
+    highlights: [
+      "Extrudes continuous road geometry, normals, UVs, and mesh colliders at runtime from cubic Bezier spline control points.",
+      "Automatically places trackside barriers and kerb strips along the spline's binormal offset vectors.",
+      "Custom C# arcade vehicle controller with tuneable lateral slip curves for responsive drifting.",
+      "Playable directly in the browser via WebGL on itch.io."
+    ],
+    technicalDeepDive: "To prevent texture stretching on tight corners vs long straights, I compute an arc-length lookup table along each Bezier segment and advance the V texture coordinate by physical distance in metres rather than raw spline parameter t."
+  },
+  {
+    id: "gold-miner",
+    slug: "gold-miner",
+    catalogNumber: "05",
+    category: "gameplay",
+    categoryLabel: "Gameplay & Systems",
+    isPrimaryCard: false,
+    number: "05",
+    title: "Gold Miner: Co-op Multiplayer Dungeon Crawler",
+    tagline: "Networked Co-op Loot Extraction, Enemy Aggro Sync & Lobby Systems",
+    role: "Multiplayer Gameplay Programmer",
+    discipline: "Networked Gameplay & Systems",
+    statusTag: { label: "Source Repository", color: "sky" },
+    engine: "Unity 6 (C# & Photon PUN 2)",
+    dates: "2025",
+    studio: "Team Project • UEL",
+    image: "/images/gold_miner.jpg",
+    tools: ["Unity 6", "C#", "Photon PUN 2", "RPC Synchronisation", "NavMesh AI"],
+    gallery: [
+      "/images/gold_miner.jpg"
+    ],
+    links: {
+      github: "https://github.com/JoshUEL2/Gold-Miner",
+      demo: null,
       itch: null,
       video: null,
-      linkedin: null
+      linkedin: "https://www.linkedin.com/in/joshgamedev"
     },
-    shortDesc: "Playable in your browser right now. You play an NHS clinical psychologist conducting an emergency safeguarding assessment of 12-year-old Holly after a fatal fall at a local quarry. Built on Jon Ingold's Accept / Reject / Deflect choice architecture and a hidden 0–100 Agitation state machine.",
-    summary: "Inspired by the single-room interrogation tension of Adolescence (Episode 3), I built The Quarry to treat conversation like a combat state machine. Holly claims an older boy named 'Ryder' pushed her bully, but her timeline has cracks. Every dialogue node gives you three tactical postures—Accept (validate to lower her guard), Reject (press a contradiction), or Deflect (pivot topics)—all manipulating a hidden Agitation variable that determines whether she slips up, loops into defensive silence, or confesses.",
+    shortDesc: "A top-down multiplayer co-op dungeon crawler built in Unity 6 with C# and Photon PUN 2. Players team up across networked lobbies to mine gold, fight dungeon enemies, and extract loot before the round timer expires.",
+    summary: "I worked on the networked gameplay loop in Unity 6 using Photon PUN 2, synchronising player movement, pickaxe mining interactions, shared gold deposits, and master-client AI target switching across connected clients.",
     highlights: [
-      "Structured every choice node around Jon Ingold's 'Accept / Reject / Deflect' triad so the player always knows the subtextual intent of their line.",
-      "Programmed a hidden Agitation state variable (0–100) in Harlowe 3.3: pressing contradictions when Agitation is >75 triggers defensive shutdown loops.",
-      "Mapped a 5,000 × 12,000 px branching node topology with multiple failure states, partial admissions, and full breakthrough endings.",
-      "Playable directly in the browser with custom clinical dossier CSS styling."
+      "Implemented Photon PUN 2 room creation, lobby matchmaking, and networked player spawning.",
+      "Synchronised ore node depletion and shared team gold counters via buffered Photon RPCs.",
+      "Built Master-Client authoritative enemy aggro so dungeon monsters target and chase players deterministically across all screens."
     ],
-    technicalDeepDive: "Branching narrative games often fail when players either click every option exhaustively ('lawnmowering') or get punished by opaque dialogue labels. By pairing Ingold's three-posture triad with a persistent `$agitation` integer and boolean evidence flags (`$ryder_alibi_cracked`, `$phone_checked`), players have to actively manage Holly's emotional threshold—using 'Accept' and 'Deflect' nodes as cooldown mechanics before spending their composure budget on a high-pressure 'Reject' confrontation.",
-    codeSnippet: `:: Interrogation_Node_Ryder_Alibi [Harlowe 3.3 State Logic]
-(set: $agitation to (min: 100, (max: 0, $agitation)))
-(if: $agitation >= 80)[
-  (goto: "Holly_Defensive_Shutdown_Loop")
-](else:)[
-  [[Accept: "That sounds terrifying, Holly. Take your time."->Validate_Alibi][$agitation -= 15]]
-  [[Reject: "Wait—earlier you said Ryder didn't have a car."->Press_Contradiction][$agitation += 25, $contradiction_1 = true]]
-  [[Deflect: "Let's step back to what happened at school."->Pivot_School][$agitation -= 5]]
-]`
+    technicalDeepDive: "To avoid two players mining the same gold vein on the same frame and duplicating rewards, resource nodes request depletion authority from the Master Client via an RPC before spawning collectible gold pickups."
   },
+
+  // ==========================================
+  // CATEGORY 2: VR & IMMERSIVE TECH (1 Project)
+  // ==========================================
   {
-    id: "state-machine",
-    slug: "state-machine-showcase",
-    category: "gameplay",
-    isFlagship: false,
-    statusTag: { label: "Playable on Itch.io", color: "emerald" },
-    number: "03",
-    title: "State Machine Showcase",
-    tagline: "Hierarchical AI Behaviour, Line-of-Sight Raycasts & Physics Elevators",
-    discipline: "AI Systems & Gameplay Mechanics",
-    engine: "Unreal Engine 5",
-    dates: "2025",
-    studio: "Solo Developer • Itch.io",
-    image: "/images/state_machine_cover.png",
+    id: "delirium",
+    slug: "delirium",
+    catalogNumber: "06",
+    category: "vr",
+    categoryLabel: "VR & Immersive Tech",
+    isPrimaryCard: true,
+    number: "01",
+    title: "Delirium VR",
+    tagline: "OpenXR Seated Wheelchair Tank Physics, Frustum-Locked AI & Non-Euclidean Rooms",
+    role: "Project Lead, VR Physics Programmer & Level Architect",
+    discipline: "VR Locomotion & Horror Systems",
+    statusTag: { label: "Playable VR Build + GDD", color: "emerald" },
+    gradeBadge: "Game Studio • 78% (1st Class)",
+    exhibitionBadge: "Sole Playable VR Build on Level 5 Showcase Floor",
+    engine: "Unreal Engine 5.6 (OpenXR)",
+    dates: "Jan 2026 to May 2026",
+    studio: "Team Studio Project (Lead) • UEL",
+    video: "/media/delirium_preview.mp4",
+    image: "/images/delirium_cover.png",
+    tools: ["Unreal Engine 5.6", "OpenXR", "VR Tank Physics", "Frustum Dot-Product AI", "Level Streaming"],
     gallery: [
-      "/images/state_machine_cover.png"
+      "/images/delirium_cover.png",
+      "/images/delirium_01.png",
+      "/images/delirium_02.png",
+      "/images/delirium_03.png"
+    ],
+    links: {
+      github: null,
+      demo: "https://joshej.itch.io/delirium",
+      itch: "https://joshej.itch.io/delirium",
+      gdd: "/docs/Delirium_GDD_and_Design_Notes.zip",
+      video: "/media/delirium_preview.mp4",
+      linkedin: "https://www.linkedin.com/in/joshgamedev"
+    },
+    funFact: "Stood as the only fully working, playable VR game in our entire Year 2 exhibition showcase, running live on headset all day with zero motion-sickness complaints.",
+    shortDesc: "A seated psychological VR horror game in Unreal Engine 5.6 (OpenXR) where the player is confined to a hospital wheelchair inside a shifting 1940s asylum. I led the project and built the 3-mode wheelchair locomotion physics, camera-frustum stalker AI, and behind-the-back non-Euclidean corridor swaps.",
+    summary: "Developed as Project Lead for our Game Studio module (78%, 1st Class Honours). Standard VR thumbstick walking breaks immersion and causes severe vestibulo-ocular motion sickness. By placing the player in a physical wheelchair while seated in real life, I aligned their real-world posture 1:1 with their virtual body and turned the physical effort of turning and braking a heavy wheelchair into the core survival mechanic.",
+    highlights: [
+      "Engineered a 3-mode seated wheelchair physics rig (Dual-Wheel Tank Steering, Single-Hand Push, and Accessibility Comfort Mode) with realistic angular momentum and brake friction.",
+      "Built a quantum-locked stalker AI that calculates HMD camera frustum dot-products and line-of-sight raycasts to advance silently only when outside the player's peripheral vision.",
+      "Used those same HMD look-direction checks to stream and swap asylum corridors behind the player's back for seamless non-Euclidean loops.",
+      "Integrated spatial 3D audio cues (wheelchair rim creaks, distant footsteps) that force players to physically look over their shoulder, triggering the geometry shifts."
+    ],
+    technicalDeepDive: "VR nausea happens when your eyes see forward motion while your inner ear feels you sitting still. I solved this by grounding the player inside a high-friction wheelchair chassis with visible peripheral frame anchors and independent left/right wheel torque. For the horror loop, both the stalker AI and the non-Euclidean room swaps query DotProduct(HMDForwardVector, DirectionToTarget) every frame, guaranteeing that geometry swaps and enemy steps only occur when the target is outside the headset's field of view.",
+    codeSnippet: `// Frustum-Locked Stalker & Non-Euclidean Room Swap Check
+FVector ToTarget = (TargetActor->GetActorLocation() - HMDLocation).GetSafeNormal();
+float LookDot = FVector::DotProduct(HMDForwardVector, ToTarget);
+
+// If outside HMD 110-degree peripheral cone & occluded, advance AI / swap room
+if (LookDot < -0.15f && !HasLineOfSight(HMDLocation, TargetActor)) {
+    AdvanceStalkerAlongNavPath(DeltaTime);
+    TryTriggerBehindBackCorridorSwap();
+}`
+  },
+
+  // ==========================================
+  // CATEGORY 3: SHADERS & TECHNICAL ART (1 Project)
+  // ==========================================
+  {
+    id: "rem",
+    slug: "rem",
+    catalogNumber: "07",
+    category: "shaders",
+    categoryLabel: "Shaders & Technical Art",
+    isPrimaryCard: true,
+    number: "01",
+    title: "REM",
+    tagline: "Multi-Directional Kuwahara Watercolour Shader & WPO Morphing Rig",
+    role: "Technical Artist & Shader Programmer",
+    discipline: "Shaders & Technical Art",
+    statusTag: { label: "Engine Shader Showcase", color: "amber" },
+    gradeBadge: "Custom HLSL & Material Graph",
+    engine: "Unreal Engine 5, Blender 5.0 & Substance 3D Painter",
+    dates: "Oct 2025 to Jan 2026",
+    studio: "Team Project (Technical Artist) • UEL",
+    video: "/media/rem_preview.mp4",
+    image: "/images/rem_cover.jpg",
+    tools: ["Unreal Engine 5", "HLSL / Material Graph", "Kuwahara Filter", "Blender 5.0", "Substance 3D Painter"],
+    gallery: [
+      "/images/rem_cover.jpg",
+      "/images/rem_01.png",
+      "/images/rem_02.png",
+      "/images/rem_03.png"
     ],
     links: {
       github: null,
       demo: null,
-      itch: "https://joshej.itch.io/state-machine-showcase",
-      video: null,
-      linkedin: null
+      itch: null,
+      video: "/media/rem_preview.mp4",
+      linkedin: "https://www.linkedin.com/in/joshgamedev"
     },
-    shortDesc: "A playable Unreal Engine 5 systems sandbox demonstrating modular Hierarchical Finite State Machines (Patrol → Investigate → Pursue → Search), raycast line-of-sight perception cones, and physics-synchronised multi-floor elevators.",
-    summary: "I built this standalone UE5 sandbox to prototype clean, reusable AI and world-interaction blueprints without spaghetti dependencies. Enemies use decoupled Blueprint Interfaces and minimum dwell-time guards to transition smoothly between patrolling, investigating last-known player coordinates, active turret pursuit, and search recovery.",
+    shortDesc: "A surreal narrative exploration prototype in Unreal Engine 5 where the entire 3D environment renders as a living, breathing watercolour painting. I wrote the multi-directional Kuwahara post-process shader, pigment edge-bleed pass, and real-time World Position Offset (WPO) character morphing rig.",
+    summary: "In REM, the environment reacts to the protagonist's psychological state. Rather than slapping a flat canvas texture overlay onto the screen, I built a multi-pass post-processing pipeline in Unreal Engine 5 that turns real-time 3D lighting and geometry into wet-on-wet watercolour brushstrokes, paired with a custom character rig modelled in Blender 5.0 and textured in Substance 3D Painter.",
     highlights: [
-      "Hierarchical Finite State Machine (HFSM) separating high-level combat state from low-level navmesh movement.",
-      "Vision cone raycasting with occlusion checks and a last-known-position memory timer.",
-      "Physics-synchronised moving platforms and multi-stop elevators that carry both players and AI cleanly.",
-      "Playable on itch.io."
+      "Built an anisotropic Kuwahara post-process filter in UE5 that samples directional neighbourhood quadrants and picks the sector with lowest colour variance, creating painterly brushstrokes without blurring silhouettes.",
+      "Combined Sobel depth and normal edge detection with 2D Perlin noise UV distortion to simulate wet ink pooling and paper grain absorption.",
+      "Created a custom protagonist rig in Blender 5.0 and drove vertex-level World Position Offset (WPO) silhouette distortion in UE5 during nightmare sequences.",
+      "Authored hand-painted PBR base maps in Substance 3D Painter tuned specifically to feed clean colour gradients into the Kuwahara kernel."
     ],
-    technicalDeepDive: "Naive AI state machines suffer from 'state thrashing' when a player ducks in and out of cover right on the edge of a vision cone. I solved this by adding hysteresis thresholds—requiring 0.4s of continuous line-of-sight accumulation to escalate from Investigate to Pursue, and a 4.0s decay timer holding the player's last velocity vector before dropping back to Search.",
-    codeSnippet: `// AI Perception Hysteresis & State Transition Guard
-if (bHasLineOfSight && DistToPlayer < VisionRadius) {
-    DetectionAccumulator = FMath::Min(1.0f, DetectionAccumulator + DeltaTime * 2.5f);
-    LastKnownPlayerPos = PlayerPawn->GetActorLocation();
-    if (DetectionAccumulator >= 1.0f) TransitionToState(EAIState::Pursue);
-} else if (CurrentState == EAIState::Pursue) {
-    MemoryTimer -= DeltaTime;
-    if (MemoryTimer <= 0.0f) TransitionToState(EAIState::InvestigateLastPos);
+    technicalDeepDive: "Standard box or Gaussian blurs destroy edge silhouettes, making 3D games look muddy rather than painted. By implementing a multi-directional Kuwahara kernel in the Post-Process Material Graph, the shader evaluates mean colour and variance across 4 overlapping quadrant windows around each pixel and outputs the mean of the quadrant with the minimum variance. This preserves razor-sharp object boundaries while flattening interior shading into distinct paint strokes.",
+    codeSnippet: `// Anisotropic Kuwahara Sector Evaluation (UE5 Custom HLSL Node)
+float minVariance = 1e10;
+float3 finalColor = float3(0, 0, 0);
+for (int k = 0; k < 4; ++k) {
+    float3 mean = SectorMean[k] / SampleCount;
+    float3 variance = abs(SectorMeanSq[k] / SampleCount - mean * mean);
+    float totalVar = variance.r + variance.g + variance.b;
+    if (totalVar < minVariance) { minVariance = totalVar; finalColor = mean; }
+}
+return finalColor;`
+  },
+
+  // ==========================================
+  // CATEGORY 4: LEVEL & ENVIRONMENT DESIGN (3 Projects)
+  // ==========================================
+  {
+    id: "labraz",
+    slug: "labraz",
+    catalogNumber: "08",
+    category: "level",
+    categoryLabel: "Level & Environment Design",
+    isPrimaryCard: true,
+    number: "01",
+    title: "LabR@z",
+    tagline: "Asymmetrical Co-op Split-Floor FPS Level Design & AI Combat Pacing",
+    role: "Level Designer & Combat Encounter Scripter",
+    discipline: "Level Design & Combat Pacing",
+    statusTag: { label: "UE5 Playable Vertical Slice", color: "emerald" },
+    gradeBadge: "Level Design • 72% (1st Class)",
+    engine: "Unreal Engine 5 (Blueprints & NavMesh AI)",
+    dates: "Oct 2025 to Jan 2026",
+    studio: "Solo Level Designer • UEL",
+    youtubeId: "eNkcFXg-wtg",
+    image: "/images/labraz_01.jpg",
+    tools: ["Unreal Engine 5", "Greyboxing", "Sightline Geometry", "NavMesh AI", "Blueprint Encounters"],
+    gallery: [
+      "/images/labraz_01.jpg",
+      "/images/labraz_cover.png"
+    ],
+    links: {
+      github: "https://github.com/JoshUEL2/MS5028-LabR-z",
+      demo: null,
+      itch: null,
+      video: "https://youtu.be/eNkcFXg-wtg",
+      linkedin: "https://www.linkedin.com/in/joshgamedev"
+    },
+    shortDesc: "An asymmetrical co-op FPS level vertical slice in Unreal Engine 5 where two laboratory rats (a brawny lower-floor combatant and an agile upper-catwalk infiltrator) must coordinate across vertically separated arenas to escape a high-security biolab.",
+    summary: "Built for my Level Design module (72%, 1st Class Honours). I designed and scripted a vertical multi-floor facility in Unreal Engine 5 around cooperative sightlines: Player B on the upper ventilation catwalks hacks security doors and triggers environmental traps to protect Player A fighting through heavy security waves on the laboratory floor below.",
+    highlights: [
+      "Designed a dual-layer vertical greybox where upper catwalks have direct sightlines onto lower combat choke points, rewarding cross-floor communication.",
+      "Scripted multi-stage AI wave spawners, destructible cover barriers, and interlocked co-op security terminals in UE5 Blueprints.",
+      "Used colour-coded industrial lighting (cold cyan for safe traversal routes, amber for hackable sightlines, pulsing red for active breach zones) to guide players without HUD clutter.",
+      "Iterated cover spacing, ammo placement, and flank routes through recorded playtest heatmaps."
+    ],
+    technicalDeepDive: "In asymmetrical split-floor levels, the biggest risk is one player waiting passively while the other does all the work. I solved this by interlocking every arena progression gate with simultaneous dual-floor pressure states: hacking a terminal on the upper rafters triggers an immediate AI flank downstairs, requiring both players to stay active and communicate sightlines.",
+    codeSnippet: `// Cross-Floor Interlocked Arena Trigger (Blueprint Logic)
+Event OnUpperCatwalkTerminalHacked(AActor* Hacker) {
+    LowerFloorBlastDoor->StartTimedOpenSequence(18.0f);
+    SpawnSecurityWaveAtChokePoint(ELabSector::LowerContainment);
+    UpdateSectorLightingState(ELabSector::LowerContainment, FLinearColor::Red);
 }`
   },
   {
     id: "daydream",
     slug: "daydream",
-    category: "concepts",
-    isFlagship: false,
-    statusTag: { label: "Playable Build + Dual-Phase", color: "emerald" },
-    gradeBadge: "MS4035 • 72% (1st Class)",
+    catalogNumber: "09",
+    category: "level",
+    categoryLabel: "Level & Environment Design",
+    isPrimaryCard: true,
     number: "02",
-    title: "Project Daydream & Daydream Believer",
-    tagline: "1:1 RenderDoc Photogrammetry (2,377 UV Maps) & ADHD Hyperfocus Shaders",
-    discipline: "Photogrammetry & Shader Systems",
-    engine: "Unreal Engine 5 (MS4035)",
-    dates: "Jul 2022 – Apr 2025",
-    studio: "Solo Developer • UEL (MS4035)",
-    image: "/images/daydream.jpg",
-    video: "/media/daydream_preview.mp4",
+    title: "Daydream Believer",
+    tagline: "Photogrammetric 1:1 Campus Digital Twin & UE 5.7 Lumen Remaster",
+    role: "Solo Environment & Technical Artist",
+    discipline: "Photogrammetry & Environment Design",
+    statusTag: { label: "Playable Build + Remaster", color: "emerald" },
+    gradeBadge: "Game Prototyping • 72% (1st Class)",
+    engine: "Unreal Engine 5.3 / 5.7 & Blender 4.3",
+    dates: "Apr 2025 to Jan 2026",
+    studio: "Solo Developer • UEL",
+    youtubeId: "eLceB-bfb-A",
+    image: "/images/daydream_revisited.jpg",
+    tools: ["Unreal Engine 5.7", "Blender 4.3", "Photogrammetry", "Lumen GI", "Geometry Script"],
     gallery: [
-      "/images/daydream.jpg",
-      "/images/daydream_00_01_05.jpg",
-      "/images/daydream_00_01_30.jpg",
       "/images/daydream_revisited.jpg",
-      "/images/test_daydream_52s.jpg"
+      "/images/daydream.jpg"
     ],
     links: {
-      github: null,
-      demo: null,
+      github: "https://github.com/JoshUEL2/MS4035-Daydream-Believer",
+      demo: "https://joshej.itch.io/daydream-believer",
       itch: "https://joshej.itch.io/daydream-believer",
-      video: null,
-      linkedin: null
+      video: "https://youtu.be/eLceB-bfb-A",
+      linkedin: "https://www.linkedin.com/in/joshgamedev"
     },
-    shortDesc: "Started in 2022 as a 1:1 digital twin of my secondary school campus (captured via RenderDoc, consolidating 2,377 UV texture maps in Blender across a 23.999° axis realignment). In 2025 (MS4035), I transformed that campus into 'Daydream Believer'—an interactive simulation of ADHD sensory overload using custom radial distortion shaders and manual alternating-keystroke locomotion.",
-    summary: "Project Daydream spans three years of iteration. In Phase 1, I extracted raw 3D satellite photogrammetry via RenderDoc, baked 2,377 fragmented UV maps in Blender, upscaled the textures with Topaz Gigapixel, and wrapped the jagged meshes in clean collision primitives inside UE5. In Phase 2 ('Daydream Believer'), I used that familiar school environment to translate ADHD executive dysfunction and hyperfocus into playable mechanics: a post-process tunnel-vision shader, crimson sensory-overload barriers, 15 original BandLab audio stems, and a manual step-by-step walking mechanic.",
+    shortDesc: "A 1:1 architectural digital twin of the University of East London Docklands campus built from on-site photography and measurements in Blender 4.3, then remastered in Unreal Engine 5.7 with Lumen global illumination and Geometry Script procedural tools.",
+    summary: "I originally created Daydream Believer in Year 1 (72%, 1st Class Honours) by photographing and measuring the UEL Docklands campus to build a 1:1 walkable digital twin in Blender 4.3 and Unreal Engine 5.3. Six months later, I revisited the project in Unreal Engine 5.7 to overhaul the lighting with Lumen, replace manual stair/railing meshes with procedural Geometry Script tools, and re-author the materials.",
     highlights: [
-      "Phase 1 (Digital Twin): Extracted 3D photogrammetry via RenderDoc, baked 2,377 UV maps in Blender, and corrected a map-wide 23.999° coordinate tilt.",
-      "Phase 2 (MS4035 — 72% 1st Class): Built a custom HLSL post-process radial blur and chromatic aberration shader driven by a live Attention float.",
-      "Programmed an alternating-keystroke manual locomotion state machine where mistimed steps induce camera roll, mechanically simulating executive dysfunction.",
-      "Composed 15 layered audio tracks in BandLab that duck and swell dynamically based on proximity to sensory-overload triggers."
+      "Captured on-site architectural reference photos and measurements across UEL's Docklands campus to model a 1:1 scale digital twin in Blender 4.3.",
+      "Rebuilt the lighting pipeline in Phase 2 using Unreal Engine 5.7 Lumen dynamic global illumination and reflections.",
+      "Replaced static hand-modelled stairs and railings with procedural UE5 Geometry Script generators.",
+      "Optimised lightmap UV packing and collision hulls to maintain a locked 60fps walkthrough."
     ],
-    technicalDeepDive: "Raw RenderDoc photogrammetry meshes are non-manifold soup tilted at an arbitrary capture angle (23.999° off world north) with thousands of tiny 256px texture pages. I automated a Blender cleanup pass to rotate all chunks around a shared pivot, consolidate 2,377 UV islands, and generate simplified box/convex collision hulls. In Phase 2, I drove a post-process material parameter collection from the player's step-rhythm accuracy to contract screen UVs towards the centre during sensory overload.",
-    codeSnippet: `// ADHD Sensory Overload Post-Process UV Contraction & Chromatic Shift
-float2 CenteredUV = UV - 0.5;
-float Radius = length(CenteredUV);
-float OverloadMask = smoothstep(0.25, 0.75, Radius * AttentionOverloadScalar);
-float2 DistortedUV = 0.5 + CenteredUV * (1.0 - OverloadMask * 0.18);
-float3 SceneRGB = float3(
-    SceneTextureLookup(DistortedUV + float2(OverloadMask * 0.008, 0), 14, false).r,
-    SceneTextureLookup(DistortedUV, 14, false).g,
-    SceneTextureLookup(DistortedUV - float2(OverloadMask * 0.008, 0), 14, false).b
-);`,
+    technicalDeepDive: "Raw photogrammetric and architectural imports often suffer from overlapping UV islands and dense triangle counts that tank real-time frame rates. In my Phase 2 remaster, I retopologised the modular structural kits in Blender 4.3, converted repeated architectural trims into procedural Geometry Script blueprints, and calibrated PBR roughness/albedo ranges so Lumen bounce lighting remained physically accurate.",
+    codeSnippet: `// UE 5.7 Geometry Script: Procedural Stair & Railing Generation
+for (int32 StepIdx = 0; StepIdx < NumSteps; ++StepIdx) {
+    FTransform StepTransform(FVector(StepIdx * StepDepth, 0.f, StepIdx * StepHeight));
+    AppendBox(TargetMesh, StepDimensions, StepTransform);
+}
+RecalculateNormals(TargetMesh);`,
     splitPhases: [
       {
-        id: "original",
-        phaseLabel: "Phase 1: 1:1 Photogrammetry (2022–2023)",
-        phaseBadge: "2,377 Blender UV Maps",
-        phaseSubtitle: "RenderDoc 3D Capture, 23.999° Realignment & Lumen Lighting",
-        title: "Project Daydream: 1:1 School Campus Digital Twin",
-        summary: "An architectural 1:1 reconstruction of my secondary school campus in Unreal Engine 5. I captured 3D photogrammetry buffers using RenderDoc, consolidated 2,377 separate UV texture maps in Blender, upscaled the satellite textures to 4K via Topaz Gigapixel, and built clean blocking collisions.",
-        highlights: [
-          "Captured 3D photogrammetry buffers via RenderDoc and consolidated 2,377 UV maps in Blender",
-          "Calculated an exact 23.999° transformation matrix to align the tilted capture data with UE5's world grid",
-          "Traced invisible box collision primitives over jagged photogrammetric walls for smooth 60 FPS walking",
-          "Upscaled low-resolution satellite textures to 4K and lit the campus with dynamic day/night Lumen GI"
-        ],
-        technicalDeepDive: "Importing 2,377 unmerged draw calls with per-triangle auto-collisions brought the viewport to a crawl. I stripped complex mesh collisions, grouped architectural blocks in Blender around a common origin rotated by -23.999°, and hand-placed simplified box colliders in UE5.",
+        id: "daydream-phase-1",
+        phaseLabel: "Phase 1: Year 1 Original (UE 5.3)",
+        phaseBadge: "72% (1st Class)",
+        phaseSubtitle: "1:1 Architectural Photogrammetry & Blender 4.3 Reconstruction",
+        title: "Daydream Believer (Original Year 1 Build)",
+        youtubeId: "eLceB-bfb-A",
+        image: "/images/daydream.jpg",
         gallery: [
           "/images/daydream.jpg",
-          "/images/daydream_00_01_05.jpg",
-          "/images/daydream_00_01_30.jpg"
+          "/images/daydream_revisited.jpg"
         ],
-        video: "/media/daydream_preview.mp4"
+        summary: "My Year 1 Game Prototyping submission (72%, 1st Class Honours). I photographed and measured the real-world UEL Docklands campus buildings and interior corridors, reconstructed them at 1:1 scale in Blender 4.3, and brought them into Unreal Engine 5.3 as an interactive first-person environment.",
+        highlights: [
+          "On-site photography and dimensional survey of the UEL Docklands campus.",
+          "1:1 scale modular architectural modelling and UV unwrapping in Blender 4.3.",
+          "Interactive first-person exploration build published on itch.io."
+        ],
+        technicalDeepDive: "My primary challenge in Year 1 was matching real-world architectural proportions to Unreal Engine's first-person camera height and capsule radius so doorways, stairs, and sightlines felt true to life rather than cramped."
       },
       {
-        id: "revisited",
-        phaseLabel: "Phase 2: Daydream Believer (MS4035 • 72% 1st)",
-        phaseBadge: "72% • 1st Class",
-        phaseSubtitle: "ADHD Hyperfocus Shader, Manual Step Locomotion & 15 Audio Stems",
-        title: "Daydream Believer: Interactive ADHD Sensory Simulation",
-        summary: "For MS4035 Game Prototyping (72% 1st Class), I turned the photogrammetric campus into a playable first-person simulation of ADHD hyperfocus and sensory overload—combining a custom radial tunnel-vision shader, manual alternating-key movement, crimson overload fences, and 15 original BandLab tracks.",
-        highlights: [
-          "Post-process radial blur and chromatic aberration material driven by player attention/overload state",
-          "Rhythm-based manual walking mechanic requiring alternating keystrokes to keep camera balance steady",
-          "Dynamic perimeter barriers that flare crimson during sensory overload and dissolve when focus is restored",
-          "15 original BandLab music stems layered with real-time volume ducking and inner-monologue voice cues"
-        ],
-        technicalDeepDive: "Instead of using a passive cutscene to represent executive dysfunction, I replaced standard WASD hold-to-walk with an alternating-step state machine. Missing the rhythm window increments an Overload scalar in the Material Parameter Collection, narrowing the clear centre of the viewport via radial UV distortion.",
+        id: "daydream-phase-2",
+        phaseLabel: "Phase 2: UE 5.7 Remaster",
+        phaseBadge: "Lumen + Geometry Script",
+        phaseSubtitle: "Lumen Global Illumination Overhaul & Procedural Geometry",
+        title: "Daydream Believer Remastered (UE 5.7)",
+        youtubeId: "eLceB-bfb-A",
+        image: "/images/daydream_revisited.jpg",
         gallery: [
           "/images/daydream_revisited.jpg",
-          "/images/test_daydream_52s.jpg"
+          "/images/daydream.jpg"
         ],
-        video: "/media/daydream_preview.mp4"
+        summary: "In Year 2, I revisited my original campus reconstruction and upgraded it to Unreal Engine 5.7, replacing baked static lighting with dynamic Lumen global illumination, refactoring repeated architectural elements into procedural Geometry Script blueprints, and upgrading every surface to full PBR.",
+        highlights: [
+          "Upgraded to Unreal Engine 5.7 with full Lumen dynamic global illumination and sky-atmosphere bounce lighting.",
+          "Built procedural Geometry Script tools to generate modular staircases, pillars, and barriers dynamically.",
+          "Re-authored campus concrete, glass, and brickwork materials with physically based roughness and normal maps."
+        ],
+        technicalDeepDive: "Migrating from static baked lightmaps in UE 5.3 to Lumen in UE 5.7 required splitting thick combined building shells into clean modular walls with proper surface cache coverage so Lumen could trace interior bounce light without light leaking."
       }
     ]
   },
   {
-    id: "labraz",
-    slug: "labraz",
-    category: "level-narrative",
-    isFlagship: false,
-    statusTag: { label: "UE5 Level + 40p GDD", color: "indigo" },
-    gradeBadge: "MS5028 • 72% (1st Class)",
-    number: "02",
-    title: "LabR@z",
-    tagline: "3-Player Asymmetrical Co-Op FPS Level Design & Foamboard Prototyping",
-    discipline: "Level Design & Encounter Architecture",
-    engine: "Unreal Engine 5 (MS5028 & MS4005)",
-    dates: "Dec 2024 – Apr 2025",
-    studio: "Solo Level Designer • UEL (MS5028)",
-    image: "/images/labraz.jpg",
-    video: "/media/labraz_preview.mp4",
+    id: "project-tower",
+    slug: "project-tower",
+    catalogNumber: "10",
+    category: "level",
+    categoryLabel: "Level & Environment Design",
+    isPrimaryCard: false,
+    number: "03",
+    title: "Project Tower: Vertical Platforming Level Blockout",
+    tagline: "Vertical Level Design, Jump-Arc Metrics & Sightline Pacing",
+    role: "Solo Level Designer",
+    discipline: "3D Level Blockout & Pacing",
+    statusTag: { label: "Level Blockout Study", color: "amber" },
+    engine: "Unreal Engine 5 (Greybox & Metrics)",
+    dates: "2025",
+    studio: "Solo Level Designer • UEL",
+    image: "/images/project_tower_01.jpg",
+    tools: ["Unreal Engine 5", "Level Blockout", "Jump Metrics", "Sightline Framing", "Environmental Storytelling"],
     gallery: [
-      "/images/labraz.jpg",
-      "/images/labraz_01.jpg"
+      "/images/project_tower_01.jpg",
+      "/images/project_tower_02.jpg",
+      "/images/project_tower_03.jpg"
     ],
-    youtubeId: null,
     links: {
       github: null,
       demo: null,
       itch: null,
       video: null,
-      linkedin: null
+      linkedin: "https://www.linkedin.com/in/joshgamedev"
     },
-    shortDesc: "An asymmetrical 3-player co-op FPS level built in Unreal Engine 5 where three genetically modified lab rats (Tank, DPS, and Support/Healer) infiltrate a high-security biolab. I validated the sightlines with physical 3D foamboard models before whiteboxing the playable UE5 facility and writing a 40-page GDD.",
-    summary: "Developed across MS4005 (physical paper/foamboard prototyping) and MS5028 Level Design (72% 1st Class Honours). Players control three specialised rat classes—Tank, DPS, and Support/Healer—who must split up across vertical vents and floor-level choke points before converging for a final 'Pawn Promotion' bulkhead breach.",
+    shortDesc: "A vertical 3D platformer level blockout in Unreal Engine 5 focused on standardised jump-arc metrics, vertical sightline framing (Weenies), and risk-reward shortcut routing.",
+    summary: "I built Project Tower as a focused vertical level-design study in Unreal Engine 5. Every platform gap, ledge height, and spiral ascent was greyboxed against strict character jump distance and apex metrics, using architectural framing so players can always read their next vertical objective and look back down at the progress they have made.",
     highlights: [
-      "Built physical 3D foamboard corridor models (MS4005) to test sightlines, cover spacing, and ambush angles before touching Unreal Engine 5.",
-      "Whiteboxed and scripted the multi-tier facility in UE5 (MS5028 — 72% 1st Class), separating Tank/DPS floor lanes from elevated Support/Healer vent routes.",
-      "Designed the 'Pawn Promotion' finale mechanic where all three classes must synchronise terminal overrides to breach the lab bulkhead.",
-      "Wrote a 40-page Game Design Document with encounter pacing graphs, top-down beat maps, and sightline diagrams."
+      "Standardised platform spacing and ledge heights against exact character jump apex and horizontal air-control metrics.",
+      "Used vertical sightline framing and lighting contrast to guide the player's eye upward without UI waypoints.",
+      "Built risk-reward shortcut loops that let skilled players bypass outer spiral paths while keeping safe recovery ledges below."
     ],
-    technicalDeepDive: "Co-op levels fail when one dominant player can solo every room while teammates trail behind. I prevented this by gating security doors behind parallel sightline puzzles: the Tank holds aggro on the main lab floor, exposing power relays that only the elevated DPS/Support players on the upper catwalks have the angle to trigger.",
-    codeSnippet: `// Co-Op Parallel Sightline Gate & 'Pawn Promotion' Bulkhead Trigger
-void ALabBulkheadGate::OnRelayTriggered(EPlayerClass Role, int32 RelayIndex) {
-    ActiveRelaysBitmask |= (1 << RelayIndex);
-    UpdateConduitCableMaterial(RelayIndex, FLinearColor::Yellow);
-    if (ActiveRelaysBitmask == ALL_THREE_ROLES_MASK && bTankOnPressurePlate) {
-        TriggerPawnPromotionBreachSequence();
-    }
-}`
+    technicalDeepDive: "In vertical platformers, falling all the way to the bottom feels punishing rather than challenging. I tiered the tower into three distinct vertical acts separated by wide rest balconies that act as natural catch-ledges and camera landmarks."
+  },
+
+  // ==========================================
+  // CATEGORY 5: NARRATIVE DESIGN & GDDs (5 Projects)
+  // ==========================================
+  {
+    id: "the-quarry",
+    slug: "the-quarry",
+    catalogNumber: "11",
+    category: "narrative",
+    categoryLabel: "Narrative Design & GDDs",
+    isPrimaryCard: true,
+    number: "01",
+    title: "The Quarry: Interactive Narrative Adaptation",
+    tagline: "Jon Ingold Subtext Engine, 30+ Tracked Variables & Dynamic Relationship HUD",
+    role: "Solo Narrative Systems Designer & Programmer",
+    discipline: "Interactive Narrative & Dialogue Systems",
+    statusTag: { label: "Playable in Browser", color: "emerald" },
+    gradeBadge: "Storytelling for Games • 78% (1st Class)",
+    engine: "Twine (Harlowe 3.3, Custom CSS & Audio)",
+    dates: "Oct 2025 to Jan 2026",
+    studio: "Solo Developer • UEL",
+    image: "/images/the_quarry_01.png",
+    tools: ["Twine", "Harlowe 3.3", "State-Machine Scripting", "CSS UI Animation", "Web Audio"],
+    gallery: [
+      "/images/the_quarry_01.png",
+      "/images/the_quarry_02.png",
+      "/images/the_quarry_03.png",
+      "/images/the_quarry_cover.png"
+    ],
+    links: {
+      github: "https://github.com/JoshUEL2/MS5029-The-Quarry-Twine",
+      demo: "https://joshuel2.github.io/MS5029-The-Quarry-Twine/",
+      itch: "https://joshej.itch.io/the-quarry-interactive-adaptation",
+      video: null,
+      linkedin: "https://www.linkedin.com/in/joshgamedev"
+    },
+    shortDesc: "A playable interactive fiction adaptation of Supermassive Games' The Quarry built in Twine (Harlowe 3.3). Tracks 30+ persistent relationship, trust, and injury variables across 55+ interconnected nodes to drive delayed life-or-death outcomes in the final act.",
+    summary: "Built for my Storytelling for Games module (78%, 1st Class Honours). Inspired by Jon Ingold's (inkle Studios) GDC talks on subtext-driven dialogue, I wanted choices to reflect immediate emotional intent rather than obvious 'Good vs Evil' buttons, while a hidden state machine quietly accumulates trust, honesty, and survival flags that pay off hours later.",
+    highlights: [
+      "Engineered a 55+ node branching state machine in Harlowe 3.3 tracking 30+ persistent variables ($trust_laura, $infected_nick, $shotgun_shells, $honesty_score).",
+      "Applied Jon Ingold's dialogue design principles so players choose immediate emotional subtext (deflect, press, confide) rather than telegraphed alignment options.",
+      "Built a custom animated CSS notification toast system ('Laura will remember that...') and dynamic audio triggers for Supermassive-style tension.",
+      "Designed delayed butterfly-effect payoffs where Act 1 dialogue tone determines whether an NPC trusts you with the weapon in Act 3."
+    ],
+    technicalDeepDive: "Standard branching narratives suffer from combinatorial explosion if every choice forks into a brand-new path. Instead, I used a foldback 'pearl-string' architecture with stateful variables: scenes reconverge on shared structural beats, but the prose, available choices, and character survival inside those beats dynamically mutate via conditional Harlowe macros reading the player's accumulated state.",
+    codeSnippet: `:: Act3_Cellar_Standoff [Harlowe 3.3 State Evaluation]
+(if: $laura_trust >= 3 and $kept_silver_shell is true)[
+  Laura lowers the barrel, tossing you the silver shell.
+  (set: $ryan_survived to true)
+](else-if: $laura_trust < 0 and $lied_about_bite is true)[
+  "You lied to me in the woods," Laura whispers. She pulls the trigger.
+]`
   },
   {
     id: "faith-over-fear",
     slug: "faith-over-fear",
-    category: "level-narrative",
-    isFlagship: false,
-    statusTag: { label: "AAA Mocap Screenplay", color: "amber" },
-    gradeBadge: "MS5029 • 78% (1st Class)",
-    number: "03",
-    title: "Far Cry 5 DLC: Faith Over Fear",
-    tagline: "Performance-Capture Prequel Screenplay & Spatial Blocking",
+    catalogNumber: "12",
+    category: "narrative",
+    categoryLabel: "Narrative Design & GDDs",
+    isPrimaryCard: true,
+    number: "02",
+    title: "Faith Over Fear (Far Cry 5 Prequel Screenplay)",
+    tagline: "Performance-Capture Prequel Screenplay & Mocap Volume Camera Blocking",
+    role: "Solo Narrative Designer & Screenwriter",
     discipline: "Narrative Design & Mocap Direction",
-    engine: "Screenplay & Performance Capture Format",
-    dates: "Feb 2026 – May 2026",
-    studio: "Solo Writer • UEL (MS5029)",
+    statusTag: { label: "Mocap Screenplay", color: "amber" },
+    gradeBadge: "Storytelling for Games • 78% (1st Class)",
+    engine: "AAA Performance-Capture Screenplay Format",
+    dates: "Feb 2026 to May 2026",
+    studio: "Solo Writer • UEL",
     image: "/images/far_cry_5.jpg",
+    tools: ["Screenplay Formatting", "Mocap Volume Blocking", "Environmental Storytelling", "Character Subtext"],
     gallery: [
       "/images/far_cry_5.jpg"
     ],
@@ -561,28 +780,225 @@ void ALabBulkheadGate::OnRelayTriggered(EPlayerClass Role, int32 RelayIndex) {
       demo: null,
       itch: null,
       video: null,
-      linkedin: null
+      linkedin: "https://www.linkedin.com/in/joshgamedev"
     },
-    shortDesc: "A performance-capture prequel screenplay for Ubisoft's Far Cry 5 following how Joseph Seed manipulated 17-year-old Rachel Jessop into becoming 'Faith Seed'—written with full mocap stage blocking, camera focal-length cues, and actor physical direction.",
-    summary: "Written for MS5029 Storytelling for Games (78% 1st Class Honours). Drawing on my 5+ years of stage and screen acting experience, I wrote this Far Cry 5 prequel specifically for a motion-capture volume—replacing loud villain speeches with quiet physical proximity, prop handoffs, and environmental cues in a rain-soaked Montana compound.",
+    shortDesc: "A performance-capture prequel screenplay for Ubisoft's Far Cry 5 following how Joseph Seed manipulated 17-year-old Rachel Jessop into becoming 'Faith Seed', written with full mocap stage blocking, camera focal-length cues, and actor physical direction.",
+    summary: "Written for my Storytelling for Games module (78%, 1st Class Honours). Drawing on my 5+ years of stage and screen acting experience, I wrote this Far Cry 5 prequel specifically for a motion-capture volume, replacing loud villain speeches with quiet physical proximity, prop handoffs, and environmental cues in a rain-soaked Montana compound.",
     highlights: [
       "Formatted to AAA performance-capture standards with explicit mocap stage blocking, prop interaction cues, and camera lens notes.",
       "Wrote Joseph Seed's manipulation around quiet physical stillness and false paternal warmth rather than cliché villain monologues.",
-      "Used my own stage/screen acting background to write playable, physically grounded subtext for the mocap performers.",
-      "Iterated scene pacing through live table reads (awarded 78% 1st Class Honours)."
+      "Used my own stage and screen acting background to write playable, physically grounded subtext for the mocap performers.",
+      "Iterated scene pacing through live table reads (awarded 78%, 1st Class Honours)."
     ],
-    technicalDeepDive: "In AAA cutscene production, writers who put all emotional turns in dialogue create stiff, talking-head cinematics. I blocked each scene around physical distance vectors inside the mocap volume—tracking how Joseph gradually closes the spatial gap between himself and Rachel across three beats before speaking a single doctrinal word.",
-    codeSnippet: `[MOCAP VOLUME BLOCKING — SCENE 04: THE BARN THRESHOLD]
+    technicalDeepDive: "In AAA cutscene production, writers who put all emotional turns in dialogue create stiff, talking-head cinematics. I blocked each scene around physical distance vectors inside the mocap volume, tracking how Joseph gradually closes the spatial gap between himself and Rachel across three beats before speaking a single doctrinal word.",
+    codeSnippet: `[MOCAP VOLUME BLOCKING : SCENE 04 : THE BARN THRESHOLD]
 CAMERA: 35mm Anamorphic, shoulder-rigged at RACHEL'S seated eye-level (1.1m).
 BLOCKING: JOSEPH enters upstage-left, stops 3.5m back at the rain-line. He does NOT step into her personal radius until Beat 3.
-ACTION: Joseph kneels first (lowering his eye-line 15cm below hers) and sets the dry blanket at the edge of the floorboards—forcing Rachel to make the physical choice to reach forward.`
+ACTION: Joseph kneels first (lowering his eye-line 15cm below hers) and sets the dry blanket at the edge of the floorboards, forcing Rachel to make the physical choice to reach forward.`
+  },
+  {
+    id: "silent-string",
+    slug: "silent-string",
+    catalogNumber: "13",
+    category: "narrative",
+    categoryLabel: "Narrative Design & GDDs",
+    isPrimaryCard: false,
+    number: "03",
+    title: "Silent String: Tactical Puppeteer GDD",
+    tagline: "Systems Game Design Document, Visio Combat Flowcharts & 6-Beat Story Spine",
+    role: "Lead Game & Narrative Systems Designer",
+    discipline: "Game Design Bible & Systems Flowcharts",
+    statusTag: { label: "Complete GDD & Diagrams", color: "amber" },
+    gradeBadge: "Storytelling for Games • 78% (1st Class)",
+    engine: "Game Design Bible & Microsoft Visio Flowcharts",
+    dates: "Nov 2025 to Jan 2026",
+    studio: "Solo Designer • UEL",
+    image: "/images/silent_string.jpg",
+    tools: ["Game Design Document (GDD)", "Microsoft Visio", "Combat Loop Diagrams", "Economy Balancing"],
+    gallery: [
+      "/images/silent_string.jpg",
+      "/images/silent_string_loop.png",
+      "/images/silent_string_story_spine.png"
+    ],
+    links: {
+      github: null,
+      demo: null,
+      itch: null,
+      video: null,
+      linkedin: "https://www.linkedin.com/in/joshgamedev"
+    },
+    shortDesc: "A comprehensive Game Design Document (GDD) and Microsoft Visio systems architecture for a dark-fantasy tactical action RPG where a mute puppeteer controls marionette constructs via tension strings.",
+    summary: "Awarded 78% (1st Class Honours). Silent String pairs a dark-fantasy narrative about a mute artisan with a tactical dual-entity combat system. I authored the complete GDD alongside Microsoft Visio state diagrams mapping string-tension stamina maths, sever-and-reattach recovery loops, and a 6-beat narrative spine.",
+    highlights: [
+      "Designed a dual-body tactical combat loop where positioning the fragile puppeteer and the heavy marionette creates a lethal 'tether line' hitbox between them.",
+      "Created Microsoft Visio flowcharts detailing string-tension resource drain, snap states, and upgrade economies.",
+      "Structured a 6-beat narrative spine where mechanical marionette upgrades mirror the protagonist's psychological journey."
+    ],
+    technicalDeepDive: "To prevent players from hiding the summoner safely in a corner while the puppet fights off-screen, string tension decays exponentially with distance (T = k * d^2), forcing the player to stay within dangerous mid-range sightlines to maintain control."
+  },
+  {
+    id: "cyber-bois",
+    slug: "cyber-bois",
+    catalogNumber: "14",
+    category: "narrative",
+    categoryLabel: "Narrative Design & GDDs",
+    isPrimaryCard: false,
+    number: "04",
+    title: "Cyber- Bois: Episodic Co-op Narrative GDD",
+    tagline: "Asymmetric Co-op Hacking Systems, Branching Morality Matrix & Episodic Bible",
+    role: "Systems & Narrative Designer",
+    discipline: "Co-op Systems & Narrative GDD",
+    statusTag: { label: "Episodic Design Bible", color: "amber" },
+    engine: "Game Design Bible & Branching Flowchart",
+    dates: "2025",
+    studio: "Solo Designer • UEL",
+    image: "/images/cyber_bois.jpg",
+    tools: ["Game Design Document (GDD)", "Co-op Mechanics Design", "Branching Dialogue Matrices", "Worldbuilding"],
+    gallery: [
+      "/images/cyber_bois.jpg"
+    ],
+    links: {
+      github: null,
+      demo: null,
+      itch: null,
+      video: null,
+      linkedin: "https://www.linkedin.com/in/joshgamedev"
+    },
+    shortDesc: "An episodic co-op cyberpunk design bible combining Tales from the Borderlands-style dual-protagonist banter with asymmetric street-level combat and net-hacking mechanics.",
+    summary: "Cyber- Bois is a comprehensive Game Design Document for a 2-player narrative action game set in a neon megacity. One player operates in physical street combat while the partner breaches local subnet nodes in real time, with a shared trust matrix that branches episode endings.",
+    highlights: [
+      "Designed asymmetric 2-player co-op encounters where subnet hacking directly alters physical arena cover, turrets, and lighting.",
+      "Mapped a dual-protagonist relationship matrix where players can backstab or back up their partner during high-stakes negotiations.",
+      "Authored full character sheets, faction hierarchies, and episodic pacing charts."
+    ],
+    technicalDeepDive: "In co-op narrative games, dialogue stalls if both players have to vote and agree on every line. I designed an 'Interrupt & Escalation' timer where either player can hijack a peaceful negotiation with a physical action before the dialogue wheel expires."
+  },
+  {
+    id: "planet-protectors",
+    slug: "planet-protectors",
+    catalogNumber: "15",
+    category: "narrative",
+    categoryLabel: "Narrative Design & GDDs",
+    isPrimaryCard: false,
+    number: "05",
+    title: "Planet Protectors: Transmedia Narrative GDD",
+    tagline: "Environmental Action-Adventure GDD, Character Sheets & Biome Restoration Loops",
+    role: "Game & Narrative Designer",
+    discipline: "Game Design Bible & Character Design",
+    statusTag: { label: "GDD + Character Sheets", color: "amber" },
+    engine: "Game Design Bible & Character Concept Sheets",
+    dates: "2024 to 2025",
+    studio: "Solo Designer • UEL",
+    image: "/images/planet_protectors.jpg",
+    tools: ["Game Design Document (GDD)", "Character Concept Sheets", "Core Loop Diagrams", "Target Audience Research"],
+    gallery: [
+      "/images/planet_protectors.jpg",
+      "/images/planet_protectors_char1.jpg",
+      "/images/planet_protectors_char2.jpg"
+    ],
+    links: {
+      github: null,
+      demo: null,
+      itch: null,
+      video: null,
+      linkedin: "https://www.linkedin.com/in/joshgamedev"
+    },
+    shortDesc: "A complete Game Design Document and character concept bible for a co-op environmental action-adventure game where elemental heroes restore polluted biomes through systemic traversal and cleanup mechanics.",
+    summary: "Planet Protectors is a family-friendly co-op action-adventure GDD designed to translate ecological restoration into rewarding gameplay loops. As players detoxify industrial zones, the world's colour palette, music layers, and traversal flora dynamically regenerate.",
+    highlights: [
+      "Authored full character design sheets defining distinct elemental traversal abilities and co-op combo synergies.",
+      "Designed a dynamic biome-restoration state loop where cleaning pollution unlocks new organic grapple points and wind currents.",
+      "Included target-demographic accessibility guidelines and non-punitive fail states for younger co-op players."
+    ],
+    technicalDeepDive: "Rather than treating environmental themes as text pop-ups, I tied world state directly to shader saturation and traversal unlocks: every 25% of regional cleanup shifts the global post-process LUT and spawns new climbable flora."
   }
 ];
+
+export const DISSERTATION_RESEARCH = {
+  badge: "02 // Academic Research & Provisional BSc Dissertation",
+  title: "Counting the Spectrum: Mixed-Race Representation in Commercial Video Games",
+  subtitle: "An Empirical and Practice-Based Investigation into Scarcity, Racial Ambiguity, and Playable Lead Agency",
+  status: "Final Year BSc Research Project (Level 6) • University of East London",
+  abstract: "Recent demographic studies such as the Virtual Census 2.0 (Jones et al., 2025) report that biracial video game characters rose from 1.39% in 2005 to 3.15% in 2017. However, surface headcounts mask a major representational gap: commercial games routinely code characters through vague visual ambiguity (a tan skin tone or textured hair) rather than explicit narrative canon, which leads players to default to assuming whiteness or racial neutrality (Dietrich, 2013). Furthermore, while mixed-race youth make up 5% to 10% of the UK urban population and over 15% of the US youth demographic, canonically mixed characters are virtually absent as primary playable box-art leads outside isolated figures like Miles Morales. My research combines a 100-character commercial audit, a production-ready 3D Flagship Protagonist Dossier, and an empirical A/B player validation survey to establish an actionable character pipeline for studios.",
+  downloadProposal: "/docs/Counting_the_Spectrum_Research_Proposal.docx",
+  downloadSlides: "/docs/Counting_the_Spectrum_Slides.pptx",
+  slides: [
+    {
+      src: "/images/dissertation_slide_1.png",
+      caption: "Slide 1: Research Title & Problem Space (Counting the Spectrum)"
+    },
+    {
+      src: "/images/dissertation_slide_2.png",
+      caption: "Slide 2: Core Element 1: The Three Hypotheses (The Illusion of Parity)"
+    },
+    {
+      src: "/images/dissertation_slide_3.png",
+      caption: "Slide 3: Core Element 2: Closed-Loop 3-Phase Methodology"
+    },
+    {
+      src: "/images/dissertation_slide_4.png",
+      caption: "Slide 4: Core Element 3: Studio Pipelines & Societal Impact"
+    },
+    {
+      src: "/images/dissertation_slide_5.png",
+      caption: "Slide 5: Demographic Benchmarks (Virtual Census vs UK/US Youth Census)"
+    },
+    {
+      src: "/images/dissertation_slide_6.png",
+      caption: "Slide 6: Peer-Reviewed Academic Literature Foundation"
+    }
+  ],
+  hypotheses: [
+    {
+      number: "01",
+      title: "Explicit Canon vs Visual Ambiguity",
+      stat: "3.15% vs <0.5%",
+      summary: "Published audits code characters based on surface visual cues and paratext. Without explicit dual-heritage narrative canon, sociological research (Dietrich, 2013) proves players default to assuming whiteness or raceless neutrality. I hypothesise that explicitly confirmed mixed-race characters appear at a fraction of ambiguously coded avatars."
+    },
+    {
+      number: "02",
+      title: "Playable Agency & The Box-Art Deficit",
+      stat: "<1% Box-Art Leads",
+      summary: "Even when mixed characters appear in background rosters, over 75% of primary playable leads remain white. Outside of Miles Morales (Marvel's Spider-Man), playable box-art multiracial protagonists are virtually non-existent, relegating mixed identities to secondary NPCs or narrative devices (Phillips, 2022)."
+    },
+    {
+      number: "03",
+      title: "The Youth Gamer Demographic Gap",
+      stat: "10% to 15% Youth Audience",
+      summary: "National census averages (2.9% UK; 10.2% US) include older non-gaming generations and obscure the actual gaming audience. Among under-18s and urban hubs like London, multiracial identification exceeds 5% to 10% in the UK and 15% in the US, revealing a 5× to 10× representation deficit."
+    }
+  ],
+  methodology: [
+    {
+      phase: "Phase 1: Objective 100-Character Commercial Audit",
+      badge: "Quantitative Content Analysis",
+      details: "To eliminate subjective cherry-picking, I audit an objective sample drawn from official UKIE/GfK (UK) and Circana (US) annual best-selling charts (2018 to 2024). Using a reproducible formula (the Primary Playable Protagonist plus the Top 4 Credited Cast across 20 commercial titles = 100 characters), each character is coded across Explicit Canon, Implied Ambiguity, and Box-Art Playable Agency, with a 20% subsample independently cross-coded to verify inter-coder reliability via Cohen's kappa (κ ≥ 0.80)."
+    },
+    {
+      phase: "Phase 2: Practice-as-Research Flagship Protagonist Dossier",
+      badge: "3D Technical Art & Narrative Pipeline",
+      details: "Synthesising the audit findings into a tangible studio solution, I design one deep, production-ready Flagship Multiracial Protagonist Dossier. This combines a Dual-Heritage Narrative Lore Brief (documented family lineage and lived cultural traditions) with 3D Technical Art Specifications (non-Eurocentric facial mesh topology, calibrated 3C/4A curl and braided hair groom guides, and calibrated melanin subsurface scattering profiles in Unreal Engine 5)."
+    },
+    {
+      phase: "Phase 3: Empirical A/B Player Validation Survey",
+      badge: "Pre-Test / Post-Test Intervention",
+      details: "To scientifically validate the design rather than leaving it untested, I run an anonymous, GDPR-compliant online survey of 30 to 50 self-identified mixed-race gamers. Using an A/B intervention structure based on Passmore et al. (2018) immersion scales, participants rate a baseline ambiguous commercial avatar against the Flagship Dossier (first visually, then with explicit dual-heritage lore revealed) to measure whether canonical lineage and calibrated 3D features significantly increase felt representation and player immersion."
+    }
+  ],
+  references: [
+    "Dietrich, D.R. (2013) 'Avatars of whiteness: racial expression in video game characters', Sociological Inquiry, 83(1), pp. 82-105.",
+    "Jones, S.S.Y., Harrisson, A., Pedraça, S., Marchessault-Brown, J., Williams, D. and Consalvo, M. (2025) 'The virtual census 2.0: a continued investigation on the representations of gender, race, and age in videogames', New Media & Society.",
+    "Office for National Statistics (2022) Ethnic group, England and Wales: Census 2021.",
+    "Passmore, C.J., Birk, M.V. and Mandryk, R.L. (2018) 'The privilege of immersion: racial and ethnic experiences, perceptions, and beliefs in digital gaming', Proceedings of CHI '18. ACM, pp. 1-12.",
+    "Phillips, A. (2022) 'Fixing the past: memory tourism, multiraciality, and white innocence in video games', ROMchip: A Journal of Game Histories, 4(1).",
+    "Williams, D., Martins, N., Consalvo, M. and Ivory, J.D. (2009) 'The virtual census: representations of gender, race and age in video games', New Media & Society, 11(5), pp. 815-834."
+  ]
+};
 
 export const TOOLKIT_SPECS = [
   {
     category: "Engines & Core Tech",
-    items: ["Unreal Engine 5 (5.3–5.7)", "Blueprints & C++", "OpenXR (Quest & PCVR)", "Unity 6 (C# & Photon PUN2)", "Twine (Harlowe 3.3)"]
+    items: ["Unreal Engine 5 (5.3 to 5.7)", "Blueprints & C++", "OpenXR (Quest & PCVR)", "Unity 6 (C# & Photon PUN2)", "Twine (Harlowe 3.3)"]
   },
   {
     category: "Shaders & Technical Art",
@@ -593,8 +1009,8 @@ export const TOOLKIT_SPECS = [
     items: ["Custom Gravity & Spline Maths", "Instanced Static Mesh Pooling", "Hierarchical State Machines (HFSM)", "Python (PCAP Certified) & TypeScript", "USB HID & Wireshark Packet Analysis"]
   },
   {
-    category: "Design & Production",
-    items: ["Game Design Documents (GDD)", "Microsoft Visio Flowcharts", "Jon Ingold Dialogue Architecture", "Mocap Stage Blocking & LiveLink", "Git / GitHub & Agile Sprints"]
+    category: "Design & Research",
+    items: ["Game Design Documents (GDD)", "Microsoft Visio Flowcharts", "Jon Ingold Dialogue Systems", "Mocap Stage Blocking & LiveLink", "Empirical Audits (Cohen's Kappa)"]
   }
 ];
 
@@ -629,19 +1045,19 @@ export const HARDWARE_AND_SYSTEMS_MINI = [
   },
   {
     id: "project-realspeak",
-    title: "Project Realspeak & BSc SSS Research",
-    tech: "UE5 MetaHuman / OpenAI STT-TTS / Melanin SSS",
-    summary: "Real-time conversational AI NPC lip-sync pipeline in UE5 (early 2023) & BSc Dissertation researching inclusive mixed-race 3D skin subsurface scattering."
+    title: "Project Realspeak (UE5 AI NPC Pipeline)",
+    tech: "UE5 MetaHuman / OpenAI STT-TTS / Lip-Sync",
+    summary: "Built a real-time conversational AI NPC pipeline in Unreal Engine 5 back in early 2023 using speech-to-text, LLM prompting, and automated MetaHuman lip-sync."
   }
 ];
 
 export const ACADEMIC_MODULES = [
-  { code: "MS5027", name: "Gameplay Prototyping (Rastacats)", mark: "92%", grade: "1st Class" },
-  { code: "MS5023", name: "Professional Practice & Portfolio", mark: "87%", grade: "1st Class" },
-  { code: "MS4006", name: "Fundamentals of Programming (PyBall)", mark: "78%", grade: "1st Class" },
-  { code: "MS5029", name: "Storytelling for Games (The Quarry)", mark: "78%", grade: "1st Class" },
-  { code: "MS5021", name: "Game Studio 2 (Delirium VR)", mark: "78%", grade: "1st Class" },
-  { code: "MS5028", name: "Level Design (LabR@z)", mark: "72%", grade: "1st Class" },
-  { code: "MS4035", name: "Game Prototyping (Daydream Believer)", mark: "72%", grade: "1st Class" },
-  { code: "MS4036", name: "Visual & Theoretical Studies", mark: "72%", grade: "1st Class" }
+  { name: "Gameplay Prototyping (Rastacats)", mark: "92%", grade: "1st Class" },
+  { name: "Professional Practice & Portfolio", mark: "87%", grade: "1st Class" },
+  { name: "Fundamentals of Programming (PyBall)", mark: "78%", grade: "1st Class" },
+  { name: "Storytelling for Games (The Quarry & Silent String)", mark: "78%", grade: "1st Class" },
+  { name: "Game Studio (Delirium VR)", mark: "78%", grade: "1st Class" },
+  { name: "Level Design (LabR@z)", mark: "72%", grade: "1st Class" },
+  { name: "Game Prototyping (Daydream Believer)", mark: "72%", grade: "1st Class" },
+  { name: "Visual & Theoretical Studies", mark: "72%", grade: "1st Class" }
 ];

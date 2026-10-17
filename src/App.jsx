@@ -2,42 +2,44 @@ import { useState, useEffect, useCallback } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProjectShowcase from './components/ProjectShowcase';
+import ResearchSection from './components/ResearchSection';
 import Competencies from './components/Competencies';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import CaseStudyModal from './components/CaseStudyModal';
 import BackgroundShader from './components/BackgroundShader';
-import AllProjectsPage from './components/AllProjectsPage';
 import { PROJECTS } from './data/portfolioData';
-import { ALL_PROJECTS } from './data/allProjectsData';
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentView, setCurrentView] = useState('featured');
 
-  // Resolve any project ID or slug across both lists, merging rich technical snippets from PROJECTS
   const findProjectByKey = useCallback((key) => {
     if (!key) return null;
     const clean = key.toLowerCase().trim();
-    const fromFeatured = PROJECTS.find((p) => p.id.toLowerCase() === clean);
-    const fromAll = ALL_PROJECTS.find(
-      (p) => p.id.toLowerCase() === clean || p.slug?.toLowerCase() === clean
+    return (
+      PROJECTS.find(
+        (p) => p.id.toLowerCase() === clean || p.slug?.toLowerCase() === clean
+      ) || null
     );
-    if (fromFeatured && fromAll) {
-      return { ...fromAll, ...fromFeatured };
-    }
-    return fromFeatured || fromAll || null;
   }, []);
 
-  // Hash-based routing for bookmarking / refreshing directly on #projects, #vault, or #project=<slug>
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash;
-      if (hash === '#projects' || hash === '#vault') {
+      if (hash === '#projects' || hash === '#portfolio') {
         setSelectedProject(null);
         setTimeout(() => {
-          const el = document.getElementById('vault');
+          const el = document.getElementById('portfolio');
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 80);
+      } else if (hash === '#research') {
+        setSelectedProject(null);
+        setTimeout(() => {
+          const el = document.getElementById('research');
           if (el) {
             el.scrollIntoView({ behavior: 'smooth' });
           }
@@ -107,7 +109,7 @@ export default function App() {
         {/* Floating Capsule Header */}
         <Navbar currentView={currentView} onViewChange={handleViewChange} />
 
-        {/* Unified Single-Page Architecture */}
+        {/* Unified Non-Duplicating Single-Page Flow */}
         <main className="flex-1">
           {/* 00 // Interactive Showreel Hero Deck */}
           <Hero
@@ -115,14 +117,11 @@ export default function App() {
             onSelectProject={handleSelectProject}
           />
 
-          {/* 01 // Flagship Case Studies (with On-Card Phase Switchers & [Under the Hood] Toggles) */}
+          {/* 01 // Unified 15-Project Showcase by Discipline (Zero Duplication) */}
           <ProjectShowcase onSelectProject={handleSelectProject} />
 
-          {/* 02 // Embedded Game Vault (Defaults to 11 Additional Builds, 1-Click Filter to All 15) */}
-          <AllProjectsPage
-            isEmbedded={true}
-            onSelectProject={handleSelectProject}
-          />
+          {/* 02 // Provisional BSc Dissertation & Academic Research (Counting the Spectrum) */}
+          <ResearchSection />
 
           {/* 03 // Crisp 4-Column Toolkit Spec Sheet & Side Hardware R&D Lab */}
           <Competencies />

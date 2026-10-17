@@ -48,10 +48,10 @@ export default function AboutSection() {
             </p>
             <p>
               I gravitate toward the problems that sit right on the boundary between game design, maths, and technical art. When our spline-based pipe racer{' '}
-              <strong className="text-white font-semibold">Rastacats (92%, 1st Class)</strong> needed players to ride seamlessly up walls and upside-down across ceilings, I bypassed Unreal Engine 5&apos;s default planar gravity and wrote a custom polar cross-section controller—then followed it up in my remaster with a curved-world WPO vertex shader and tangent-aligned decal projection maths.
+              <strong className="text-white font-semibold">Rastacats (92%, 1st Class)</strong> needed players to ride seamlessly up walls and upside-down across ceilings, I bypassed Unreal Engine 5&apos;s default planar gravity and wrote a custom polar cross-section controller, then followed it up in my remaster with a curved-world WPO vertex shader and tangent-aligned decal projection maths.
             </p>
             <p>
-              Before focusing full-time on games, I spent over five years acting on stage and screen. That background directly shapes how I direct performance capture, block cameras inside Unreal Engine, and write interactive dialogue—even leading me to build{' '}
+              Before focusing full-time on games, I spent over five years acting on stage and screen. That background directly shapes how I direct performance capture, block cameras inside Unreal Engine, and write interactive dialogue. It also led me to build{' '}
               <strong className="text-white font-semibold">Project K.I.N.E.T.I.C.</strong>, a DIY motion-capture rig fusing an Xbox Kinect v2 with PSVR Move gyros over Python OSC to animate UE5 MetaHumans on a student budget.
             </p>
           </div>
@@ -69,12 +69,11 @@ export default function AboutSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {ACADEMIC_MODULES.map((mod) => (
                 <div
-                  key={mod.code}
+                  key={mod.name}
                   className="flex items-center justify-between px-3 py-2 rounded-xl bg-white/[0.02] border border-white/[0.05] text-xs"
                 >
                   <div className="truncate pr-2">
-                    <span className="font-mono text-indigo-300 font-semibold mr-1.5">{mod.code}</span>
-                    <span className="text-slate-300">{mod.name}</span>
+                    <span className="text-slate-200 font-medium">{mod.name}</span>
                   </div>
                   <span className="font-mono font-bold text-emerald-300 shrink-0">{mod.mark}</span>
                 </div>

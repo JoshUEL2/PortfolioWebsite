@@ -72,7 +72,7 @@ export default function ProjectCard({ project, onSelectProject }) {
           <div className="flex items-center gap-2 px-2">
             <History className="w-4 h-4 text-indigo-400 shrink-0" />
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-indigo-200">
-              Live Build Evolution — Switch Version:
+              Live Build Evolution: Switch Version
             </span>
           </div>
           <div className="grid grid-cols-2 gap-2 w-full sm:w-auto">
@@ -194,7 +194,7 @@ export default function ProjectCard({ project, onSelectProject }) {
                   }`}
                 >
                   <Code2 className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Under the Hood: Math & Logic</span>
+                  <span>Under the Hood: Maths &amp; Logic</span>
                 </button>
               </div>
             )}

@@ -141,7 +141,7 @@ export default function CaseStudyModal({ project, onClose }) {
                     </span>
                     <div>
                       <h4 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider">
-                        Build Evolution — Switch Version
+                        Build Evolution: Switch Version
                       </h4>
                       <p className="text-[11px] text-slate-400">
                         Compare the original submission against my revisited remaster
@@ -293,12 +293,12 @@ export default function CaseStudyModal({ project, onClose }) {
               </div>
             )}
 
-            {/* Under the Hood — Problem & Solution */}
+            {/* Under the Hood: Problem & Solution */}
             {activeDeepDive && (
               <div className="bg-indigo-950/20 border border-indigo-500/25 rounded-2xl p-6">
                 <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-300 mb-3 flex items-center gap-2">
                   <Terminal className="w-4 h-4 text-indigo-400" />
-                  Under the Hood — Problem &amp; Solution
+                  Under the Hood: Problem &amp; Solution
                 </h4>
                 <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal whitespace-pre-line">
                   {activeDeepDive}

@@ -16,7 +16,7 @@ export default function Competencies() {
           Engines, Shaders &amp; Hardware R&amp;D
         </h2>
         <p className="text-slate-300 text-sm sm:text-base mt-1.5 max-w-2xl">
-          A quick reference of the engines, shader pipelines, and tools I use day-to-day—plus a small shelf of my non-game hardware and USB reverse-engineering side projects.
+          A quick reference of the engines, shader pipelines, and tools I use day-to-day, plus a small shelf of my non-game hardware and USB reverse-engineering side projects.
         </p>
       </div>
 

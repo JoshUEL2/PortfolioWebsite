@@ -32,7 +32,7 @@ export default function Footer() {
               Joshua Johnson
             </div>
             <p className="text-xs text-slate-400 mt-1">
-              Technical Game Designer & Systems Architect • London, UK
+              Technical Game Designer • Unreal Engine 5 • London, UK
             </p>
           </div>
 

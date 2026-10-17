@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, Menu, X, ArrowUpRight, Sparkles, FileText } from 'lucide-react';
+import { Gamepad2, Menu, X, ArrowUpRight, FileText } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { ALL_PROJECTS } from '../data/allProjectsData';
@@ -16,12 +16,12 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
       setScrolled(window.scrollY > 40);
 
       if (currentView === 'featured') {
-        const sections = ['home', 'portfolio', 'disciplines', 'about', 'contact'];
+        const sections = ['home', 'portfolio', 'vault', 'toolkit', 'about', 'contact'];
         for (const section of sections) {
           const el = document.getElementById(section);
           if (el) {
             const rect = el.getBoundingClientRect();
-            if (rect.top <= 250 && rect.bottom >= 250) {
+            if (rect.top <= 260 && rect.bottom >= 260) {
               setActiveSection(section);
               break;
             }
@@ -35,17 +35,18 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
   }, [currentView]);
 
   const navLinks = [
-    { id: 'portfolio', label: 'FEATURED' },
-    { id: 'disciplines', label: 'DISCIPLINES' },
+    { id: 'portfolio', label: 'FLAGSHIPS' },
+    { id: 'vault', label: `GAME VAULT (${ALL_PROJECTS.length})` },
+    { id: 'toolkit', label: 'TOOLKIT' },
     { id: 'about', label: 'ABOUT' },
-    { id: 'contact', label: 'CONTACT' },
+    { id: 'contact', label: 'CONTACT' }
   ];
 
   const handleBrandClick = () => {
     if (currentView !== 'featured' && onViewChange) {
       onViewChange('featured');
     }
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const scrollTo = (id) => {
@@ -78,10 +79,10 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className={`pointer-events-auto flex items-center justify-between w-full max-w-5xl px-4 md:px-6 py-2.5 md:py-3 rounded-full transition-all duration-300 ${
+          className={`pointer-events-auto flex items-center justify-between w-full max-w-6xl px-4 md:px-6 py-2.5 md:py-3 rounded-full transition-all duration-300 ${
             scrolled
               ? 'bg-[#090b16]/90 backdrop-blur-xl border border-indigo-500/30 shadow-[0_10px_35px_rgba(0,0,0,0.6)]'
-              : 'bg-[#090b16]/70 backdrop-blur-md border border-white/10 shadow-lg'
+              : 'bg-[#090b16]/75 backdrop-blur-md border border-white/10 shadow-lg'
           }`}
         >
           {/* Brand & Instant Home Reset */}
@@ -103,7 +104,7 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
             </div>
           </button>
 
-          {/* Desktop Navigation Links (Persistent across both Featured and All Games views!) */}
+          {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/[0.06] rounded-full p-1">
             {navLinks.map((link) => {
               const isActive = currentView === 'featured' && activeSection === link.id;
@@ -126,19 +127,6 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
                 </button>
               );
             })}
-
-            {/* Switch to All Games View */}
-            <button
-              onClick={() => onViewChange && onViewChange(currentView === 'all-projects' ? 'featured' : 'all-projects')}
-              className={`relative px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all ml-1 flex items-center gap-1.5 cursor-pointer shadow-sm ${
-                currentView === 'all-projects'
-                  ? 'text-white bg-indigo-600/50 border border-indigo-400/60 shadow-indigo-900/40'
-                  : 'text-indigo-300 hover:text-white bg-indigo-950/60 hover:bg-indigo-900/60 border border-indigo-500/35'
-              }`}
-            >
-              <Gamepad2 className="w-3.5 h-3.5 text-indigo-300" />
-              <span>ALL GAMES ({ALL_PROJECTS.length})</span>
-            </button>
           </div>
 
           {/* Social Links, CV & Mobile Toggle */}
@@ -208,35 +196,11 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
             className="fixed inset-x-4 top-20 z-40 bg-[#0c0e1a]/95 backdrop-blur-2xl border border-indigo-500/30 rounded-2xl p-5 shadow-2xl md:hidden"
           >
             <div className="flex flex-col gap-2">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  if (onViewChange) onViewChange('featured');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className="w-full text-left py-2.5 px-4 rounded-xl text-sm font-semibold tracking-wider text-slate-200 hover:bg-indigo-600/20 hover:text-white transition-all flex items-center justify-between cursor-pointer"
-              >
-                <span>FEATURED SHOWCASE</span>
-                <Sparkles className="w-4 h-4 text-indigo-400" />
-              </button>
-
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  if (onViewChange) onViewChange('all-projects');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className="w-full text-left py-2.5 px-4 rounded-xl text-sm font-semibold tracking-wider text-indigo-300 hover:bg-indigo-600/30 hover:text-white transition-all flex items-center justify-between cursor-pointer bg-indigo-950/40 border border-indigo-500/30"
-              >
-                <span>ALL {ALL_PROJECTS.length} GAMES & PROTOTYPES</span>
-                <Gamepad2 className="w-4 h-4 text-indigo-400" />
-              </button>
-
               {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => scrollTo(link.id)}
-                  className="w-full text-left py-2 px-4 rounded-xl text-xs font-semibold tracking-wider text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-all flex items-center justify-between cursor-pointer"
+                  className="w-full text-left py-2.5 px-4 rounded-xl text-xs font-semibold tracking-wider text-slate-200 hover:bg-white/5 hover:text-white transition-all flex items-center justify-between cursor-pointer"
                 >
                   <span>{link.label}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-50" />

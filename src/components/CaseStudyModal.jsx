@@ -1,11 +1,27 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Gamepad2, Sparkles, Terminal, CheckCircle2, Clapperboard, Award, History, Layers, BookOpen, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
+import {
+  X,
+  ExternalLink,
+  Gamepad2,
+  Sparkles,
+  Terminal,
+  CheckCircle2,
+  Clapperboard,
+  Award,
+  History,
+  Layers,
+  BookOpen,
+  ChevronLeft,
+  ChevronRight,
+  ZoomIn,
+  Code2
+} from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { getAssetUrl, isSpecificRepo, isSpecificLinkedIn } from '../utils/assetUrl';
 
 export default function CaseStudyModal({ project, onClose }) {
-  const [activePhaseIndex, setActivePhaseIndex] = useState(0);
+  const [activePhaseIndex, setActivePhaseIndex] = useState(project?.initialPhaseIndex ?? 0);
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
   const hasSplitPhases = Boolean(project?.splitPhases && project.splitPhases.length > 0);
@@ -54,11 +70,6 @@ export default function CaseStudyModal({ project, onClose }) {
       ? project.links.video.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/)?.[1]
       : null);
 
-  const isRastacatsL6Showcase =
-    project.id === 'rastacats' || (project.funFact && project.funFact.includes('Level 6'));
-  const isDeliriumL5Showcase =
-    project.id === 'delirium' || (project.funFact && project.funFact.includes('Level 5 showcase'));
-
   const isLiveDemo =
     Boolean(project.links?.demo) &&
     !project.links.demo.includes('github.com') &&
@@ -85,8 +96,8 @@ export default function CaseStudyModal({ project, onClose }) {
           className="relative w-full max-w-4xl bg-[#0d0f1e] border border-indigo-500/30 rounded-3xl shadow-[0_0_80px_rgba(99,102,241,0.25)] overflow-hidden z-10 max-h-[90vh] flex flex-col my-auto"
         >
           {/* Top Bar */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#090b16]">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-4 border-b border-white/10 bg-[#090b16]">
+            <div className="flex flex-wrap items-center gap-2.5">
               {displayNum && (
                 <span className="font-mono text-xl font-bold text-indigo-400">
                   {displayNum}
@@ -95,22 +106,16 @@ export default function CaseStudyModal({ project, onClose }) {
               <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-950/60 border border-indigo-500/30 text-indigo-300">
                 {project.discipline || project.categoryLabel}
               </span>
-              {isRastacatsL6Showcase && (
-                <span
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-violet-950/80 border border-violet-500/40 text-violet-300"
-                  title="Selected as the sole Level 5 project to exhibit downstairs alongside final graduating Level 6 games at the Royal Docks Centre for Sustainability"
-                >
-                  <Award className="w-3.5 h-3.5 text-violet-400" />
-                  Showcased!
+              {project.gradeBadge && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-emerald-950/80 border border-emerald-500/40 text-emerald-300">
+                  <Award className="w-3.5 h-3.5 text-emerald-400" />
+                  {project.gradeBadge}
                 </span>
               )}
-              {isDeliriumL5Showcase && (
-                <span
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-purple-950/80 border border-purple-500/40 text-purple-300"
-                  title="The sole fully working, playable VR project in the Level 5 showcase, demoed live with custom seated wheelchair physics and OpenXR head tracking"
-                >
-                  <Award className="w-3.5 h-3.5 text-purple-400" />
-                  Showcased!
+              {project.exhibitionBadge && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-violet-950/80 border border-violet-500/40 text-violet-200">
+                  <Award className="w-3.5 h-3.5 text-violet-400" />
+                  {project.exhibitionBadge}
                 </span>
               )}
             </div>
@@ -125,7 +130,7 @@ export default function CaseStudyModal({ project, onClose }) {
           </div>
 
           {/* Modal Scrollable Content */}
-          <div className="overflow-y-auto p-6 sm:p-8 space-y-8">
+          <div className="overflow-y-auto p-6 sm:p-8 space-y-7">
             {/* Dual-Phase Evolution Switcher (for Daydream and Rastacats) */}
             {hasSplitPhases && (
               <div className="bg-[#080a15] border border-indigo-500/30 rounded-2xl p-3 sm:p-4 shadow-xl">
@@ -136,10 +141,10 @@ export default function CaseStudyModal({ project, onClose }) {
                     </span>
                     <div>
                       <h4 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider">
-                        Project Evolution & Version History
+                        Build Evolution — Switch Version
                       </h4>
                       <p className="text-[11px] text-slate-400">
-                        Toggle between the original academic submission and the revisited remaster
+                        Compare the original submission against my revisited remaster
                       </p>
                     </div>
                   </div>
@@ -154,6 +159,7 @@ export default function CaseStudyModal({ project, onClose }) {
                     return (
                       <button
                         key={phase.id || idx}
+                        type="button"
                         onClick={() => {
                           setActivePhaseIndex(idx);
                           setLightboxIndex(null);
@@ -166,7 +172,11 @@ export default function CaseStudyModal({ project, onClose }) {
                       >
                         <div className="flex items-center justify-between gap-2">
                           <span className="text-xs sm:text-sm font-extrabold tracking-wide flex items-center gap-2">
-                            <span className={`w-2.5 h-2.5 rounded-full ${isSelected ? 'bg-indigo-400 animate-pulse' : 'bg-slate-600'}`} />
+                            <span
+                              className={`w-2.5 h-2.5 rounded-full ${
+                                isSelected ? 'bg-indigo-400 animate-pulse' : 'bg-slate-600'
+                              }`}
+                            />
                             {phase.phaseLabel}
                           </span>
                           {phase.phaseBadge && (
@@ -224,20 +234,14 @@ export default function CaseStudyModal({ project, onClose }) {
 
             {/* Title & Engine Subtitle */}
             <div>
-              <div className="flex flex-wrap items-center gap-2 mb-2">
-                {currentPhase?.phaseBadge && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold tracking-wide uppercase bg-emerald-950/80 border border-emerald-500/40 text-emerald-300">
-                    <Award className="w-3.5 h-3.5 text-emerald-400" />
-                    {currentPhase.phaseBadge}
-                  </span>
-                )}
-                {hasSplitPhases && (
+              {hasSplitPhases && (
+                <div className="flex flex-wrap items-center gap-2 mb-2">
                   <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold tracking-wide uppercase bg-indigo-950/80 border border-indigo-500/40 text-indigo-300">
                     <Layers className="w-3.5 h-3.5 text-indigo-400" />
                     {currentPhase ? currentPhase.phaseLabel : 'Evolution View'}
                   </span>
-                )}
-              </div>
+                </div>
+              )}
               <h2 className="text-2xl sm:text-4xl font-black text-white font-['Syne',sans-serif] tracking-tight">
                 {activeTitle}
               </h2>
@@ -246,76 +250,37 @@ export default function CaseStudyModal({ project, onClose }) {
               </p>
             </div>
 
-            {/* Concept Artwork & Production Gallery (with In-Modal Lightbox) */}
-            {activeGallery && activeGallery.length > 0 && (
-              <div className="bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-indigo-400" />
-                    Authentic Coursework Captures, Concept Art & Diagrams ({activeGallery.length})
-                  </h4>
-                  <span className="text-[11px] font-mono text-slate-400 hidden sm:inline">
-                    Click any image to expand
-                  </span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {activeGallery.map((artSrc, aIdx) => (
-                    <button
-                      key={aIdx}
-                      type="button"
-                      onClick={() => setLightboxIndex(aIdx)}
-                      className="rounded-xl overflow-hidden border border-white/10 hover:border-indigo-500/50 bg-slate-950 aspect-[4/3] group relative block cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                      title="Click to inspect in full-screen lightbox"
-                    >
-                      <img
-                        src={getAssetUrl(artSrc)}
-                        alt={`${activeTitle} Artifact ${aIdx + 1}`}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5 text-xs font-mono text-white/95 font-medium">
-                        <ZoomIn className="w-4 h-4 text-indigo-400" />
-                        <span>Inspect Image</span>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Overview & Context */}
+            {/* Overview */}
             <div>
               <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 mb-2">
-                Executive Summary
+                Overview
               </h4>
-              <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-normal whitespace-pre-line">
+              <p className="text-slate-200 text-sm sm:text-base leading-relaxed font-normal whitespace-pre-line">
                 {activeSummary}
               </p>
             </div>
 
-            {/* Did You Know? Exhibition Brag & Recognition */}
+            {/* Exhibition / Context Note */}
             {project.funFact && (
-              <div className="bg-gradient-to-r from-violet-950/70 via-purple-900/40 to-indigo-950/70 border border-violet-500/40 rounded-2xl p-5 shadow-xl flex items-start gap-4">
-                <span className="p-2.5 rounded-xl bg-violet-500/20 text-violet-300 shrink-0 mt-0.5">
-                  <Sparkles className="w-5 h-5 text-violet-300" />
-                </span>
+              <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-4 flex items-start gap-3">
+                <Award className="w-5 h-5 text-violet-400 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-xs sm:text-sm font-bold text-violet-300 uppercase tracking-wider font-mono mb-1">
-                    Did You Know? • Exhibition Brag & Industry Recognition
+                  <h4 className="text-xs font-bold text-violet-300 uppercase tracking-wider font-mono mb-0.5">
+                    Exhibition &amp; Production Note
                   </h4>
-                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
+                  <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
                     {project.funFact}
                   </p>
                 </div>
               </div>
             )}
 
-            {/* Technical Highlights */}
+            {/* What I Built */}
             {activeHighlights && activeHighlights.length > 0 && (
               <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6">
                 <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 mb-4 flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  Key Innovations & Achievements
+                  What I Built
                 </h4>
                 <ul className="space-y-3">
                   {activeHighlights.map((h, i) => (
@@ -328,16 +293,69 @@ export default function CaseStudyModal({ project, onClose }) {
               </div>
             )}
 
-            {/* Technical Deep Dive */}
+            {/* Under the Hood — Problem & Solution */}
             {activeDeepDive && (
-              <div className="bg-indigo-950/20 border border-indigo-500/20 rounded-2xl p-6">
-                <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 mb-3 flex items-center gap-2">
+              <div className="bg-indigo-950/20 border border-indigo-500/25 rounded-2xl p-6">
+                <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-300 mb-3 flex items-center gap-2">
                   <Terminal className="w-4 h-4 text-indigo-400" />
-                  Engineering Problem & Architecture Solution
+                  Under the Hood — Problem &amp; Solution
                 </h4>
                 <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal whitespace-pre-line">
                   {activeDeepDive}
                 </p>
+              </div>
+            )}
+
+            {/* Implementation Logic / Shader Snippet */}
+            {project.codeSnippet && (
+              <div className="rounded-2xl bg-[#060811] border border-white/10 overflow-hidden">
+                <div className="px-4 py-2.5 bg-white/[0.03] border-b border-white/10 flex items-center justify-between">
+                  <span className="text-xs font-mono text-emerald-400 uppercase tracking-wider font-semibold flex items-center gap-2">
+                    <Code2 className="w-4 h-4" />
+                    <span>Implementation Logic / Shader Snippet</span>
+                  </span>
+                  <span className="text-xs font-mono text-slate-500">{project.engine}</span>
+                </div>
+                <pre className="p-4 text-xs font-mono text-slate-200 overflow-x-auto leading-relaxed">
+                  <code>{project.codeSnippet}</code>
+                </pre>
+              </div>
+            )}
+
+            {/* Captures, Concept Art & Diagrams Gallery (with Lightbox) */}
+            {activeGallery && activeGallery.length > 0 && (
+              <div className="bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-indigo-400" />
+                    Project Captures, Concept Art &amp; Diagrams ({activeGallery.length})
+                  </h4>
+                  <span className="text-[11px] font-mono text-slate-400 hidden sm:inline">
+                    Click any image to expand
+                  </span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {activeGallery.map((artSrc, aIdx) => (
+                    <button
+                      key={aIdx}
+                      type="button"
+                      onClick={() => setLightboxIndex(aIdx)}
+                      className="rounded-xl overflow-hidden border border-white/10 hover:border-indigo-500/50 bg-slate-950 aspect-[4/3] group relative block cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      title="Click to inspect full resolution"
+                    >
+                      <img
+                        src={getAssetUrl(artSrc)}
+                        alt={`${activeTitle} Capture ${aIdx + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5 text-xs font-mono text-white/95 font-medium">
+                        <ZoomIn className="w-4 h-4 text-indigo-400" />
+                        <span>Expand Capture</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -345,7 +363,7 @@ export default function CaseStudyModal({ project, onClose }) {
           {/* Modal Footer Links */}
           <div className="flex flex-wrap items-center justify-between gap-4 px-6 py-4 border-t border-white/10 bg-[#090b16]">
             <span className="text-xs font-mono text-slate-400">
-              {project.studio} • {project.dates}
+              {project.studio || project.role} • {project.dates}
             </span>
 
             <div className="flex flex-wrap items-center gap-3">
@@ -392,7 +410,7 @@ export default function CaseStudyModal({ project, onClose }) {
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs tracking-wider uppercase transition-colors"
                 >
                   <GithubIcon className="w-4 h-4" />
-                  <span>GitHub</span>
+                  <span>Source Code</span>
                 </a>
               )}
 
@@ -416,7 +434,7 @@ export default function CaseStudyModal({ project, onClose }) {
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs tracking-wider uppercase transition-colors"
                 >
                   <ExternalLink className="w-4 h-4" />
-                  <span>Live Demo</span>
+                  <span>Play in Browser</span>
                 </a>
               )}
             </div>

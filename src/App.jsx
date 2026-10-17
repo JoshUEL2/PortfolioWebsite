@@ -14,36 +14,42 @@ import { ALL_PROJECTS } from './data/allProjectsData';
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [currentView, setCurrentView] = useState('featured'); // 'featured' | 'all-projects'
+  const [currentView, setCurrentView] = useState('featured');
 
-  // Resolve any project ID or slug across both lists, preferring the enriched entry
+  // Resolve any project ID or slug across both lists, merging rich technical snippets from PROJECTS
   const findProjectByKey = useCallback((key) => {
     if (!key) return null;
     const clean = key.toLowerCase().trim();
-    return (
-      ALL_PROJECTS.find((p) => p.id.toLowerCase() === clean || p.slug?.toLowerCase() === clean) ||
-      PROJECTS.find((p) => p.id.toLowerCase() === clean) ||
-      null
+    const fromFeatured = PROJECTS.find((p) => p.id.toLowerCase() === clean);
+    const fromAll = ALL_PROJECTS.find(
+      (p) => p.id.toLowerCase() === clean || p.slug?.toLowerCase() === clean
     );
+    if (fromFeatured && fromAll) {
+      return { ...fromAll, ...fromFeatured };
+    }
+    return fromFeatured || fromAll || null;
   }, []);
 
-  // Hash-based routing for bookmarking / refreshing directly on #projects or #project=<slug>
+  // Hash-based routing for bookmarking / refreshing directly on #projects, #vault, or #project=<slug>
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash;
-      if (hash === '#projects') {
-        setCurrentView('all-projects');
+      if (hash === '#projects' || hash === '#vault') {
         setSelectedProject(null);
+        setTimeout(() => {
+          const el = document.getElementById('vault');
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 80);
       } else if (hash.startsWith('#project=')) {
         const key = decodeURIComponent(hash.replace('#project=', ''));
         const found = findProjectByKey(key);
         if (found) {
           setSelectedProject(found);
         }
-      } else {
-        if (hash === '') {
-          setSelectedProject(null);
-        }
+      } else if (hash === '') {
+        setSelectedProject(null);
       }
     };
 
@@ -56,27 +62,26 @@ export default function App() {
     if (!proj) {
       setSelectedProject(null);
       if (window.location.hash.startsWith('#project=')) {
-        const fallbackHash = currentView === 'all-projects' ? '#projects' : '';
-        history.pushState('', document.title, window.location.pathname + window.location.search + fallbackHash);
+        history.pushState('', document.title, window.location.pathname + window.location.search);
       }
       return;
     }
     const slug = proj.slug || proj.id;
-    setSelectedProject(proj);
-    history.pushState('', document.title, `${window.location.pathname}${window.location.search}#project=${slug}`);
+    const enriched = findProjectByKey(slug) || proj;
+    setSelectedProject({
+      ...enriched,
+      initialPhaseIndex: proj.initialPhaseIndex ?? 0
+    });
+    history.pushState(
+      '',
+      document.title,
+      `${window.location.pathname}${window.location.search}#project=${slug}`
+    );
   };
 
   const handleViewChange = (view) => {
     setCurrentView(view);
     setSelectedProject(null);
-    if (view === 'all-projects') {
-      window.location.hash = 'projects';
-    } else {
-      if (window.location.hash) {
-        history.pushState('', document.title, window.location.pathname + window.location.search);
-      }
-    }
-    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   const handleExploreClick = () => {
@@ -102,34 +107,31 @@ export default function App() {
         {/* Floating Capsule Header */}
         <Navbar currentView={currentView} onViewChange={handleViewChange} />
 
-        {/* View Switching: Featured Showcase vs All Projects Catalogue */}
+        {/* Unified Single-Page Architecture */}
         <main className="flex-1">
-          {currentView === 'featured' ? (
-            <>
-              {/* Hero Section */}
-              <Hero onExploreClick={handleExploreClick} />
+          {/* 00 // Interactive Showreel Hero Deck */}
+          <Hero
+            onExploreClick={handleExploreClick}
+            onSelectProject={handleSelectProject}
+          />
 
-              {/* Interactive Project Matrix (Flagship Spotlights + 3 Game Disciplines + Vault Quick-Shelf) */}
-              <ProjectShowcase
-                onSelectProject={handleSelectProject}
-                onViewAllProjects={() => handleViewChange('all-projects')}
-              />
+          {/* 01 // Flagship Case Studies (with On-Card Phase Switchers & [Under the Hood] Toggles) */}
+          <ProjectShowcase onSelectProject={handleSelectProject} />
 
-              {/* Core Disciplines, Technical Competencies & Compact Hardware Strip */}
-              <Competencies />
+          {/* 02 // Embedded Game Vault (Defaults to 11 Additional Builds, 1-Click Filter to All 15) */}
+          <AllProjectsPage
+            isEmbedded={true}
+            onSelectProject={handleSelectProject}
+          />
 
-              {/* About Me, Verified 1st Class Module Record & Operating Philosophy */}
-              <AboutSection />
+          {/* 03 // Crisp 4-Column Toolkit Spec Sheet & Side Hardware R&D Lab */}
+          <Competencies />
 
-              {/* Contact & Inquiry */}
-              <ContactSection />
-            </>
-          ) : (
-            <AllProjectsPage
-              onBackToHome={() => handleViewChange('featured')}
-              onSelectProject={handleSelectProject}
-            />
-          )}
+          {/* 04 // Grounded Developer Bio & Verified 8x First-Class Honours Record */}
+          <AboutSection />
+
+          {/* 05 // Direct Studio Contact */}
+          <ContactSection />
         </main>
 
         {/* Footer */}
@@ -139,7 +141,7 @@ export default function App() {
       {/* Full-screen Case Study Modal */}
       {selectedProject && (
         <CaseStudyModal
-          key={selectedProject.id}
+          key={`${selectedProject.id}-${selectedProject.initialPhaseIndex ?? 0}`}
           project={selectedProject}
           onClose={() => handleSelectProject(null)}
         />

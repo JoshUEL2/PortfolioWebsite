@@ -1,23 +1,109 @@
-import { motion } from 'framer-motion';
-import { Award, UserCheck, ShieldCheck, GraduationCap, ArrowUpRight, FileText, Clapperboard, Building2 } from 'lucide-react';
-import { PERSONAL_INFO, ACADEMIC_MODULES } from '../data/portfolioData';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Award,
+  UserCheck,
+  ShieldCheck,
+  ArrowUpRight,
+  FileText,
+  Clapperboard,
+  Building2,
+  Cpu,
+  Radio,
+  X,
+  Sparkles,
+  CheckCircle2,
+  ChevronRight,
+  RotateCcw
+} from 'lucide-react';
+import { PERSONAL_INFO, ACADEMIC_MODULES, DOSSIER_CREDENTIALS } from '../data/portfolioData';
 import { getAssetUrl } from '../utils/assetUrl';
 
+const CREDENTIAL_ICONS = {
+  theatre: Clapperboard,
+  exhibition: Award,
+  cyber: ShieldCheck,
+  robotics: Cpu,
+  studio: Radio
+};
+
+const CREDENTIAL_THEME_STYLES = {
+  theatre: {
+    cardAccent: 'border-rose-500/40 hover:border-rose-400 bg-gradient-to-br from-[#1b0b12] via-[#0c121e] to-[#0c121e]',
+    iconBox: 'bg-rose-950/80 text-rose-300 border-rose-500/40',
+    badgeText: 'text-rose-300 bg-rose-950/70 border-rose-500/40',
+    modalBg: 'bg-[radial-gradient(ellipse_at_top,#4c0519_0%,#1c060c_55%,#090406_100%)] border-amber-400/50',
+    headerAccent: 'text-amber-300',
+    whyBox: 'bg-rose-950/40 border-amber-400/60 text-amber-50'
+  },
+  exhibition: {
+    cardAccent: 'border-amber-500/35 hover:border-amber-400 bg-gradient-to-br from-[#191309] via-[#0c121e] to-[#0c121e]',
+    iconBox: 'bg-amber-950/80 text-amber-300 border-amber-500/40',
+    badgeText: 'text-amber-300 bg-amber-950/70 border-amber-500/40',
+    modalBg: 'bg-[radial-gradient(ellipse_at_top,#3b2506_0%,#14110b_60%,#080a0f_100%)] border-amber-400/45',
+    headerAccent: 'text-amber-300',
+    whyBox: 'bg-amber-950/35 border-amber-400/60 text-amber-50'
+  },
+  cyber: {
+    cardAccent: 'border-emerald-500/35 hover:border-emerald-400 bg-gradient-to-br from-[#071914] via-[#0c121e] to-[#0c121e]',
+    iconBox: 'bg-emerald-950/80 text-emerald-300 border-emerald-500/40',
+    badgeText: 'text-emerald-300 bg-emerald-950/70 border-emerald-500/40',
+    modalBg: 'bg-[radial-gradient(ellipse_at_top,#063729_0%,#071512_60%,#050a09_100%)] border-emerald-400/45',
+    headerAccent: 'text-emerald-300',
+    whyBox: 'bg-emerald-950/35 border-emerald-400/60 text-emerald-50'
+  },
+  robotics: {
+    cardAccent: 'border-sky-500/35 hover:border-sky-400 bg-gradient-to-br from-[#091826] via-[#0c121e] to-[#0c121e]',
+    iconBox: 'bg-sky-950/80 text-sky-300 border-sky-500/40',
+    badgeText: 'text-sky-300 bg-sky-950/70 border-sky-500/40',
+    modalBg: 'bg-[radial-gradient(ellipse_at_top,#0c2d48_0%,#081420_60%,#050911_100%)] border-sky-400/45',
+    headerAccent: 'text-sky-300',
+    whyBox: 'bg-sky-950/35 border-sky-400/60 text-sky-50'
+  },
+  studio: {
+    cardAccent: 'border-purple-500/35 hover:border-purple-400 bg-gradient-to-br from-[#160d24] via-[#0c121e] to-[#0c121e]',
+    iconBox: 'bg-purple-950/80 text-purple-300 border-purple-500/40',
+    badgeText: 'text-purple-300 bg-purple-950/70 border-purple-500/40',
+    modalBg: 'bg-[radial-gradient(ellipse_at_top,#2e1065_0%,#130924_60%,#07050c_100%)] border-purple-400/45',
+    headerAccent: 'text-purple-300',
+    whyBox: 'bg-purple-950/35 border-purple-400/60 text-purple-50'
+  }
+};
+
 export default function AboutSection() {
+  const [activeCredential, setActiveCredential] = useState(null);
+  const [selectedPhotoIdx, setSelectedPhotoIdx] = useState(0);
+  const [curtainKey, setCurtainKey] = useState(0);
+
+  const handleOpenCredential = (cred) => {
+    setSelectedPhotoIdx(0);
+    setCurtainKey((prev) => prev + 1);
+    setActiveCredential(cred);
+  };
+
+  useEffect(() => {
+    if (!activeCredential) return undefined;
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setActiveCredential(null);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [activeCredential]);
+
   return (
     <section
       id="about"
       className="relative w-full bg-dossier-grid border-t border-slate-700/70 text-slate-100 overflow-hidden"
     >
-      {/* Top Atmospheric Transition from Layer 03 PCB (#070b09) to Layer 04 Studio Dossier (#080c14) */}
+      {/* Top Atmospheric Transition from PCB (#070b09) to Studio Dossier (#080c14) */}
       <div className="h-14 w-full bg-gradient-to-b from-[#070b09] to-transparent pointer-events-none" />
 
-      {/* Top Executive Dossier Identification Bar */}
+      {/* Top Executive Dossier Identification Bar (No Layer Numbers) */}
       <div className="max-w-6xl mx-auto px-4 pt-2">
         <div className="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-slate-700/80 text-[11px] font-mono uppercase tracking-[0.2em] text-slate-400">
           <div className="flex items-center gap-2.5">
             <Building2 className="w-3.5 h-3.5 text-sky-400" />
-            <span className="text-sky-300 font-bold">LAYER 04 // STUDIO CANDIDATE DOSSIER &amp; ACADEMIC RECORD</span>
+            <span className="text-sky-300 font-bold">STUDIO CANDIDATE DOSSIER &amp; VERIFIED CREDENTIALS</span>
           </div>
           <div className="flex items-center gap-4">
             <span>REF: JJ-UEL-2026</span>
@@ -39,7 +125,7 @@ export default function AboutSection() {
               Josh Johnson
             </h2>
             <p className="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl">
-              How I approach game development, mathematical problem-solving, and cross-disciplinary studio collaboration.
+              How I approach game development, mathematical problem-solving, and cross-disciplinary studio collaboration. Click any credential on the right to inspect the full story and archival photos.
             </p>
           </div>
 
@@ -97,7 +183,7 @@ export default function AboutSection() {
                 <strong className="text-white font-semibold">Rastacats (92%, 1st Class)</strong> needed players to ride seamlessly up walls and upside-down across ceilings, I bypassed Unreal Engine 5&apos;s default planar gravity and wrote a custom polar cross-section controller, then followed it up in my remaster with a curved-world WPO vertex shader and tangent-aligned decal projection maths.
               </p>
               <p>
-                Before focusing full-time on games, I spent over five years acting on stage and screen. That background directly shapes how I direct performance capture, block cameras inside Unreal Engine, and write interactive dialogue. It also led me to build{' '}
+                Before focusing full-time on games, I spent over five years acting on stage in musicals like <em>Les Misérables</em> and <em>The Addams Family</em> as well as acting on film sets. That background directly shapes how I direct performance capture, block cameras inside Unreal Engine, and write interactive dialogue. It also led me to build{' '}
                 <strong className="text-white font-semibold">Project K.I.N.E.T.I.C.</strong>, a DIY motion-capture rig fusing an Xbox Kinect v2 with PSVR Move gyros over Python OSC to animate UE5 MetaHumans on a student budget.
               </p>
             </div>
@@ -163,115 +249,282 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Right Column: Structured Studio Credentials & Verification Cards */}
+          {/* Right Column: Interactive Clickable Credential Dossiers */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45 }}
-            className="lg:col-span-5 space-y-4"
+            className="lg:col-span-5 space-y-3.5"
           >
-            {/* Card 1: Royal Docks Dual Showcase */}
-            <div className="p-5 rounded-xl bg-[#0c121e] border border-slate-700/80 shadow-lg">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">
-                  CREDENTIAL // 01
-                </span>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-amber-300">
-                  EXHIBITION HONOUR
-                </span>
-              </div>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-amber-950/60 text-amber-300 border border-amber-500/30">
-                  <Award className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-white text-sm">Royal Docks Showcase Recognition</h3>
-                  <p className="text-xs text-amber-300 font-medium">Sole L5 in Graduating L6 Hall &amp; Sole Playable VR</p>
-                </div>
-              </div>
-              <p className="text-xs text-slate-300 mt-2 leading-relaxed">
-                <em>Rastacats</em> was chosen by faculty as the only Year 2 (Level 5) game to exhibit downstairs alongside graduating final-year Level 6 projects, while <em>Delirium</em> was the only fully working, playable VR build on the Level 5 showcase floor.
-              </p>
+            <div className="flex items-center justify-between px-1 pb-1">
+              <span className="text-xs font-mono uppercase tracking-wider text-sky-300 font-bold">
+                Interactive Credentials // Click Any Card
+              </span>
+              <span className="text-[11px] font-mono text-slate-400">
+                5 Verified Dossiers
+              </span>
             </div>
 
-            {/* Card 2: Academic Representation & Leadership */}
-            <div className="p-5 rounded-xl bg-[#0c121e] border border-slate-700/80 shadow-lg">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">
-                  CREDENTIAL // 02
-                </span>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-sky-300">
-                  ACADEMIC GOVERNANCE
-                </span>
-              </div>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-sky-950/60 text-sky-300 border border-sky-500/30">
-                  <GraduationCap className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-white text-sm">School Representative &amp; Review Panellist</h3>
-                  <p className="text-xs text-sky-300 font-medium">University of East London (BSc Games Design)</p>
-                </div>
-              </div>
-              <p className="text-xs text-slate-300 mt-2 leading-relaxed">
-                Elected to represent students across the School of Architecture, Computing &amp; Engineering, and served on the Sextennial School Review board evaluating studio coursework and technical modules.
-              </p>
-            </div>
+            {DOSSIER_CREDENTIALS.map((cred, idx) => {
+              const IconComponent = CREDENTIAL_ICONS[cred.theme] || Award;
+              const style = CREDENTIAL_THEME_STYLES[cred.theme] || CREDENTIAL_THEME_STYLES.exhibition;
+              const previewThumb = cred.images?.[0]?.src;
 
-            {/* Card 3: Performance Capture & Acting Background */}
-            <div className="p-5 rounded-xl bg-[#0c121e] border border-slate-700/80 shadow-lg">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">
-                  CREDENTIAL // 03
-                </span>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-rose-300">
-                  DIRECTION &amp; MOCAP
-                </span>
-              </div>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-rose-950/60 text-rose-300 border border-rose-500/30">
-                  <Clapperboard className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-white text-sm">Performance Capture &amp; Stage Direction</h3>
-                  <p className="text-xs text-rose-300 font-medium">5+ Years Stage &amp; Screen Acting Experience</p>
-                </div>
-              </div>
-              <p className="text-xs text-slate-300 mt-2 leading-relaxed">
-                Combines hands-on acting experience with technical animation pipelines (LiveLink, custom Kinect+PSVR mocap sensor fusion, and spatial camera blocking for interactive cutscenes).
-              </p>
-            </div>
+              return (
+                <button
+                  key={cred.id}
+                  type="button"
+                  onClick={() => handleOpenCredential(cred)}
+                  className={`w-full text-left p-4 sm:p-5 rounded-xl border shadow-lg transition-all duration-300 group cursor-pointer hover:-translate-y-0.5 ${style.cardAccent}`}
+                >
+                  <div className="flex items-center justify-between gap-2 mb-2.5">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">
+                      CREDENTIAL 0{idx + 1} // {cred.category}
+                    </span>
+                    <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded border text-[10px] font-mono font-bold uppercase tracking-wider ${style.badgeText}`}>
+                      <span>{cred.badge}</span>
+                      <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                    </span>
+                  </div>
 
-            {/* Card 4: Technical Certifications & National Finals */}
-            <div className="p-5 rounded-xl bg-[#0c121e] border border-slate-700/80 shadow-lg">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">
-                  CREDENTIAL // 04
-                </span>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-300">
-                  VERIFIED CERTIFICATIONS
-                </span>
-              </div>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 rounded-lg bg-emerald-950/60 text-emerald-300 border border-emerald-500/30">
-                  <ShieldCheck className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-white text-sm">Technical Certifications &amp; Finals</h3>
-                  <p className="text-xs text-emerald-300 font-medium">Programming, Robotics &amp; Systems</p>
-                </div>
-              </div>
-              <ul className="text-xs text-slate-300 space-y-1.5 mt-2">
-                <li>• <strong className="text-white">Programming:</strong> PCAP Certified Python, Harvard CS50x &amp; Univ. of Glasgow Haskell</li>
-                <li>• <strong className="text-white">VEX Robotics:</strong> UK National Championship Finalist</li>
-                <li>• <strong className="text-white">CyberCenturion:</strong> Top 60 UK National Linux Security Finalist</li>
-                <li>• <strong className="text-white">Industry Experience:</strong> IT Systems Engineering (Dragon IS) &amp; 3+ yrs team ops</li>
-              </ul>
-            </div>
+                  <div className="flex items-start gap-3.5">
+                    {previewThumb ? (
+                      <div className="w-16 h-16 rounded-lg overflow-hidden border border-white/15 shrink-0 relative">
+                        <img
+                          src={getAssetUrl(previewThumb)}
+                          alt={cred.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : (
+                      <div className={`p-2.5 rounded-lg border shrink-0 ${style.iconBox}`}>
+                        <IconComponent className="w-5 h-5" />
+                      </div>
+                    )}
+
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-bold text-white text-sm sm:text-base group-hover:text-sky-300 transition-colors leading-snug">
+                        {cred.title}
+                      </h3>
+                      <p className="text-xs text-slate-300 font-medium mt-0.5">
+                        {cred.subtitle}
+                      </p>
+                      <p className="text-xs text-slate-400 mt-2 leading-relaxed line-clamp-2">
+                        {cred.shortSummary}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
           </motion.div>
         </div>
       </div>
+
+      {/* Interactive Credential Modal with Stage Curtain Animation for Theatre */}
+      <AnimatePresence>
+        {activeCredential && (
+          <motion.div
+            key={activeCredential.id}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveCredential(null)}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+          >
+            {(() => {
+              const style =
+                CREDENTIAL_THEME_STYLES[activeCredential.theme] ||
+                CREDENTIAL_THEME_STYLES.exhibition;
+              const isTheatre = activeCredential.theme === 'theatre';
+              const photos = activeCredential.images || [];
+              const currentPhoto = photos[selectedPhotoIdx] || photos[0];
+
+              return (
+                <motion.div
+                  initial={{ scale: 0.94, opacity: 0, y: 20 }}
+                  animate={{ scale: 1, opacity: 1, y: 0 }}
+                  exit={{ scale: 0.95, opacity: 0, y: 20 }}
+                  transition={{ duration: 0.35 }}
+                  onClick={(e) => e.stopPropagation()}
+                  className={`relative w-full max-w-5xl rounded-2xl border-2 shadow-[0_25px_90px_rgba(0,0,0,0.95)] overflow-hidden my-auto ${style.modalBg}`}
+                >
+                  {/* THEMED STAGE CURTAIN ANIMATION FOR MUSICAL THEATRE & ACTING */}
+                  {isTheatre && (
+                    <div
+                      key={`curtain-${curtainKey}`}
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
+                    >
+                      {/* Top Gold-Trimmed Velvet Pelmet / Valance */}
+                      <div className="absolute top-0 inset-x-0 h-5 bg-gradient-to-b from-[#7f1d1d] to-[#450a0a] border-b-2 border-amber-400/80 shadow-lg" />
+
+                      {/* Left Crimson Velvet Stage Curtain Panel */}
+                      <motion.div
+                        initial={{ x: '0%' }}
+                        animate={{ x: '-94%' }}
+                        transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+                        className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-amber-400/90 shadow-[25px_0_60px_rgba(0,0,0,0.95)]"
+                        style={{
+                          backgroundImage:
+                            'repeating-linear-gradient(90deg, #450a0a 0px, #7f1d1d 22px, #991b1b 36px, #450a0a 56px)'
+                        }}
+                      >
+                        <div className="absolute inset-y-0 right-2 w-1 bg-amber-300/40" />
+                      </motion.div>
+
+                      {/* Right Crimson Velvet Stage Curtain Panel */}
+                      <motion.div
+                        initial={{ x: '0%' }}
+                        animate={{ x: '94%' }}
+                        transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+                        className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-amber-400/90 shadow-[-25px_0_60px_rgba(0,0,0,0.95)]"
+                        style={{
+                          backgroundImage:
+                            'repeating-linear-gradient(90deg, #450a0a 0px, #7f1d1d 22px, #991b1b 36px, #450a0a 56px)'
+                        }}
+                      >
+                        <div className="absolute inset-y-0 left-2 w-1 bg-amber-300/40" />
+                      </motion.div>
+
+                      {/* Warm Stage Spotlight Cone */}
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1.1, delay: 0.4 }}
+                        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(251,191,36,0.16),transparent_65%)]"
+                      />
+                    </div>
+                  )}
+
+                  {/* Modal Header */}
+                  <div className="relative z-20 flex flex-wrap items-center justify-between gap-4 px-6 sm:px-10 pt-7 pb-5 border-b border-white/15 bg-black/40">
+                    <div>
+                      <div className={`text-xs font-mono uppercase tracking-[0.2em] font-bold ${style.headerAccent}`}>
+                        {activeCredential.category}
+                      </div>
+                      <h3 className="text-xl sm:text-3xl font-extrabold text-white font-['Syne',sans-serif] mt-1">
+                        {activeCredential.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-300 mt-0.5">
+                        {activeCredential.subtitle}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2.5">
+                      {isTheatre && (
+                        <button
+                          type="button"
+                          onClick={() => setCurtainKey((prev) => prev + 1)}
+                          className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-amber-500/20 hover:bg-amber-500/35 text-amber-200 border border-amber-400/50 text-xs font-mono uppercase tracking-wider transition-colors cursor-pointer"
+                        >
+                          <RotateCcw className="w-3.5 h-3.5" />
+                          <span>Replay Curtain</span>
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => setActiveCredential(null)}
+                        className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/15 transition-colors cursor-pointer"
+                        aria-label="Close credential dossier"
+                      >
+                        <X className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Modal Body: Photo Stage & Full Narrative */}
+                  <div className="relative z-20 p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-h-[80vh] overflow-y-auto">
+                    {/* Left 7 Columns: Archival Photo Stage + Thumbnails */}
+                    <div className="lg:col-span-7 space-y-3.5">
+                      {currentPhoto && (
+                        <div className="rounded-xl overflow-hidden bg-black/90 border border-white/20 shadow-2xl">
+                          <div className="aspect-video w-full relative flex items-center justify-center bg-black">
+                            <img
+                              src={getAssetUrl(currentPhoto.src)}
+                              alt={currentPhoto.caption}
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                          <div className="px-4 py-3 bg-black/80 border-t border-white/10 flex items-center justify-between gap-3">
+                            <span className="text-xs sm:text-sm text-slate-200 font-medium">
+                              {currentPhoto.caption}
+                            </span>
+                            <span className="text-[11px] font-mono text-slate-400 shrink-0">
+                              {selectedPhotoIdx + 1} / {photos.length}
+                            </span>
+                          </div>
+                        </div>
+                      )}
+
+                      {photos.length > 1 && (
+                        <div className="grid grid-cols-4 gap-2.5">
+                          {photos.map((img, i) => (
+                            <button
+                              key={img.src}
+                              type="button"
+                              onClick={() => setSelectedPhotoIdx(i)}
+                              className={`rounded-lg overflow-hidden aspect-video border-2 transition-all cursor-pointer ${
+                                i === selectedPhotoIdx
+                                  ? 'border-amber-400 scale-[1.02] opacity-100 shadow-md'
+                                  : 'border-white/15 opacity-60 hover:opacity-95'
+                              }`}
+                            >
+                              <img
+                                src={getAssetUrl(img.src)}
+                                alt={img.caption}
+                                className="w-full h-full object-cover"
+                              />
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Right 5 Columns: Full Story, Game Dev Connection & Proof Points */}
+                    <div className="lg:col-span-5 space-y-5">
+                      <div>
+                        <h4 className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-2">
+                          Behind the Scenes
+                        </h4>
+                        <p className="text-sm sm:text-base text-slate-100 leading-relaxed">
+                          {activeCredential.story}
+                        </p>
+                      </div>
+
+                      <div className={`p-4 rounded-xl border-l-4 ${style.whyBox}`}>
+                        <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider font-bold mb-1">
+                          <Sparkles className="w-3.5 h-3.5" />
+                          <span>How This Shapes My Game Development</span>
+                        </div>
+                        <p className="text-xs sm:text-sm leading-relaxed">
+                          {activeCredential.whyItMattersForGames}
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-2.5">
+                          Key Highlights
+                        </h4>
+                        <ul className="space-y-2">
+                          {activeCredential.highlights.map((item) => (
+                            <li key={item} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 leading-relaxed">
+                              <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })()}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -32,7 +32,7 @@ export const HERO_REELS = [
     poster: "/images/rastacats_revisited.jpg",
     itch: "https://joshej.itch.io/rastacats",
     telemetry: [
-      { label: "VERTEX SHADER", value: "P' = P ? Up × (dist / R)²" },
+      { label: "VERTEX SHADER", value: "P' = P - Up × (dist / R)²" },
       { label: "OPTIMISATION", value: "-65% CPU Tick (ISM Pooling)" },
       { label: "ANIMATION", value: "Velocity-Driven Bone Sway" }
     ]
@@ -106,7 +106,7 @@ export const PROJECTS = [
     tagline: "360-Degree Gravity Arcade Runner & Remaster",
     discipline: "Gameplay Programming",
     engine: "Unreal Engine 5",
-    dates: "Oct 2024 ? May 2025",
+    dates: "Oct 2024 - May 2025",
     studio: "Solo Developer",
     image: "/images/rastacats_cover.png",
     gallery: [
@@ -123,7 +123,7 @@ export const PROJECTS = [
     links: {
       github: "https://github.com/JoshUEL2",
       itch: "https://joshej.itch.io/rastacats",
-      demo: "https://joshej.itch.io/rastacats",
+      demo: null,
       gdd: "/docs/Rastacats_Design_Document.docx"
     },
     shortDesc: "High-speed arcade bobsled runner built around a custom 360-degree cylindrical gravity controller, polar-to-cartesian obstacle spawning, and an object-pooled track generator. Toggle between Phase 1 and Phase 2 below.",
@@ -163,7 +163,7 @@ void ARastacatsTrackManager::SpawnObstacleOnPipe(float AxialX, float AngleDegree
         id: "phase-2",
         label: "Phase 2: Revisited Remaster",
         badge: "v2.0 Remaster",
-        dates: "Jan 2025 ? May 2025",
+        dates: "Jan 2025 - May 2025",
         engine: "Unreal Engine 5 (Curved-World Shader & Object Pooling)",
         image: "/images/rastacats_revisited.jpg",
         videoPreview: "/media/rastacats_cw2_preview.mp4",
@@ -186,7 +186,7 @@ void ARastacatsTrackManager::SpawnObstacleOnPipe(float AxialX, float AngleDegree
         id: "phase-1",
         label: "Phase 1: Original Prototype",
         badge: "v1.0 Prototype (92%)",
-        dates: "Oct 2024 ? Dec 2024",
+        dates: "Oct 2024 - Dec 2024",
         engine: "Unreal Engine 5 (Core 360° Pipe Physics)",
         image: "/images/rasta_cw1_00_01_15.jpg",
         videoPreview: "/media/rastacats_preview.mp4",
@@ -214,7 +214,7 @@ void ARastacatsTrackManager::SpawnObstacleOnPipe(float AxialX, float AngleDegree
     tagline: "AI Behaviour Trees, Autonomous Turrets & Interactive Systems",
     discipline: "AI & Systems Architecture",
     engine: "Unreal Engine 5 (Blueprints & AI)",
-    dates: "Apr 2025 ? Jun 2025",
+    dates: "Apr 2025 - Jun 2025",
     studio: "Solo Developer",
     image: "/images/state_machine_cover.png",
     gallery: [
@@ -227,7 +227,7 @@ void ARastacatsTrackManager::SpawnObstacleOnPipe(float AxialX, float AngleDegree
     links: {
       github: "https://github.com/JoshUEL2",
       itch: "https://joshej.itch.io/state-machine-showcase",
-      demo: "https://joshej.itch.io/state-machine-showcase"
+      demo: null
     },
     shortDesc: "A playable Unreal Engine 5 systems sandbox demonstrating modular AI Behaviour Trees, autonomous turret state machines, multi-floor elevator validation logic, and inventory-gated doors.",
     summary: "Designed from formal logic flowcharts to demonstrate clean, decoupled state management across NPC combat AI, autonomous turrets, environmental machinery, and regenerating pickups.",
@@ -276,7 +276,7 @@ void ATurretController::EvaluateStateTransition(float DistanceToTarget, bool bHa
     tagline: "2-Player Local Co-Op Eco-Action Platformer",
     discipline: "Co-Op Gameplay & Character Production",
     engine: "Unreal Engine 5 / Maya / Substance Painter",
-    dates: "Jan 2025 ? May 2025",
+    dates: "Jan 2025 - May 2025",
     studio: "Llama Games (4-Person Team)",
     image: "/images/planet_protectors_cover.png",
     gallery: [
@@ -292,7 +292,7 @@ void ATurretController::EvaluateStateTransition(float DistanceToTarget, bool bHa
     links: {
       github: "https://github.com/JoshUEL2/Planet-Protectors",
       itch: "https://joshej.itch.io/planet-protectors",
-      demo: "https://joshuel2.github.io/Planet-Protectors-Marketing-Website/",
+      demo: null,
       gdd: "/docs/Planet_Protectors_Design_Document.docx"
     },
     marketingSite: {
@@ -338,7 +338,7 @@ void ABeatCorruptionNode::OnNodePurified(FVector NodeWorldLocation)
     tagline: "Procedural 2D Top-Down Roguelite & Random Walker Generator",
     discipline: "Procedural Generation & AI Pathfinding",
     engine: "Python 3 / Pygame / Custom Tile Engine",
-    dates: "Feb 2025 ? May 2025",
+    dates: "Feb 2025 - May 2025",
     studio: "Solo Developer",
     image: "/images/randio_cover.png",
     gallery: [
@@ -349,7 +349,7 @@ void ABeatCorruptionNode::OnNodePurified(FVector NodeWorldLocation)
     links: {
       github: "https://github.com/JoshUEL2",
       itch: "https://joshej.itch.io/randio",
-      demo: "https://joshej.itch.io/randio",
+      demo: null,
       gdd: "/docs/Randio_Design_Document.docx"
     },
     shortDesc: "A 2D top-down roguelite shooter featuring stochastic Random Walker island generation, cellular automata coastline smoothing, and A* enemy pursuit pathfinding.",
@@ -372,8 +372,8 @@ def generate_island_grid(width: int, height: int, target_floor_ratio: float = 0.
             grid[y][x] = 1
             floor_count += 1
         dx, dy = random.choice([(1, 0), (-1, 0), (0, 1), (0, -1)])
-        x = max(2, min(width ? 3, x + dx))
-        y = max(2, min(height ? 3, y + dy))
+        x = max(2, min(width - 3, x + dx))
+        y = max(2, min(height - 3, y + dy))
 
     return apply_bitmask_shorelines(grid, width, height)`,
     architectureNodes: [
@@ -418,7 +418,7 @@ def generate_island_grid(width: int, height: int, target_floor_ratio: float = 0.
     links: {
       github: "https://github.com/JoshUEL2",
       itch: "https://joshej.itch.io/delirium",
-      demo: "https://joshej.itch.io/delirium",
+      demo: null,
       gdd: "/docs/Delirium_GDD_and_Design_Notes.zip"
     },
     shortDesc: "Built in 36 hours at Goldsmiths Global Game Jam. Players physically grip, push, and brake independent left/right wheelchair rims in VR to escape a sound-hunting entity.",
@@ -465,7 +465,7 @@ void AWheelchairPawn::UpdateWheelPhysics(UVRControllerComponent* Hand, UPrimitiv
     tagline: "Custom 2D Vector Physics & Collision Kinematics Engine",
     discipline: "Physics Engine Programming",
     engine: "Python 3 / Pygame",
-    dates: "Nov 2024 ? Jan 2025",
+    dates: "Nov 2024 - Jan 2025",
     studio: "Solo Developer",
     image: "/images/pyball.jpg",
     gallery: [
@@ -490,7 +490,7 @@ void AWheelchairPawn::UpdateWheelPhysics(UVRControllerComponent* Hand, UPrimitiv
     technicalDeepDive: "Discrete timestep physics engines suffer from 'sinking' when gravity pushes a resting ball slightly inside a floor before the next frame's velocity impulse fires. Adding Baumgarte positional projection nudges intersecting bodies apart along the collision normal proportional to their inverse masses.",
     codeSnippet: `# 2D Impulse Momentum Resolution & Positional Slop Correction
 def resolve_collision(body_a, body_b, normal: Vector2, depth: float, restitution: float = 0.85):
-    rel_vel = body_b.velocity ? body_a.velocity
+    rel_vel = body_b.velocity - body_a.velocity
     vel_along_normal = rel_vel.dot(normal)
     if vel_along_normal > 0:
         return  # Bodies are already separating
@@ -502,7 +502,7 @@ def resolve_collision(body_a, body_b, normal: Vector2, depth: float, restitution
     body_b.velocity += impulse * body_b.inv_mass
 
     # Baumgarte positional projection to prevent floor sinking
-    correction = max(depth ? 0.01, 0.0) / inv_mass_sum * 0.8 * normal
+    correction = max(depth - 0.01, 0.0) / inv_mass_sum * 0.8 * normal
     body_a.position -= correction * body_a.inv_mass
     body_b.position += correction * body_b.inv_mass`,
     architectureNodes: [
@@ -523,7 +523,7 @@ def resolve_collision(body_a, body_b, normal: Vector2, depth: float, restitution
     tagline: "Kuwahara Painterly Shader & WPO Morphing + Myndwell ARG Portal",
     discipline: "Technical Art & Shader Programming",
     engine: "Unreal Engine 5 / HLSL / HTML5 ARG",
-    dates: "Jan 2025 ? May 2025",
+    dates: "Jan 2025 - May 2025",
     studio: "Solo Developer",
     image: "/images/rem.jpg",
     gallery: [
@@ -534,7 +534,7 @@ def resolve_collision(body_a, body_b, normal: Vector2, depth: float, restitution
     links: {
       github: "https://github.com/JoshUEL2/REM",
       itch: null,
-      demo: "https://github.com/JoshUEL2/REM/releases/tag/v1.0.0",
+      demo: null,
       gdd: "/docs/REM_Game_Design_Document.docx"
     },
     marketingSite: {
@@ -587,7 +587,7 @@ float3 KuwaharaFilter(float2 UV, float2 TexelSize, int Radius)
     tagline: "1:1 Photogrammetry & ADHD Hyperfocus Shader Simulation",
     discipline: "Photogrammetry & Technical Art",
     engine: "Unreal Engine 5 (Lumen & Post-Process)",
-    dates: "Oct 2024 ? May 2025",
+    dates: "Oct 2024 - May 2025",
     studio: "Solo Developer",
     image: "/images/daydream_believer_cover.png",
     gallery: [
@@ -602,7 +602,7 @@ float3 KuwaharaFilter(float2 UV, float2 TexelSize, int Radius)
     links: {
       github: "https://github.com/JoshUEL2/Daydream-Believer-Marketing-Website",
       itch: "https://joshej.itch.io/daydream-believer",
-      demo: "https://joshej.itch.io/daydream-believer",
+      demo: null,
       gdd: "/docs/Daydream_Believer_Design_Document.docx"
     },
     marketingSite: {
@@ -645,7 +645,7 @@ void ADaydreamPostProcessDirector::UpdateCognitiveShaderState(float FocusLevel, 
         id: "phase-2",
         label: "Phase 2: Revisited (ADHD Shader Simulation)",
         badge: "v2.0 Revisited",
-        dates: "Jan 2025 ? May 2025",
+        dates: "Jan 2025 - May 2025",
         engine: "Unreal Engine 5 (Lumen + Reactive Post-Process MPC)",
         image: "/images/daydream_revisited.jpg",
         videoPreview: "/media/daydream_preview.mp4",
@@ -668,7 +668,7 @@ void ADaydreamPostProcessDirector::UpdateCognitiveShaderState(float FocusLevel, 
         id: "phase-1",
         label: "Phase 1: Original (1:1 Photogrammetry Replica)",
         badge: "v1.0 Environment",
-        dates: "Oct 2024 ? Dec 2024",
+        dates: "Oct 2024 - Dec 2024",
         engine: "RealityCapture / Blender / Substance Painter / UE5",
         image: "/images/daydream_00_01_05.jpg",
         videoPreview: "/media/daydream_preview.mp4",
@@ -694,7 +694,7 @@ void ADaydreamPostProcessDirector::UpdateCognitiveShaderState(float FocusLevel, 
     tagline: "Procedural Perlin Noise Island & Biome Terrain Generator",
     discipline: "Procedural Tech Art & Terrain Maths",
     engine: "Unreal Engine 5 / Procedural Mesh",
-    dates: "Nov 2024 ? Jan 2025",
+    dates: "Nov 2024 - Jan 2025",
     studio: "Solo Developer",
     image: "/images/project_isla.jpg",
     gallery: [
@@ -729,7 +729,7 @@ float UProceduralIslandComponent::SampleElevation(float X, float Y, int32 Octave
     }
     const float NormalisedNoise = (NoiseHeight / MaxPossible + 1.0f) * 0.5f;
     const float RadialDist = FVector2D(X, Y).Size() / IslandRadius;
-    const float FalloffMask = FMath::Clamp(1.0f ? FMath::Pow(RadialDist, 2.4f), 0.0f, 1.0f);
+    const float FalloffMask = FMath::Clamp(1.0f - FMath::Pow(RadialDist, 2.4f), 0.0f, 1.0f);
     return NormalisedNoise * FalloffMask * MaxElevationZ;
 }`,
     architectureNodes: [
@@ -750,7 +750,7 @@ float UProceduralIslandComponent::SampleElevation(float X, float Y, int32 Octave
     tagline: "3-Player Asymmetrical Co-Op FPS Facility",
     discipline: "Level Design & Spatial Pacing",
     engine: "Unreal Engine 5 / Blender",
-    dates: "Jan 2025 ? Apr 2025",
+    dates: "Jan 2025 - Apr 2025",
     studio: "Solo Level Designer",
     image: "/images/labraz.jpg",
     gallery: [
@@ -761,8 +761,8 @@ float UProceduralIslandComponent::SampleElevation(float X, float Y, int32 Octave
     links: {
       github: "https://github.com/JoshUEL2",
       itch: null,
-      demo: "https://www.youtube.com/watch ? v=t3xmVDuFvZU",
-      video: "https://www.youtube.com/watch ? v=t3xmVDuFvZU",
+      demo: null,
+      video: "https://www.youtube.com/watch?v=t3xmVDuFvZU",
       gdd: "/docs/LabRatz_Design_Document.docx"
     },
     shortDesc: "A 3-player asymmetrical co-op FPS level built in Unreal Engine 5 around three distinct player roles (Hacker, Assault, Engineer), complete with a 40-page GDD and walkthrough.",
@@ -803,7 +803,7 @@ void ALabSectorLock::EvaluateBreachReadiness()
     tagline: "Non-Euclidean Shifting Maze & Probabilistic Exit Architecture",
     discipline: "Systemic Level Design & World Architecture",
     engine: "Unreal Engine 5 / HTML5 Design Archive",
-    dates: "Jan 2025 ? May 2025",
+    dates: "Jan 2025 - May 2025",
     studio: "Solo Developer",
     image: "/images/project_tower_01.jpg",
     gallery: [
@@ -815,7 +815,7 @@ void ALabSectorLock::EvaluateBreachReadiness()
     links: {
       github: "https://github.com/JoshUEL2/Chanceway-Marketing-Website",
       itch: null,
-      demo: "https://joshuel2.github.io/Chanceway-Marketing-Website/",
+      demo: null,
       gdd: "/docs/Chanceway_Game_Design_Document.docx"
     },
     marketingSite: {
@@ -838,7 +838,7 @@ void ALabSectorLock::EvaluateBreachReadiness()
     codeSnippet: `// Frustum-Culled Non-Euclidean Corridor Socket Swapper
 bool AChancewayMazeDirector::TryReconfigureBehindPlayer(UCorridorSocket* Socket, TSubclassOf<ACorridorChunk> NextChunk)
 {
-    const FVector ToSocket = (Socket->GetComponentLocation() ? PlayerCam->GetComponentLocation()).GetSafeNormal();
+    const FVector ToSocket = (Socket->GetComponentLocation() - PlayerCam->GetComponentLocation()).GetSafeNormal();
     const float LookDot = FVector::DotProduct(PlayerCam->GetForwardVector(), ToSocket);
 
     // Only swap when socket is strictly behind the player's field of view and occluded
@@ -864,7 +864,7 @@ bool AChancewayMazeDirector::TryReconfigureBehindPlayer(UCorridorSocket* Socket,
     tagline: "3D Psychological Horror Facility & 400+ Lumen Light Benchmark",
     discipline: "Level Lighting, Optimization & Stealth AI",
     engine: "Unreal Engine 5 (Lumen & NavMesh)",
-    dates: "Nov 2024 ? Feb 2025",
+    dates: "Nov 2024 - Feb 2025",
     studio: "Solo Developer",
     image: "/images/baldis_basics.jpg",
     gallery: [
@@ -914,7 +914,7 @@ void ABaldiPursuerAI::OnNotebookCollected(int32 TotalCollected, int32 MaxNoteboo
     tagline: "Playable Twine Thriller with Jon Ingold Dialogue Triads",
     discipline: "Narrative Systems & Interactive Fiction",
     engine: "Twine 2 (SugarCube 2.37 / JavaScript)",
-    dates: "Oct 2025 ? Dec 2025",
+    dates: "Oct 2025 - Dec 2025",
     studio: "Solo Narrative Designer",
     image: "/images/the_quarry.jpg",
     gallery: [
@@ -937,13 +937,13 @@ void ABaldiPursuerAI::OnNotebookCollected(int32 TotalCollected, int32 MaxNoteboo
       "Mapped the complete 60+ node branching architecture in a high-resolution structural flowchart."
     ],
     technicalDeepDive: "Branching narratives quickly suffer from combinatorial explosion if every choice forks a brand-new scene. By using a 'foldback' state architecture, scenes reconverge on shared structural beats while reading the player's accumulated $agitation and $trust integers to swap out dialogue lines, sensory descriptions, and final survival branches.",
-    codeSnippet: `/* Twine SugarCube 2.37 ? Jon Ingold Triad & Agitation State Resolver */
+    codeSnippet: `/* Twine SugarCube 2.37 - Jon Ingold Triad & Agitation State Resolver */
 <<nobr>>
   <<if $choiceTriad is "deflect">>
     <<set $agitation to Math.min(100, $agitation + 15)>>
     <<set $millerTrust -= 10>>
   <<elseif $choiceTriad is "accept">>
-    <<set $agitation to Math.max(0, $agitation ? 10)>>
+    <<set $agitation to Math.max(0, $agitation - 10)>>
     <<set $millerTrust += 15>>
   <</if>>
 <</nobr>>
@@ -966,7 +966,7 @@ void ABaldiPursuerAI::OnNotebookCollected(int32 TotalCollected, int32 MaxNoteboo
     tagline: "2.5D Dementia Narrative & Physicalised Memory Dialogue System",
     discipline: "Narrative Design & Interactive Project Bible",
     engine: "Unreal Engine 5 Concept / HTML5 Project Bible",
-    dates: "Jan 2025 ? May 2025",
+    dates: "Jan 2025 - May 2025",
     studio: "Solo Narrative & Systems Designer",
     image: "/images/waiwwai_cover.jpg",
     gallery: [
@@ -976,7 +976,7 @@ void ABaldiPursuerAI::OnNotebookCollected(int32 TotalCollected, int32 MaxNoteboo
     links: {
       github: "https://github.com/JoshUEL2/WaiWWai-Marketing-Website",
       itch: null,
-      demo: "https://joshuel2.github.io/WaiWWai-Marketing-Website/",
+      demo: null,
       gdd: "/docs/WAIWWAI_Game_Design_Document.docx"
     },
     marketingSite: {
@@ -998,7 +998,7 @@ void ABaldiPursuerAI::OnNotebookCollected(int32 TotalCollected, int32 MaxNoteboo
     technicalDeepDive: "Traditional RPG dialogue menus give players infinite time to read clean text, which contradicts the lived disorientation of dementia. In WAIWWAI's dialogue architecture, each spoken phrase spawns with a decay timer and a Perlin drift vector; if the player's cursor fails to anchor the keyword before clarity drops below threshold, the characters inside the string scramble into phonetic echoes.",
     codeSnippet: `// WAIWWAI Memory Fragment Decay & Phonetic Erosion Controller
 function updateMemoryFragment(fragment, deltaSeconds, clarityIndex) {
-    fragment.lifetime -= deltaSeconds * (2.0 ? clarityIndex);
+    fragment.lifetime -= deltaSeconds * (2.0 - clarityIndex);
     fragment.x += Math.sin(fragment.lifetime * 1.7) * fragment.driftSpeed;
 
     if (clarityIndex < 0.45) {
@@ -1024,7 +1024,7 @@ function updateMemoryFragment(fragment, deltaSeconds, clarityIndex) {
     tagline: "Satirical Recruitment Screenplay & Systems Design Document",
     discipline: "Narrative & Systems Design",
     engine: "Screenplay & Systems GDD",
-    dates: "Feb 2025 ? May 2025",
+    dates: "Feb 2025 - May 2025",
     studio: "Solo Writer & Designer",
     image: "/images/dear_hiring_manager.jpg",
     gallery: [
@@ -1034,7 +1034,7 @@ function updateMemoryFragment(fragment, deltaSeconds, clarityIndex) {
     links: {
       github: "https://github.com/JoshUEL2",
       itch: null,
-      demo: "/docs/Dear_Hiring_Manager_Screenplay.docx",
+      demo: null,
       gdd: "/docs/Dear_Hiring_Manager_Screenplay.docx"
     },
     shortDesc: "A satirical narrative and mobile systems GDD turning modern tech recruitment dark patterns into a high-pressure resource-management game.",
@@ -1049,7 +1049,7 @@ function updateMemoryFragment(fragment, deltaSeconds, clarityIndex) {
     codeSnippet: `// Burnout-Driven UI Input Latency & Form Auto-Fill Corruption
 float UApplicantHUDManager::CalculateEffectiveInputDelay(int32 RejectionStreak, float EmotionalBandwidth) const
 {
-    const float FatigueRatio = 1.0f ? FMath::Clamp(EmotionalBandwidth / 100.0f, 0.0f, 1.0f);
+    const float FatigueRatio = 1.0f - FMath::Clamp(EmotionalBandwidth / 100.0f, 0.0f, 1.0f);
     const float StreakPenalty = FMath::Min(RejectionStreak * 0.018f, 0.25f);
     
     // Introduce subtle cursor drag and typo probability as burnout peaks
@@ -1069,7 +1069,7 @@ float UApplicantHUDManager::CalculateEffectiveInputDelay(int32 RejectionStreak, 
     tagline: "AAA Narrative Expansion Screenplay & Mocap Direction",
     discipline: "AAA Narrative & Environmental Storytelling",
     engine: "Screenplay & World Design Bible",
-    dates: "Oct 2024 ? Jan 2025",
+    dates: "Oct 2024 - Jan 2025",
     studio: "Solo Narrative Designer",
     image: "/images/far_cry_5.jpg",
     gallery: [
@@ -1079,7 +1079,7 @@ float UApplicantHUDManager::CalculateEffectiveInputDelay(int32 RejectionStreak, 
     links: {
       github: "https://github.com/JoshUEL2",
       itch: null,
-      demo: "/docs/Faith_Over_Fear_Screenplay.docx",
+      demo: null,
       gdd: "/docs/Faith_Over_Fear_Screenplay.docx"
     },
     shortDesc: "A feature-length DLC concept and mocap screenplay set in post-collapse Hope County, blending environmental indexical storytelling with unreliable hallucination sequences.",
@@ -1258,4 +1258,193 @@ export const ACADEMIC_MODULES = [
   { name: "Level Design (LabR@z)", mark: "72%", grade: "1st Class" },
   { name: "Game Prototyping (Daydream Believer)", mark: "72%", grade: "1st Class" },
   { name: "Visual & Theoretical Studies", mark: "72%", grade: "1st Class" }
+];
+
+export const HARDWARE_BENCH_PROJECTS = [
+  {
+    id: "project-kinetic",
+    tag: "BENCH LOG 01 // DIY MOTION CAPTURE",
+    title: "Project K.I.N.E.T.I.C. - Under-£100 MetaHuman Mocap Rig",
+    subtitle: "Xbox One Kinect v2 Depth Camera + PSVR Move Gyroscopes + Python OSC + UE5 LiveLink",
+    image: "/images/project_frame.jpg",
+    problem: "I needed full-body motion capture to drive Unreal Engine 5 MetaHumans for cutscene blocking, but commercial optical or inertial mocap suits cost between £2,500 and £10,000+.",
+    tinkeringSolution: "Instead of settling for stock animations, I dug out an old Xbox One Kinect v2 infrared time-of-flight camera and two PlayStation VR Move controllers. Single-camera Kinect skeletal tracking loses wrist rotation and flips bones whenever you turn 180 degrees, so I strapped PSVR Move controllers to my extremities for continuous gyroscope quaternions and wrote a custom Python OSC bridge that fuses both sensor streams into UE5 LiveLink at 30 FPS.",
+    proofPoints: [
+      "Fused infrared depth point-clouds (Brekel Body v2) with PSVR Move IMU gyroscope orientation over UDP/OSC sockets.",
+      "Solved single-camera 180-degree occlusion and wrist-twist gimbal lock using weighted quaternion filtering in Python.",
+      "Streamed live retargeted skeletal transforms directly onto Unreal Engine 5 MetaHuman control rigs in real time."
+    ],
+    pipeline: ["Kinect v2 IR Depth", "PSVR Move IMU Gyros", "Python OSC Fusion Bridge", "UE5 LiveLink MetaHuman"],
+    links: {
+      github: "https://github.com/JoshUEL2"
+    }
+  },
+  {
+    id: "signalrgb-hid",
+    tag: "BENCH LOG 02 // USB HID PACKET SNIFFING",
+    title: "Wireshark USB Reverse-Engineering & SignalRGB Plugins",
+    subtitle: "Wireshark USBPcap + Raw 64-Byte Hex Protocol Decoding + JavaScript HID Drivers",
+    image: "/images/vr_showcase.jpg",
+    problem: "When I built my custom dual-radiator watercooled PC, my Gigabyte Aorus P1200W PSU LCD and RGB controllers required bloated vendor apps that clashed in the background and had zero support in SignalRGB.",
+    tinkeringSolution: "I hooked Wireshark and USBPcap directly onto the raw USB root hub, captured the proprietary 64-byte HID interrupt transfers while toggling modes in the official Gigabyte software, and mapped out the hexadecimal command headers, RGB register offsets, and checksum bytes by hand to write my own open-source SignalRGB device plugin.",
+    proofPoints: [
+      "Isolated vendor ID (VID) and product ID (PID) endpoints using Wireshark USBPcap packet captures.",
+      "Decoded undocumented 64-byte hexadecimal payload structures, brightness scalars, and frame-sync handshakes.",
+      "Published an open-source JavaScript USB HID plugin allowing SignalRGB to drive the hardware natively without Gigabyte bloatware."
+    ],
+    pipeline: ["Wireshark USBPcap", "Hex Payload Diffing", "USB HID Endpoint Map", "SignalRGB JS Driver"],
+    links: {
+      github: "https://github.com/JoshUEL2/SignalRGB-Aorus-P1200W-Plugin"
+    }
+  },
+  {
+    id: "hydroscreen-xc7",
+    tag: "BENCH LOG 03 // CUSTOM C# HARDWARE DAEMON",
+    title: "HydroScreen XC7 - Custom Waterblock LCD Driver",
+    subtitle: "C# / .NET + Direct USB HID Telemetry + Custom Loop Thermal Control",
+    image: "/images/project_tower_02.jpg",
+    problem: "Corsair's official iCUE suite consumed hundreds of megabytes of RAM and constant CPU interrupts just to render coolant temperatures on my XC7 RGB ELITE CPU waterblock LCD.",
+    tinkeringSolution: "I wrote a lightweight standalone C# / .NET driver (HydroScreen-XC7) that talks directly to the waterblock's USB HID display controller, polling loop coolant and CPU package sensors and pushing custom telemetry frames to the circular LCD screen with near-zero background CPU overhead.",
+    proofPoints: [
+      "Replaced heavy vendor background services with a lean C#/.NET direct-HID driver for the Corsair XC7 RGB ELITE LCD.",
+      "Paired with a custom-built shared watercooling loop cooling a Ryzen 9 5950X and waterblocked RTX 4070.",
+      "Tuned radiator fan curves directly against inline water-temperature thermistors rather than spiky CPU die temps."
+    ],
+    pipeline: ["Hardware Sensor Poll", "C# .NET Frame Buffer", "Direct USB HID Write", "XC7 Waterblock LCD"],
+    links: {
+      github: "https://github.com/JoshUEL2/HydroScreen-XC7-Compatiability"
+    }
+  },
+  {
+    id: "tfl-and-realspeak",
+    tag: "BENCH LOG 04 // ALGORITHMIC TOOLS & AI PIPELINES",
+    title: "TfL Underground Graph Router & Project Realspeak",
+    subtitle: "Dijkstra Tube Pathfinding + Oyster CSV Parser + Early-2023 UE5 AI NPC Lip-Sync",
+    image: "/images/tfl_planner.jpg",
+    problem: "Whether I want to audit my own London Underground Oyster card spending or test conversational AI NPCs inside Unreal Engine 5 before commercial plugins existed, if a tool does not exist, I build it from scratch.",
+    tinkeringSolution: "For transit routing, I modelled the London Underground network as a weighted graph in JavaScript (incorporating line-change walking penalties) and built a client-side Oyster CSV parser that visualises journey history on an interactive Leaflet GIS map. Back in early 2023, I also built Project Realspeak, wiring OpenAI speech-to-text and TTS into UE5 MetaHuman facial visemes for real-time unscripted NPC dialogue.",
+    proofPoints: [
+      "Implemented weighted Dijkstra / A* graph traversal across London Underground stations with live interchange penalties.",
+      "Built a zero-server Oyster CSV parser that reconstructs commuter routes and fare totals directly in the browser.",
+      "Engineered Project Realspeak in early 2023, connecting microphone speech-to-text, LLM character prompts, and MetaHuman lip-sync in UE5."
+    ],
+    pipeline: ["Oyster CSV / Mic Input", "Weighted Graph / LLM", "Leaflet GIS / Visemes", "Live Web & UE5 Tools"],
+    links: {
+      github: "https://github.com/JoshUEL2/TFL-Planner",
+      demo: "https://joshuel2.github.io/TFL-Planner/"
+    }
+  }
+];
+
+export const DOSSIER_CREDENTIALS = [
+  {
+    id: "theatre-acting",
+    theme: "theatre",
+    category: "PERFORMING ARTS & MOCAP DIRECTION",
+    title: "5+ Years Musical Theatre & Screen Acting",
+    subtitle: "Lead Actor in Les Misérables & The Addams Family • Supporting Actor in 'Dead Weight' (2026)",
+    badge: "Click to Open Stage Curtain",
+    shortSummary: "Performed in front of 100+ cast and audience members as Lead Actor in Les Misérables and The Addams Family, plus physical horror acting in the 2026 short film Dead Weight.",
+    whyItMattersForGames: "My years on stage and film sets directly inform how I direct motion-capture sessions, write dialogue subtext (such as my Far Cry 5 'Faith Over Fear' screenplay), and block character body language inside Unreal Engine 5.",
+    story: "Stepping onto stage as a lead actor in Les Misérables and The Addams Family meant singing solo numbers, choreographing duets, and holding the attention of a packed auditorium alongside a 100-person cast and crew. More recently in March 2026, I performed as a featured supporting actor in the gritty psychological crime/horror short film 'Dead Weight', doing my own physical stunt falls and SFX prosthetic work. When I write game dialogue or block a camera in Unreal Engine, I do not think in static text boxes - I think in stage blocking, eye-lines, breathing pauses, and physical subtext.",
+    highlights: [
+      "Lead Actor in Les Misérables & The Addams Family: performed solo vocal numbers, choreographed duets, and coordinated costume transitions.",
+      "Supporting Actor in 'Dead Weight' (Mar 2026): physical horror/crime film performance with practical special-effects makeup.",
+      "Directly translates into AAA mocap volume blocking, voice-acting direction, and believable character animation."
+    ],
+    images: [
+      { src: "/images/dossier/lead_actor_les_miserables_lead_actor___les_miserabl_asset_01.jpg", caption: "Performing live on stage in Les Misérables" },
+      { src: "/images/dossier/lead_actor_les_miserables_lead_actor___les_miserabl_asset_02.jpg", caption: "Full cast stage scene in Les Misérables" },
+      { src: "/images/dossier/lead_actor_the_addams_family_lead_actor___the_addams_f_asset_01.jpg", caption: "Lead role in The Addams Family production" },
+      { src: "/images/dossier/dead_weight_supporting_actor_image_01.jpg", caption: "On set for the psychological thriller short film 'Dead Weight' (2026)" }
+    ]
+  },
+  {
+    id: "uel-rep-ace",
+    theme: "exhibition",
+    category: "ACADEMIC LEADERSHIP & LIVE SHOWCASES",
+    title: "UEL School Representative & ACE Showcase Exhibitor",
+    subtitle: "Elected School Representative • Sole Year 2 Game Exhibited in Final-Year Hall",
+    badge: "Click to Inspect Showcase",
+    shortSummary: "Elected School Representative for Computer Games Design at UEL, and selected to exhibit both Rastacats (downstairs main hall) and Delirium VR (upstairs VR suite) at the 2026 ACE Showcase.",
+    whyItMattersForGames: "Proves I can advocate for a cohort at board level, run live public playtests under pressure, and ship builds polished enough to stand alongside graduating final-year studio projects.",
+    story: "At the University of East London, I serve as the elected School Representative, representing Game Design students in faculty boards and curriculum reviews. At the 2026 Arts & Creative Enterprise (ACE) Showcase at the Royal Docks Centre for Sustainability, my arcade runner Rastacats was the only Year 2 (Level 5) project selected to exhibit on the main downstairs floor alongside Final Year (Level 6) graduation games. Simultaneously upstairs, I set up, calibrated, and ran live public demos for our OpenXR horror game Delirium VR.",
+    highlights: [
+      "Sole Year 2 developer selected for the Final-Year exhibition hall at the UEL ACE Showcase 2026.",
+      "Configured, debugged, and ran live public VR playtesting sessions for Delirium VR in a dedicated OpenXR room.",
+      "Elected UEL School Representative, bridging communication between students, module leaders, and senior faculty."
+    ],
+    images: [
+      { src: "/images/dossier/ace_showcase_2026_image_01.jpg", caption: "Live exhibition station at the UEL Royal Docks Centre for Sustainability" },
+      { src: "/images/dossier/ace_showcase_2026_image_02.jpg", caption: "Presenting builds to faculty and visitors at ACE Showcase 2026" },
+      { src: "/images/dossier/personal_project_showcase_2026_image_01.jpg", caption: "Rastacats & Delirium VR exhibition setup" },
+      { src: "/images/dossier/personal_project_showcase_2026_image_02.jpg", caption: "Running live VR hardware demonstrations" }
+    ]
+  },
+  {
+    id: "cyber-harvard",
+    theme: "cyber",
+    category: "DEFENSIVE SECURITY & CS FOUNDATIONS",
+    title: "CyberCenturion UK Top 60 Finalist & Harvard CS50x / PCAP",
+    subtitle: "National Defensive Cybersecurity Finalist • Certified in C, Python, SQL & Security",
+    badge: "Click to Open Security Log",
+    shortSummary: "Placed in the Top 60 nationwide in the CyberCenturion UK defensive security competition, alongside completing Harvard CS50x and Python Institute PCAP certifications.",
+    whyItMattersForGames: "Gives me a rigorous systems-engineering foundation: memory management in C, algorithmic complexity in Python, and hardening networked servers against live exploits.",
+    story: "Before specialising in Unreal Engine 5, I competed in the national CyberCenturion cybersecurity competition (2022-2024), working under timed pressure to audit permissions, strip out backdoors, patch kernel vulnerabilities, and harden Linux and Windows virtual machines against a live scoring engine - finishing in the Top 60 teams in the UK. I paired that practical systems mindset with Harvard University's CS50x certificate and the Python Institute's PCAP (Certified Associate in Python Programming) credential.",
+    highlights: [
+      "Top 60 UK National Finalist in CyberCenturion defensive cybersecurity (Linux & Windows system hardening).",
+      "Harvard University CS50x certified (C pointers, memory allocation, data structures, SQL, and web architecture).",
+      "Python Institute PCAP certified (object-oriented architecture, exceptions, and algorithmic problem-solving)."
+    ],
+    images: [
+      { src: "/images/dossier/cybercenturion_team_member_cybercenturion_team_membe_asset_01.jpg", caption: "Competing in the CyberCenturion UK national defensive security rounds" },
+      { src: "/images/dossier/cybercenturion_team_member_cybercenturion_team_membe_asset_02.jpg", caption: "Live virtual machine hardening and vulnerability patching" },
+      { src: "/images/dossier/cybercenturion_team_member_cybercenturion_team_membe_asset_03.jpg", caption: "CyberCenturion team workstation setup" },
+      { src: "/images/dossier/cybercenturion_team_member_cybercenturion_team_membe_asset_04.jpg", caption: "National competition scoring and forensics terminal" }
+    ]
+  },
+  {
+    id: "vex-robotics",
+    theme: "robotics",
+    category: "COMPETITIVE ROBOTICS & MECHATRONICS",
+    title: "VEX Robotics UK National Finalist (Founding Member)",
+    subtitle: "Mechanical Drivetrain Engineering, Sensor Wiring & Autonomous C++ Routines",
+    badge: "Click to Inspect Robot Rig",
+    shortSummary: "Founding member of our Sixth Form VEX Robotics squad, designing, gearing, wiring, and programming competitive robots from scratch to reach the UK National Finals.",
+    whyItMattersForGames: "Building physical robots that have to survive real-world friction, gear backlash, and sensor noise taught me how to write resilient physics and state-machine code in game engines.",
+    story: "As a founding member of our VEX Robotics team (2023-2024), I worked across the full mechatronics loop: CAD prototyping aluminium chassis drivetrains, crimping motor and optical sensor harnesses, calculating torque-to-speed gear ratios, and writing autonomous + driver-control routines. When a mechanism jammed mid-match, we had minutes in the pit lane to diagnose whether it was a mechanical tolerance issue or a software state bug.",
+    highlights: [
+      "Co-founded the school's competitive VEX V5 Robotics squad and qualified for the UK National Finals.",
+      "Engineered high-torque drivetrains, pneumatic/mechanical intakes, and autonomous sensor routines.",
+      "Bridges physical mechanical engineering directly with virtual rigid-body physics in Unreal Engine 5."
+    ],
+    images: [
+      { src: "/images/dossier/vex_robotics_team_member_vex_robotics_team_member_asset_01.jpg", caption: "Our VEX V5 competition robot on the match field" },
+      { src: "/images/dossier/vex_robotics_team_member_vex_robotics_team_member_asset_02.jpg", caption: "Chassis drivetrain assembly and motor wiring" },
+      { src: "/images/dossier/vex_robotics_team_member_vex_robotics_team_member_asset_03.jpg", caption: "Pit-lane debugging and autonomous testing" },
+      { src: "/images/dossier/vex_robotics_team_member_vex_robotics_team_member_asset_04.jpg", caption: "VEX Robotics competition arena" }
+    ]
+  },
+  {
+    id: "podcast-yearbook-hospitality",
+    theme: "studio",
+    category: "PRODUCTION OWNERSHIP & OPERATIONS",
+    title: "Podcast Studio Founder, Yearbook Sole Editor & 13,000+ Guest Ops",
+    subtitle: "Converted Storage Room into Broadcast Studio • Sole Editor of School Yearbook • Premier Inn Ops",
+    badge: "Click to View Studio & Print Work",
+    shortSummary: "Handpicked to build my Sixth Form's broadcast podcast studio from a bare storage room, served as Sole Editor of the school yearbook, and managed 13,000+ guest check-ins at Premier Inn.",
+    whyItMattersForGames: "Whether shipping a game build, editing a 100-page print publication solo, or handling late-night hotel crises for 13,000+ guests with zero disciplinaries, I take complete ownership until the job is done.",
+    story: "When my school wanted its first weekly broadcast podcast, I was given a budget and an empty storage cupboard: I researched acoustic treatment, dynamic microphones, and multi-track mixers, wired the studio myself, and served as Director, Host, Technician, and Editor every week. Earlier, I served as the Sole Editor for our entire school yearbook, designing every custom background and page layout from scratch. Alongside my studies, I worked front-of-house operations at Premier Inn across 13,000+ guest interactions with a spotless record.",
+    highlights: [
+      "Founded, wired, hosted, and edited Ousedale Sixth Form's weekly broadcast podcast from a converted storage room.",
+      "Sole Editor & Graphic Designer for the school yearbook, owning typography, custom artwork, and print deadlines.",
+      "13,000+ front-of-house guest interactions at Premier Inn, resolving high-pressure operational issues calmly."
+    ],
+    images: [
+      { src: "/images/dossier/director_host_technician_editor_and_founder_of_school_podcast_director__host__technicia_asset_01.jpg", caption: "Converting a storage room into a fully wired podcast studio" },
+      { src: "/images/dossier/director_host_technician_editor_and_founder_of_school_podcast_director__host__technicia_asset_02.jpg", caption: "Audio mixer, microphone routing, and recording desk" },
+      { src: "/images/dossier/yearbook_sole_editor_yearbook_sole_editor_asset_01.jpg", caption: "Custom print layout and graphic design as Yearbook Sole Editor" },
+      { src: "/images/dossier/yearbook_sole_editor_yearbook_sole_editor_asset_02.jpg", caption: "Double-page spread typography and illustration" }
+    ]
+  }
 ];

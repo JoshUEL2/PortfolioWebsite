@@ -32,7 +32,7 @@ export default function ResearchSection() {
       <div className="h-28 w-full bg-gradient-to-b from-transparent via-[#0b0b0c]/85 to-[#111110] pointer-events-none" />
 
       {/* Full-Bleed Editorial Research Paper Biome */}
-      <div className="bg-editorial-paper border-y border-[#c89d66]/30 py-24 px-4 sm:px-6 relative">
+      <div className="bg-editorial-paper border-t border-[#c89d66]/30 pt-24 pb-16 px-4 sm:px-6 relative">
         <div className="max-w-6xl mx-auto">
           {/* Formal Academic Journal Masthead Bar */}
           <motion.div
@@ -44,7 +44,7 @@ export default function ResearchSection() {
           >
             <div className="flex items-center gap-2.5">
               <BookOpen className="w-3.5 h-3.5 text-[#c89d66]" />
-              <span>LAYER 02 // ACADEMIC RESEARCH &amp; BSc DISSERTATION</span>
+              <span>ACADEMIC RESEARCH &amp; BSc DISSERTATION</span>
             </div>
             <div className="text-[#a8a29e]">
               UNIVERSITY OF EAST LONDON • ROUTE B (PRACTICE-AS-RESEARCH)
@@ -305,9 +305,6 @@ export default function ResearchSection() {
             )}
           </div>
         </div>
-
-        {/* Seamless Multi-Stop Fade into Layer 03 PCB Workbench */}
-        <div className="h-28 w-full bg-gradient-to-b from-[#111110] via-[#0e100e] to-[#090d0b] pointer-events-none" />
       </div>
     </section>
   );

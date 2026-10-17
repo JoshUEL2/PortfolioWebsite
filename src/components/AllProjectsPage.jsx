@@ -152,9 +152,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
           {filteredProjects.map((project, index) => {
             const videoSrc = project.videoPreview || project.video;
             const isLiveDemo =
-              Boolean(project.links?.demo) &&
-              !project.links.demo.includes('github.com') &&
-              !project.links.demo.includes('itch.io');
+              Boolean(project.links?.demo) && project.links.demo.startsWith('/games/');
 
             return (
               <motion.div
@@ -174,7 +172,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                   <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-950 border border-white/15 mb-4">
                     {videoSrc ? (
                       <div
-                        onClick={() => onSelectProject(project)}
+                        onClick={() => onSelectProject({ ...project, initialLightboxIndex: null })}
                         className="w-full h-full cursor-pointer group/thumb relative"
                       >
                         <video
@@ -195,7 +193,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                       </div>
                     ) : (
                       <div
-                        onClick={() => onSelectProject(project)}
+                        onClick={() => onSelectProject({ ...project, initialLightboxIndex: 0 })}
                         className="w-full h-full cursor-pointer group/thumb relative"
                       >
                         <img

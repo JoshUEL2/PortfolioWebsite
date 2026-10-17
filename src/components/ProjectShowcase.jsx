@@ -36,7 +36,7 @@ export default function ProjectShowcase({ onSelectProject, onViewAllProjects }) 
       <div className="text-center max-w-3xl mx-auto mb-12">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-950/70 border border-indigo-500/35 text-indigo-300 text-xs font-mono uppercase tracking-wider mb-4 shadow-sm">
           <Layers className="w-3.5 h-3.5 text-indigo-400" />
-          <span>LAYER 01 // SELECTED GAMEPLAY, VR, SHADERS &amp; DESIGN</span>
+          <span>SELECTED GAMEPLAY, VR, SHADERS &amp; DESIGN</span>
         </div>
         <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4 font-['Syne',sans-serif]">
           Featured Work by Discipline

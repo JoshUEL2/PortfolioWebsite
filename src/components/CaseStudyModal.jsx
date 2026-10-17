@@ -22,21 +22,32 @@ import {
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { getAssetUrl, isSpecificRepo, isSpecificLinkedIn } from '../utils/assetUrl';
 import { MARKETING_REPOS } from '../data/marketingReposData';
+import EmbeddedBrowserViewport from './EmbeddedBrowserViewport';
 
 export default function CaseStudyModal({ project, onClose }) {
   const versions = project?.versions || project?.splitPhases || null;
   const hasVersions = Boolean(versions && versions.length > 0);
 
   const [activeVersionIndex, setActiveVersionIndex] = useState(
-    project?.initialVersionIndex  -  -  project?.initialPhaseIndex  -  -  0
+    project?.initialVersionIndex ?? project?.initialPhaseIndex ?? 0
   );
-  const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [lightboxIndex, setLightboxIndex] = useState(
+    project?.initialLightboxIndex !== undefined ? project.initialLightboxIndex : null
+  );
   // 'live' | 'source'
   const [marketingSubTab, setMarketingSubTab] = useState('live');
   const [activeRepoFileIdx, setActiveRepoFileIdx] = useState(0);
 
   const currentVersion = hasVersions ? versions[activeVersionIndex] : null;
-  const activeGallery = currentVersion?.gallery || project?.gallery || [];
+  const activeImage = currentVersion?.image || project?.image;
+  const activeGallery =
+    currentVersion?.gallery?.length > 0
+      ? currentVersion.gallery
+      : project?.gallery?.length > 0
+      ? project.gallery
+      : activeImage
+      ? [activeImage]
+      : [];
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -73,23 +84,22 @@ export default function CaseStudyModal({ project, onClose }) {
   const activeHighlights = currentVersion?.highlights || project.highlights || [];
   const activeDeepDive = currentVersion?.technicalDeepDive || project.technicalDeepDive;
   const activeVideo =
-    currentVersion?.videoPreview !== undefined ? currentVersion.videoPreview
-      : currentVersion?.video !== undefined ? currentVersion.video
+    currentVersion?.videoPreview !== undefined
+      ? currentVersion.videoPreview
+      : currentVersion?.video !== undefined
+      ? currentVersion.video
       : project.videoPreview || project.video;
-  const activeImage = currentVersion?.image || project.image;
   const activeEngine = currentVersion?.engine || project.engine;
   const activeDates = currentVersion?.dates || project.dates;
 
-  const repoData = project.marketingSite?.repoSlug ? MARKETING_REPOS[project.marketingSite.repoSlug]
+  const repoData = project.marketingSite?.repoSlug
+    ? MARKETING_REPOS[project.marketingSite.repoSlug]
     : null;
   const repoFiles = repoData?.files || [];
   const currentRepoFile = repoFiles[activeRepoFileIdx] || repoFiles[0] || null;
 
   const isLiveDemo =
-    Boolean(project.links?.demo) &&
-    !project.links.demo.includes('github.com') &&
-    !project.links.demo.includes('itch.io') &&
-    !project.links.demo.endsWith('.docx');
+    Boolean(project.links?.demo) && project.links.demo.startsWith('/games/');
 
   return (
     <AnimatePresence>
@@ -310,38 +320,29 @@ export default function CaseStudyModal({ project, onClose }) {
 
                 {marketingSubTab === 'live' ? (
                   <div>
-                    <div className="relative w-full h-[500px] bg-black">
-                      <iframe
-                        src={getAssetUrl(project.marketingSite.path)}
-                        title={project.marketingSite.title}
-                        className="w-full h-full border-0"
-                        sandbox="allow-scripts allow-same-origin allow-modals"
-                      />
-                    </div>
-                    <div className="px-4 py-3 bg-[#080b16] border-t border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs">
-                      <span className="font-mono text-emerald-300">
-                        Running live from embedded repository code ({project.marketingSite.path})
-                      </span>
-                      <div className="flex items-center gap-4">
-                        <a
-                          href={project.marketingSite.repoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 font-mono text-slate-300 hover:text-white"
-                        >
-                          <GithubIcon className="w-4 h-4" />
-                          <span>GitHub Repository</span>
-                        </a>
-                        <a
-                          href={getAssetUrl(project.marketingSite.path)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 font-mono font-bold text-emerald-300 hover:text-emerald-200"
-                        >
-                          <span>Open Fullscreen in New Tab</span>
-                          <ExternalLink className="w-3.5 h-3.5" />
-                        </a>
-                      </div>
+                    <EmbeddedBrowserViewport
+                      src={getAssetUrl(project.marketingSite.path)}
+                      title={project.marketingSite.title}
+                    />
+                    <div className="px-4 py-3 bg-[#080b16] border-t border-white/10 flex flex-wrap items-center justify-end gap-4 text-xs">
+                      <a
+                        href={project.marketingSite.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 font-mono text-slate-300 hover:text-white"
+                      >
+                        <GithubIcon className="w-4 h-4" />
+                        <span>GitHub Repository</span>
+                      </a>
+                      <a
+                        href={getAssetUrl(project.marketingSite.path)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 font-mono font-bold text-emerald-300 hover:text-emerald-200"
+                      >
+                        <span>Open Fullscreen in New Tab</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
                     </div>
                   </div>
                 ) : (

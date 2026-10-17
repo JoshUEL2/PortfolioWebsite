@@ -305,10 +305,10 @@ export default function ResearchSection() {
             )}
           </div>
         </div>
-      </div>
 
-      {/* Smooth Bottom Atmospheric Blend: Editorial Charcoal (#111110) -> Hardware PCB Bench (#070b09) */}
-      <div className="h-24 w-full bg-gradient-to-b from-[#111110] to-[#070b09] pointer-events-none" />
+        {/* Seamless Multi-Stop Fade into Layer 03 PCB Workbench */}
+        <div className="h-28 w-full bg-gradient-to-b from-[#111110] via-[#0e100e] to-[#090d0b] pointer-events-none" />
+      </div>
     </section>
   );
 }

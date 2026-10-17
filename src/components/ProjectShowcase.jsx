@@ -5,22 +5,30 @@ import ProjectCard from './ProjectCard';
 import {
   Layers,
   Gamepad2,
-  ArrowRight,
+  Glasses,
   Sparkles,
+  Compass,
+  BookOpen,
+  ArrowRight,
   Terminal
 } from 'lucide-react';
 import { getAssetUrl } from '../utils/assetUrl';
 
+const CATEGORY_ICONS = {
+  Gamepad2,
+  Glasses,
+  Sparkles,
+  Compass,
+  BookOpen
+};
+
 export default function ProjectShowcase({ onSelectProject, onViewAllProjects }) {
   const [activeCategory, setActiveCategory] = useState('gameplay');
 
-  // Top discipline tabs show the primary deep-dive cards for each of the 5 disciplines
-  const primaryProjects = PROJECTS.filter(
-    (p) => p.category === activeCategory && p.isPrimaryCard
-  );
+  const categoryProjects = PROJECTS.filter((p) => p.category === activeCategory);
 
-  // The remaining 7 vault projects highlighted in the bottom Game Vault Portal shelf
-  const vaultAdditionalProjects = PROJECTS.filter((p) => !p.isPrimaryCard);
+  // Quick-jump shelf highlights projects from other categories or with embedded companion portals
+  const quickShelfProjects = PROJECTS.filter((p) => p.category !== activeCategory).slice(0, 7);
 
   return (
     <section id="portfolio" className="relative py-24 px-4 max-w-6xl mx-auto">
@@ -34,53 +42,60 @@ export default function ProjectShowcase({ onSelectProject, onViewAllProjects }) 
           Featured Work by Discipline
         </h2>
         <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-          Select a discipline below to inspect my primary Unreal Engine 5 builds, switch live between Phase 1 and Phase 2 evolutions, or toggle into the underlying shader and physics maths.
+          Select a discipline below to inspect my Unreal Engine 5 and Python builds, toggle between Phase 1 and Phase 2 project evolutions, interact with embedded companion websites and repo source code, or inspect the underlying maths.
         </p>
       </div>
 
-      {/* 5-Tab Game-HUD Discipline Selector (No 'All Games' cluttered at the top) */}
+      {/* 5-Tab Discipline Selector (Shortened titles, no numbers, zero truncation) */}
       <div className="mb-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 p-2 rounded-2xl bg-[#090b16]/90 border border-indigo-500/25 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 p-2.5 rounded-2xl bg-[#090b16]/90 border border-indigo-500/25 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
           {CATEGORIES.map((cat) => {
             const isActive = activeCategory === cat.id;
+            const IconComponent = CATEGORY_ICONS[cat.icon] || Gamepad2;
+            const count = PROJECTS.filter((p) => p.category === cat.id).length;
+
             return (
               <button
                 key={cat.id}
                 type="button"
                 onClick={() => setActiveCategory(cat.id)}
-                className={`relative px-3.5 py-3 rounded-xl text-left transition-all duration-250 cursor-pointer border ${
-                  isActive
-                    ? 'text-white border-indigo-400/60 shadow-lg shadow-indigo-950/50'
-                    : 'text-slate-400 hover:text-slate-200 border-transparent hover:bg-white/[0.03]'
+                className={`relative px-3.5 py-3 rounded-xl text-left transition-all duration-200 cursor-pointer border flex items-center justify-between gap-2 ${
+                  isActive ? 'text-white border-indigo-400/70 shadow-lg shadow-indigo-950/50'
+                    : 'text-slate-300 hover:text-white border-white/5 hover:border-indigo-500/30 hover:bg-white/[0.04]'
                 }`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activeDisciplinePill"
                     transition={{ type: 'spring', stiffness: 420, damping: 32 }}
-                    className="absolute inset-0 bg-gradient-to-br from-indigo-600/45 via-indigo-900/40 to-violet-600/45 rounded-xl -z-10"
+                    className="absolute inset-0 bg-gradient-to-br from-indigo-600/50 via-indigo-900/45 to-violet-600/50 rounded-xl -z-10"
                   />
                 )}
-                <div className="flex items-center justify-between gap-1 mb-1">
-                  <span className="font-bold text-xs tracking-wide font-['Syne',sans-serif] truncate">
-                    {cat.label}
-                  </span>
-                  <span
-                    className={`w-1.5 h-1.5 rounded-full shrink-0 ${
-                      isActive ? 'bg-emerald-400 animate-pulse' : 'bg-slate-700'
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <IconComponent
+                    className={`w-4 h-4 shrink-0 ${
+                      isActive ? 'text-emerald-300' : 'text-indigo-400/80'
                     }`}
                   />
+                  <span className="font-bold text-xs sm:text-[13px] leading-tight tracking-tight text-white">
+                    {cat.label}
+                  </span>
                 </div>
-                <div className="text-[10px] text-slate-400 line-clamp-2 leading-snug">
-                  {cat.desc}
-                </div>
+                <span
+                  className={`px-1.5 py-0.5 rounded-md text-[10px] font-mono font-bold shrink-0 ${
+                    isActive ? 'bg-black/45 text-emerald-300 border border-emerald-400/30'
+                      : 'bg-white/5 text-slate-400'
+                  }`}
+                >
+                  {count}
+                </span>
               </button>
             );
           })}
         </div>
       </div>
 
-      {/* Primary Project Cards Stack */}
+      {/* Category Project Cards Stack */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeCategory}
@@ -90,10 +105,10 @@ export default function ProjectShowcase({ onSelectProject, onViewAllProjects }) 
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           className="space-y-8"
         >
-          {primaryProjects.map((project, idx) => (
+          {categoryProjects.map((project) => (
             <ProjectCard
               key={project.id}
-              project={{ ...project, number: String(idx + 1).padStart(2, '0') }}
+              project={project}
               onSelectProject={onSelectProject}
             />
           ))}
@@ -123,13 +138,13 @@ export default function ProjectShowcase({ onSelectProject, onViewAllProjects }) 
           <div className="max-w-xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-indigo-500/15 border border-indigo-400/40 text-indigo-200 text-[11px] font-mono uppercase tracking-widest mb-3">
               <Terminal className="w-3.5 h-3.5 text-emerald-400" />
-              <span>GAME VAULT TERMINAL // {PROJECTS.length} TOTAL PROJECTS UNLOCKED</span>
+              <span>GAME VAULT TERMINAL // {PROJECTS.length} REAL PROJECTS &amp; COMPANION PORTALS</span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight font-['Syne',sans-serif]">
               Explore All My Projects &amp; Design Bibles
             </h3>
             <p className="text-sm text-slate-300 mt-2 leading-relaxed">
-              Want to see everything I have built? Launch the full game-style project vault to filter and search across all <strong className="text-white">{PROJECTS.length} games, physics prototypes, multiplayer crawlers, and GDD bibles</strong>, or quick-select an additional cartridge below.
+              Launch the full game-style project vault to search and filter across all <strong className="text-white">{PROJECTS.length} games, physics prototypes, embedded marketing websites, and downloadable GDDs</strong> in one view.
             </p>
           </div>
 
@@ -144,12 +159,12 @@ export default function ProjectShowcase({ onSelectProject, onViewAllProjects }) 
           </button>
         </div>
 
-        {/* Interactive Cartridge Quick-Select Shelf for the 7 Additional Vault Projects */}
+        {/* Interactive Cartridge Quick-Select Shelf */}
         <div className="relative z-10 pt-6">
           <div className="flex flex-wrap items-center justify-between gap-2 mb-3.5">
             <div className="text-[11px] font-mono uppercase tracking-wider text-indigo-200 flex items-center gap-2">
               <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span>Bonus Vault Cartridges ({vaultAdditionalProjects.length} Additional Prototypes &amp; GDDs • Click to Inspect):</span>
+              <span>Other Discipline Cartridges (Click any cartridge to inspect directly):</span>
             </div>
             <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest">
               [READY TO LAUNCH]
@@ -157,7 +172,7 @@ export default function ProjectShowcase({ onSelectProject, onViewAllProjects }) 
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            {vaultAdditionalProjects.map((item) => (
+            {quickShelfProjects.map((item) => (
               <button
                 key={item.id}
                 type="button"
@@ -172,7 +187,7 @@ export default function ProjectShowcase({ onSelectProject, onViewAllProjects }) 
                 />
                 <div className="min-w-0 flex-1">
                   <div className="text-[10px] font-mono text-indigo-400 uppercase tracking-wider truncate">
-                    {item.categoryLabel}
+                    {item.discipline}
                   </div>
                   <div className="text-xs font-bold text-white truncate group-hover/mini:text-indigo-200">
                     {item.title.split(':')[0]}

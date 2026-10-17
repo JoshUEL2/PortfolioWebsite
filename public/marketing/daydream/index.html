@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daydream Believer | Design Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@300;400;700;900&family=Permanent+Marker&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --school-grey: #e5e7eb;
+            --focus-red: #ff0000;
+            --authority-blue: #0000ff;
+            --interest-pink: #ff69b4;
+            --self-purple: #800080;
+            --void-white: #ffffff;
+            --blackout: #000000;
+        }
+
+        body {
+            background-color: var(--void-white);
+            color: #111;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            transition: filter 0.3s ease, background-color 1s ease;
+        }
+
+        /* === LAYER 1: THE SCHOOL PORTAL === */
+        #school-layer {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background-color: #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 1s cubic-bezier(0.7, 0, 0.3, 1), opacity 1s ease;
+        }
+        
+        .school-form {
+            background: white;
+            padding: 2rem;
+            border: 1px solid #d1d5db;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* === LAYER 2: THE DAYDREAM === */
+        #dream-layer {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1s ease;
+        }
+        #dream-layer.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* === MECHANIC: HYPERFOCUS (Blur Effect) === */
+        .unfocused-text {
+            filter: blur(4px);
+            transition: filter 0.3s ease, color 0.3s ease;
+            cursor: crosshair;
+        }
+        .unfocused-text:hover {
+            filter: blur(0px);
+            color: var(--focus-red);
+        }
+
+        /* === MECHANIC: MANUAL BREATHING === */
+        #breath-overlay {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle, transparent 20%, black 100%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 90;
+            transition: opacity 0.5s ease;
+        }
+        
+        #breath-warning-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--focus-red);
+            font-family: 'Bangers', cursive;
+            font-size: 5rem;
+            text-shadow: 0 0 10px black;
+            z-index: 95;
+            display: none;
+            animation: panic-pulse 0.5s infinite alternate;
+        }
+
+        @keyframes panic-pulse {
+            from { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            to { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        }
+
+        #breath-meter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+            background: white;
+            border: 2px solid var(--authority-blue);
+            padding: 10px;
+            z-index: 50;
+            font-family: 'VT323', monospace;
+            display: none;
+        }
+        #breath-bar {
+            height: 20px;
+            background: var(--authority-blue);
+            width: 100%;
+            transition: width 0.1s linear, background-color 0.3s ease;
+        }
+
+        /* === VISUALS === */
+        .brain-texture {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 C 20 20, 40 20, 50 10 C 60 0, 80 0, 90 10' stroke='%23e5e7eb' fill='none'/%3E%3Cpath d='M10 30 C 20 40, 40 40, 50 30 C 60 20, 80 20, 90 30' stroke='%23e5e7eb' fill='none'/%3E%3C/svg%3E");
+            background-size: 50px 50px;
+        }
+
+        .poly-font { font-family: 'VT323', monospace; }
+        .hand-font { font-family: 'Permanent Marker', cursive; }
+        .title-font { font-family: 'Bangers', cursive; letter-spacing: 0.1em; }
+
+        /* Moving Text Animation for Artist Statement */
+        @keyframes shift-text {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(2px, 1px); filter: blur(0.5px); }
+            50% { transform: translate(-1px, -2px); filter: blur(0px); }
+            75% { transform: translate(-2px, 1px); filter: blur(0.5px); }
+            100% { transform: translate(0, 0); }
+        }
+        .moving-word {
+            display: inline-block;
+            animation: shift-text 3s infinite ease-in-out;
+            cursor: default;
+        }
+        .moving-word:hover {
+            animation-play-state: paused;
+            color: var(--focus-red);
+            font-weight: bold;
+        }
+
+        /* Color Classes */
+        .bg-authority { background-color: var(--authority-blue); color: white; }
+        .text-authority { color: var(--authority-blue); }
+        .bg-focus { background-color: var(--focus-red); color: white; }
+        .text-focus { color: var(--focus-red); }
+        .bg-interest { background-color: var(--interest-pink); color: white; }
+        .text-interest { color: var(--interest-pink); }
+        .bg-self { background-color: var(--self-purple); color: white; }
+        .text-self { color: var(--self-purple); }
+
+        /* Navigation Tabs */
+        .nav-tab {
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+            transition: transform 0.2s ease;
+        }
+        .nav-tab:hover { transform: translateY(-5px); }
+        .nav-tab.active { border-bottom: 4px solid var(--focus-red); }
+
+        /* Section Visibility */
+        .content-section { display: none; }
+        .content-section.active { display: block; animation: fadeIn 0.5s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    </style>
+</head>
+<body class="brain-texture">
+
+    <!-- LAYER 1: THE SCHOOL PORTAL -->
+    <div id="school-layer">
+        <div class="school-form">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Ousedale School</h2>
+            <p class="text-xs text-gray-500 uppercase tracking-widest mb-6">Student Dashboard</p>
+            
+            <div class="space-y-4 text-left text-sm">
+                <div class="flex justify-between border-b py-2">
+                    <span class="text-gray-600">Student Name:</span>
+                    <span class="font-bold">Joshua Johnson</span>
+                </div>
+                <div class="flex justify-between border-b py-2">
+                    <span class="text-gray-600">Current Class:</span>
+                    <span class="font-bold text-blue-800">Mathematics (Room 304)</span>
+                </div>
+                <div class="flex justify-between border-b py-2">
+                    <span class="text-gray-600">Focus Level:</span>
+                    <span class="font-bold text-red-600">CRITICAL LOW</span>
+                </div>
+            </div>
+
+            <button id="daydream-btn" class="mt-8 w-full bg-gray-900 text-white py-3 font-bold hover:bg-blue-600 transition-colors">
+                ATTEMPT TO FOCUS
+            </button>
+            <p class="mt-2 text-[10px] text-gray-400">Pressing this button acknowledges you are paying attention.</p>
+        </div>
+    </div>
+
+    <!-- BREATHING OVERLAY -->
+    <div id="breath-overlay"></div>
+    <div id="breath-warning-text">PRESS [SPACE] TO BREATHE</div>
+
+    <!-- LAYER 2: THE DAYDREAM (GAME BIBLE) -->
+    <div id="dream-layer" class="min-h-screen pb-20">
+        
+        <!-- HERO HEADER -->
+        <header class="bg-white border-b-4 border-black p-8 sticky top-0 z-40 shadow-lg">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end">
+                <div>
+                    <h1 class="text-7xl md:text-9xl title-font uppercase tracking-wide leading-none text-gray-900 shadow-sm">
+                        Daydream <span class="text-focus">Believer</span>
+                    </h1>
+                    <p class="hand-font text-2xl mt-2 text-interest rotate-2 inline-block transform translate-x-4">"Is this gonna be on the test?"</p>
+                </div>
+                <nav class="hidden md:flex space-x-2 mt-4 md:mt-0">
+                    <button class="nav-tab px-6 py-3 bg-black text-white font-bold uppercase hover:bg-focus" data-target="overview">Concept</button>
+                    <button class="nav-tab px-6 py-3 bg-gray-200 text-black font-bold uppercase hover:bg-interest" data-target="mechanics">Mechanics</button>
+                    <button class="nav-tab px-6 py-3 bg-gray-200 text-black font-bold uppercase hover:bg-authority" data-target="levels">The Day</button>
+                    <button class="nav-tab px-6 py-3 bg-gray-200 text-black font-bold uppercase hover:bg-self" data-target="statement">Statement</button>
+                    <button class="nav-tab px-6 py-3 bg-gray-200 text-black font-bold uppercase hover:text-focus" data-target="assets">Assets</button>
+                </nav>
+            </div>
+        </header>
+
+        <main class="max-w-6xl mx-auto mt-12 px-6">
+
+            <!-- SECTION: OVERVIEW -->
+            <section id="overview" class="content-section active">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <h2 class="text-4xl font-bold border-l-8 border-self-purple pl-4">The Hyperbolic Reality</h2>
+                        <p class="text-lg leading-relaxed">
+                            <span class="font-bold">Daydream Believer</span> is an interactive experience that simulates a normal school day through the lens of <span class="text-focus font-bold">ADHD</span>.
+                        </p>
+                        <p class="unfocused-text text-gray-600">
+                            It is not a clinical simulation, but a hyperbolic expression of enhanced focus, enhanced lack of focus, and enhanced creativity. The world is stark, white, and overwhelming, until something catches your eye.
+                        </p>
+                        <div class="bg-black text-white p-6 poly-font text-xl rounded-sm shadow-md">
+                            > PLAYER: Purple Character (The Self)<br>
+                            > SETTING: Ousedale School (Memory/Trace)<br>
+                            > GOAL: Survive until the bell rings.<br>
+                            > OBSTACLE: Your own brain processing power.
+                        </div>
+                    </div>
+                    <div class="relative border-4 border-black bg-gray-100 p-4 rotate-1 shadow-xl">
+                        <div class="absolute -top-4 -right-4 bg-interest text-white px-4 py-1 font-bold rotate-3 shadow-lg transform">VISUAL STYLE: SUPERHOT x CONFUSION</div>
+                        <div class="h-64 bg-white border-2 border-gray-200 flex items-center justify-center overflow-hidden relative">
+                            <!-- CSS Representation of the Skybox/Toon Shader -->
+                            <div class="absolute inset-0" style="background: repeating-linear-gradient(0deg, transparent 0, transparent 1px, #f3f4f6 2px), repeating-linear-gradient(90deg, #000 0, #000 1px, #fff 0, #fff 40px); opacity: 0.2;"></div>
+                            <div class="relative z-10 font-black title-font text-6xl text-black mix-blend-multiply">GEOMETRIC<br>DISTORTION</div>
+                        </div>
+                        <p class="mt-4 text-sm font-mono">The world is traced from real 3D data of Ousedale School. Distant objects distort via a custom Toon Shader to represent lack of focus.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: MECHANICS -->
+            <section id="mechanics" class="content-section">
+                <h2 class="text-5xl font-bold mb-12 text-center uppercase title-font">Manual Existence</h2>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Mechanic 1 -->
+                    <div class="border-4 border-focus-red p-6 hover:bg-red-50 transition-colors group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-focus text-white px-2 font-mono text-xs">VISUAL</div>
+                        <h3 class="text-2xl font-bold text-focus mb-4 group-hover:translate-x-2 transition-transform">01. Hyperfocus</h3>
+                        <p class="unfocused-text mb-4">The world is white and blurry. Objects of interest are <span class="text-focus font-bold">RED</span>.</p>
+                        <p class="text-sm">When you approach a Red object, it turns <span class="bg-black text-white px-1">White</span> and clear. This represents the "Hyperfocus" tunnel vision that guides the player through the chaos.</p>
+                    </div>
+
+                    <!-- Mechanic 2 -->
+                    <div class="border-4 border-authority-blue p-6 hover:bg-blue-50 transition-colors group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-authority text-white px-2 font-mono text-xs">INPUT</div>
+                        <h3 class="text-2xl font-bold text-authority mb-4 group-hover:translate-x-2 transition-transform">02. Manual Walking</h3>
+                        <p class="unfocused-text mb-4">Nothing happens automatically. Movement is an effort.</p>
+                        <ul class="list-disc list-inside text-sm font-mono space-y-2">
+                            <li>Press <span class="bg-black text-white px-1">Q/W</span> for Left Foot.</li>
+                            <li>Press <span class="bg-black text-white px-1">E</span> for Right Foot.</li>
+                            <li>If you stop inputting, you stop moving.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Mechanic 3 -->
+                    <div class="border-4 border-interest-pink p-6 hover:bg-pink-50 transition-colors group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-interest text-white px-2 font-mono text-xs">SOCIAL</div>
+                        <h3 class="text-2xl font-bold text-interest mb-4 group-hover:translate-x-2 transition-transform">03. Social Coding</h3>
+                        <div class="space-y-3 text-sm font-bold">
+                            <div class="flex items-center"><div class="w-6 h-6 bg-blue-700 mr-2 border border-black"></div> <span>TEACHERS (Authority / Blue)</span></div>
+                            <div class="flex items-center"><div class="w-6 h-6 bg-pink-400 mr-2 border border-black"></div> <span>FRIENDS (Interest / Pink)</span></div>
+                            <div class="flex items-center"><div class="w-6 h-6 bg-red-600 mr-2 border border-black"></div> <span>STRANGERS (Noticed / Red)</span></div>
+                            <div class="flex items-center"><div class="w-6 h-6 bg-white border border-black mr-2"></div> <span>STRANGERS (Ignored / White)</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Mechanic 4 -->
+                    <div class="border-4 border-black p-6 hover:bg-gray-100 transition-colors group relative overflow-hidden">
+                         <div class="absolute top-0 right-0 bg-black text-white px-2 font-mono text-xs">SURVIVAL</div>
+                        <h3 class="text-2xl font-bold text-black mb-4 group-hover:translate-x-2 transition-transform">04. Manual Breathing</h3>
+                        <p class="unfocused-text mb-4">You must consciously take every breath.</p>
+                        <p class="text-sm">Press <span class="bg-black text-white px-1">[SPACE]</span> to inhale. If you forget for 10 seconds, the screen fades to black and you pass out.</p>
+                    </div>
+
+                    <!-- Mechanic 5 -->
+                    <div class="border-4 border-self-purple p-6 hover:bg-purple-50 transition-colors group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-self text-white px-2 font-mono text-xs">RENDER</div>
+                       <h3 class="text-2xl font-bold text-self mb-4 group-hover:translate-x-2 transition-transform">05. Distance Distortion</h3>
+                       <p class="unfocused-text mb-4">Object permanence is a struggle.</p>
+                       <p class="text-sm">A custom <strong>Toon Shader</strong> distorts objects the further they are from the player. You can only clearly see what is immediately in front of you.</p>
+                   </div>
+                   
+                   <!-- Mechanic 6 -->
+                   <div class="border-4 border-gray-500 p-6 hover:bg-gray-50 transition-colors group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-gray-500 text-white px-2 font-mono text-xs">AUDIO</div>
+                       <h3 class="text-2xl font-bold text-gray-700 mb-4 group-hover:translate-x-2 transition-transform">06. Adaptive Audio</h3>
+                       <p class="unfocused-text mb-4">The soundscape shifts with your focus.</p>
+                       <p class="text-sm">15+ composed tracks change instruments and tempo based on stress levels. Voice lines are heavily processed with reverb to simulate internal dissociation.</p>
+                   </div>
+                </div>
+            </section>
+
+            <!-- SECTION: LEVELS -->
+            <section id="levels" class="content-section">
+                <div class="space-y-8">
+                    <h2 class="text-5xl font-bold mb-8 title-font uppercase">The Schedule</h2>
+                    
+                    <!-- Level 1 -->
+                    <div class="flex flex-col md:flex-row gap-6 border-b-4 border-black pb-6">
+                        <div class="md:w-1/5 font-mono text-4xl font-bold text-gray-400">08:30</div>
+                        <div class="md:w-4/5">
+                            <h3 class="text-3xl font-bold text-focus uppercase">Level 1: The Arrival</h3>
+                            <p class="text-gray-600 mt-2 font-medium">Goal: Walk to the front door. <br>Reality: You have 2 minutes, but remember 5 other tasks. You must manage manual walking inputs while distracted by internal monologues.</p>
+                        </div>
+                    </div>
+
+                    <!-- Level 2 -->
+                    <div class="flex flex-col md:flex-row gap-6 border-b-4 border-black pb-6">
+                        <div class="md:w-1/5 font-mono text-4xl font-bold text-gray-400">09:00</div>
+                        <div class="md:w-4/5">
+                            <h3 class="text-3xl font-bold text-black uppercase">Level 2: The Assembly</h3>
+                            <p class="text-gray-600 mt-2 font-medium">Sitting in the opening assembly. Given a debrief about the day. Halfway through, the narration is interrupted by intrusive thoughts.</p>
+                        </div>
+                    </div>
+
+                    <!-- Level 3 -->
+                    <div class="flex flex-col md:flex-row gap-6 border-b-4 border-black pb-6">
+                        <div class="md:w-1/5 font-mono text-4xl font-bold text-gray-400">10:00</div>
+                        <div class="md:w-4/5">
+                            <h3 class="text-3xl font-bold text-authority uppercase">Level 3: Mathematics</h3>
+                            <p class="text-gray-600 mt-2 font-medium">The narration describes extreme boredom. <span class="hand-font text-interest">Words on the page start moving and overlapping.</span> You cannot answer correctly. Heads down = Red. Birds outside = Green. Ends with manually moving clock hands.</p>
+                        </div>
+                    </div>
+
+                    <!-- Level 4 -->
+                    <div class="flex flex-col md:flex-row gap-6 border-b-4 border-black pb-6">
+                        <div class="md:w-1/5 font-mono text-4xl font-bold text-gray-400">11:00</div>
+                        <div class="md:w-4/5">
+                            <h3 class="text-3xl font-bold text-interest uppercase">Level 4: Creative Focus</h3>
+                            <p class="text-gray-600 mt-2 font-medium">Walking through a noisy hallway. Put on headphones to cancel noise. Music creates objects. You are given a creative brief, and for once, everything is normal because you are <span class="text-focus font-bold">focused</span>.</p>
+                        </div>
+                    </div>
+
+                    <!-- Level 5 -->
+                    <div class="flex flex-col md:flex-row gap-6 border-b-4 border-black pb-6">
+                        <div class="md:w-1/5 font-mono text-4xl font-bold text-gray-400">12:00</div>
+                        <div class="md:w-4/5">
+                            <h3 class="text-3xl font-bold text-self uppercase">Level 5: The Conversation</h3>
+                            <p class="text-gray-600 mt-2 font-medium">Social interaction Quicktime Event. Trying to keep up with a conversation but responding too fast, too loud, or interrupting.</p>
+                        </div>
+                    </div>
+
+                    <!-- Level 6 -->
+                    <div class="flex flex-col md:flex-row gap-6 border-b-4 border-black pb-6">
+                        <div class="md:w-1/5 font-mono text-4xl font-bold text-gray-400">13:00</div>
+                        <div class="md:w-4/5">
+                            <h3 class="text-3xl font-bold text-authority uppercase">Level 6: English Lit</h3>
+                            <p class="text-gray-600 mt-2 font-medium">Reading words that physically move away from you. Writing is a minigame that is technically beatable but frustratingly difficult.</p>
+                        </div>
+                    </div>
+
+                    <!-- Level 7 -->
+                    <div class="flex flex-col md:flex-row gap-6 border-b-4 border-black pb-6">
+                        <div class="md:w-1/5 font-mono text-4xl font-bold text-gray-400">14:00</div>
+                        <div class="md:w-4/5">
+                            <h3 class="text-3xl font-bold text-focus uppercase">Level 7: Panic</h3>
+                            <p class="text-gray-600 mt-2 font-medium">The Manual Breathing Minigame takes center stage. Background thoughts distract you violently. Press keys to maintain rhythm or blackout.</p>
+                        </div>
+                    </div>
+
+                    <!-- Level 8 -->
+                    <div class="flex flex-col md:flex-row gap-6 border-b-4 border-black pb-6">
+                        <div class="md:w-1/5 font-mono text-4xl font-bold text-gray-400">14:30</div>
+                        <div class="md:w-4/5">
+                            <h3 class="text-3xl font-bold text-interest uppercase">Level 8: Lunch Budget</h3>
+                            <p class="text-gray-600 mt-2 font-medium">Walk to the shop. You have a £5 budget. Try to optimize value while impulsive thoughts urge you to buy useless things.</p>
+                        </div>
+                    </div>
+
+                     <!-- Level 9 -->
+                     <div class="flex flex-col md:flex-row gap-6 border-b-4 border-black pb-6">
+                        <div class="md:w-1/5 font-mono text-4xl font-bold text-gray-400">15:30</div>
+                        <div class="md:w-4/5">
+                            <h3 class="text-3xl font-bold text-self uppercase">Level 9: The Exam / The Crash</h3>
+                            <p class="text-gray-600 mt-2 font-medium">Sitting in the exam hall. Tension builds. Suddenly, a <span class="text-interest font-bold">SPACESHIP CRASHES</span> through the wall. You fight enemies. Then... you snap back. A render of the real world shows students staring at you.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- SECTION: ARTIST STATEMENT -->
+            <section id="statement" class="content-section">
+                <div class="border-4 border-black p-8 bg-gray-50 shadow-2xl relative overflow-hidden">
+                    <h2 class="text-5xl font-bold mb-8 title-font uppercase text-center">Artist Statement</h2>
+                    <div class="text-xl font-mono leading-loose space-y-6 relative z-10">
+                        <p>
+                            <span class="moving-word" style="animation-delay: 0s">Daydream</span> 
+                            <span class="moving-word" style="animation-delay: 0.2s">Believer</span> is an 
+                            <span class="moving-word" style="animation-delay: 0.5s">interactive</span> 
+                            <span class="moving-word text-focus" style="animation-delay: 0.1s">experience</span> that 
+                            <span class="moving-word" style="animation-delay: 1s">immerses</span> players in what would be a 
+                            <span class="moving-word" style="animation-delay: 0.3s">normal</span> school day for 
+                            <span class="moving-word" style="animation-delay: 0.7s">most</span>, but through the 
+                            <span class="moving-word text-self" style="animation-delay: 1.2s">lens</span> of someone with 
+                            <span class="moving-word font-bold text-focus" style="animation-delay: 0.4s">ADHD</span>.
+                        </p>
+                        <p>
+                            The game features a <span class="moving-word" style="animation-delay: 1.5s">hyperbolic</span> representation 
+                            of the disorder based on <span class="moving-word" style="animation-delay: 0.2s">research</span> I conducted 
+                            with <span class="moving-word" style="animation-delay: 0.9s">real</span> people. 
+                            These insights were translated into <span class="moving-word text-interest" style="animation-delay: 1.1s">playable</span> 
+                            mechanics, incorporating <span class="moving-word text-focus" style="animation-delay: 0.1s">enhanced focus</span>, 
+                            enhanced <span class="moving-word" style="animation-delay: 2s">lack of focus</span>, and 
+                            enhanced <span class="moving-word text-interest" style="animation-delay: 0.3s">creativity</span>.
+                        </p>
+                        <p>
+                            The movement system is intentionally <span class="moving-word" style="animation-delay: 1.3s">unique</span>, 
+                            requiring players to <span class="moving-word text-authority" style="animation-delay: 0.6s">manually</span> input 
+                            each step. This reinforces the <span class="moving-word" style="animation-delay: 0.8s">struggle</span> of 
+                            executive function.
+                        </p>
+                    </div>
+                    <!-- Decorative blurry background elements -->
+                    <div class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-10" style="background: repeating-linear-gradient(45deg, #000 0, #000 2px, transparent 3px, transparent 10px);"></div>
+                </div>
+            </section>
+
+            <!-- SECTION: ASSETS -->
+            <section id="assets" class="content-section">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-gray-900 text-white p-8 shadow-lg">
+                        <h3 class="text-3xl font-bold mb-6 text-interest title-font uppercase">Audio Composition</h3>
+                        <ul class="space-y-4 font-mono text-sm">
+                            <li class="flex items-start">
+                                <span class="text-interest mr-2">></span> 
+                                15+ Original compositions created using Piano -> MIDI -> BandLab -> Unreal.
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-interest mr-2">></span> 
+                                Voice lines recorded by the creator, then altered using <span class="text-interest">ElevenLabs</span> to change vocal timbre while keeping intonation.
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-interest mr-2">></span> 
+                                Heavy use of Reverb and Spatial Audio to simulate dissociation.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white border-4 border-black p-8 shadow-lg">
+                        <h3 class="text-3xl font-bold mb-6 title-font uppercase">Technical Tech</h3>
+                        <ul class="list-disc list-inside font-mono text-sm space-y-4">
+                            <li>
+                                <span class="font-bold bg-black text-white px-1">Toon Shader:</span> 
+                                Custom shader that heavily distorts geometry based on camera distance, simulating the inability to focus on the background.
+                            </li>
+                            <li>
+                                <span class="font-bold bg-self text-white px-1">Brain Texture:</span> 
+                                A 50,000 x 50,000 pixel World Aligned Texture created from heightmaps in WorldEngine, converted to contour lines to resemble "brain folds" on all walls.
+                            </li>
+                            <li>
+                                <span class="font-bold bg-authority text-white px-1">Rigging:</span> 
+                                Custom Low-Poly human models with 3-point finger articulation.
+                            </li>
+                             <li>
+                                <span class="font-bold bg-focus text-white px-1">Chaos Engine:</span> 
+                                Physics simulation used specifically for the Level 9 wall fracture/spaceship crash.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- MANUAL BREATHING UI -->
+        <div id="breath-meter">
+            <div class="flex justify-between mb-1 text-sm font-bold">
+                <span>OXYGEN</span>
+                <span id="breath-key">[SPACE]</span>
+            </div>
+            <div class="w-full bg-gray-200 h-5 border border-black">
+                <div id="breath-bar"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // === DECEPTIVE INTRO LOGIC ===
+        const schoolLayer = document.getElementById('school-layer');
+        const daydreamBtn = document.getElementById('daydream-btn');
+        const dreamLayer = document.getElementById('dream-layer');
+        const breathMeter = document.getElementById('breath-meter');
+
+        daydreamBtn.addEventListener('click', () => {
+            // Button spins and changes text
+            daydreamBtn.innerText = "ZONING OUT...";
+            daydreamBtn.style.backgroundColor = "var(--focus-red)";
+            
+            setTimeout(() => {
+                // The breach animation
+                schoolLayer.style.transform = "scale(1.5)";
+                schoolLayer.style.opacity = "0";
+                setTimeout(() => {
+                    schoolLayer.style.display = "none";
+                    dreamLayer.classList.add('active');
+                    startBreathingMechanic();
+                }, 800);
+            }, 1000);
+        });
+
+        // === NAVIGATION TABS ===
+        const tabs = document.querySelectorAll('.nav-tab');
+        const sections = document.querySelectorAll('.content-section');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Reset tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                // Set active
+                tab.classList.add('active');
+
+                // Show Content
+                const target = tab.getAttribute('data-target');
+                sections.forEach(sec => {
+                    sec.classList.remove('active');
+                    if(sec.id === target) {
+                        sec.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // === BREATHING MECHANIC ===
+        function startBreathingMechanic() {
+            breathMeter.style.display = "block";
+            const bar = document.getElementById('breath-bar');
+            const breathOverlay = document.getElementById('breath-overlay');
+            const breathWarningText = document.getElementById('breath-warning-text');
+            let oxygen = 100;
+            let lastBreathTime = Date.now();
+
+            // Update loop
+            setInterval(() => {
+                let now = Date.now();
+                let timeSinceLastBreath = now - lastBreathTime;
+                
+                // Deplete oxygen visual bar
+                oxygen -= 0.5; 
+                if (oxygen < 0) oxygen = 0;
+                bar.style.width = oxygen + "%";
+
+                // Logic: If 10 seconds (10000ms) pass without breath
+                if (timeSinceLastBreath > 7000) {
+                    // Warning starts at 7s
+                     bar.style.backgroundColor = "var(--focus-red)";
+                     breathOverlay.style.opacity = (timeSinceLastBreath - 7000) / 3000; // Fade to black over next 3s
+                     breathWarningText.style.display = 'block';
+                } else {
+                    bar.style.backgroundColor = "var(--authority-blue)";
+                    breathOverlay.style.opacity = 0;
+                    breathWarningText.style.display = 'none';
+                }
+
+                // "Blackout" state at 10s
+                if (timeSinceLastBreath > 10000) {
+                     breathOverlay.style.opacity = 1;
+                     // In a real game, this would be game over. Here we just stay dark until space is pressed.
+                }
+
+            }, 50);
+
+            // Manual Breathing Input
+            document.addEventListener('keydown', (e) => {
+                if (e.code === 'Space') {
+                    oxygen += 20;
+                    if (oxygen > 100) oxygen = 100;
+                    lastBreathTime = Date.now(); // Reset timer
+                    
+                    // Slight bump animation
+                    breathMeter.style.transform = "scale(1.1)";
+                    setTimeout(() => breathMeter.style.transform = "scale(1)", 100);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

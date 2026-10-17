@@ -7,8 +7,19 @@ export default function Competencies() {
   return (
     <section id="toolkit" className="relative w-full overflow-hidden">
       {/* Full-Bleed Grungy PCB Circuit & Hardware Workbench Biome */}
-      <div className="bg-circuit-pattern border-b border-amber-500/25 py-24 px-4 sm:px-6 relative">
-        <div className="max-w-6xl mx-auto">
+      <div className="bg-circuit-pattern pt-28 pb-32 px-4 sm:px-6 relative">
+        {/* Top Atmospheric Crossfade Overlay (Gradually reveals PCB traces from Layer 02) */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[#090d0b] via-[#070b09]/80 to-transparent pointer-events-none z-0"
+        />
+        {/* Bottom Atmospheric Crossfade Overlay (Gradually dissolves PCB traces into Layer 04) */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#080c14] via-[#070b09]/80 to-transparent pointer-events-none z-0"
+        />
+
+        <div className="max-w-6xl mx-auto relative z-10">
           {/* Top Industrial PCB Bus Diagnostic Header */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
@@ -178,9 +189,6 @@ export default function Competencies() {
           </motion.div>
         </div>
       </div>
-
-      {/* Smooth Bottom Atmospheric Blend: Hardware PCB (#070b09) -> Corporate-Studio Executive Dossier (#080c14) */}
-      <div className="h-24 w-full bg-gradient-to-b from-[#070b09] to-[#080c14] pointer-events-none" />
     </section>
   );
 }

@@ -26,6 +26,8 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
       let matchesFilter = true;
       if (activeFilter === 'playable') {
         matchesFilter = Boolean(proj.links?.itch || proj.links?.demo);
+      } else if (activeFilter === 'marketing') {
+        matchesFilter = Boolean(proj.marketingSite);
       } else if (activeFilter !== 'all') {
         matchesFilter = proj.category === activeFilter;
       }
@@ -37,8 +39,8 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
         proj.title.toLowerCase().includes(q) ||
         proj.shortDesc.toLowerCase().includes(q) ||
         proj.engine.toLowerCase().includes(q) ||
-        proj.role.toLowerCase().includes(q) ||
-        proj.categoryLabel.toLowerCase().includes(q) ||
+        (proj.role && proj.role.toLowerCase().includes(q)) ||
+        (proj.categoryLabel && proj.categoryLabel.toLowerCase().includes(q)) ||
         (proj.tools && proj.tools.some((t) => t.toLowerCase().includes(q))) ||
         (proj.highlights && proj.highlights.some((h) => h.toLowerCase().includes(q)))
       );
@@ -71,13 +73,13 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/70 border border-indigo-500/35 text-indigo-300 text-xs font-mono uppercase tracking-wider mb-3">
             <Terminal className="w-3.5 h-3.5 text-emerald-400" />
-            <span>COMPLETE ARCHIVE // 15 GAMES, PROTOTYPES &amp; DESIGN BIBLES</span>
+            <span>COMPLETE ARCHIVE // {ALL_PROJECTS.length} GAMES, PROTOTYPES &amp; DESIGN BIBLES</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight font-['Syne',sans-serif]">
             The Complete Project Vault
           </h1>
           <p className="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl leading-relaxed">
-            Browse, filter, and search every playable build, shader experiment, level blockout, and narrative Game Design Document in one place.
+            Browse, filter, and search every playable build, shader experiment, level blockout, interactive companion website, and Game Design Document in one place.
           </p>
         </div>
 
@@ -113,8 +115,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
               type="button"
               onClick={() => setActiveFilter(filter.id)}
               className={`relative px-4 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer flex items-center gap-2 ${
-                isActive
-                  ? 'text-white bg-gradient-to-r from-indigo-600 to-violet-600 border border-indigo-300/60 shadow-[0_0_25px_rgba(99,102,241,0.4)]'
+                isActive ? 'text-white bg-gradient-to-r from-indigo-600 to-violet-600 border border-indigo-300/60 shadow-[0_0_25px_rgba(99,102,241,0.4)]'
                   : 'text-slate-400 hover:text-slate-200 bg-[#090b16]/80 border border-white/10 hover:border-indigo-500/40'
               }`}
             >
@@ -149,12 +150,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, index) => {
-            const youtubeId =
-              project.youtubeId ||
-              (project.links?.video
-                ? project.links.video.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/)?.[1]
-                : null);
-
+            const videoSrc = project.videoPreview || project.video;
             const isLiveDemo =
               Boolean(project.links?.demo) &&
               !project.links.demo.includes('github.com') &&
@@ -176,7 +172,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                 <div>
                   {/* Media Viewport */}
                   <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-950 border border-white/15 mb-4">
-                    {project.video ? (
+                    {videoSrc ? (
                       <div
                         onClick={() => onSelectProject(project)}
                         className="w-full h-full cursor-pointer group/thumb relative"
@@ -190,22 +186,13 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                           poster={project.image ? getAssetUrl(project.image) : undefined}
                           className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500"
                         >
-                          <source src={getAssetUrl(project.video)} type="video/mp4" />
+                          <source src={getAssetUrl(videoSrc)} type="video/mp4" />
                         </video>
                         <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/85 backdrop-blur-md border border-emerald-500/40 text-[9px] font-mono text-emerald-300 flex items-center gap-1">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                          LIVE VIDEO
+                          GAMEPLAY CAPTURE
                         </div>
                       </div>
-                    ) : youtubeId ? (
-                      <iframe
-                        src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=1&rel=0&modestbranding=1`}
-                        title={`${project.title} Video Preview`}
-                        className="w-full h-full border-0 rounded-xl"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        loading="lazy"
-                      />
                     ) : (
                       <div
                         onClick={() => onSelectProject(project)}
@@ -220,23 +207,21 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                       </div>
                     )}
 
-                    {/* Cartridge Number Pill */}
-                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-black/85 backdrop-blur-md border border-indigo-500/40 text-[10px] font-mono font-bold text-indigo-300 pointer-events-none z-10">
-                      #{project.catalogNumber}
-                    </div>
-
                     {/* Discipline Pill */}
-                    <div className="absolute top-2 right-2 px-2 py-0.5 rounded-md bg-black/85 backdrop-blur-md border border-white/15 text-[10px] font-mono text-slate-200 pointer-events-none z-10 max-w-[65%] truncate">
+                    <div className="absolute top-2 left-2 px-2.5 py-0.5 rounded-md bg-black/85 backdrop-blur-md border border-indigo-500/40 text-[10px] font-mono font-bold text-indigo-300 pointer-events-none z-10 max-w-[70%] truncate">
                       {project.categoryLabel}
                     </div>
 
-                    {/* Grade Badge if present */}
-                    {project.gradeBadge && (
-                      <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-emerald-950/90 border border-emerald-500/40 text-[10px] font-mono font-bold text-emerald-300 pointer-events-none z-10 flex items-center gap-1">
-                        <Award className="w-3 h-3 text-emerald-400" />
-                        <span>{project.gradeBadge}</span>
+                    {/* Companion Website / Version Badge */}
+                    {project.marketingSite ? (
+                      <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-indigo-950/90 border border-indigo-400/50 text-[9px] font-mono font-bold text-indigo-200 pointer-events-none z-10">
+                        + EMBEDDED WEB PORTAL &amp; CODE
                       </div>
-                    )}
+                    ) : project.versions ? (
+                      <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-emerald-950/90 border border-emerald-500/40 text-[9px] font-mono font-bold text-emerald-300 pointer-events-none z-10">
+                        PHASE 1 &amp; 2 SWITCHER
+                      </div>
+                    ) : null}
                   </div>
 
                   {/* Engine & Dates */}
@@ -285,7 +270,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                       </a>
                     )}
 
-                    {project.links?.video && !youtubeId && (
+                    {project.links?.video && (
                       <a
                         href={getAssetUrl(project.links.video)}
                         target="_blank"

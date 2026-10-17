@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, Menu, X, ArrowUpRight, FileText } from 'lucide-react';
+import { Gamepad2, Menu, X, ArrowUpRight, FileText, Sparkles } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { ALL_PROJECTS } from '../data/allProjectsData';
@@ -35,10 +35,10 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
   }, [currentView]);
 
   const navLinks = [
-    { id: 'portfolio', label: `PROJECTS (${ALL_PROJECTS.length})` },
+    { id: 'portfolio', label: 'FEATURED' },
     { id: 'research', label: 'RESEARCH' },
-    { id: 'toolkit', label: 'TOOLKIT' },
-    { id: 'about', label: 'ABOUT' },
+    { id: 'toolkit', label: 'HARDWARE LAB' },
+    { id: 'about', label: 'DOSSIER' },
     { id: 'contact', label: 'CONTACT' }
   ];
 
@@ -69,6 +69,14 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
       const yOffset = -90;
       const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
+  const handleOpenAllProjects = () => {
+    setMobileMenuOpen(false);
+    if (onViewChange) {
+      onViewChange('all-projects');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -112,7 +120,7 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
                 <button
                   key={link.id}
                   onClick={() => scrollTo(link.id)}
-                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-200 cursor-pointer ${
+                  className={`relative px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-200 cursor-pointer ${
                     isActive ? 'text-white' : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -127,6 +135,19 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
                 </button>
               );
             })}
+
+            {/* Highlighted Game Vault Launcher Pill */}
+            <button
+              onClick={handleOpenAllProjects}
+              className={`relative ml-1 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
+                currentView === 'all-projects'
+                  ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-[0_0_20px_rgba(99,102,241,0.5)]'
+                  : 'bg-indigo-950/70 hover:bg-indigo-900/70 text-indigo-300 hover:text-white border border-indigo-500/40'
+              }`}
+            >
+              <Sparkles className="w-3 h-3 text-indigo-300" />
+              <span>ALL GAMES ({ALL_PROJECTS.length})</span>
+            </button>
           </div>
 
           {/* Social Links, CV & Mobile Toggle */}
@@ -206,6 +227,17 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-50" />
                 </button>
               ))}
+
+              <button
+                onClick={handleOpenAllProjects}
+                className="w-full text-left py-3 px-4 rounded-xl text-xs font-bold tracking-wider bg-gradient-to-r from-indigo-600/40 to-violet-600/40 border border-indigo-500/40 text-white transition-all flex items-center justify-between cursor-pointer"
+              >
+                <span className="flex items-center gap-2">
+                  <Sparkles className="w-3.5 h-3.5 text-indigo-300" />
+                  EXPLORE ALL {ALL_PROJECTS.length} PROJECTS
+                </span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-indigo-300" />
+              </button>
 
               <div className="pt-4 mt-2 border-t border-white/10 flex flex-wrap items-center justify-around gap-2">
                 {PERSONAL_INFO.cv && (

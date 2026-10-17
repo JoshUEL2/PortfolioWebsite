@@ -90,33 +90,28 @@ export const HERO_REELS = [
 export const CATEGORIES = [
   {
     id: "gameplay",
-    label: "Gameplay & Systems (5)",
+    label: "01 / Gameplay & Systems",
     desc: "360° polar gravity, AI state machines, custom physics & networked co-op"
   },
   {
     id: "vr",
-    label: "VR & Immersive Tech (1)",
+    label: "02 / VR & Immersive Tech",
     desc: "OpenXR seated wheelchair locomotion & frustum-locked horror systems"
   },
   {
     id: "shaders",
-    label: "Shaders & Technical Art (1)",
+    label: "03 / Shaders & Technical Art",
     desc: "Multi-directional Kuwahara watercolour filters & WPO vertex rigs"
   },
   {
     id: "level",
-    label: "Level & Environment Design (3)",
+    label: "04 / Level & Environment Design",
     desc: "Asymmetrical co-op FPS maps, photogrammetric digital twins & blockouts"
   },
   {
     id: "narrative",
-    label: "Narrative Design & GDDs (5)",
+    label: "05 / Narrative Design & Scripts",
     desc: "Twine Harlowe 3.3 dialogue engines, mocap scripts & systems GDD bibles"
-  },
-  {
-    id: "all",
-    label: "All 15 Projects",
-    desc: "View or search the complete 15-project catalogue in one grid"
   }
 ];
 

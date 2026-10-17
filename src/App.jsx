@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProjectShowcase from './components/ProjectShowcase';
+import AllProjectsPage from './components/AllProjectsPage';
 import ResearchSection from './components/ResearchSection';
 import Competencies from './components/Competencies';
 import AboutSection from './components/AboutSection';
@@ -28,7 +29,12 @@ export default function App() {
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash;
-      if (hash === '#projects' || hash === '#portfolio') {
+      if (hash === '#all-projects') {
+        setCurrentView('all-projects');
+        setSelectedProject(null);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#projects' || hash === '#portfolio') {
+        setCurrentView('featured');
         setSelectedProject(null);
         setTimeout(() => {
           const el = document.getElementById('portfolio');
@@ -37,6 +43,7 @@ export default function App() {
           }
         }, 80);
       } else if (hash === '#research') {
+        setCurrentView('featured');
         setSelectedProject(null);
         setTimeout(() => {
           const el = document.getElementById('research');
@@ -84,6 +91,13 @@ export default function App() {
   const handleViewChange = (view) => {
     setCurrentView(view);
     setSelectedProject(null);
+    if (view === 'all-projects') {
+      history.pushState('', document.title, `${window.location.pathname}${window.location.search}#all-projects`);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      history.pushState('', document.title, window.location.pathname + window.location.search);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const handleExploreClick = () => {
@@ -97,7 +111,7 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-[#06070d] text-slate-100 overflow-x-hidden selection:bg-indigo-500 selection:text-white font-['Plus_Jakarta_Sans',sans-serif]">
-      {/* Interactive 60fps Ambient Particle Shader */}
+      {/* Interactive 60fps Ambient Particle Shader (Layer 01 Backdrop) */}
       <BackgroundShader />
 
       {/* Subtle Ambient Vignettes & Grid */}
@@ -109,29 +123,38 @@ export default function App() {
         {/* Floating Capsule Header */}
         <Navbar currentView={currentView} onViewChange={handleViewChange} />
 
-        {/* Unified Non-Duplicating Single-Page Flow */}
-        <main className="flex-1">
-          {/* 00 // Interactive Showreel Hero Deck */}
-          <Hero
-            onExploreClick={handleExploreClick}
-            onSelectProject={handleSelectProject}
-          />
+        {currentView === 'all-projects' ? (
+          <main className="flex-1">
+            <AllProjectsPage
+              onSelectProject={handleSelectProject}
+              onBackToHome={() => handleViewChange('featured')}
+            />
+          </main>
+        ) : (
+          <main className="flex-1">
+            {/* LAYER 01 // Game Engine Viewport: Hero & Featured Showcase + Bottom Vault Portal */}
+            <Hero
+              onExploreClick={handleExploreClick}
+              onSelectProject={handleSelectProject}
+            />
 
-          {/* 01 // Unified 15-Project Showcase by Discipline (Zero Duplication) */}
-          <ProjectShowcase onSelectProject={handleSelectProject} />
+            <ProjectShowcase
+              onSelectProject={handleSelectProject}
+              onViewAllProjects={() => handleViewChange('all-projects')}
+            />
 
-          {/* 02 // Provisional BSc Dissertation & Academic Research (Counting the Spectrum) */}
-          <ResearchSection />
+            {/* LAYER 02 // Formal Academic Monograph Biome: Provisional BSc Dissertation */}
+            <ResearchSection />
 
-          {/* 03 // Crisp 4-Column Toolkit Spec Sheet & Side Hardware R&D Lab */}
-          <Competencies />
+            {/* LAYER 03 // Grungy PCB & Hardware Workbench Biome: Engines, Shaders & Hardware Lab */}
+            <Competencies />
 
-          {/* 04 // Grounded Developer Bio & Verified 8x First-Class Honours Record */}
-          <AboutSection />
+            {/* LAYER 04 // Corporate-Studio Executive Dossier Biome: Candidate Record & Studio Contact */}
+            <AboutSection />
 
-          {/* 05 // Direct Studio Contact */}
-          <ContactSection />
-        </main>
+            <ContactSection />
+          </main>
+        )}
 
         {/* Footer */}
         <Footer />

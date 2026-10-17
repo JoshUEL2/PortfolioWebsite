@@ -17,7 +17,8 @@ import {
   CheckCircle2,
   ChevronRight,
   RotateCcw,
-  Maximize2
+  Maximize2,
+  Lock
 } from 'lucide-react';
 import {
   PERSONAL_INFO,
@@ -45,7 +46,8 @@ const CREDENTIAL_THEME_STYLES = {
     modalBg:
       'bg-[radial-gradient(ellipse_at_top,#4c0519_0%,#1c060c_55%,#090406_100%)] border-amber-400/50',
     headerAccent: 'text-amber-300',
-    whyBox: 'bg-rose-950/40 border-amber-400/60 text-amber-50'
+    whyBox: 'bg-rose-950/40 border-amber-400/60 text-amber-50',
+    replayLabel: 'Replay Curtain Call'
   },
   governance: {
     cardAccent:
@@ -53,9 +55,10 @@ const CREDENTIAL_THEME_STYLES = {
     iconBox: 'bg-amber-950/80 text-amber-300 border-amber-500/40',
     badgeText: 'text-amber-300 bg-amber-950/70 border-amber-500/40',
     modalBg:
-      'bg-[radial-gradient(ellipse_at_top,#3b2506_0%,#14110b_60%,#080a0f_100%)] border-amber-400/45',
+      'bg-[radial-gradient(ellipse_at_top,#2e1e07_0%,#151009_60%,#09080c_100%)] border-amber-400/45',
     headerAccent: 'text-amber-300',
-    whyBox: 'bg-amber-950/35 border-amber-400/60 text-amber-50'
+    whyBox: 'bg-amber-950/35 border-amber-400/60 text-amber-50',
+    replayLabel: 'Replay Council Seal'
   },
   studio: {
     cardAccent:
@@ -65,7 +68,8 @@ const CREDENTIAL_THEME_STYLES = {
     modalBg:
       'bg-[radial-gradient(ellipse_at_top,#2e1065_0%,#130924_60%,#07050c_100%)] border-purple-400/45',
     headerAccent: 'text-purple-300',
-    whyBox: 'bg-purple-950/35 border-purple-400/60 text-purple-50'
+    whyBox: 'bg-purple-950/35 border-purple-400/60 text-purple-50',
+    replayLabel: 'Replay On-Air Broadcast'
   },
   editorial: {
     cardAccent:
@@ -75,7 +79,8 @@ const CREDENTIAL_THEME_STYLES = {
     modalBg:
       'bg-[radial-gradient(ellipse_at_top,#4a044e_0%,#18081c_60%,#08050a_100%)] border-fuchsia-400/45',
     headerAccent: 'text-fuchsia-300',
-    whyBox: 'bg-fuchsia-950/35 border-fuchsia-400/60 text-fuchsia-50'
+    whyBox: 'bg-fuchsia-950/35 border-fuchsia-400/60 text-fuchsia-50',
+    replayLabel: 'Replay Cover Turn'
   },
   cyber: {
     cardAccent:
@@ -85,7 +90,8 @@ const CREDENTIAL_THEME_STYLES = {
     modalBg:
       'bg-[radial-gradient(ellipse_at_top,#063729_0%,#071512_60%,#050a09_100%)] border-emerald-400/45',
     headerAccent: 'text-emerald-300',
-    whyBox: 'bg-emerald-950/35 border-emerald-400/60 text-emerald-50'
+    whyBox: 'bg-emerald-950/35 border-emerald-400/60 text-emerald-50',
+    replayLabel: 'Replay Security Scan'
   },
   robotics: {
     cardAccent:
@@ -95,19 +101,306 @@ const CREDENTIAL_THEME_STYLES = {
     modalBg:
       'bg-[radial-gradient(ellipse_at_top,#0c2d48_0%,#081420_60%,#050911_100%)] border-sky-400/45',
     headerAccent: 'text-sky-300',
-    whyBox: 'bg-sky-950/35 border-sky-400/60 text-sky-50'
+    whyBox: 'bg-sky-950/35 border-sky-400/60 text-sky-50',
+    replayLabel: 'Replay Blast Hatch'
   }
 };
+
+/**
+ * Custom Themed Entrance Animations for each credential modal
+ */
+function CredentialThemeAnimation({ theme, animationKey }) {
+  if (theme === 'theatre') {
+    // Stage Curtains Parting
+    return (
+      <div
+        key={`curtain-${animationKey}`}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
+      >
+        <div className="absolute top-0 inset-x-0 h-5 bg-gradient-to-b from-[#7f1d1d] to-[#450a0a] border-b-2 border-amber-400/80 shadow-lg" />
+        <motion.div
+          initial={{ x: '0%' }}
+          animate={{ x: '-94%' }}
+          transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-amber-400/90 shadow-[25px_0_60px_rgba(0,0,0,0.95)]"
+          style={{
+            backgroundImage:
+              'repeating-linear-gradient(90deg, #450a0a 0px, #7f1d1d 22px, #991b1b 36px, #450a0a 56px)'
+          }}
+        >
+          <div className="absolute inset-y-0 right-2 w-1 bg-amber-300/40" />
+        </motion.div>
+        <motion.div
+          initial={{ x: '0%' }}
+          animate={{ x: '94%' }}
+          transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-amber-400/90 shadow-[-25px_0_60px_rgba(0,0,0,0.95)]"
+          style={{
+            backgroundImage:
+              'repeating-linear-gradient(90deg, #450a0a 0px, #7f1d1d 22px, #991b1b 36px, #450a0a 56px)'
+          }}
+        >
+          <div className="absolute inset-y-0 left-2 w-1 bg-amber-300/40" />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.1, delay: 0.4 }}
+          className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(251,191,36,0.16),transparent_65%)]"
+        />
+      </div>
+    );
+  }
+
+  if (theme === 'governance') {
+    // Official Academic Council Mahogany Doors Parting with Wax Seal Dissolving
+    return (
+      <div
+        key={`gov-${animationKey}`}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
+      >
+        {/* Left Heavy Polished Mahogany Door */}
+        <motion.div
+          initial={{ x: '0%' }}
+          animate={{ x: '-95%' }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-amber-600/80 shadow-[20px_0_50px_rgba(0,0,0,0.9)] bg-[#211409]"
+          style={{
+            backgroundImage:
+              'repeating-linear-gradient(90deg, #1c1007 0px, #2b1a0c 30px, #1a0e06 60px)'
+          }}
+        >
+          <div className="absolute inset-y-0 right-4 w-2 bg-amber-500/30" />
+          <div className="absolute top-1/2 right-6 -translate-y-1/2 w-4 h-16 rounded-full border-2 border-amber-400/60 bg-amber-900/50" />
+        </motion.div>
+
+        {/* Right Heavy Polished Mahogany Door */}
+        <motion.div
+          initial={{ x: '0%' }}
+          animate={{ x: '95%' }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-amber-600/80 shadow-[-20px_0_50px_rgba(0,0,0,0.9)] bg-[#211409]"
+          style={{
+            backgroundImage:
+              'repeating-linear-gradient(90deg, #1c1007 0px, #2b1a0c 30px, #1a0e06 60px)'
+          }}
+        >
+          <div className="absolute inset-y-0 left-4 w-2 bg-amber-500/30" />
+          <div className="absolute top-1/2 left-6 -translate-y-1/2 w-4 h-16 rounded-full border-2 border-amber-400/60 bg-amber-900/50" />
+        </motion.div>
+
+        {/* Central Institutional Gold Seal Opening */}
+        <motion.div
+          initial={{ scale: 1, opacity: 1 }}
+          animate={{ scale: 1.35, opacity: 0 }}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-4 border-amber-400 bg-gradient-to-br from-amber-600 to-amber-950 flex flex-col items-center justify-center text-center shadow-2xl text-amber-200"
+        >
+          <GraduationCap className="w-10 h-10 mb-1 text-amber-300" />
+          <span className="text-[9px] font-mono uppercase font-bold tracking-widest">
+            UEL BOARD SEAL
+          </span>
+        </motion.div>
+      </div>
+    );
+  }
+
+  if (theme === 'studio') {
+    // Soundproof Broadcast Isolation Booth Doors with Glowing ON AIR Beacon & VU Equalizer
+    return (
+      <div
+        key={`studio-${animationKey}`}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
+      >
+        {/* Top Glowing ON AIR Beacon */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: [1, 0.5, 1], y: 0 }}
+          transition={{ duration: 0.9, repeat: 1, delay: 0.1 }}
+          className="absolute top-3 left-1/2 -translate-x-1/2 z-40 px-4 py-1 rounded bg-red-600 text-white font-mono text-xs font-black uppercase tracking-[0.25em] shadow-[0_0_25px_rgba(239,68,68,0.9)] border border-red-300"
+        >
+          ● ON AIR
+        </motion.div>
+
+        {/* Left Studio Blast Door */}
+        <motion.div
+          initial={{ x: '0%' }}
+          animate={{ x: '-95%' }}
+          transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-purple-500/80 shadow-[20px_0_50px_rgba(0,0,0,0.9)] bg-[#11091f]"
+        >
+          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#9333ea_1px,transparent_1px)] [background-size:12px_12px]" />
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-end gap-1 h-28">
+            {[40, 70, 95, 60, 85, 45, 90, 30].map((h, i) => (
+              <motion.div
+                key={i}
+                animate={{ height: [`${h}%`, `${Math.max(20, h - 25)}%`, `${h}%`] }}
+                transition={{ duration: 0.6 + i * 0.1, repeat: Infinity }}
+                className="w-1.5 bg-gradient-to-t from-emerald-400 via-amber-400 to-red-500 rounded-xs"
+              />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Right Studio Blast Door */}
+        <motion.div
+          initial={{ x: '0%' }}
+          animate={{ x: '95%' }}
+          transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-purple-500/80 shadow-[-20px_0_50px_rgba(0,0,0,0.9)] bg-[#11091f]"
+        >
+          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#9333ea_1px,transparent_1px)] [background-size:12px_12px]" />
+          <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-end gap-1 h-28">
+            {[30, 80, 50, 90, 65, 85, 40, 75].map((h, i) => (
+              <motion.div
+                key={i}
+                animate={{ height: [`${h}%`, `${Math.max(20, h - 25)}%`, `${h}%`] }}
+                transition={{ duration: 0.6 + i * 0.1, repeat: Infinity }}
+                className="w-1.5 bg-gradient-to-t from-emerald-400 via-amber-400 to-red-500 rounded-xs"
+              />
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  if (theme === 'editorial') {
+    // Hardback Publication Cover Turning Open from Spine with CMYK Registration Marks
+    return (
+      <div
+        key={`edit-${animationKey}`}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-30 overflow-hidden [perspective:1200px]"
+      >
+        <motion.div
+          initial={{ rotateY: 0, opacity: 1 }}
+          animate={{ rotateY: -108, opacity: 0 }}
+          transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+          style={{ transformOrigin: 'left center' }}
+          className="absolute inset-0 bg-gradient-to-br from-[#3b0742] via-[#240529] to-[#0f0212] border-r-8 border-fuchsia-400 shadow-[35px_0_70px_rgba(0,0,0,0.95)] flex flex-col items-center justify-center p-8"
+        >
+          <div className="w-full max-w-md p-6 rounded-xl border-2 border-fuchsia-400/50 bg-black/60 text-center">
+            <span className="text-[10px] font-mono text-fuchsia-300 uppercase tracking-[0.3em] block mb-2">
+              YEARBOOK EDITORIAL FOLIO
+            </span>
+            <h4 className="text-xl font-black text-white font-['Syne',sans-serif] uppercase tracking-wider mb-2">
+              150+ Iterations • 200+ Portrait Mosaic
+            </h4>
+            <div className="flex justify-center gap-3 text-[11px] font-mono text-fuchsia-200">
+              <span>CYAN</span> • <span>MAGENTA</span> • <span>YELLOW</span> • <span>BLACK</span>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  if (theme === 'cyber') {
+    // Biometric Security Defense Iris & Scanlines Unlock
+    return (
+      <div
+        key={`cyber-${animationKey}`}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
+      >
+        <motion.div
+          initial={{ x: '0%' }}
+          animate={{ x: '-95%' }}
+          transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-emerald-400 shadow-[20px_0_50px_rgba(0,0,0,0.9)] bg-[#04140d]"
+        >
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(16,185,129,0.06)_51%)] bg-[length:100%_4px]" />
+        </motion.div>
+
+        <motion.div
+          initial={{ x: '0%' }}
+          animate={{ x: '95%' }}
+          transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-emerald-400 shadow-[-20px_0_50px_rgba(0,0,0,0.9)] bg-[#04140d]"
+        >
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(16,185,129,0.06)_51%)] bg-[length:100%_4px]" />
+        </motion.div>
+
+        {/* Central Terminal Decryption Stamp */}
+        <motion.div
+          initial={{ scale: 1, opacity: 1 }}
+          animate={{ scale: 1.3, opacity: 0 }}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-6 py-4 rounded-xl border-2 border-emerald-400 bg-black/90 font-mono text-emerald-400 text-center shadow-[0_0_40px_rgba(16,185,129,0.6)]"
+        >
+          <Lock className="w-6 h-6 mx-auto mb-1 text-emerald-300" />
+          <div className="text-xs font-bold tracking-widest uppercase">
+            [ACCESS GRANTED]
+          </div>
+          <div className="text-[10px] text-emerald-500">
+            CYBERCENTURION DEFENSE UNLOCKED
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  if (theme === 'robotics') {
+    // Heavy Industrial Mechatronic Steel Blast Hatch with Hazard Chevrons & Pistons
+    return (
+      <div
+        key={`robotics-${animationKey}`}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
+      >
+        <motion.div
+          initial={{ x: '0%' }}
+          animate={{ x: '-95%' }}
+          transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-sky-400 shadow-[20px_0_50px_rgba(0,0,0,0.9)] bg-[#081524]"
+        >
+          <div className="absolute inset-y-0 right-0 w-8 bg-[repeating-linear-gradient(45deg,#0284c7,#0284c7_10px,#0f172a_10px,#0f172a_20px)]" />
+        </motion.div>
+
+        <motion.div
+          initial={{ x: '0%' }}
+          animate={{ x: '95%' }}
+          transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-sky-400 shadow-[-20px_0_50px_rgba(0,0,0,0.9)] bg-[#081524]"
+        >
+          <div className="absolute inset-y-0 left-0 w-8 bg-[repeating-linear-gradient(45deg,#0284c7,#0284c7_10px,#0f172a_10px,#0f172a_20px)]" />
+        </motion.div>
+
+        {/* Central Mechatronic Clamp Stamp */}
+        <motion.div
+          initial={{ scale: 1, opacity: 1 }}
+          animate={{ scale: 1.3, opacity: 0 }}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-6 py-4 rounded-xl border-2 border-sky-400 bg-black/90 font-mono text-sky-300 text-center shadow-[0_0_40px_rgba(14,165,233,0.6)]"
+        >
+          <Cpu className="w-6 h-6 mx-auto mb-1 text-sky-400" />
+          <div className="text-xs font-bold tracking-widest uppercase">
+            PNEUMATIC CLAMP RELEASE
+          </div>
+          <div className="text-[10px] text-sky-500">
+            VEX ROBOTICS COMPETITION RIG
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  return null;
+}
 
 export default function AboutSection() {
   const [activeCredential, setActiveCredential] = useState(null);
   const [selectedPhotoIdx, setSelectedPhotoIdx] = useState(0);
-  const [curtainKey, setCurtainKey] = useState(0);
+  const [animationKey, setAnimationKey] = useState(0);
   const [activeShowcaseSlide, setActiveShowcaseSlide] = useState(null);
 
   const handleOpenCredential = (cred) => {
     setSelectedPhotoIdx(0);
-    setCurtainKey((prev) => prev + 1);
+    setAnimationKey((prev) => prev + 1);
     setActiveCredential(cred);
   };
 
@@ -150,7 +443,7 @@ export default function AboutSection() {
       {/* Top Atmospheric Transition from PCB (#070b09) to Studio Dossier (#080c14) */}
       <div className="h-14 w-full bg-gradient-to-b from-[#070b09] to-transparent pointer-events-none" />
 
-      {/* Top Executive Dossier Identification Bar (No Layer Numbers) */}
+      {/* Top Executive Dossier Identification Bar */}
       <div className="max-w-6xl mx-auto px-4 pt-2">
         <div className="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-slate-700/80 text-[11px] font-mono uppercase tracking-[0.2em] text-slate-400">
           <div className="flex items-center gap-2.5">
@@ -181,7 +474,7 @@ export default function AboutSection() {
               Josh Johnson
             </h2>
             <p className="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl">
-              How I approach game development, mathematical problem-solving, and cross-disciplinary studio collaboration. Click any credential on the right to inspect the full story and archival photos.
+              How I approach game development, mathematical problem-solving, and cross-disciplinary studio collaboration. Click any credential on the right to inspect the full story and custom animations.
             </p>
           </div>
 
@@ -399,7 +692,7 @@ export default function AboutSection() {
                 Showcases I&apos;ve Been a Part Of
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 mt-1">
-                Featuring the <strong className="text-white">UEL ACE Showcase 2026</strong> (where <em>Rastacats</em> was the sole Year 2 build chosen for the graduating Final-Year hall) and the <strong className="text-white">Personal Project VR Showcase</strong> (where <em>Delirium VR</em> was the sole working playable VR game on the floor). Hover to pause or click any photo to enlarge.
+                Featuring the <strong className="text-white">UEL Annual ACE Showcase 2026</strong> (where <em>Rastacats</em> was the sole Level 5 project chosen to exhibit downstairs with Level 6 honours projects, and <em>Delirium VR</em> was upstairs in the dedicated VR suite) alongside the <strong className="text-white">Summer VR Demonstration Series</strong> with Patrick Quinnell. Hover to pause or click any photo to enlarge.
               </p>
             </div>
             <div className="text-[11px] font-mono text-amber-300/90 uppercase tracking-wider shrink-0">
@@ -512,7 +805,7 @@ export default function AboutSection() {
         )}
       </AnimatePresence>
 
-      {/* Interactive Credential Modal with Stage Curtain Animation for Theatre */}
+      {/* Interactive Credential Modal with Custom Themed Animation per Credential */}
       <AnimatePresence>
         {activeCredential && (
           <motion.div
@@ -527,9 +820,10 @@ export default function AboutSection() {
               const style =
                 CREDENTIAL_THEME_STYLES[activeCredential.theme] ||
                 CREDENTIAL_THEME_STYLES.governance;
-              const isTheatre = activeCredential.theme === 'theatre';
               const photos = activeCredential.images || [];
-              const currentPhoto = photos[selectedPhotoIdx] || photos[0];
+              const hasPhotos = photos.length > 0;
+              const currentPhoto = hasPhotos ? (photos[selectedPhotoIdx] || photos[0]) : null;
+              const isGovernance = activeCredential.theme === 'governance';
 
               return (
                 <motion.div
@@ -540,53 +834,11 @@ export default function AboutSection() {
                   onClick={(e) => e.stopPropagation()}
                   className={`relative w-full max-w-5xl rounded-2xl border-2 shadow-[0_25px_90px_rgba(0,0,0,0.95)] overflow-hidden my-auto ${style.modalBg}`}
                 >
-                  {/* THEMED STAGE CURTAIN ANIMATION FOR MUSICAL THEATRE & ACTING */}
-                  {isTheatre && (
-                    <div
-                      key={`curtain-${curtainKey}`}
-                      aria-hidden="true"
-                      className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
-                    >
-                      {/* Top Gold-Trimmed Velvet Pelmet / Valance */}
-                      <div className="absolute top-0 inset-x-0 h-5 bg-gradient-to-b from-[#7f1d1d] to-[#450a0a] border-b-2 border-amber-400/80 shadow-lg" />
-
-                      {/* Left Crimson Velvet Stage Curtain Panel */}
-                      <motion.div
-                        initial={{ x: '0%' }}
-                        animate={{ x: '-94%' }}
-                        transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-                        className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-amber-400/90 shadow-[25px_0_60px_rgba(0,0,0,0.95)]"
-                        style={{
-                          backgroundImage:
-                            'repeating-linear-gradient(90deg, #450a0a 0px, #7f1d1d 22px, #991b1b 36px, #450a0a 56px)'
-                        }}
-                      >
-                        <div className="absolute inset-y-0 right-2 w-1 bg-amber-300/40" />
-                      </motion.div>
-
-                      {/* Right Crimson Velvet Stage Curtain Panel */}
-                      <motion.div
-                        initial={{ x: '0%' }}
-                        animate={{ x: '94%' }}
-                        transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-                        className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-amber-400/90 shadow-[-25px_0_60px_rgba(0,0,0,0.95)]"
-                        style={{
-                          backgroundImage:
-                            'repeating-linear-gradient(90deg, #450a0a 0px, #7f1d1d 22px, #991b1b 36px, #450a0a 56px)'
-                        }}
-                      >
-                        <div className="absolute inset-y-0 left-2 w-1 bg-amber-300/40" />
-                      </motion.div>
-
-                      {/* Warm Stage Spotlight Cone */}
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1.1, delay: 0.4 }}
-                        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(251,191,36,0.16),transparent_65%)]"
-                      />
-                    </div>
-                  )}
+                  {/* BESPOKE THEMED ENTRANCE ANIMATION */}
+                  <CredentialThemeAnimation
+                    theme={activeCredential.theme}
+                    animationKey={animationKey}
+                  />
 
                   {/* Modal Header */}
                   <div className="relative z-20 flex flex-wrap items-center justify-between gap-4 px-6 sm:px-10 pt-7 pb-5 border-b border-white/15 bg-black/40">
@@ -605,16 +857,15 @@ export default function AboutSection() {
                     </div>
 
                     <div className="flex items-center gap-2.5">
-                      {isTheatre && (
-                        <button
-                          type="button"
-                          onClick={() => setCurtainKey((prev) => prev + 1)}
-                          className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-amber-500/20 hover:bg-amber-500/35 text-amber-200 border border-amber-400/50 text-xs font-mono uppercase tracking-wider transition-colors cursor-pointer"
-                        >
-                          <RotateCcw className="w-3.5 h-3.5" />
-                          <span>Replay Curtain</span>
-                        </button>
-                      )}
+                      <button
+                        type="button"
+                        onClick={() => setAnimationKey((prev) => prev + 1)}
+                        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-slate-100 border border-white/20 text-xs font-mono uppercase tracking-wider transition-colors cursor-pointer"
+                        title="Replay Entrance Animation"
+                      >
+                        <RotateCcw className="w-3.5 h-3.5" />
+                        <span>{style.replayLabel || 'Replay'}</span>
+                      </button>
                       <button
                         type="button"
                         onClick={() => setActiveCredential(null)}
@@ -626,92 +877,167 @@ export default function AboutSection() {
                     </div>
                   </div>
 
-                  {/* Modal Body: Photo Stage & Full Narrative */}
-                  <div className="relative z-20 p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-h-[80vh] overflow-y-auto">
-                    {/* Left 7 Columns: Archival Photo Stage + Thumbnails */}
-                    <div className="lg:col-span-7 space-y-3.5">
-                      {currentPhoto && (
-                        <div className="rounded-xl overflow-hidden bg-black/90 border border-white/20 shadow-2xl">
-                          <div className="aspect-video w-full relative flex items-center justify-center bg-black">
-                            <img
-                              src={getAssetUrl(currentPhoto.src)}
-                              alt={currentPhoto.caption}
-                              className="w-full h-full object-contain"
-                            />
+                  {/* Modal Body */}
+                  <div className="relative z-20 p-6 sm:p-10 max-h-[80vh] overflow-y-auto">
+                    {/* SPECIAL IN-DEPTH TEXT LAYOUT FOR SCHOOL REPRESENTATIVE & GOVERNANCE */}
+                    {isGovernance ? (
+                      <div className="space-y-6">
+                        {/* Executive Summary */}
+                        <div className="p-5 rounded-xl bg-black/50 border border-amber-500/30">
+                          <h4 className="text-xs font-mono uppercase tracking-widest text-amber-300 font-bold mb-2">
+                            Executive Mandate &amp; Cohort Leadership
+                          </h4>
+                          <p className="text-sm sm:text-base text-slate-100 leading-relaxed">
+                            {activeCredential.story}
+                          </p>
+                        </div>
+
+                        {/* 5 Deep-Dive Governance Pillars Grid */}
+                        <div>
+                          <h4 className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-3">
+                            Core Representation Responsibilities &amp; Actions
+                          </h4>
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
+                            {activeCredential.governancePillars?.map((pillar, pIdx) => (
+                              <div
+                                key={pIdx}
+                                className="p-4 rounded-xl bg-black/40 border border-amber-500/25 flex flex-col justify-between"
+                              >
+                                <div>
+                                  <span className="text-[10px] font-mono text-amber-400 font-bold uppercase tracking-wider block mb-1">
+                                    PILLAR 0{pIdx + 1}
+                                  </span>
+                                  <h5 className="text-sm font-bold text-white font-['Syne',sans-serif] mb-2 leading-snug">
+                                    {pillar.title}
+                                  </h5>
+                                  <p className="text-xs text-slate-300 leading-relaxed">
+                                    {pillar.detail}
+                                  </p>
+                                </div>
+                              </div>
+                            ))}
                           </div>
-                          <div className="px-4 py-3 bg-black/80 border-t border-white/10 flex items-center justify-between gap-3">
-                            <span className="text-xs sm:text-sm text-slate-200 font-medium">
-                              {currentPhoto.caption}
-                            </span>
-                            <span className="text-[11px] font-mono text-slate-400 shrink-0">
-                              {selectedPhotoIdx + 1} / {photos.length}
-                            </span>
+                        </div>
+
+                        {/* Why It Matters for Game Studios & Highlights */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                          <div className={`p-4 rounded-xl border-l-4 ${style.whyBox}`}>
+                            <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider font-bold mb-1.5">
+                              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                              <span>How This Shapes My Game Development</span>
+                            </div>
+                            <p className="text-xs sm:text-sm leading-relaxed">
+                              {activeCredential.whyItMattersForGames}
+                            </p>
+                          </div>
+
+                          <div className="p-4 rounded-xl bg-black/40 border border-slate-700/80">
+                            <h4 className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-2">
+                              Key Highlights
+                            </h4>
+                            <ul className="space-y-1.5">
+                              {activeCredential.highlights.map((item) => (
+                                <li
+                                  key={item}
+                                  className="flex items-start gap-2 text-xs text-slate-200 leading-relaxed"
+                                >
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
                           </div>
                         </div>
-                      )}
+                      </div>
+                    ) : (
+                      /* STANDARD MEDIA + TEXT LAYOUT FOR OTHER 5 CREDENTIALS */
+                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                        {/* Left 7 Columns: Archival Photo Stage + Thumbnails */}
+                        <div className="lg:col-span-7 space-y-3.5">
+                          {currentPhoto && (
+                            <div className="rounded-xl overflow-hidden bg-black/90 border border-white/20 shadow-2xl">
+                              <div className="aspect-video w-full relative flex items-center justify-center bg-black">
+                                <img
+                                  src={getAssetUrl(currentPhoto.src)}
+                                  alt={currentPhoto.caption}
+                                  className="w-full h-full object-contain"
+                                />
+                              </div>
+                              <div className="px-4 py-3 bg-black/80 border-t border-white/10 flex items-center justify-between gap-3">
+                                <span className="text-xs sm:text-sm text-slate-200 font-medium">
+                                  {currentPhoto.caption}
+                                </span>
+                                <span className="text-[11px] font-mono text-slate-400 shrink-0">
+                                  {selectedPhotoIdx + 1} / {photos.length}
+                                </span>
+                              </div>
+                            </div>
+                          )}
 
-                      {photos.length > 1 && (
-                        <div className="grid grid-cols-4 sm:grid-cols-5 gap-2.5">
-                          {photos.map((img, i) => (
-                            <button
-                              key={img.src}
-                              type="button"
-                              onClick={() => setSelectedPhotoIdx(i)}
-                              className={`rounded-lg overflow-hidden aspect-video border-2 transition-all cursor-pointer ${
-                                i === selectedPhotoIdx
-                                  ? 'border-amber-400 scale-[1.02] opacity-100 shadow-md'
-                                  : 'border-white/15 opacity-60 hover:opacity-95'
-                              }`}
-                            >
-                              <img
-                                src={getAssetUrl(img.src)}
-                                alt={img.caption}
-                                className="w-full h-full object-cover"
-                              />
-                            </button>
-                          ))}
+                          {photos.length > 1 && (
+                            <div className="grid grid-cols-4 sm:grid-cols-5 gap-2.5">
+                              {photos.map((img, i) => (
+                                <button
+                                  key={img.src}
+                                  type="button"
+                                  onClick={() => setSelectedPhotoIdx(i)}
+                                  className={`rounded-lg overflow-hidden aspect-video border-2 transition-all cursor-pointer ${
+                                    i === selectedPhotoIdx
+                                      ? 'border-amber-400 scale-[1.02] opacity-100 shadow-md'
+                                      : 'border-white/15 opacity-60 hover:opacity-95'
+                                  }`}
+                                >
+                                  <img
+                                    src={getAssetUrl(img.src)}
+                                    alt={img.caption}
+                                    className="w-full h-full object-cover"
+                                  />
+                                </button>
+                              ))}
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
 
-                    {/* Right 5 Columns: Full Story, Game Dev Connection & Proof Points */}
-                    <div className="lg:col-span-5 space-y-5">
-                      <div>
-                        <h4 className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-2">
-                          Behind the Scenes
-                        </h4>
-                        <p className="text-sm sm:text-base text-slate-100 leading-relaxed">
-                          {activeCredential.story}
-                        </p>
-                      </div>
+                        {/* Right 5 Columns: Full Story, Game Dev Connection & Proof Points */}
+                        <div className="lg:col-span-5 space-y-5">
+                          <div>
+                            <h4 className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-2">
+                              Behind the Scenes
+                            </h4>
+                            <p className="text-sm sm:text-base text-slate-100 leading-relaxed">
+                              {activeCredential.story}
+                            </p>
+                          </div>
 
-                      <div className={`p-4 rounded-xl border-l-4 ${style.whyBox}`}>
-                        <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider font-bold mb-1">
-                          <Sparkles className="w-3.5 h-3.5" />
-                          <span>How This Shapes My Game Development</span>
+                          <div className={`p-4 rounded-xl border-l-4 ${style.whyBox}`}>
+                            <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider font-bold mb-1">
+                              <Sparkles className="w-3.5 h-3.5" />
+                              <span>How This Shapes My Game Development</span>
+                            </div>
+                            <p className="text-xs sm:text-sm leading-relaxed">
+                              {activeCredential.whyItMattersForGames}
+                            </p>
+                          </div>
+
+                          <div>
+                            <h4 className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-2.5">
+                              Key Highlights
+                            </h4>
+                            <ul className="space-y-2">
+                              {activeCredential.highlights.map((item) => (
+                                <li
+                                  key={item}
+                                  className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 leading-relaxed"
+                                >
+                                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                         </div>
-                        <p className="text-xs sm:text-sm leading-relaxed">
-                          {activeCredential.whyItMattersForGames}
-                        </p>
                       </div>
-
-                      <div>
-                        <h4 className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-2.5">
-                          Key Highlights
-                        </h4>
-                        <ul className="space-y-2">
-                          {activeCredential.highlights.map((item) => (
-                            <li
-                              key={item}
-                              className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 leading-relaxed"
-                            >
-                              <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
+                    )}
                   </div>
                 </motion.div>
               );

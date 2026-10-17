@@ -1366,20 +1366,39 @@ export const DOSSIER_CREDENTIALS = [
     title: "UEL School Representative & Sextennial Review Panellist",
     subtitle: "Elected School Representative (Architecture, Computing & Engineering) • Curriculum Review Board",
     badge: "Click to Inspect Role",
-    shortSummary: "Elected School Representative for BSc Computer Games Design at the University of East London and invited panellist on the formal Sextennial School Review.",
-    whyItMattersForGames: "Studio production relies on clear cross-discipline advocacy: translating technical bottlenecks, hardware needs, and cohort feedback into actionable improvements with senior leadership.",
-    story: "At the University of East London, I was elected School Representative for the School of Architecture, Computing & Engineering, representing Computer Games Design students across faculty boards. In April 2025, I was also invited to sit as the student representative on the university's formal Sextennial School Review panel, working directly alongside senior university leadership, faculty heads, and external examiners to evaluate studio coursework, lab hardware provisioning, and degree structures.",
-    highlights: [
-      "Elected School Representative advocating for Computer Games Design students at faculty and school board level.",
-      "Invited Student Panellist on the formal UEL Sextennial School Review (April 2025) alongside external examiners.",
-      "Delivered data-driven feedback on engine lab infrastructure, VR hardware access, and studio module assessment."
+    shortSummary: "Elected School Representative for BSc Computer Games Design for two consecutive years (unanimously voted in), navigating the cohort through an unprecedented departmental course merger and serving as invited Student Panellist on the university's Sextennial School Review.",
+    whyItMattersForGames: "Game development is fundamentally cross-disciplinary and high-friction: whether communicating between engineering, art, and production, or advocating for cohort hardware resources with university executives, my representative work proves I can de-escalate crisis, structure feedback data, and negotiate directly with leadership.",
+    story: "As the elected School Representative for the School of Architecture, Computing & Engineering at the University of East London, I serve as the direct communication conduit between students, senior academics, and faculty deans. My tenure coincided with an unprecedented structural course merger across the games cluster, which initially triggered severe anxiety, confusion, and misinformation among students. Recognising the distress this caused, I immediately established a direct line with our cluster lead to obtain concrete facts, de-escalated rumours, and held regular cohort briefings. In April 2025, I was appointed by senior leadership to sit on the formal Sextennial School Review panel, working alongside external examiners and department heads to critically evaluate curriculum architecture, studio teaching standards, and student satisfaction.",
+    governancePillars: [
+      {
+        title: "Elected Representative 2 Years Running",
+        detail: "Unanimously voted in as Course Representative for BSc Computer Games Design two years in a row, building trusted relationships with students, lecturers, and student union officers."
+      },
+      {
+        title: "Navigating the Games Cluster Course Merger",
+        detail: "Proactively bridged the information gap during a historic departmental restructuring. Tracked student concerns, squashed fearmongering, and worked directly with the cluster lead to safeguard module resources for the final graduating cohort."
+      },
+      {
+        title: "Sextennial School Review Board (April 2025)",
+        detail: "Selected as student panellist for the once-in-six-years formal review of the Media and Computing school, collaborating with external examiners and university leadership to evaluate curriculum standards."
+      },
+      {
+        title: "Systematic Issue & Hardware Tracking",
+        detail: "Maintained formal issue tracking registers (e.g. GPU driver incompatibilities, VR headset provisioning, studio room allocations) and presented evidence-based solutions at termly board meetings."
+      },
+      {
+        title: "Hall Representative & Residential Ambassador",
+        detail: "Elected UEL Hall Representative (Longbridge House) and Residential Life Ambassador, supporting student mental health, accommodation standards, and university-wide sustainability initiatives."
+      }
     ],
-    images: [
-      { src: "/images/dossier/ace_showcase_2026_image_02.jpg", caption: "Representing BSc Computer Games Design to faculty and visitors at UEL Royal Docks" },
-      { src: "/images/dossier/ace_showcase_2026_image_04.jpg", caption: "Discussing technical game builds with UEL faculty and external guests" },
-      { src: "/images/dossier/ace_showcase_2026_image_01.jpg", caption: "School of Architecture, Computing & Engineering exhibition floor" },
-      { src: "/images/dossier/personal_project_showcase_2026_image_02.jpg", caption: "Leading live hardware and VR demonstrations at UEL" }
-    ]
+    highlights: [
+      "Unanimously elected Course Representative for BSc Computer Games Design two consecutive years.",
+      "Successfully stabilised and advocated for the cohort through the historic games cluster course merger.",
+      "Invited Student Panellist on the formal Sextennial School Review alongside external university examiners.",
+      "Maintained data-driven course feedback and hardware tracking logs presented at faculty board level.",
+      "Served as UEL Hall Representative and Residential Life Ambassador across student accommodation."
+    ],
+    images: []
   },
   {
     id: "podcast-studio-founder",
@@ -1475,67 +1494,68 @@ export const DOSSIER_CREDENTIALS = [
 export const SHOWCASE_EXHIBITIONS = [
   {
     id: "ace-2026-main-hall",
-    event: "UEL ACE Showcase 2026",
-    location: "Royal Docks Centre for Sustainability (Main L6 Graduating Hall)",
-    highlight: "Rastacats • Sole Year 2 (Level 5) Game Chosen for Final-Year Hall",
+    event: "UEL Annual ACE Showcase 2026",
+    location: "Royal Docks Centre for Sustainability (Downstairs Main Hall)",
+    highlight: "Rastacats • Sole Level 5 Project Selected for Final-Year Hall",
     src: "/images/dossier/ace_showcase_2026_image_01.jpg",
-    caption: "Rastacats exhibited downstairs in the main Final-Year (Level 6) exhibition hall at the 2026 ACE Showcase."
+    caption: "Rastacats exhibited downstairs in the main Final-Year (Level 6) exhibition hall at the Royal Docks Centre for Sustainability as the only Year 2 project selected by faculty."
   },
   {
-    id: "ace-2026-public-playtest",
-    event: "UEL ACE Showcase 2026",
-    location: "Royal Docks Exhibition Floor",
-    highlight: "Live Public Playtesting & Faculty Walkthroughs",
+    id: "ace-2026-vr-suite",
+    event: "UEL Annual ACE Showcase 2026",
+    location: "Royal Docks Centre for Sustainability (Upstairs VR Suite)",
+    highlight: "Delirium VR • Sole Playable VR Project on Level 5 Floor",
     src: "/images/dossier/ace_showcase_2026_image_02.jpg",
-    caption: "Presenting custom 360° spline-gravity mechanics and build architecture to faculty and attendees."
+    caption: "Took full operational ownership of configuring tracking bounds, eliminating frame latency, and running live public playtests for our OpenXR VR horror game."
   },
   {
-    id: "personal-showcase-delirium",
-    event: "Personal Project & VR Showcase 2026",
-    location: "Dedicated OpenXR VR Demonstration Suite",
-    highlight: "Delirium VR • Sole Working Playable VR Build on the L5 Floor",
+    id: "summer-demo-series-01",
+    event: "RDSC Summer VR Showcase Series (Sessions 1–4)",
+    location: "Dedicated OpenXR VR Suite (Royal Docks)",
+    highlight: "Summer Faculty Demonstrations & Grading Sessions with Patrick Quinnell",
     src: "/images/dossier/personal_project_showcase_2026_image_01.jpg",
-    caption: "Setting up and calibrating the dual-station Rastacats and Delirium VR hardware showcase."
+    caption: "Ran multiple showcase runs over the summer period with module leader Patrick Quinnell, facilitating live VR playtesting and hardware calibration."
   },
   {
-    id: "personal-showcase-vr-rig",
-    event: "Personal Project & VR Showcase 2026",
-    location: "UEL Games Design Studio Floor",
-    highlight: "Live OpenXR Physics & Acoustic AI Demonstrations",
+    id: "summer-demo-series-02",
+    event: "RDSC Summer VR Showcase Series",
+    location: "Royal Docks Centre for Sustainability",
+    highlight: "Multi-User Hardware Calibration & Public Walkthroughs",
     src: "/images/dossier/personal_project_showcase_2026_image_02.jpg",
-    caption: "Running live VR headset playtests for Delirium VR alongside Rastacats."
+    caption: "Calibrating dual-station Meta Quest 3 & PCVR rigs to demonstrate spatial audio sanity and two-handed physical interactions."
   },
   {
     id: "ace-2026-station-03",
-    event: "UEL ACE Showcase 2026",
+    event: "UEL Annual ACE Showcase 2026",
     location: "Royal Docks Centre for Sustainability",
-    highlight: "Dual-Floor Exhibition (Main Hall + Upstairs VR Room)",
+    highlight: "Dual-Floor Public Presentation (Arcade Rig + VR Installation)",
     src: "/images/dossier/ace_showcase_2026_image_03.jpg",
-    caption: "Exhibition kiosk running continuous 60 FPS Unreal Engine 5 builds all day."
+    caption: "Demonstrating custom 360-degree polar spline gravity and GPU material shaders live to industry visitors."
   },
   {
     id: "personal-showcase-03",
-    event: "Personal Project Showcase 2026",
-    location: "University of East London",
+    event: "Personal Project Showcase",
+    location: "University of East London Games Lab",
     highlight: "Hands-On Player Feedback & Telemetry Observation",
     src: "/images/dossier/personal_project_showcase_2026_image_03.jpg",
-    caption: "Observing live player reactions and VR physics interactions during the 2026 showcase."
+    caption: "Observing real-time player telemetry and gathering playtesting feedback across multiple exhibition sessions."
   },
   {
     id: "ace-2026-station-04",
-    event: "UEL ACE Showcase 2026",
+    event: "UEL Annual ACE Showcase 2026",
     location: "Royal Docks Exhibition Hall",
-    highlight: "Industry & Academic Peer Review Session",
+    highlight: "Academic Peer Review & Industry Delegation Q&A",
     src: "/images/dossier/ace_showcase_2026_image_04.jpg",
-    caption: "Discussing shader pipelines and game feel with visiting developers and lecturers."
+    caption: "Fielding technical questions on Unreal Engine 5 optimisation and state machine architecture with external guests."
   },
   {
     id: "personal-showcase-04",
-    event: "Personal Project Showcase 2026",
+    event: "Personal Project & VR Showcase",
     location: "UEL Docklands Campus",
     highlight: "Full Hardware & Controller Kiosk Deployment",
     src: "/images/dossier/personal_project_showcase_2026_image_04.jpg",
-    caption: "Complete exhibition station setup at the University of East London Docklands campus."
+    caption: "Complete exhibition setup featuring high-framerate playable builds and direct developer demonstrations."
   }
 ];
+
 

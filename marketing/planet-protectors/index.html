@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planet Protectors | Llama Games</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* PUBLIC THEME */
+            --eco-green: #4ade80;
+            --forest-dark: #166534;
+            --ocean-blue: #38bdf8;
+            --sun-yellow: #facc15;
+            --text-dark: #1f2937;
+            
+            /* DEV THEME */
+            --term-bg: #0f172a;
+            --term-text: #94a3b8;
+            --git-red: #ef4444;
+            --git-green: #22c55e;
+        }
+
+        body {
+            overflow-x: hidden;
+            transition: background-color 0.5s ease;
+        }
+
+        /* === TYPEOGRAPHY === */
+        .font-cute { font-family: 'Fredoka One', cursive; }
+        .font-body { font-family: 'Nunito', sans-serif; }
+        .font-code { font-family: 'JetBrains Mono', monospace; }
+
+        /* === LAYER 1: ZOO KIOSK === */
+        #public-layer {
+            background-color: #f0fdf4;
+            color: var(--text-dark);
+            min-height: 100vh;
+            position: relative;
+            z-index: 10;
+            transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .poly-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L50 50 L0 100 Z' fill='%23dcfce7'/%3E%3Cpath d='M100 0 L50 50 L100 100 Z' fill='%23dcfce7'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
+        }
+
+        .cute-card {
+            background: white;
+            border-radius: 20px;
+            border-bottom: 6px solid var(--forest-dark);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .cute-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* === LAYER 2: DEV CONSOLE (THE TRUTH) === */
+        #dev-layer {
+            position: fixed;
+            inset: 0;
+            background-color: var(--term-bg);
+            color: var(--term-text);
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease 0.5s;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        #dev-layer.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .console-line {
+            border-left: 2px solid #334155;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .git-stat {
+            height: 20px;
+            border-radius: 4px;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* === UTILITIES === */
+        .whip-out {
+            transform: translateY(-150%) rotate(-5deg);
+        }
+        
+        .character-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+    </style>
+</head>
+<body class="font-body">
+
+    <!-- ================= LAYER 1: THE ZOO PITCH ================= -->
+    <div id="public-layer" class="poly-bg flex flex-col">
+        
+        <!-- Header -->
+        <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b-4 border-green-600">
+            <div class="container mx-auto px-6 h-20 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-cute text-xl">P</div>
+                    <h1 class="font-cute text-3xl text-green-700 tracking-wide">PLANET PROTECTORS</h1>
+                </div>
+                <nav class="hidden md:flex space-x-8 font-bold text-green-800">
+                    <a href="#about" class="hover:text-green-500">The Mission</a>
+                    <a href="#characters" class="hover:text-green-500">Heroes</a>
+                    <a href="#levels" class="hover:text-green-500">Worlds</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero -->
+        <section class="container mx-auto px-6 py-12 text-center">
+            <div class="bg-gradient-to-r from-green-400 to-cyan-400 text-white p-12 rounded-3xl shadow-xl border-b-8 border-green-600 transform -rotate-1">
+                <h2 class="font-cute text-5xl md:text-7xl mb-6 drop-shadow-md">Be An Eco-Hero!</h2>
+                <p class="text-xl font-bold max-w-2xl mx-auto">
+                    Join Bonnie, Haptic, and Turtle in a low-poly adventure to save the zoo! 
+                    Developed by <span class="text-yellow-200 underline decoration-wavy">Llama Games</span>.
+                </p>
+            </div>
+        </section>
+
+        <!-- About (The Script Version) -->
+        <section id="about" class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="cute-card p-8">
+                    <h3 class="font-cute text-3xl text-green-700 mb-4">Our Vision</h3>
+                    <p class="mb-4 text-gray-600 leading-relaxed">
+                        Unlike other games that blame mega-corporations, Planet Protectors empowers <strong>you</strong> to become a "prosumer." Whether it's switching to electric cars or collecting rubbish on the beach, we show that every little helps!
+                    </p>
+                    <div class="bg-green-100 p-4 rounded-lg text-green-800 font-bold text-sm">
+                        ✨ Vertical Slice in 3 Months<br>
+                        🚀 Playable Alpha in 10 Months
+                    </div>
+                </div>
+                <div class="cute-card p-8">
+                    <h3 class="font-cute text-3xl text-blue-600 mb-4">The Studio</h3>
+                    <p class="mb-4 text-gray-600">
+                        Llama Games is a comprised of five dedicated members. We are a well-working team ready to take on this challenge!
+                    </p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2"><span class="bg-green-500 text-white px-2 rounded-full text-xs">DIR</span> Josh (Director/Design)</li>
+                        <li class="flex items-center gap-2"><span class="bg-purple-500 text-white px-2 rounded-full text-xs">ART</span> Max (Concept), Jose & Dean (Env)</li>
+                        <li class="flex items-center gap-2"><span class="bg-blue-500 text-white px-2 rounded-full text-xs">DEV</span> Bryan (Programming)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Characters -->
+        <section id="characters" class="bg-white py-12 border-y-4 border-yellow-400">
+            <div class="container mx-auto px-6">
+                <h2 class="font-cute text-4xl text-center text-yellow-500 mb-10">Meet The Protectors</h2>
+                <div class="flex justify-center gap-8 flex-wrap">
+                    <!-- Character 1 -->
+                    <div class="text-center group">
+                        <div class="w-32 h-32 bg-green-200 rounded-full mx-auto mb-4 border-4 border-green-400 group-hover:scale-110 transition-transform flex items-center justify-center text-4xl">🦊</div>
+                        <h3 class="font-cute text-xl text-gray-700">Bonnie</h3>
+                        <p class="text-xs text-gray-500 font-bold">The Forest Keeper</p>
+                    </div>
+                    <!-- Character 2 -->
+                    <div class="text-center group">
+                        <div class="w-32 h-32 bg-blue-200 rounded-full mx-auto mb-4 border-4 border-blue-400 group-hover:scale-110 transition-transform flex items-center justify-center text-4xl">🤖</div>
+                        <h3 class="font-cute text-xl text-gray-700">Haptic</h3>
+                        <p class="text-xs text-gray-500 font-bold">Tech Support</p>
+                    </div>
+                    <!-- Character 3 -->
+                    <div class="text-center group">
+                        <div class="w-32 h-32 bg-orange-200 rounded-full mx-auto mb-4 border-4 border-orange-400 group-hover:scale-110 transition-transform flex items-center justify-center text-4xl">🐢</div>
+                        <h3 class="font-cute text-xl text-gray-700">Turtle</h3>
+                        <p class="text-xs text-gray-500 font-bold">Ocean Guardian</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Levels -->
+        <section id="levels" class="container mx-auto px-6 py-12">
+            <h2 class="font-cute text-4xl text-center text-blue-600 mb-10">Mission Log</h2>
+            <div class="space-y-6">
+                <!-- Lvl 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col md:flex-row">
+                    <div class="bg-green-600 md:w-32 flex items-center justify-center text-white font-cute text-2xl p-4">LVL 1</div>
+                    <div class="p-6 flex-1">
+                        <h3 class="font-bold text-xl mb-2">The Forest Clearing</h3>
+                        <p class="text-gray-600 text-sm mb-2">A circular forest clearing surrounded by fire. The Planet Protector falls in!</p>
+                        <div class="flex gap-2 mt-2">
+                            <span class="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded">Objective: Put out Fires</span>
+                            <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">Objective: Save Animals to Water</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lvl 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col md:flex-row">
+                    <div class="bg-blue-400 md:w-32 flex items-center justify-center text-white font-cute text-2xl p-4">LVL 2</div>
+                    <div class="p-6 flex-1">
+                        <h3 class="font-bold text-xl mb-2">City Island Beach</h3>
+                        <p class="text-gray-600 text-sm mb-2">A polluted coast. Fly around and restore the natural beauty.</p>
+                        <div class="flex gap-2 mt-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded">Objective: Recycle Rubbish</span>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-bold px-2 py-1 rounded">Style: Vibrant Low-Poly</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-gray-800 text-white py-8 mt-auto">
+            <div class="container mx-auto px-6 flex justify-between items-center">
+                <p class="text-sm opacity-50">© 2025 Llama Games. Created for Zoo Education.</p>
+                <button id="debug-trigger" class="text-xs opacity-20 hover:opacity-100 font-mono cursor-help transition-opacity">v.1.0 (Debug_Mode)</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ================= LAYER 2: THE REALITY (RETROSPECTIVE) ================= -->
+    <div id="dev-layer" class="p-8 overflow-y-auto">
+        <div class="max-w-5xl mx-auto w-full">
+            <div class="flex justify-between items-end border-b border-slate-700 pb-4 mb-8">
+                <div>
+                    <h1 class="text-3xl font-bold text-red-500">LLAMA GAMES // POST-MORTEM</h1>
+                    <p class="text-sm text-slate-500">SPRINT RETROSPECTIVE LOG [CONFIDENTIAL]</p>
+                </div>
+                <button id="exit-debug" class="text-xs border border-slate-700 px-2 py-1 hover:bg-white hover:text-black transition-colors">EXIT TERMINAL</button>
+            </div>
+
+            <!-- The Workload Chart -->
+            <div class="grid md:grid-cols-2 gap-12 mb-12">
+                <div class="bg-slate-900 p-6 border border-slate-800 rounded-sm">
+                    <h3 class="text-lg font-bold mb-4 text-slate-200">> COMMIT_HISTORY.LOG</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span>JOSH (Director/Design)</span>
+                                <span class="text-green-400">74 Commits</span>
+                            </div>
+                            <div class="git-stat bg-slate-800">
+                                <div class="bg-green-500" style="width: 86%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span>REST OF TEAM (4 People)</span>
+                                <span class="text-red-400">12 Commits</span>
+                            </div>
+                            <div class="git-stat bg-slate-800">
+                                <div class="bg-red-500" style="width: 14%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-4 italic">"This project has had an extremely unbalanced workload. I did everything I could, and more."</p>
+                </div>
+
+                <div class="console-line">
+                    <h3 class="text-xl font-bold text-white mb-2">CRITICAL FAILURES</h3>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li class="flex gap-3">
+                            <span class="text-red-500 font-bold">[ERR_01]</span>
+                            <p>Github integration took <span class="text-white">2 MONTHS</span>. Step-by-step tutorials provided by Director were ignored for weeks.</p>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-red-500 font-bold">[ERR_02]</span>
+                            <p>Programmer uploaded broken code (Sheep Logic) causing repository corruption. Refused help. Director had to fix entire project after double shift.</p>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-red-500 font-bold">[ERR_03]</span>
+                            <p>Asset Pipeline Failure. Map designer dragged/dropped static meshes without implementation. Director forced to handle collision, lighting, post-processing, and procedural generation alone.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- The Production Log -->
+            <div class="border border-slate-800 bg-slate-900/50 p-6 font-mono text-sm">
+                <p class="text-green-500 mb-2">user@josh-workstation:~$ cat sprint3_notes.txt</p>
+                <p class="leading-relaxed text-slate-300 mb-4">
+                    "My next comments are not towards any person in particular... but as a collective, I can honestly say, I have never in my life experienced such an incompetent, hard of hearing, downright lazy group."
+                </p>
+                <p class="leading-relaxed text-slate-300 mb-4">
+                    "I’ve worked nonstop for days, juggling other responsibilities while trying to finish what should’ve been a team effort. I have essentially had to create the game on my own for <span class="text-red-500">2 days straight with no sleep</span>."
+                </p>
+                <p class="leading-relaxed text-slate-300">
+                    "Sheep pickup code took programmer entire module. Took me just over an hour. And I am not a programmer."
+                </p>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-slate-800 flex gap-8 text-xs text-slate-500">
+                <div>
+                    <strong>FUTURE PLANS:</strong><br>
+                    Build company solo.<br>
+                    Partner with high-profile individuals.<br>
+                    Avoid group projects.
+                </div>
+                <div>
+                    <strong>STATUS:</strong><br>
+                    Vertical Slice: <span class="text-yellow-500">FORCED COMPLETION</span><br>
+                    Morale: <span class="text-red-500">CRITICAL</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const debugTrigger = document.getElementById('debug-trigger');
+        const publicLayer = document.getElementById('public-layer');
+        const devLayer = document.getElementById('dev-layer');
+        const exitDebug = document.getElementById('exit-debug');
+
+        // Reveal the Truth
+        debugTrigger.addEventListener('click', () => {
+            // Animation: Whip the public layer away
+            publicLayer.classList.add('whip-out');
+            
+            // Show the dev layer
+            setTimeout(() => {
+                devLayer.classList.add('active');
+                document.body.style.backgroundColor = "#0f172a";
+            }, 400);
+        });
+
+        // Return to the Facade
+        exitDebug.addEventListener('click', () => {
+            devLayer.classList.remove('active');
+            document.body.style.backgroundColor = "#ffffff";
+            
+            setTimeout(() => {
+                publicLayer.classList.remove('whip-out');
+            }, 100);
+        });
+
+        // Simple Chart for Commit History
+        // Note: Chart.js is loaded but for this simple visual I used CSS bars to keep it lightweight and glitch-free.
+    </script>
+</body>
+</html>

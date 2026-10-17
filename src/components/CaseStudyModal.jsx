@@ -1,14 +1,29 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Gamepad2, Sparkles, Terminal, CheckCircle2, Clapperboard, Award, History, Layers, BookOpen } from 'lucide-react';
+import { X, ExternalLink, Gamepad2, Sparkles, Terminal, CheckCircle2, Clapperboard, Award, History, Layers, BookOpen, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { getAssetUrl, isSpecificRepo, isSpecificLinkedIn } from '../utils/assetUrl';
 
 export default function CaseStudyModal({ project, onClose }) {
   const [activePhaseIndex, setActivePhaseIndex] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+
+  const hasSplitPhases = Boolean(project?.splitPhases && project.splitPhases.length > 0);
+  const currentPhase = hasSplitPhases ? project.splitPhases[activePhaseIndex] : null;
+  const activeGallery = currentPhase?.gallery || project?.gallery || [];
 
   useEffect(() => {
     const handleKeyDown = (e) => {
+      if (lightboxIndex !== null) {
+        if (e.key === 'Escape') {
+          setLightboxIndex(null);
+        } else if (e.key === 'ArrowRight' && activeGallery.length > 0) {
+          setLightboxIndex((prev) => (prev + 1) % activeGallery.length);
+        } else if (e.key === 'ArrowLeft' && activeGallery.length > 0) {
+          setLightboxIndex((prev) => (prev - 1 + activeGallery.length) % activeGallery.length);
+        }
+        return;
+      }
       if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -18,14 +33,11 @@ export default function CaseStudyModal({ project, onClose }) {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'unset';
     };
-  }, [onClose]);
+  }, [onClose, lightboxIndex, activeGallery.length]);
 
   if (!project) return null;
 
   const displayNum = project.number || (project.catalogNumber ? `#${project.catalogNumber}` : '');
-
-  const hasSplitPhases = Boolean(project?.splitPhases && project.splitPhases.length > 0);
-  const currentPhase = hasSplitPhases ? project.splitPhases[activePhaseIndex] : null;
 
   const activeTitle = currentPhase ? currentPhase.title : project.title;
   const activeSubtitle = currentPhase ? currentPhase.phaseSubtitle : (project.tagline || project.categoryLabel);
@@ -34,7 +46,6 @@ export default function CaseStudyModal({ project, onClose }) {
   const activeDeepDive = currentPhase ? currentPhase.technicalDeepDive : project.technicalDeepDive;
   const activeVideo = currentPhase?.video !== undefined ? currentPhase.video : project.video;
   const activeImage = currentPhase?.image || project.image;
-  const activeGallery = currentPhase?.gallery || project.gallery;
 
   const youtubeId =
     currentPhase?.youtubeId ||
@@ -85,13 +96,19 @@ export default function CaseStudyModal({ project, onClose }) {
                 {project.discipline || project.categoryLabel}
               </span>
               {isRastacatsL6Showcase && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-violet-950/80 border border-violet-500/40 text-violet-300" title="Selected as the sole Level 5 project to exhibit downstairs alongside final graduating Level 6 games at the Royal Docks Centre for Sustainability">
+                <span
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-violet-950/80 border border-violet-500/40 text-violet-300"
+                  title="Selected as the sole Level 5 project to exhibit downstairs alongside final graduating Level 6 games at the Royal Docks Centre for Sustainability"
+                >
                   <Award className="w-3.5 h-3.5 text-violet-400" />
                   Showcased!
                 </span>
               )}
               {isDeliriumL5Showcase && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-purple-950/80 border border-purple-500/40 text-purple-300" title="The sole fully working, playable VR project in the Level 5 showcase, demoed live with custom seated wheelchair physics and OpenXR head tracking">
+                <span
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-purple-950/80 border border-purple-500/40 text-purple-300"
+                  title="The sole fully working, playable VR project in the Level 5 showcase, demoed live with custom seated wheelchair physics and OpenXR head tracking"
+                >
                   <Award className="w-3.5 h-3.5 text-purple-400" />
                   Showcased!
                 </span>
@@ -137,7 +154,10 @@ export default function CaseStudyModal({ project, onClose }) {
                     return (
                       <button
                         key={phase.id || idx}
-                        onClick={() => setActivePhaseIndex(idx)}
+                        onClick={() => {
+                          setActivePhaseIndex(idx);
+                          setLightboxIndex(null);
+                        }}
                         className={`py-3.5 px-4 rounded-xl text-left transition-all cursor-pointer border flex flex-col justify-between gap-2 ${
                           isSelected
                             ? 'bg-gradient-to-r from-indigo-950/90 via-indigo-900/80 to-violet-950/90 border-indigo-400 text-white shadow-lg shadow-indigo-950/60 ring-1 ring-indigo-400/50'
@@ -226,22 +246,26 @@ export default function CaseStudyModal({ project, onClose }) {
               </p>
             </div>
 
-            {/* Concept Artwork & Production Gallery (if available) */}
+            {/* Concept Artwork & Production Gallery (with In-Modal Lightbox) */}
             {activeGallery && activeGallery.length > 0 && (
               <div className="bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6">
-                <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 mb-4 flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-indigo-400" />
-                  Authentic Coursework Concept Art & Model Sheets
-                </h4>
+                <div className="flex items-center justify-between mb-4">
+                  <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-indigo-400" />
+                    Authentic Coursework Captures, Concept Art & Diagrams ({activeGallery.length})
+                  </h4>
+                  <span className="text-[11px] font-mono text-slate-400 hidden sm:inline">
+                    Click any image to expand
+                  </span>
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {activeGallery.map((artSrc, aIdx) => (
-                    <a
+                    <button
                       key={aIdx}
-                      href={getAssetUrl(artSrc)}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="rounded-xl overflow-hidden border border-white/10 bg-slate-950 aspect-[4/3] group relative block cursor-pointer"
-                      title="Click to view full resolution"
+                      type="button"
+                      onClick={() => setLightboxIndex(aIdx)}
+                      className="rounded-xl overflow-hidden border border-white/10 hover:border-indigo-500/50 bg-slate-950 aspect-[4/3] group relative block cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      title="Click to inspect in full-screen lightbox"
                     >
                       <img
                         src={getAssetUrl(artSrc)}
@@ -249,10 +273,11 @@ export default function CaseStudyModal({ project, onClose }) {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-xs font-mono text-white/90 font-medium">
-                        View Full Resolution ↗
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1.5 text-xs font-mono text-white/95 font-medium">
+                        <ZoomIn className="w-4 h-4 text-indigo-400" />
+                        <span>Inspect Image</span>
                       </div>
-                    </a>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -315,7 +340,6 @@ export default function CaseStudyModal({ project, onClose }) {
                 </p>
               </div>
             )}
-
           </div>
 
           {/* Modal Footer Links */}
@@ -339,7 +363,7 @@ export default function CaseStudyModal({ project, onClose }) {
 
               {project.links?.video && !youtubeId && (
                 <a
-                  href={project.links.video}
+                  href={getAssetUrl(project.links.video)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-xs tracking-wider uppercase transition-colors"
@@ -398,6 +422,74 @@ export default function CaseStudyModal({ project, onClose }) {
             </div>
           </div>
         </motion.div>
+
+        {/* Full-Screen Lightbox Overlay */}
+        {lightboxIndex !== null && activeGallery[lightboxIndex] && (
+          <div
+            onClick={() => setLightboxIndex(null)}
+            className="fixed inset-0 z-[60] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4"
+          >
+            <button
+              type="button"
+              onClick={() => setLightboxIndex(null)}
+              className="absolute top-5 right-5 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white cursor-pointer"
+              aria-label="Close image preview"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {activeGallery.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxIndex((prev) => (prev - 1 + activeGallery.length) % activeGallery.length);
+                  }}
+                  className="absolute left-4 sm:left-8 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white cursor-pointer"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxIndex((prev) => (prev + 1) % activeGallery.length);
+                  }}
+                  className="absolute right-4 sm:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white cursor-pointer"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </>
+            )}
+
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="max-w-5xl max-h-[85vh] flex flex-col items-center gap-3"
+            >
+              <img
+                src={getAssetUrl(activeGallery[lightboxIndex])}
+                alt={`${activeTitle} full resolution ${lightboxIndex + 1}`}
+                className="max-w-full max-h-[78vh] object-contain rounded-2xl border border-white/15 shadow-2xl"
+              />
+              <div className="flex items-center gap-4 text-xs font-mono text-slate-300">
+                <span>
+                  Image {lightboxIndex + 1} of {activeGallery.length}
+                </span>
+                <a
+                  href={getAssetUrl(activeGallery[lightboxIndex])}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-indigo-400 hover:text-indigo-300 underline"
+                >
+                  Open Raw File ↗
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </AnimatePresence>
   );

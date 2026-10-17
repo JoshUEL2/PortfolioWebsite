@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, Menu, X, ArrowUpRight, Sparkles, ArrowLeft } from 'lucide-react';
+import { Gamepad2, Menu, X, ArrowUpRight, Sparkles, FileText } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { ALL_PROJECTS } from '../data/allProjectsData';
+import { getAssetUrl } from '../utils/assetUrl';
 
 export default function Navbar({ currentView = 'featured', onViewChange }) {
   const [scrolled, setScrolled] = useState(false);
@@ -33,7 +35,7 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
   }, [currentView]);
 
   const navLinks = [
-    { id: 'portfolio', label: 'PORTFOLIO' },
+    { id: 'portfolio', label: 'FEATURED' },
     { id: 'disciplines', label: 'DISCIPLINES' },
     { id: 'about', label: 'ABOUT' },
     { id: 'contact', label: 'CONTACT' },
@@ -57,7 +59,7 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
           const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
           window.scrollTo({ top: y, behavior: 'smooth' });
         }
-      }, 50);
+      }, 60);
       return;
     }
 
@@ -82,7 +84,7 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
               : 'bg-[#090b16]/70 backdrop-blur-md border border-white/10 shadow-lg'
           }`}
         >
-          {/* Brand & Instant Home Reset (0s Latency) */}
+          {/* Brand & Instant Home Reset */}
           <button
             onClick={handleBrandClick}
             className="flex items-center gap-2.5 text-left group cursor-pointer"
@@ -101,59 +103,59 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
             </div>
           </button>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links (Persistent across both Featured and All Games views!) */}
           <div className="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/[0.06] rounded-full p-1">
-            {currentView === 'featured' ? (
-              <>
-                {navLinks.map((link) => {
-                  const isActive = activeSection === link.id;
-                  return (
-                    <button
-                      key={link.id}
-                      onClick={() => scrollTo(link.id)}
-                      className={`relative px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-200 cursor-pointer ${
-                        isActive ? 'text-white' : 'text-slate-400 hover:text-slate-200'
-                      }`}
-                    >
-                      {isActive && (
-                        <motion.div
-                          layoutId="navPill"
-                          transition={{ type: 'spring', stiffness: 450, damping: 30 }}
-                          className="absolute inset-0 bg-indigo-600/30 border border-indigo-500/40 rounded-full -z-10"
-                        />
-                      )}
-                      {link.label}
-                    </button>
-                  );
-                })}
+            {navLinks.map((link) => {
+              const isActive = currentView === 'featured' && activeSection === link.id;
+              return (
+                <button
+                  key={link.id}
+                  onClick={() => scrollTo(link.id)}
+                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-200 cursor-pointer ${
+                    isActive ? 'text-white' : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="navPill"
+                      transition={{ type: 'spring', stiffness: 450, damping: 30 }}
+                      className="absolute inset-0 bg-indigo-600/30 border border-indigo-500/40 rounded-full -z-10"
+                    />
+                  )}
+                  {link.label}
+                </button>
+              );
+            })}
 
-                {/* Switch to All Games View */}
-                <button
-                  onClick={() => onViewChange && onViewChange('all-projects')}
-                  className="relative px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider text-indigo-300 hover:text-white bg-indigo-950/60 hover:bg-indigo-900/60 border border-indigo-500/35 transition-all ml-1 flex items-center gap-1.5 cursor-pointer shadow-sm"
-                >
-                  <Gamepad2 className="w-3.5 h-3.5 text-indigo-400" />
-                  <span>ALL GAMES (17)</span>
-                </button>
-              </>
-            ) : (
-              <>
-                <button
-                  onClick={() => onViewChange && onViewChange('featured')}
-                  className="relative px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider text-slate-300 hover:text-white flex items-center gap-1.5 cursor-pointer transition-colors"
-                >
-                  <ArrowLeft className="w-3.5 h-3.5 text-indigo-400" />
-                  <span>FEATURED SHOWCASE</span>
-                </button>
-                <div className="relative px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider text-white bg-indigo-600/40 border border-indigo-500/50 shadow-md">
-                  ALL GAMES ARCHIVE (17)
-                </div>
-              </>
-            )}
+            {/* Switch to All Games View */}
+            <button
+              onClick={() => onViewChange && onViewChange(currentView === 'all-projects' ? 'featured' : 'all-projects')}
+              className={`relative px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all ml-1 flex items-center gap-1.5 cursor-pointer shadow-sm ${
+                currentView === 'all-projects'
+                  ? 'text-white bg-indigo-600/50 border border-indigo-400/60 shadow-indigo-900/40'
+                  : 'text-indigo-300 hover:text-white bg-indigo-950/60 hover:bg-indigo-900/60 border border-indigo-500/35'
+              }`}
+            >
+              <Gamepad2 className="w-3.5 h-3.5 text-indigo-300" />
+              <span>ALL GAMES ({ALL_PROJECTS.length})</span>
+            </button>
           </div>
 
-          {/* Social Links & Mobile Toggle */}
+          {/* Social Links, CV & Mobile Toggle */}
           <div className="flex items-center gap-2">
+            {PERSONAL_INFO.cv && (
+              <a
+                href={getAssetUrl(PERSONAL_INFO.cv)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden lg:inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-white/[0.05] hover:bg-white/[0.12] text-slate-200 hover:text-white border border-white/10 transition-all hover:scale-105"
+                title="View CV (PDF)"
+              >
+                <FileText className="w-3.5 h-3.5 text-indigo-400" />
+                <span>CV</span>
+              </a>
+            )}
+
             <a
               href={PERSONAL_INFO.linkedin}
               target="_blank"
@@ -226,23 +228,33 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
                 }}
                 className="w-full text-left py-2.5 px-4 rounded-xl text-sm font-semibold tracking-wider text-indigo-300 hover:bg-indigo-600/30 hover:text-white transition-all flex items-center justify-between cursor-pointer bg-indigo-950/40 border border-indigo-500/30"
               >
-                <span>ALL 17 GAMES & PROTOTYPES</span>
+                <span>ALL {ALL_PROJECTS.length} GAMES & PROTOTYPES</span>
                 <Gamepad2 className="w-4 h-4 text-indigo-400" />
               </button>
 
-              {currentView === 'featured' &&
-                navLinks.map((link) => (
-                  <button
-                    key={link.id}
-                    onClick={() => scrollTo(link.id)}
-                    className="w-full text-left py-2 px-4 rounded-xl text-xs font-semibold tracking-wider text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-all flex items-center justify-between cursor-pointer"
-                  >
-                    <span>{link.label}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 opacity-50" />
-                  </button>
-                ))}
+              {navLinks.map((link) => (
+                <button
+                  key={link.id}
+                  onClick={() => scrollTo(link.id)}
+                  className="w-full text-left py-2 px-4 rounded-xl text-xs font-semibold tracking-wider text-slate-400 hover:bg-white/5 hover:text-slate-200 transition-all flex items-center justify-between cursor-pointer"
+                >
+                  <span>{link.label}</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 opacity-50" />
+                </button>
+              ))}
 
-              <div className="pt-4 mt-2 border-t border-white/10 flex items-center justify-around">
+              <div className="pt-4 mt-2 border-t border-white/10 flex flex-wrap items-center justify-around gap-2">
+                {PERSONAL_INFO.cv && (
+                  <a
+                    href={getAssetUrl(PERSONAL_INFO.cv)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-xs text-white font-medium py-2 px-3 rounded-lg bg-indigo-600/30 border border-indigo-500/40"
+                  >
+                    <FileText className="w-4 h-4 text-indigo-300" />
+                    CV (PDF)
+                  </a>
+                )}
                 <a
                   href={PERSONAL_INFO.linkedin}
                   target="_blank"

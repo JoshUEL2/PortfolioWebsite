@@ -140,6 +140,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, index) => {
             const isTopScore = project.title.includes('92%') || project.shortDesc?.includes('92%');
+            const isHighFirstClass = project.title.includes('78%') || project.shortDesc?.includes('78%');
             const isFirstClass = project.title.includes('72%') || project.shortDesc?.includes('72%');
             const youtubeId = project.youtubeId || (project.links?.video ? project.links.video.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/)?.[1] : null);
             const isRastacatsL6Showcase =
@@ -235,7 +236,13 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                           <span>92% 1st Class</span>
                         </div>
                       )}
-                      {isFirstClass && !isTopScore && (
+                      {isHighFirstClass && !isTopScore && (
+                        <div className="px-2 py-0.5 rounded-md bg-emerald-950/90 border border-emerald-500/40 text-[10px] font-bold text-emerald-300 flex items-center gap-1 shadow-md">
+                          <Award className="w-3 h-3 text-emerald-400" />
+                          <span>78% 1st Class</span>
+                        </div>
+                      )}
+                      {isFirstClass && !isTopScore && !isHighFirstClass && (
                         <div className="px-2 py-0.5 rounded-md bg-emerald-950/90 border border-emerald-500/40 text-[10px] font-bold text-emerald-300 flex items-center gap-1 shadow-md">
                           <Award className="w-3 h-3 text-emerald-400" />
                           <span>72% 1st Class</span>

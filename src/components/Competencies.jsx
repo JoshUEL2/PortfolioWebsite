@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { Gamepad2, Palette, BookOpen, Cpu, ShieldCheck, Sparkles, Terminal } from 'lucide-react';
-import { DISCIPLINES } from '../data/portfolioData';
+import { Gamepad2, Palette, BookOpen, Cpu, ShieldCheck, Sparkles, Terminal, ExternalLink, Wrench } from 'lucide-react';
+import { DISCIPLINES, HARDWARE_AND_SYSTEMS_MINI } from '../data/portfolioData';
+import { GithubIcon } from './Icons';
 
 const iconMap = {
   Gamepad2,
@@ -23,7 +24,7 @@ export default function Competencies() {
           Disciplines & Technical Competencies
         </h2>
         <p className="text-slate-300 text-base sm:text-lg">
-          A rare dual-threat skillset uniting low-level game engine math with high-level ludonarrative architecture and hardware prototyping.
+          A rare dual-threat skillset uniting low-level game engine mathematics with high-level ludonarrative architecture and hardware prototyping.
         </p>
       </div>
 
@@ -81,6 +82,76 @@ export default function Competencies() {
           );
         })}
       </div>
+
+      {/* Compact Hardware, Mocap & Systems Engineering Strip */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.45 }}
+        className="mt-10 rounded-2xl bg-[#090b16]/90 border border-white/10 p-5 sm:p-6 backdrop-blur-xl"
+      >
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+          <div className="flex items-center gap-2">
+            <Wrench className="w-4 h-4 text-indigo-400" />
+            <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white font-mono">
+              Beyond Games • Hardware, Mocap & Systems Lab
+            </h3>
+          </div>
+          <span className="text-[11px] text-slate-400 font-mono">
+            Independent R&D, USB HID Reverse-Engineering & Tooling
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          {HARDWARE_AND_SYSTEMS_MINI.map((sys) => (
+            <div
+              key={sys.id}
+              className="p-3.5 rounded-xl bg-white/[0.02] hover:bg-white/[0.04] border border-white/[0.06] flex flex-col justify-between transition-colors"
+            >
+              <div>
+                <div className="flex items-start justify-between gap-2 mb-1">
+                  <h4 className="text-xs font-bold text-white leading-snug">
+                    {sys.title}
+                  </h4>
+                  <div className="flex items-center gap-1 shrink-0">
+                    {sys.github && (
+                      <a
+                        href={sys.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${sys.title} GitHub`}
+                        className="text-slate-400 hover:text-white transition-colors"
+                        title="View Repository"
+                      >
+                        <GithubIcon className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    {sys.link && (
+                      <a
+                        href={sys.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${sys.title} Live Demo`}
+                        className="text-indigo-400 hover:text-indigo-300 transition-colors"
+                        title="Launch App"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+                <div className="text-[10px] font-mono text-indigo-300/90 mb-1.5">
+                  {sys.tech}
+                </div>
+                <p className="text-[11px] text-slate-400 leading-relaxed">
+                  {sys.summary}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 }

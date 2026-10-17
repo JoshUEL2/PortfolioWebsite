@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Sparkles, Gamepad2, Terminal, Code2, Trophy } from 'lucide-react';
+import { ArrowDown, Sparkles, Gamepad2, Terminal, Code2, Trophy, FileText } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { getAssetUrl } from '../utils/assetUrl';
 
 export default function Hero({ onExploreClick }) {
   const containerVariants = {
@@ -70,7 +71,7 @@ export default function Hero({ onExploreClick }) {
         >
           London-based Technical Game Designer & Systems Architect bridging low-level{' '}
           <strong className="text-white font-semibold">Unreal Engine 5 gameplay physics</strong>, bespoke{' '}
-          <strong className="text-white font-semibold">Kuwahara & WPO shader math</strong>, and nuanced{' '}
+          <strong className="text-white font-semibold">Kuwahara & WPO shader mathematics</strong>, and nuanced{' '}
           <strong className="text-white font-semibold">ludonarrative architecture</strong>.
         </motion.p>
 
@@ -82,15 +83,15 @@ export default function Hero({ onExploreClick }) {
           </span>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-xs font-mono text-slate-300">
             <Code2 className="w-3.5 h-3.5 text-indigo-400" />
-            360° Rotational Gravity Math
+            360° Rotational Gravity Maths
           </span>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-xs font-mono text-slate-300">
             <Terminal className="w-3.5 h-3.5 text-violet-400" />
-            Kuwahara Post-Processing
+            Kuwahara Watercolour Shaders
           </span>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/[0.04] border border-white/10 text-xs font-mono text-slate-300">
             <Gamepad2 className="w-3.5 h-3.5 text-rose-400" />
-            Project K.I.N.E.T.I.C. Mocap Rig
+            OpenXR Seated VR Physics
           </span>
         </motion.div>
 
@@ -98,7 +99,7 @@ export default function Hero({ onExploreClick }) {
         <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-4 mb-16">
           <button
             onClick={onExploreClick}
-            className="px-7 py-3.5 rounded-full bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 text-white font-semibold text-sm shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] hover:scale-105 active:scale-95 transition-all duration-200 flex items-center gap-2 group"
+            className="px-7 py-3.5 rounded-full bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 text-white font-semibold text-sm shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] hover:scale-105 active:scale-95 transition-all duration-200 flex items-center gap-2 group cursor-pointer"
           >
             <span>Explore Flagship Projects</span>
             <ArrowDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
@@ -114,12 +115,17 @@ export default function Hero({ onExploreClick }) {
             <span>Play Itch.io Builds</span>
           </a>
 
-          <a
-            href="#contact"
-            className="px-6 py-3.5 rounded-full bg-white/[0.02] hover:bg-white/[0.06] text-slate-300 hover:text-white font-semibold text-sm border border-white/5 hover:border-white/15 transition-all duration-200"
-          >
-            Get In Touch
-          </a>
+          {PERSONAL_INFO.cv && (
+            <a
+              href={getAssetUrl(PERSONAL_INFO.cv)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] text-slate-200 hover:text-white font-semibold text-sm border border-white/10 hover:border-indigo-500/40 transition-all duration-200 flex items-center gap-2"
+            >
+              <FileText className="w-4 h-4 text-indigo-400" />
+              <span>View CV (PDF)</span>
+            </a>
+          )}
         </motion.div>
 
         {/* Metric Ticker */}

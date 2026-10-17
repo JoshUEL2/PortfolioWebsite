@@ -14,6 +14,8 @@ export default function ProjectCard({ project, onSelectProject }) {
   // Grade & Exhibition commendations
   const isTopScore =
     project.tagline?.includes('92%') || project.title?.includes('92%') || project.shortDesc?.includes('92%');
+  const isHighFirstClass =
+    project.tagline?.includes('78%') || project.title?.includes('78%') || project.shortDesc?.includes('78%');
   const isFirstClass =
     project.tagline?.includes('72%') || project.title?.includes('72%') || project.shortDesc?.includes('72%');
   const isRastacatsL6Showcase =
@@ -25,6 +27,13 @@ export default function ProjectCard({ project, onSelectProject }) {
     Boolean(project.links?.demo) &&
     !project.links.demo.includes('github.com') &&
     !project.links.demo.includes('itch.io');
+
+  const handleKeyActivate = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onSelectProject(project);
+    }
+  };
 
   return (
     <motion.div
@@ -39,8 +48,8 @@ export default function ProjectCard({ project, onSelectProject }) {
         {/* Left Column: Details & Technical Highlights */}
         <div className="lg:col-span-7 flex flex-col justify-between">
           <div>
-            {/* Header: Number, Discipline & Engine */}
-            <div className="flex flex-wrap items-center gap-3 mb-4">
+            {/* Header: Number, Discipline, Status Tag & Engine */}
+            <div className="flex flex-wrap items-center gap-2.5 mb-4">
               <span className="font-mono text-3xl md:text-4xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">
                 {project.number}
               </span>
@@ -50,6 +59,30 @@ export default function ProjectCard({ project, onSelectProject }) {
                 {project.discipline}
               </span>
 
+              {/* Status Colour Tag (from MS5022 Portfolio Design Spec) */}
+              {project.statusTag && (
+                <span
+                  className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase border ${
+                    project.statusTag.color === 'emerald'
+                      ? 'bg-emerald-950/80 border-emerald-500/40 text-emerald-300'
+                      : project.statusTag.color === 'amber'
+                      ? 'bg-amber-950/80 border-amber-500/40 text-amber-300'
+                      : 'bg-sky-950/80 border-sky-500/40 text-sky-300'
+                  }`}
+                >
+                  <span
+                    className={`w-1.5 h-1.5 rounded-full ${
+                      project.statusTag.color === 'emerald'
+                        ? 'bg-emerald-400'
+                        : project.statusTag.color === 'amber'
+                        ? 'bg-amber-400'
+                        : 'bg-sky-400'
+                    }`}
+                  />
+                  {project.statusTag.label}
+                </span>
+              )}
+
               {/* Special Recognition Ribbons */}
               {isTopScore && (
                 <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase bg-emerald-950/80 border border-emerald-500/40 text-emerald-300">
@@ -57,20 +90,32 @@ export default function ProjectCard({ project, onSelectProject }) {
                   92% 1st Class
                 </span>
               )}
-              {isFirstClass && (
+              {isHighFirstClass && !isTopScore && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase bg-emerald-950/80 border border-emerald-500/40 text-emerald-300">
+                  <Award className="w-3 h-3 text-emerald-400" />
+                  78% 1st Class
+                </span>
+              )}
+              {isFirstClass && !isTopScore && !isHighFirstClass && (
                 <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase bg-emerald-950/80 border border-emerald-500/40 text-emerald-300">
                   <Award className="w-3 h-3 text-emerald-400" />
                   72% 1st Class
                 </span>
               )}
               {isRastacatsL6Showcase && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase bg-violet-950/80 border border-violet-500/40 text-violet-300" title="Selected as the sole Level 5 project to exhibit downstairs alongside final graduating Level 6 games at the Royal Docks Centre for Sustainability">
+                <span
+                  className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase bg-violet-950/80 border border-violet-500/40 text-violet-300"
+                  title="Selected as the sole Level 5 project to exhibit downstairs alongside final graduating Level 6 games at the Royal Docks Centre for Sustainability"
+                >
                   <Award className="w-3 h-3 text-violet-400" />
                   Showcased!
                 </span>
               )}
               {isDeliriumL5Showcase && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase bg-purple-950/80 border border-purple-500/40 text-purple-300" title="The sole fully working, playable VR project in the Level 5 showcase, demoed live with custom seated wheelchair physics and OpenXR head tracking">
+                <span
+                  className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase bg-purple-950/80 border border-purple-500/40 text-purple-300"
+                  title="The sole fully working, playable VR project in the Level 5 showcase, demoed live with custom seated wheelchair physics and OpenXR head tracking"
+                >
                   <Award className="w-3 h-3 text-purple-400" />
                   Showcased!
                 </span>
@@ -82,7 +127,10 @@ export default function ProjectCard({ project, onSelectProject }) {
             </div>
 
             {/* Title */}
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-2 font-['Syne',sans-serif] group-hover:text-indigo-200 transition-colors">
+            <h3
+              onClick={() => onSelectProject(project)}
+              className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-2 font-['Syne',sans-serif] group-hover:text-indigo-200 transition-colors cursor-pointer"
+            >
               {project.title}
             </h3>
 
@@ -137,9 +185,20 @@ export default function ProjectCard({ project, onSelectProject }) {
               </a>
             )}
 
+            {project.links?.gdd && (
+              <a
+                href={getAssetUrl(project.links.gdd)}
+                download
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-600/25 hover:bg-amber-600/40 text-amber-200 font-semibold text-xs tracking-wider uppercase border border-amber-500/40 hover:scale-105 active:scale-95 transition-all"
+              >
+                <BookOpen className="w-4 h-4 text-amber-300" />
+                <span>Download GDD</span>
+              </a>
+            )}
+
             {project.links?.video && !youtubeId && (
               <a
-                href={project.links.video}
+                href={getAssetUrl(project.links.video)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-semibold text-xs tracking-wider uppercase shadow-md shadow-red-900/40 hover:scale-105 active:scale-95 transition-all"
@@ -200,8 +259,12 @@ export default function ProjectCard({ project, onSelectProject }) {
           {project.video ? (
             /* Local Coursework Testing Video Loop */
             <div
+              role="button"
+              tabIndex={0}
               onClick={() => onSelectProject(project)}
-              className="relative group/vid cursor-pointer overflow-hidden rounded-2xl bg-black border border-white/15 shadow-2xl aspect-[16/10] flex items-center justify-center"
+              onKeyDown={handleKeyActivate}
+              aria-label={`Open ${project.title} case study`}
+              className="relative group/vid cursor-pointer overflow-hidden rounded-2xl bg-black border border-white/15 shadow-2xl aspect-[16/10] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               <video
                 autoPlay
@@ -254,8 +317,12 @@ export default function ProjectCard({ project, onSelectProject }) {
           ) : (
             /* Clean Concept / Game Art Viewport */
             <div
+              role="button"
+              tabIndex={0}
               onClick={() => onSelectProject(project)}
-              className="relative group/img cursor-pointer overflow-hidden rounded-2xl bg-slate-950 border border-white/15 shadow-2xl aspect-[16/10] flex items-center justify-center"
+              onKeyDown={handleKeyActivate}
+              aria-label={`Open ${project.title} case study`}
+              className="relative group/img cursor-pointer overflow-hidden rounded-2xl bg-slate-950 border border-white/15 shadow-2xl aspect-[16/10] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               <img
                 src={getAssetUrl(project.image)}

@@ -10,63 +10,92 @@ import {
   Building2,
   Cpu,
   Radio,
+  BookOpen,
+  GraduationCap,
   X,
   Sparkles,
   CheckCircle2,
   ChevronRight,
-  RotateCcw
+  RotateCcw,
+  Maximize2
 } from 'lucide-react';
-import { PERSONAL_INFO, ACADEMIC_MODULES, DOSSIER_CREDENTIALS } from '../data/portfolioData';
+import {
+  PERSONAL_INFO,
+  ACADEMIC_MODULES,
+  DOSSIER_CREDENTIALS,
+  SHOWCASE_EXHIBITIONS
+} from '../data/portfolioData';
 import { getAssetUrl } from '../utils/assetUrl';
 
 const CREDENTIAL_ICONS = {
   theatre: Clapperboard,
-  exhibition: Award,
+  governance: GraduationCap,
+  studio: Radio,
+  editorial: BookOpen,
   cyber: ShieldCheck,
-  robotics: Cpu,
-  studio: Radio
+  robotics: Cpu
 };
 
 const CREDENTIAL_THEME_STYLES = {
   theatre: {
-    cardAccent: 'border-rose-500/40 hover:border-rose-400 bg-gradient-to-br from-[#1b0b12] via-[#0c121e] to-[#0c121e]',
+    cardAccent:
+      'border-rose-500/40 hover:border-rose-400 bg-gradient-to-br from-[#1b0b12] via-[#0c121e] to-[#0c121e]',
     iconBox: 'bg-rose-950/80 text-rose-300 border-rose-500/40',
     badgeText: 'text-rose-300 bg-rose-950/70 border-rose-500/40',
-    modalBg: 'bg-[radial-gradient(ellipse_at_top,#4c0519_0%,#1c060c_55%,#090406_100%)] border-amber-400/50',
+    modalBg:
+      'bg-[radial-gradient(ellipse_at_top,#4c0519_0%,#1c060c_55%,#090406_100%)] border-amber-400/50',
     headerAccent: 'text-amber-300',
     whyBox: 'bg-rose-950/40 border-amber-400/60 text-amber-50'
   },
-  exhibition: {
-    cardAccent: 'border-amber-500/35 hover:border-amber-400 bg-gradient-to-br from-[#191309] via-[#0c121e] to-[#0c121e]',
+  governance: {
+    cardAccent:
+      'border-amber-500/35 hover:border-amber-400 bg-gradient-to-br from-[#191309] via-[#0c121e] to-[#0c121e]',
     iconBox: 'bg-amber-950/80 text-amber-300 border-amber-500/40',
     badgeText: 'text-amber-300 bg-amber-950/70 border-amber-500/40',
-    modalBg: 'bg-[radial-gradient(ellipse_at_top,#3b2506_0%,#14110b_60%,#080a0f_100%)] border-amber-400/45',
+    modalBg:
+      'bg-[radial-gradient(ellipse_at_top,#3b2506_0%,#14110b_60%,#080a0f_100%)] border-amber-400/45',
     headerAccent: 'text-amber-300',
     whyBox: 'bg-amber-950/35 border-amber-400/60 text-amber-50'
   },
+  studio: {
+    cardAccent:
+      'border-purple-500/35 hover:border-purple-400 bg-gradient-to-br from-[#160d24] via-[#0c121e] to-[#0c121e]',
+    iconBox: 'bg-purple-950/80 text-purple-300 border-purple-500/40',
+    badgeText: 'text-purple-300 bg-purple-950/70 border-purple-500/40',
+    modalBg:
+      'bg-[radial-gradient(ellipse_at_top,#2e1065_0%,#130924_60%,#07050c_100%)] border-purple-400/45',
+    headerAccent: 'text-purple-300',
+    whyBox: 'bg-purple-950/35 border-purple-400/60 text-purple-50'
+  },
+  editorial: {
+    cardAccent:
+      'border-fuchsia-500/35 hover:border-fuchsia-400 bg-gradient-to-br from-[#1c0c1f] via-[#0c121e] to-[#0c121e]',
+    iconBox: 'bg-fuchsia-950/80 text-fuchsia-300 border-fuchsia-500/40',
+    badgeText: 'text-fuchsia-300 bg-fuchsia-950/70 border-fuchsia-500/40',
+    modalBg:
+      'bg-[radial-gradient(ellipse_at_top,#4a044e_0%,#18081c_60%,#08050a_100%)] border-fuchsia-400/45',
+    headerAccent: 'text-fuchsia-300',
+    whyBox: 'bg-fuchsia-950/35 border-fuchsia-400/60 text-fuchsia-50'
+  },
   cyber: {
-    cardAccent: 'border-emerald-500/35 hover:border-emerald-400 bg-gradient-to-br from-[#071914] via-[#0c121e] to-[#0c121e]',
+    cardAccent:
+      'border-emerald-500/35 hover:border-emerald-400 bg-gradient-to-br from-[#071914] via-[#0c121e] to-[#0c121e]',
     iconBox: 'bg-emerald-950/80 text-emerald-300 border-emerald-500/40',
     badgeText: 'text-emerald-300 bg-emerald-950/70 border-emerald-500/40',
-    modalBg: 'bg-[radial-gradient(ellipse_at_top,#063729_0%,#071512_60%,#050a09_100%)] border-emerald-400/45',
+    modalBg:
+      'bg-[radial-gradient(ellipse_at_top,#063729_0%,#071512_60%,#050a09_100%)] border-emerald-400/45',
     headerAccent: 'text-emerald-300',
     whyBox: 'bg-emerald-950/35 border-emerald-400/60 text-emerald-50'
   },
   robotics: {
-    cardAccent: 'border-sky-500/35 hover:border-sky-400 bg-gradient-to-br from-[#091826] via-[#0c121e] to-[#0c121e]',
+    cardAccent:
+      'border-sky-500/35 hover:border-sky-400 bg-gradient-to-br from-[#091826] via-[#0c121e] to-[#0c121e]',
     iconBox: 'bg-sky-950/80 text-sky-300 border-sky-500/40',
     badgeText: 'text-sky-300 bg-sky-950/70 border-sky-500/40',
-    modalBg: 'bg-[radial-gradient(ellipse_at_top,#0c2d48_0%,#081420_60%,#050911_100%)] border-sky-400/45',
+    modalBg:
+      'bg-[radial-gradient(ellipse_at_top,#0c2d48_0%,#081420_60%,#050911_100%)] border-sky-400/45',
     headerAccent: 'text-sky-300',
     whyBox: 'bg-sky-950/35 border-sky-400/60 text-sky-50'
-  },
-  studio: {
-    cardAccent: 'border-purple-500/35 hover:border-purple-400 bg-gradient-to-br from-[#160d24] via-[#0c121e] to-[#0c121e]',
-    iconBox: 'bg-purple-950/80 text-purple-300 border-purple-500/40',
-    badgeText: 'text-purple-300 bg-purple-950/70 border-purple-500/40',
-    modalBg: 'bg-[radial-gradient(ellipse_at_top,#2e1065_0%,#130924_60%,#07050c_100%)] border-purple-400/45',
-    headerAccent: 'text-purple-300',
-    whyBox: 'bg-purple-950/35 border-purple-400/60 text-purple-50'
   }
 };
 
@@ -74,6 +103,7 @@ export default function AboutSection() {
   const [activeCredential, setActiveCredential] = useState(null);
   const [selectedPhotoIdx, setSelectedPhotoIdx] = useState(0);
   const [curtainKey, setCurtainKey] = useState(0);
+  const [activeShowcaseSlide, setActiveShowcaseSlide] = useState(null);
 
   const handleOpenCredential = (cred) => {
     setSelectedPhotoIdx(0);
@@ -82,19 +112,41 @@ export default function AboutSection() {
   };
 
   useEffect(() => {
-    if (!activeCredential) return undefined;
+    if (!activeCredential && !activeShowcaseSlide) return undefined;
     const onKeyDown = (e) => {
-      if (e.key === 'Escape') setActiveCredential(null);
+      if (e.key === 'Escape') {
+        setActiveCredential(null);
+        setActiveShowcaseSlide(null);
+      }
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [activeCredential]);
+  }, [activeCredential, activeShowcaseSlide]);
+
+  // Duplicate showcase items for a seamless infinite marquee loop
+  const marqueeItems = [...SHOWCASE_EXHIBITIONS, ...SHOWCASE_EXHIBITIONS];
 
   return (
     <section
       id="about"
       className="relative w-full bg-dossier-grid border-t border-slate-700/70 text-slate-100 overflow-hidden"
     >
+      {/* Inline Keyframes for Smooth Infinite Revolving Showcase Strip */}
+      <style>{`
+        @keyframes showcaseMarquee {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-showcase-strip {
+          display: flex;
+          width: max-content;
+          animation: showcaseMarquee 48s linear infinite;
+        }
+        .animate-showcase-strip:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+
       {/* Top Atmospheric Transition from PCB (#070b09) to Studio Dossier (#080c14) */}
       <div className="h-14 w-full bg-gradient-to-b from-[#070b09] to-transparent pointer-events-none" />
 
@@ -103,12 +155,16 @@ export default function AboutSection() {
         <div className="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-slate-700/80 text-[11px] font-mono uppercase tracking-[0.2em] text-slate-400">
           <div className="flex items-center gap-2.5">
             <Building2 className="w-3.5 h-3.5 text-sky-400" />
-            <span className="text-sky-300 font-bold">STUDIO CANDIDATE DOSSIER &amp; VERIFIED CREDENTIALS</span>
+            <span className="text-sky-300 font-bold">
+              STUDIO CANDIDATE DOSSIER &amp; VERIFIED CREDENTIALS
+            </span>
           </div>
           <div className="flex items-center gap-4">
             <span>REF: JJ-UEL-2026</span>
             <span className="hidden sm:inline text-slate-600">|</span>
-            <span className="hidden sm:inline text-emerald-400">STATUS: AVAILABLE FOR STUDIO ROLES</span>
+            <span className="hidden sm:inline text-emerald-400">
+              STATUS: AVAILABLE FOR STUDIO ROLES
+            </span>
           </div>
         </div>
       </div>
@@ -249,26 +305,27 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Right Column: Interactive Clickable Credential Dossiers */}
+          {/* Right Column: 6 Dedicated Clickable Credential Dossiers */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45 }}
-            className="lg:col-span-5 space-y-3.5"
+            className="lg:col-span-5 space-y-3"
           >
             <div className="flex items-center justify-between px-1 pb-1">
               <span className="text-xs font-mono uppercase tracking-wider text-sky-300 font-bold">
                 Interactive Credentials // Click Any Card
               </span>
               <span className="text-[11px] font-mono text-slate-400">
-                5 Verified Dossiers
+                {DOSSIER_CREDENTIALS.length} Verified Dossiers
               </span>
             </div>
 
             {DOSSIER_CREDENTIALS.map((cred, idx) => {
               const IconComponent = CREDENTIAL_ICONS[cred.theme] || Award;
-              const style = CREDENTIAL_THEME_STYLES[cred.theme] || CREDENTIAL_THEME_STYLES.exhibition;
+              const style =
+                CREDENTIAL_THEME_STYLES[cred.theme] || CREDENTIAL_THEME_STYLES.governance;
               const previewThumb = cred.images?.[0]?.src;
 
               return (
@@ -276,21 +333,23 @@ export default function AboutSection() {
                   key={cred.id}
                   type="button"
                   onClick={() => handleOpenCredential(cred)}
-                  className={`w-full text-left p-4 sm:p-5 rounded-xl border shadow-lg transition-all duration-300 group cursor-pointer hover:-translate-y-0.5 ${style.cardAccent}`}
+                  className={`w-full text-left p-4 rounded-xl border shadow-lg transition-all duration-300 group cursor-pointer hover:-translate-y-0.5 ${style.cardAccent}`}
                 >
-                  <div className="flex items-center justify-between gap-2 mb-2.5">
+                  <div className="flex items-center justify-between gap-2 mb-2">
                     <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">
                       CREDENTIAL 0{idx + 1} // {cred.category}
                     </span>
-                    <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded border text-[10px] font-mono font-bold uppercase tracking-wider ${style.badgeText}`}>
+                    <span
+                      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded border text-[10px] font-mono font-bold uppercase tracking-wider shrink-0 ${style.badgeText}`}
+                    >
                       <span>{cred.badge}</span>
                       <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                     </span>
                   </div>
 
-                  <div className="flex items-start gap-3.5">
+                  <div className="flex items-start gap-3">
                     {previewThumb ? (
-                      <div className="w-16 h-16 rounded-lg overflow-hidden border border-white/15 shrink-0 relative">
+                      <div className="w-14 h-14 rounded-lg overflow-hidden border border-white/15 shrink-0 relative">
                         <img
                           src={getAssetUrl(previewThumb)}
                           alt={cred.title}
@@ -305,13 +364,13 @@ export default function AboutSection() {
                     )}
 
                     <div className="min-w-0 flex-1">
-                      <h3 className="font-bold text-white text-sm sm:text-base group-hover:text-sky-300 transition-colors leading-snug">
+                      <h3 className="font-bold text-white text-sm group-hover:text-sky-300 transition-colors leading-snug">
                         {cred.title}
                       </h3>
-                      <p className="text-xs text-slate-300 font-medium mt-0.5">
+                      <p className="text-[11px] text-slate-300 font-medium mt-0.5 line-clamp-1">
                         {cred.subtitle}
                       </p>
-                      <p className="text-xs text-slate-400 mt-2 leading-relaxed line-clamp-2">
+                      <p className="text-xs text-slate-400 mt-1.5 leading-relaxed line-clamp-2">
                         {cred.shortSummary}
                       </p>
                     </div>
@@ -321,7 +380,137 @@ export default function AboutSection() {
             })}
           </motion.div>
         </div>
+
+        {/* REVOLVING LIVE EXHIBITIONS & SHOWCASES STRIP */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-16 pt-12 border-t border-slate-700/80"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+            <div>
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-amber-300 font-bold mb-1">
+                <Award className="w-4 h-4 text-amber-400" />
+                <span>Live Public Exhibitions &amp; Floor Showcases</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-['Syne',sans-serif]">
+                Showcases I&apos;ve Been a Part Of
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 mt-1">
+                Featuring the <strong className="text-white">UEL ACE Showcase 2026</strong> (where <em>Rastacats</em> was the sole Year 2 build chosen for the graduating Final-Year hall) and the <strong className="text-white">Personal Project VR Showcase</strong> (where <em>Delirium VR</em> was the sole working playable VR game on the floor). Hover to pause or click any photo to enlarge.
+              </p>
+            </div>
+            <div className="text-[11px] font-mono text-amber-300/90 uppercase tracking-wider shrink-0">
+              Revolving Gallery • Click Any Frame
+            </div>
+          </div>
+
+          {/* Revolving Strip Container with Left/Right Edge Masks */}
+          <div className="relative w-full overflow-hidden rounded-2xl bg-[#090e18] border border-slate-700/80 py-5 shadow-2xl">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-20 bg-gradient-to-r from-[#090e18] to-transparent z-10"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-20 bg-gradient-to-l from-[#090e18] to-transparent z-10"
+            />
+
+            <div className="animate-showcase-strip gap-5 px-5">
+              {marqueeItems.map((item, idx) => (
+                <button
+                  key={`${item.id}-${idx}`}
+                  type="button"
+                  onClick={() => setActiveShowcaseSlide(item)}
+                  className="w-72 sm:w-80 shrink-0 text-left rounded-xl bg-[#0c1322] border border-slate-700/80 hover:border-amber-400/70 overflow-hidden shadow-lg group transition-all cursor-pointer flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="relative aspect-video w-full overflow-hidden bg-black">
+                      <img
+                        src={getAssetUrl(item.src)}
+                        alt={item.caption}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0c1322] via-transparent to-black/40" />
+                      <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-black/80 border border-amber-400/45 text-[10px] font-mono font-bold uppercase tracking-wider text-amber-300 backdrop-blur-sm">
+                        {item.event}
+                      </span>
+                      <span className="absolute top-2.5 right-2.5 p-1.5 rounded-lg bg-black/75 text-white opacity-0 group-hover:opacity-100 transition-opacity border border-white/15">
+                        <Maximize2 className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
+
+                    <div className="p-4">
+                      <div className="text-[10px] font-mono uppercase tracking-wider text-sky-300 mb-1">
+                        {item.location}
+                      </div>
+                      <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-amber-300 transition-colors leading-snug mb-1.5">
+                        {item.highlight}
+                      </h4>
+                      <p className="text-xs text-slate-300 leading-relaxed line-clamp-2">
+                        {item.caption}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
+
+      {/* Lightbox Modal when Clicking a Revolving Showcase Frame */}
+      <AnimatePresence>
+        {activeShowcaseSlide && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveShowcaseSlide(null)}
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.94, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-4xl w-full rounded-2xl bg-[#0c121e] border border-amber-400/45 overflow-hidden shadow-2xl"
+            >
+              <div className="flex items-center justify-between px-5 py-3.5 bg-black/60 border-b border-white/10">
+                <div>
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-amber-300 font-bold">
+                    {activeShowcaseSlide.event} // {activeShowcaseSlide.location}
+                  </span>
+                  <h4 className="text-base sm:text-lg font-bold text-white">
+                    {activeShowcaseSlide.highlight}
+                  </h4>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveShowcaseSlide(null)}
+                  className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white cursor-pointer"
+                  aria-label="Close showcase photo"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="aspect-video w-full bg-black flex items-center justify-center">
+                <img
+                  src={getAssetUrl(activeShowcaseSlide.src)}
+                  alt={activeShowcaseSlide.caption}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="px-5 py-3.5 bg-[#090e18] border-t border-white/10 text-xs sm:text-sm text-slate-200">
+                {activeShowcaseSlide.caption}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Interactive Credential Modal with Stage Curtain Animation for Theatre */}
       <AnimatePresence>
@@ -337,7 +526,7 @@ export default function AboutSection() {
             {(() => {
               const style =
                 CREDENTIAL_THEME_STYLES[activeCredential.theme] ||
-                CREDENTIAL_THEME_STYLES.exhibition;
+                CREDENTIAL_THEME_STYLES.governance;
               const isTheatre = activeCredential.theme === 'theatre';
               const photos = activeCredential.images || [];
               const currentPhoto = photos[selectedPhotoIdx] || photos[0];
@@ -402,7 +591,9 @@ export default function AboutSection() {
                   {/* Modal Header */}
                   <div className="relative z-20 flex flex-wrap items-center justify-between gap-4 px-6 sm:px-10 pt-7 pb-5 border-b border-white/15 bg-black/40">
                     <div>
-                      <div className={`text-xs font-mono uppercase tracking-[0.2em] font-bold ${style.headerAccent}`}>
+                      <div
+                        className={`text-xs font-mono uppercase tracking-[0.2em] font-bold ${style.headerAccent}`}
+                      >
                         {activeCredential.category}
                       </div>
                       <h3 className="text-xl sm:text-3xl font-extrabold text-white font-['Syne',sans-serif] mt-1">
@@ -460,7 +651,7 @@ export default function AboutSection() {
                       )}
 
                       {photos.length > 1 && (
-                        <div className="grid grid-cols-4 gap-2.5">
+                        <div className="grid grid-cols-4 sm:grid-cols-5 gap-2.5">
                           {photos.map((img, i) => (
                             <button
                               key={img.src}
@@ -510,7 +701,10 @@ export default function AboutSection() {
                         </h4>
                         <ul className="space-y-2">
                           {activeCredential.highlights.map((item) => (
-                            <li key={item} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 leading-relaxed">
+                            <li
+                              key={item}
+                              className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200 leading-relaxed"
+                            >
                               <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                               <span>{item}</span>
                             </li>

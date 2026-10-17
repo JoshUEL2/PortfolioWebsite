@@ -1360,25 +1360,70 @@ export const DOSSIER_CREDENTIALS = [
     ]
   },
   {
-    id: "uel-rep-ace",
-    theme: "exhibition",
-    category: "ACADEMIC LEADERSHIP & LIVE SHOWCASES",
-    title: "UEL School Representative & ACE Showcase Exhibitor",
-    subtitle: "Elected School Representative • Sole Year 2 Game Exhibited in Final-Year Hall",
-    badge: "Click to Inspect Showcase",
-    shortSummary: "Elected School Representative for Computer Games Design at UEL, and selected to exhibit both Rastacats (downstairs main hall) and Delirium VR (upstairs VR suite) at the 2026 ACE Showcase.",
-    whyItMattersForGames: "Proves I can advocate for a cohort at board level, run live public playtests under pressure, and ship builds polished enough to stand alongside graduating final-year studio projects.",
-    story: "At the University of East London, I serve as the elected School Representative, representing Game Design students in faculty boards and curriculum reviews. At the 2026 Arts & Creative Enterprise (ACE) Showcase at the Royal Docks Centre for Sustainability, my arcade runner Rastacats was the only Year 2 (Level 5) project selected to exhibit on the main downstairs floor alongside Final Year (Level 6) graduation games. Simultaneously upstairs, I set up, calibrated, and ran live public demos for our OpenXR horror game Delirium VR.",
+    id: "uel-school-rep",
+    theme: "governance",
+    category: "ACADEMIC LEADERSHIP & GOVERNANCE",
+    title: "UEL School Representative & Sextennial Review Panellist",
+    subtitle: "Elected School Representative (Architecture, Computing & Engineering) • Curriculum Review Board",
+    badge: "Click to Inspect Role",
+    shortSummary: "Elected School Representative for BSc Computer Games Design at the University of East London and invited panellist on the formal Sextennial School Review.",
+    whyItMattersForGames: "Studio production relies on clear cross-discipline advocacy: translating technical bottlenecks, hardware needs, and cohort feedback into actionable improvements with senior leadership.",
+    story: "At the University of East London, I was elected School Representative for the School of Architecture, Computing & Engineering, representing Computer Games Design students across faculty boards. In April 2025, I was also invited to sit as the student representative on the university's formal Sextennial School Review panel, working directly alongside senior university leadership, faculty heads, and external examiners to evaluate studio coursework, lab hardware provisioning, and degree structures.",
     highlights: [
-      "Sole Year 2 developer selected for the Final-Year exhibition hall at the UEL ACE Showcase 2026.",
-      "Configured, debugged, and ran live public VR playtesting sessions for Delirium VR in a dedicated OpenXR room.",
-      "Elected UEL School Representative, bridging communication between students, module leaders, and senior faculty."
+      "Elected School Representative advocating for Computer Games Design students at faculty and school board level.",
+      "Invited Student Panellist on the formal UEL Sextennial School Review (April 2025) alongside external examiners.",
+      "Delivered data-driven feedback on engine lab infrastructure, VR hardware access, and studio module assessment."
     ],
     images: [
-      { src: "/images/dossier/ace_showcase_2026_image_01.jpg", caption: "Live exhibition station at the UEL Royal Docks Centre for Sustainability" },
-      { src: "/images/dossier/ace_showcase_2026_image_02.jpg", caption: "Presenting builds to faculty and visitors at ACE Showcase 2026" },
-      { src: "/images/dossier/personal_project_showcase_2026_image_01.jpg", caption: "Rastacats & Delirium VR exhibition setup" },
-      { src: "/images/dossier/personal_project_showcase_2026_image_02.jpg", caption: "Running live VR hardware demonstrations" }
+      { src: "/images/dossier/ace_showcase_2026_image_02.jpg", caption: "Representing BSc Computer Games Design to faculty and visitors at UEL Royal Docks" },
+      { src: "/images/dossier/ace_showcase_2026_image_04.jpg", caption: "Discussing technical game builds with UEL faculty and external guests" },
+      { src: "/images/dossier/ace_showcase_2026_image_01.jpg", caption: "School of Architecture, Computing & Engineering exhibition floor" },
+      { src: "/images/dossier/personal_project_showcase_2026_image_02.jpg", caption: "Leading live hardware and VR demonstrations at UEL" }
+    ]
+  },
+  {
+    id: "podcast-studio-founder",
+    theme: "studio",
+    category: "AUDIO ENGINEERING & BROADCAST PRODUCTION",
+    title: "School Podcast Studio Founder, Director & Host",
+    subtitle: "Converted Bare Storage Room into Multi-Mic Broadcast Studio • Weekly Producer & Editor",
+    badge: "Click to Tour Studio",
+    shortSummary: "Handpicked to build Ousedale Sixth Form's first broadcast podcast studio from an empty storage cupboard, wiring the audio hardware and serving as Director, Host, Technician, and Editor.",
+    whyItMattersForGames: "Building a physical recording studio from scratch taught me microphone staging, acoustic treatment, multi-track mixing, and voiceover direction that I now use for game audio and dialogue.",
+    story: "When my Sixth Form wanted to launch its first official broadcast podcast, I was entrusted with a budget and a bare storage cupboard. I researched acoustic foam treatment, dynamic microphones, boom arms, and multi-channel audio interfaces, cleared and wired the entire studio myself, and established the weekly production pipeline. Throughout the academic year, I served simultaneously as Director, Host, Sound Technician, and Post-Production Editor.",
+    highlights: [
+      "Designed and wired a complete multi-microphone broadcast studio from an empty school storage room.",
+      "Managed acoustic treatment, gain staging, multi-track recording, and weekly post-production mastering.",
+      "Directed and hosted weekly episodes with staff and student guests, building a repeatable production workflow."
+    ],
+    images: [
+      { src: "/images/dossier/director_host_technician_editor_and_founder_of_school_podcast_director__host__technicia_asset_01.jpg", caption: "Converting a bare storage room into a fully wired broadcast podcast studio" },
+      { src: "/images/dossier/director_host_technician_editor_and_founder_of_school_podcast_director__host__technicia_asset_02.jpg", caption: "Multi-track audio mixer, microphone routing, and recording desk" },
+      { src: "/images/dossier/director_host_technician_editor_and_founder_of_school_podcast_director__host__technicia_asset_03.jpg", caption: "Studio microphone staging and acoustic setup" },
+      { src: "/images/dossier/director_host_technician_editor_and_founder_of_school_podcast_director__host__technicia_asset_04.jpg", caption: "Live recording session and broadcast hardware setup" }
+    ]
+  },
+  {
+    id: "yearbook-sole-editor",
+    theme: "editorial",
+    category: "PUBLICATION DESIGN & CREATIVE DIRECTION",
+    title: "Yearbook Sole Editor & Lead Graphic Designer",
+    subtitle: "150+ Cover Iterations • 200-Portrait Front Cover Mosaic • Full Custom Page Layouts",
+    badge: "Click to View Spreads",
+    shortSummary: "Took solo ownership of our entire school yearbook from the ground up, designing all custom backgrounds, formatting every page, and iterating through 150+ front cover variations.",
+    whyItMattersForGames: "Directly sharpens UI/UX layout discipline, visual hierarchy, typography, and asset pipeline organisation across hundreds of high-resolution textures and print deadlines.",
+    story: "As the Sole Editor for my school's yearbook, I took complete end-to-end ownership of both creative direction and technical print execution. I designed all custom page backgrounds from scratch, standardised typography and grid alignment across every section, and manually cut out, sharpened, and colour-balanced portraits. For the front and back cover alone, I iterated through over 150 distinct design variations before engineering a precision mosaic aligning more than 200 individual student photographs.",
+    highlights: [
+      "Sole Editor with final creative and technical sign-off across the entire print publication.",
+      "Developed over 150 front-cover iterations, culminating in a precision mosaic of 200+ aligned portraits.",
+      "Created all custom graphic backgrounds, badge depth effects, and grid layouts from scratch."
+    ],
+    images: [
+      { src: "/images/dossier/yearbook_sole_editor_yearbook_sole_editor_asset_12.jpg", caption: "Final Front & Back Cover Revision (150+ iterations & 200+ aligned student portraits)" },
+      { src: "/images/dossier/yearbook_sole_editor_yearbook_sole_editor_asset_01.jpg", caption: "Mid-project custom page typography and grid layout" },
+      { src: "/images/dossier/yearbook_sole_editor_yearbook_sole_editor_asset_02.jpg", caption: "Final custom graphic background artwork designed from scratch" },
+      { src: "/images/dossier/yearbook_sole_editor_yearbook_sole_editor_asset_03.jpg", caption: "Double-page spread alignment and portrait framing" },
+      { src: "/images/dossier/yearbook_sole_editor_yearbook_sole_editor_asset_04.jpg", caption: "Initial structural layout and colour experimentation" }
     ]
   },
   {
@@ -1424,27 +1469,73 @@ export const DOSSIER_CREDENTIALS = [
       { src: "/images/dossier/vex_robotics_team_member_vex_robotics_team_member_asset_03.jpg", caption: "Pit-lane debugging and autonomous testing" },
       { src: "/images/dossier/vex_robotics_team_member_vex_robotics_team_member_asset_04.jpg", caption: "VEX Robotics competition arena" }
     ]
-  },
-  {
-    id: "podcast-yearbook-hospitality",
-    theme: "studio",
-    category: "PRODUCTION OWNERSHIP & OPERATIONS",
-    title: "Podcast Studio Founder, Yearbook Sole Editor & 13,000+ Guest Ops",
-    subtitle: "Converted Storage Room into Broadcast Studio • Sole Editor of School Yearbook • Premier Inn Ops",
-    badge: "Click to View Studio & Print Work",
-    shortSummary: "Handpicked to build my Sixth Form's broadcast podcast studio from a bare storage room, served as Sole Editor of the school yearbook, and managed 13,000+ guest check-ins at Premier Inn.",
-    whyItMattersForGames: "Whether shipping a game build, editing a 100-page print publication solo, or handling late-night hotel crises for 13,000+ guests with zero disciplinaries, I take complete ownership until the job is done.",
-    story: "When my school wanted its first weekly broadcast podcast, I was given a budget and an empty storage cupboard: I researched acoustic treatment, dynamic microphones, and multi-track mixers, wired the studio myself, and served as Director, Host, Technician, and Editor every week. Earlier, I served as the Sole Editor for our entire school yearbook, designing every custom background and page layout from scratch. Alongside my studies, I worked front-of-house operations at Premier Inn across 13,000+ guest interactions with a spotless record.",
-    highlights: [
-      "Founded, wired, hosted, and edited Ousedale Sixth Form's weekly broadcast podcast from a converted storage room.",
-      "Sole Editor & Graphic Designer for the school yearbook, owning typography, custom artwork, and print deadlines.",
-      "13,000+ front-of-house guest interactions at Premier Inn, resolving high-pressure operational issues calmly."
-    ],
-    images: [
-      { src: "/images/dossier/director_host_technician_editor_and_founder_of_school_podcast_director__host__technicia_asset_01.jpg", caption: "Converting a storage room into a fully wired podcast studio" },
-      { src: "/images/dossier/director_host_technician_editor_and_founder_of_school_podcast_director__host__technicia_asset_02.jpg", caption: "Audio mixer, microphone routing, and recording desk" },
-      { src: "/images/dossier/yearbook_sole_editor_yearbook_sole_editor_asset_01.jpg", caption: "Custom print layout and graphic design as Yearbook Sole Editor" },
-      { src: "/images/dossier/yearbook_sole_editor_yearbook_sole_editor_asset_02.jpg", caption: "Double-page spread typography and illustration" }
-    ]
   }
 ];
+
+export const SHOWCASE_EXHIBITIONS = [
+  {
+    id: "ace-2026-main-hall",
+    event: "UEL ACE Showcase 2026",
+    location: "Royal Docks Centre for Sustainability (Main L6 Graduating Hall)",
+    highlight: "Rastacats • Sole Year 2 (Level 5) Game Chosen for Final-Year Hall",
+    src: "/images/dossier/ace_showcase_2026_image_01.jpg",
+    caption: "Rastacats exhibited downstairs in the main Final-Year (Level 6) exhibition hall at the 2026 ACE Showcase."
+  },
+  {
+    id: "ace-2026-public-playtest",
+    event: "UEL ACE Showcase 2026",
+    location: "Royal Docks Exhibition Floor",
+    highlight: "Live Public Playtesting & Faculty Walkthroughs",
+    src: "/images/dossier/ace_showcase_2026_image_02.jpg",
+    caption: "Presenting custom 360° spline-gravity mechanics and build architecture to faculty and attendees."
+  },
+  {
+    id: "personal-showcase-delirium",
+    event: "Personal Project & VR Showcase 2026",
+    location: "Dedicated OpenXR VR Demonstration Suite",
+    highlight: "Delirium VR • Sole Working Playable VR Build on the L5 Floor",
+    src: "/images/dossier/personal_project_showcase_2026_image_01.jpg",
+    caption: "Setting up and calibrating the dual-station Rastacats and Delirium VR hardware showcase."
+  },
+  {
+    id: "personal-showcase-vr-rig",
+    event: "Personal Project & VR Showcase 2026",
+    location: "UEL Games Design Studio Floor",
+    highlight: "Live OpenXR Physics & Acoustic AI Demonstrations",
+    src: "/images/dossier/personal_project_showcase_2026_image_02.jpg",
+    caption: "Running live VR headset playtests for Delirium VR alongside Rastacats."
+  },
+  {
+    id: "ace-2026-station-03",
+    event: "UEL ACE Showcase 2026",
+    location: "Royal Docks Centre for Sustainability",
+    highlight: "Dual-Floor Exhibition (Main Hall + Upstairs VR Room)",
+    src: "/images/dossier/ace_showcase_2026_image_03.jpg",
+    caption: "Exhibition kiosk running continuous 60 FPS Unreal Engine 5 builds all day."
+  },
+  {
+    id: "personal-showcase-03",
+    event: "Personal Project Showcase 2026",
+    location: "University of East London",
+    highlight: "Hands-On Player Feedback & Telemetry Observation",
+    src: "/images/dossier/personal_project_showcase_2026_image_03.jpg",
+    caption: "Observing live player reactions and VR physics interactions during the 2026 showcase."
+  },
+  {
+    id: "ace-2026-station-04",
+    event: "UEL ACE Showcase 2026",
+    location: "Royal Docks Exhibition Hall",
+    highlight: "Industry & Academic Peer Review Session",
+    src: "/images/dossier/ace_showcase_2026_image_04.jpg",
+    caption: "Discussing shader pipelines and game feel with visiting developers and lecturers."
+  },
+  {
+    id: "personal-showcase-04",
+    event: "Personal Project Showcase 2026",
+    location: "UEL Docklands Campus",
+    highlight: "Full Hardware & Controller Kiosk Deployment",
+    src: "/images/dossier/personal_project_showcase_2026_image_04.jpg",
+    caption: "Complete exhibition station setup at the University of East London Docklands campus."
+  }
+];
+

@@ -21,6 +21,7 @@ import {
   Trash2,
   Check
 } from 'lucide-react';
+import { getAssetUrl } from '../utils/assetUrl';
 
 // Zero-dependency Web Audio synthesiser for tactile clicks, chime, and whoosh transitions
 function playSound(type) {
@@ -288,33 +289,75 @@ export default function ShowstopperIntro({ onComplete }) {
           </div>
 
           {/* Desktop Icons on Left */}
-          <div className="absolute top-4 left-4 flex flex-col gap-6 z-10">
+          <div className="absolute top-4 left-4 flex flex-col gap-4 z-10">
             {/* Recycle Bin */}
             <div className="flex flex-col items-center gap-1 w-20 group">
-              <div className="w-12 h-12 rounded-lg bg-transparent flex items-center justify-center">
-                <Trash2 className="w-8 h-8 text-sky-200 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" />
+              <div className="w-10 h-10 rounded-lg bg-transparent flex items-center justify-center">
+                <Trash2 className="w-7 h-7 text-sky-200 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" />
               </div>
-              <span className="text-xs text-white text-center font-normal drop-shadow-[0_1px_3px_rgba(0,0,0,1)]">
+              <span className="text-[11px] text-white text-center font-normal drop-shadow-[0_1px_3px_rgba(0,0,0,1)]">
                 Recycle Bin
               </span>
             </div>
 
             {/* This PC */}
             <div className="flex flex-col items-center gap-1 w-20 group">
-              <div className="w-12 h-12 rounded-lg bg-transparent flex items-center justify-center">
-                <Monitor className="w-8 h-8 text-sky-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" />
+              <div className="w-10 h-10 rounded-lg bg-transparent flex items-center justify-center">
+                <Monitor className="w-7 h-7 text-sky-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" />
               </div>
-              <span className="text-xs text-white text-center font-normal drop-shadow-[0_1px_3px_rgba(0,0,0,1)]">
+              <span className="text-[11px] text-white text-center font-normal drop-shadow-[0_1px_3px_rgba(0,0,0,1)]">
                 This PC
+              </span>
+            </div>
+
+            {/* Myndwell Portal Icon */}
+            <div className="flex flex-col items-center gap-1 w-20 group">
+              <div className="w-10 h-10 rounded-xl bg-cyan-950/40 border border-cyan-400/40 flex items-center justify-center p-1.5 shadow-md">
+                <img
+                  src={getAssetUrl('/images/logos/myndwell-logo-white.png')}
+                  alt="Myndwell Logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <span className="text-[11px] text-cyan-200 text-center font-normal drop-shadow-[0_1px_3px_rgba(0,0,0,1)] truncate max-w-full">
+                Myndwell.exe
+              </span>
+            </div>
+
+            {/* LabRats Icon */}
+            <div className="flex flex-col items-center gap-1 w-20 group">
+              <div className="w-10 h-10 rounded-xl bg-black/60 border border-emerald-400/40 flex items-center justify-center p-1 shadow-md">
+                <img
+                  src={getAssetUrl('/images/logos/labrats-logo-transparent.png')}
+                  alt="LabRats Logo"
+                  className="w-full h-full object-contain filter drop-shadow-[0_0_4px_rgba(74,222,128,0.8)]"
+                />
+              </div>
+              <span className="text-[11px] text-emerald-200 text-center font-normal drop-shadow-[0_1px_3px_rgba(0,0,0,1)] truncate max-w-full">
+                LabRats.exe
+              </span>
+            </div>
+
+            {/* Delirium VR Icon */}
+            <div className="flex flex-col items-center gap-1 w-20 group">
+              <div className="w-10 h-10 rounded-xl bg-black/60 border border-red-500/40 flex items-center justify-center p-1 shadow-md">
+                <img
+                  src={getAssetUrl('/images/logos/delirium-title-logo.png')}
+                  alt="Delirium"
+                  className="w-full object-contain"
+                />
+              </div>
+              <span className="text-[11px] text-red-200 text-center font-normal drop-shadow-[0_1px_3px_rgba(0,0,0,1)] truncate max-w-full">
+                Delirium_VR
               </span>
             </div>
 
             {/* Projects Folder */}
             <div className="flex flex-col items-center gap-1 w-20 group">
-              <div className="w-12 h-12 rounded-lg bg-transparent flex items-center justify-center">
-                <Folder className="w-8 h-8 text-amber-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] fill-amber-300/40" />
+              <div className="w-10 h-10 rounded-lg bg-transparent flex items-center justify-center">
+                <Folder className="w-7 h-7 text-amber-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] fill-amber-300/40" />
               </div>
-              <span className="text-xs text-white text-center font-normal drop-shadow-[0_1px_3px_rgba(0,0,0,1)]">
+              <span className="text-[11px] text-white text-center font-normal drop-shadow-[0_1px_3px_rgba(0,0,0,1)]">
                 Josh_Projects
               </span>
             </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ArrowUp, Code2 } from 'lucide-react';
+import { getAssetUrl } from '../utils/assetUrl';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -27,13 +28,20 @@ export default function Footer({ onReplayIntro }) {
     <>
       <footer className="relative py-12 px-4 border-t border-white/[0.08] bg-[#05060a]">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
-          <div>
-            <div className="font-extrabold text-white text-base tracking-tight font-['Syne',sans-serif]">
-              Joshua Johnson
+          <div className="flex items-center gap-3">
+            <img
+              src={getAssetUrl('/images/logos/3j-logo.png')}
+              alt="3J Studio Logo"
+              className="w-10 h-10 rounded-xl object-contain bg-white/5 border border-white/10 p-1 shrink-0 shadow-md"
+            />
+            <div>
+              <div className="font-extrabold text-white text-base tracking-tight font-['Syne',sans-serif]">
+                Joshua Johnson
+              </div>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Technical Game Designer • Unreal Engine 5 • London, UK
+              </p>
             </div>
-            <p className="text-xs text-slate-400 mt-1">
-              Technical Game Designer • Unreal Engine 5 • London, UK
-            </p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-3 text-xs text-slate-400 font-mono">

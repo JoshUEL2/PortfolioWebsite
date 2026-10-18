@@ -246,6 +246,28 @@ export default function ProjectCard({ project, onSelectProject }) {
                 {activeDates}
               </span>
 
+              {project.id === 'rem' && (
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-950/80 border border-cyan-400/40 text-cyan-200 shadow-sm">
+                  <img
+                    src={getAssetUrl('/images/logos/myndwell-logo-white.png')}
+                    alt="Myndwell Logo"
+                    className="w-4 h-4 object-contain shrink-0"
+                  />
+                  <span>PROPERTY OF MYNDWELL INTERNATIONAL</span>
+                </div>
+              )}
+
+              {project.id === 'delirium' && (
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-red-950/80 border border-red-500/40 text-red-200 shadow-sm">
+                  <img
+                    src={getAssetUrl('/images/logos/delirium-title-logo.png')}
+                    alt="Delirium"
+                    className="h-3.5 object-contain shrink-0"
+                  />
+                  <span className="text-[10px] uppercase tracking-wider text-red-300">ST. JUDE'S INERTIA</span>
+                </div>
+              )}
+
               {project.marketingSite && (
                 <button
                   type="button"
@@ -610,6 +632,27 @@ export default function ProjectCard({ project, onSelectProject }) {
               </video>
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover/vid:opacity-100 transition-opacity" />
+
+              {project.id === 'rem' && (
+                <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-[#070e1a]/85 backdrop-blur-md border border-cyan-400/40 text-[10px] font-mono text-cyan-200 pointer-events-none z-10 flex items-center gap-1.5 shadow-md">
+                  <img
+                    src={getAssetUrl('/images/logos/myndwell-logo-white.png')}
+                    alt="Myndwell Logo"
+                    className="w-3.5 h-3.5 object-contain"
+                  />
+                  <span>MYNDWELL CORP // ARCHIVE</span>
+                </div>
+              )}
+
+              {project.id === 'delirium' && (
+                <div className="absolute top-3 left-3 px-2 py-0.5 rounded-lg bg-black/85 backdrop-blur-md border border-red-500/40 pointer-events-none z-10 flex items-center shadow-md">
+                  <img
+                    src={getAssetUrl('/images/logos/delirium-title-logo.png')}
+                    alt="Delirium"
+                    className="h-3 object-contain"
+                  />
+                </div>
+              )}
 
               <div className="absolute top-3 right-3 px-2.5 py-0.5 rounded-md bg-black/80 backdrop-blur-md border border-white/20 text-[10px] font-mono text-white pointer-events-none z-10 flex items-center gap-1.5 shadow-md">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />

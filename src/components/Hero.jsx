@@ -188,10 +188,30 @@ export default function Hero({ onExploreClick, onSelectProject }) {
                 {/* Bottom Gradient Overlay with Reel Title */}
                 <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end justify-between gap-3">
                   <div>
-                    <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-indigo-950/90 border border-indigo-400/40 text-[10px] font-mono text-indigo-200 mb-1">
-                      <Play className="w-2.5 h-2.5 fill-indigo-400 text-indigo-400" />
-                      <span>LIVE ENGINE CAPTURE</span>
-                    </div>
+                    {activeReel.projectId === 'rem' ? (
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-cyan-950/90 border border-cyan-400/40 text-[10px] font-mono text-cyan-200 mb-1">
+                        <img
+                          src={getAssetUrl('/images/logos/myndwell-logo-white.png')}
+                          alt="Myndwell Logo"
+                          className="w-3 h-3 object-contain shrink-0"
+                        />
+                        <span>MYNDWELL CORP // SUBJECT RECORD</span>
+                      </div>
+                    ) : activeReel.projectId === 'delirium' ? (
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-red-950/90 border border-red-500/40 text-[10px] font-mono text-red-200 mb-1">
+                        <img
+                          src={getAssetUrl('/images/logos/delirium-title-logo.png')}
+                          alt="Delirium"
+                          className="h-2.5 object-contain shrink-0"
+                        />
+                        <span className="text-[9px] uppercase tracking-wider text-red-300">ST. JUDE'S VR INERTIA</span>
+                      </div>
+                    ) : (
+                      <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-indigo-950/90 border border-indigo-400/40 text-[10px] font-mono text-indigo-200 mb-1">
+                        <Play className="w-2.5 h-2.5 fill-indigo-400 text-indigo-400" />
+                        <span>LIVE ENGINE CAPTURE</span>
+                      </div>
+                    )}
                     <h2 className="text-lg sm:text-xl font-extrabold text-white font-['Syne',sans-serif] leading-tight">
                       {activeReel.title}
                     </h2>

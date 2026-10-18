@@ -210,6 +210,39 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                       {project.categoryLabel}
                     </div>
 
+                    {/* Authentic Game Logos / In-Universe Insignias */}
+                    {project.id === 'labrats' && (
+                      <div className="absolute top-2 right-2 flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-black/85 backdrop-blur-md border border-emerald-400/50 shadow-[0_0_10px_rgba(52,211,153,0.3)] z-10 pointer-events-none">
+                        <img
+                          src={getAssetUrl('/images/logos/labrats-logo-transparent.png')}
+                          alt="LabRats Logo"
+                          className="w-4 h-4 object-contain filter drop-shadow-[0_0_4px_rgba(74,222,128,0.8)]"
+                        />
+                        <span className="text-[9px] font-mono font-bold text-emerald-300">LABRATS</span>
+                      </div>
+                    )}
+
+                    {project.id === 'rem' && (
+                      <div className="absolute top-2 right-2 flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#070e1a]/90 backdrop-blur-md border border-cyan-400/50 shadow-[0_0_10px_rgba(6,182,212,0.3)] z-10 pointer-events-none">
+                        <img
+                          src={getAssetUrl('/images/logos/myndwell-logo-white.png')}
+                          alt="Myndwell Logo"
+                          className="w-3.5 h-3.5 object-contain"
+                        />
+                        <span className="text-[9px] font-mono font-bold text-cyan-200">MYNDWELL</span>
+                      </div>
+                    )}
+
+                    {project.id === 'delirium' && (
+                      <div className="absolute top-2 right-2 flex items-center px-2 py-0.5 rounded-md bg-black/90 backdrop-blur-md border border-red-500/40 z-10 pointer-events-none">
+                        <img
+                          src={getAssetUrl('/images/logos/delirium-title-logo.png')}
+                          alt="Delirium"
+                          className="h-2.5 object-contain"
+                        />
+                      </div>
+                    )}
+
                     {/* Companion Website / Version Badge */}
                     {project.marketingSite ? (
                       <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-indigo-950/90 border border-indigo-400/50 text-[9px] font-mono font-bold text-indigo-200 pointer-events-none z-10">

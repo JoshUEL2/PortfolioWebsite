@@ -247,6 +247,71 @@ export default function CaseStudyModal({ project, onClose }) {
               )}
             </div>
 
+            {/* In-Universe Game Insignia / Corporate Dossier Banners */}
+            {project.id === 'rem' && (
+              <div className="p-3.5 rounded-2xl bg-gradient-to-r from-[#071324] via-[#0b1c36] to-[#071324] border border-cyan-400/40 shadow-lg flex flex-wrap items-center justify-between gap-3 select-none">
+                <div className="flex items-center gap-3">
+                  <img
+                    src={getAssetUrl('/images/logos/myndwell-logo-white.png')}
+                    alt="Myndwell Logo"
+                    className="w-8 h-8 object-contain shrink-0"
+                  />
+                  <div>
+                    <div className="text-xs font-bold font-mono tracking-wider text-white uppercase flex items-center gap-2">
+                      <span>MYNDWELL INTERNATIONAL // DIVISION OF NEURAL PARTITIONING</span>
+                    </div>
+                    <div className="text-[11px] font-mono text-cyan-300/80">
+                      CONFIDENTIAL RESEARCH SPECIFICATION: RAPID EYE MOVEMENT (REM) COGNITIVE RESET
+                    </div>
+                  </div>
+                </div>
+                <div className="px-2.5 py-1 rounded-md bg-cyan-950/80 border border-cyan-400/40 text-[10px] font-mono font-bold text-cyan-300">
+                  PROPERTY OF MYNDWELL CORP
+                </div>
+              </div>
+            )}
+
+            {project.id === 'delirium' && (
+              <div className="p-3.5 rounded-2xl bg-gradient-to-r from-[#1a0808] via-[#260e0e] to-[#1a0808] border border-red-500/40 shadow-lg flex flex-wrap items-center justify-between gap-3 select-none">
+                <div className="flex items-center gap-3">
+                  <img
+                    src={getAssetUrl('/images/logos/delirium-title-logo.png')}
+                    alt="Delirium"
+                    className="h-6 object-contain shrink-0"
+                  />
+                  <div className="text-[11px] font-mono text-red-300/80">
+                    ST. JUDE'S PSYCHIATRIC WARD // WHEELCHAIR INERTIA &amp; QUANTUM FREEZE TEST BED
+                  </div>
+                </div>
+                <div className="px-2.5 py-1 rounded-md bg-red-950/80 border border-red-500/40 text-[10px] font-mono font-bold text-red-300">
+                  LEVEL 5 TOP MARK SHOWCASE
+                </div>
+              </div>
+            )}
+
+            {project.id === 'labrats' && (
+              <div className="p-3.5 rounded-2xl bg-gradient-to-r from-[#071a10] via-[#0d2a1b] to-[#071a10] border border-emerald-400/40 shadow-lg flex flex-wrap items-center justify-between gap-3 select-none">
+                <div className="flex items-center gap-3">
+                  <img
+                    src={getAssetUrl('/images/logos/labrats-logo-transparent.png')}
+                    alt="LabRats"
+                    className="w-8 h-8 object-contain shrink-0 filter drop-shadow-[0_0_6px_rgba(74,222,128,0.7)]"
+                  />
+                  <div>
+                    <div className="text-xs font-bold font-mono tracking-wider text-emerald-300 uppercase">
+                      LABRATS // BIOTECH RODENT EXPERIMENT
+                    </div>
+                    <div className="text-[11px] font-mono text-emerald-200/80">
+                      COOPERATIVE LABORATORY ESCAPE RUNTIME &amp; LEVEL DESIGN
+                    </div>
+                  </div>
+                </div>
+                <div className="px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-400/40 text-[10px] font-mono font-bold text-emerald-300">
+                  RODENT SUBJECT #04
+                </div>
+              </div>
+            )}
+
             {/* Title & Engine Subtitle */}
             <div>
               {hasVersions && (

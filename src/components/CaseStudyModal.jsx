@@ -17,14 +17,16 @@ import {
   ZoomIn,
   Code2,
   Globe,
-  FileCode
+  FileCode,
+  RotateCcw
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { getAssetUrl, isSpecificRepo, isSpecificLinkedIn } from '../utils/assetUrl';
 import { MARKETING_REPOS } from '../data/marketingReposData';
 import EmbeddedBrowserViewport from './EmbeddedBrowserViewport';
 import { getProjectTheme } from '../utils/projectThemes';
-import { ProjectAtmosphere } from './gameAtmospheres';
+import { ProjectAtmosphere, OverviewAtmosphere } from './gameAtmospheres';
+import ProjectTheatricalEntrance from './ProjectTheatricalEntrance';
 
 export default function CaseStudyModal({ project, onClose }) {
   const theme = getProjectTheme(project?.id);
@@ -40,6 +42,7 @@ export default function CaseStudyModal({ project, onClose }) {
   // 'live' | 'source'
   const [marketingSubTab, setMarketingSubTab] = useState('live');
   const [activeRepoFileIdx, setActiveRepoFileIdx] = useState(0);
+  const [theatricalKey, setTheatricalKey] = useState(0);
 
   const currentVersion = hasVersions ? versions[activeVersionIndex] : null;
   const activeImage = currentVersion?.image || project?.image;
@@ -124,6 +127,9 @@ export default function CaseStudyModal({ project, onClose }) {
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className={`relative w-full max-w-4xl border rounded-3xl overflow-hidden z-10 max-h-[90vh] flex flex-col my-auto transition-all ${theme.modalClass}`}
         >
+          {/* Cinematic Theatrical Curtain Entrance Reveal */}
+          <ProjectTheatricalEntrance projectId={project?.id} animationKey={theatricalKey} />
+
           {/* Top Bar */}
           <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-4 border-b border-white/10 bg-[#090b16]/90 backdrop-blur-md relative z-10">
             <div className="flex flex-wrap items-center gap-2.5">
@@ -147,14 +153,26 @@ export default function CaseStudyModal({ project, onClose }) {
               )}
             </div>
 
-            <button
-              type="button"
-              onClick={onClose}
-              className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors cursor-pointer"
-              aria-label="Close modal"
-            >
-              <X className="w-5 h-5" />
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setTheatricalKey((k) => k + 1)}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white text-xs font-mono border border-white/10 transition-all cursor-pointer shadow-sm active:scale-95"
+                title="Replay Theatrical Entrance Reveal"
+              >
+                <RotateCcw className="w-3.5 h-3.5 text-indigo-400" />
+                <span className="hidden sm:inline">Replay Reveal</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={onClose}
+                className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors cursor-pointer"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
           </div>
 
           {/* Modal Scrollable Content */}
@@ -336,8 +354,9 @@ export default function CaseStudyModal({ project, onClose }) {
             </div>
 
             {/* Overview Holder */}
-            <div className={`p-5 rounded-2xl border transition-all ${theme.overviewHolderClass}`}>
-              <div className="flex items-center justify-between mb-2.5">
+            <div className={`relative p-5 rounded-2xl border transition-all overflow-hidden ${theme.overviewHolderClass}`}>
+              <OverviewAtmosphere projectId={project?.id} />
+              <div className="flex items-center justify-between mb-2.5 relative z-10">
                 <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-300 font-bold flex items-center gap-2">
                   <Layers className="w-3.5 h-3.5 text-indigo-400" />
                   <span>Project Overview</span>
@@ -346,7 +365,7 @@ export default function CaseStudyModal({ project, onClose }) {
                   SPECIFICATION ARCHIVE
                 </span>
               </div>
-              <p className="text-slate-200 text-sm sm:text-base leading-relaxed font-normal whitespace-pre-line">
+              <p className="text-slate-200 text-sm sm:text-base leading-relaxed font-normal whitespace-pre-line relative z-10">
                 {activeSummary}
               </p>
             </div>

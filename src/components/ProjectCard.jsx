@@ -20,7 +20,7 @@ import { getAssetUrl, isSpecificRepo, isSpecificLinkedIn } from '../utils/assetU
 import { MARKETING_REPOS } from '../data/marketingReposData';
 import EmbeddedBrowserViewport from './EmbeddedBrowserViewport';
 import { getProjectTheme } from '../utils/projectThemes';
-import { ProjectAtmosphere } from './gameAtmospheres';
+import { ProjectAtmosphere, OverviewAtmosphere } from './gameAtmospheres';
 
 export default function ProjectCard({ project, onSelectProject }) {
   const versions = project.versions || project.splitPhases || null;
@@ -418,12 +418,13 @@ export default function ProjectCard({ project, onSelectProject }) {
             </div>
 
             {viewMode === 'overview' && (
-              <div className={`p-4 sm:p-5 rounded-2xl border mb-5 transition-all ${theme.overviewHolderClass}`}>
-                <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-4 font-normal">
+              <div className={`relative p-4 sm:p-5 rounded-2xl border mb-5 transition-all overflow-hidden ${theme.overviewHolderClass}`}>
+                <OverviewAtmosphere projectId={project.id} />
+                <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-4 font-normal relative z-10">
                   {activeDesc}
                 </p>
 
-                <div className="space-y-2 mb-4">
+                <div className="space-y-2 mb-4 relative z-10">
                   {activeHighlights.slice(0, 4).map((highlight, hIdx) => (
                     <div key={hIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
                       <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-2 shrink-0" />

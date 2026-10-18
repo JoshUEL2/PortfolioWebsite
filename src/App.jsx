@@ -10,11 +10,23 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import CaseStudyModal from './components/CaseStudyModal';
 import BackgroundShader from './components/BackgroundShader';
+import ShowstopperIntro from './components/ShowstopperIntro';
 import { PROJECTS } from './data/portfolioData';
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentView, setCurrentView] = useState('featured');
+  const [showIntro, setShowIntro] = useState(() => {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('intro') === '1' || urlParams.get('replay') === '1') {
+        return true;
+      }
+      return !sessionStorage.getItem('hasSeenJoshIntro');
+    } catch {
+      return true;
+    }
+  });
 
   const findProjectByKey = useCallback((key) => {
     if (!key) return null;
@@ -121,7 +133,11 @@ export default function App() {
       {/* Main Content Container */}
       <div className="relative z-10 flex flex-col">
         {/* Floating Capsule Header */}
-        <Navbar currentView={currentView} onViewChange={handleViewChange} />
+        <Navbar
+          currentView={currentView}
+          onViewChange={handleViewChange}
+          onReplayIntro={() => setShowIntro(true)}
+        />
 
         {currentView === 'all-projects' ? (
           <main className="flex-1">
@@ -157,7 +173,7 @@ export default function App() {
         )}
 
         {/* Footer */}
-        <Footer />
+        <Footer onReplayIntro={() => setShowIntro(true)} />
       </div>
 
       {/* Full-screen Case Study Modal */}
@@ -167,6 +183,11 @@ export default function App() {
           project={selectedProject}
           onClose={() => handleSelectProject(null)}
         />
+      )}
+
+      {/* Showstopper Windows 11 & Binary Shatter Intro Experience */}
+      {showIntro && (
+        <ShowstopperIntro onComplete={() => setShowIntro(false)} />
       )}
     </div>
   );

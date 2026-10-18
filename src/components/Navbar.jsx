@@ -6,7 +6,7 @@ import { PERSONAL_INFO } from '../data/portfolioData';
 import { ALL_PROJECTS } from '../data/allProjectsData';
 import { getAssetUrl } from '../utils/assetUrl';
 
-export default function Navbar({ currentView = 'featured', onViewChange }) {
+export default function Navbar({ currentView = 'featured', onViewChange, onReplayIntro }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -152,6 +152,18 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
 
           {/* Social Links, CV & Mobile Toggle */}
           <div className="flex items-center gap-2">
+            {onReplayIntro && (
+              <button
+                type="button"
+                onClick={onReplayIntro}
+                className="hidden xl:inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1.5 rounded-full bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 hover:text-cyan-200 border border-cyan-500/30 transition-all hover:scale-105 cursor-pointer shadow-[0_0_12px_rgba(6,182,212,0.2)]"
+                title="Replay Windows 11 & Binary Shatter Intro"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                <span>INTRO</span>
+              </button>
+            )}
+
             {PERSONAL_INFO.cv && (
               <a
                 href={getAssetUrl(PERSONAL_INFO.cv)}
@@ -238,6 +250,22 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
                 </span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-indigo-300" />
               </button>
+
+              {onReplayIntro && (
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onReplayIntro();
+                  }}
+                  className="w-full text-left py-2.5 px-4 rounded-xl text-xs font-semibold tracking-wider text-cyan-300 bg-cyan-950/40 border border-cyan-500/30 hover:bg-cyan-900/40 transition-all flex items-center justify-between cursor-pointer"
+                >
+                  <span className="flex items-center gap-2">
+                    <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                    REPLAY SHOWSTOPPER INTRO
+                  </span>
+                  <ArrowUpRight className="w-3.5 h-3.5 opacity-50" />
+                </button>
+              )}
 
               <div className="pt-4 mt-2 border-t border-white/10 flex flex-wrap items-center justify-around gap-2">
                 {PERSONAL_INFO.cv && (

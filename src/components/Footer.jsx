@@ -3,7 +3,7 @@ import { ArrowUp, Code2 } from 'lucide-react';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-export default function Footer() {
+export default function Footer({ onReplayIntro }) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showTopBtn, setShowTopBtn] = useState(false);
 
@@ -36,9 +36,23 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex items-center gap-1.5 text-xs text-slate-400 font-mono">
-            <Code2 className="w-3.5 h-3.5 text-indigo-400" />
-            <span>Built with React, Vite & Tailwind CSS</span>
+          <div className="flex flex-col sm:flex-row items-center gap-3 text-xs text-slate-400 font-mono">
+            <div className="flex items-center gap-1.5">
+              <Code2 className="w-3.5 h-3.5 text-indigo-400" />
+              <span>Built with React, Vite & Tailwind CSS</span>
+            </div>
+            {onReplayIntro && (
+              <>
+                <span className="hidden sm:inline text-slate-600">•</span>
+                <button
+                  type="button"
+                  onClick={onReplayIntro}
+                  className="text-cyan-400/90 hover:text-cyan-300 underline underline-offset-4 cursor-pointer transition-colors"
+                >
+                  Replay Intro
+                </button>
+              </>
+            )}
           </div>
 
           <div className="text-xs text-slate-400">

@@ -700,7 +700,6 @@ void ADaydreamPostProcessDirector::UpdateCognitiveShaderState(float FocusLevel, 
     gallery: [
       "/images/project_isla.jpg"
     ],
-    videoPreview: "/media/isla_preview.mp4",
     links: {
       github: "https://github.com/JoshUEL2",
       itch: null,

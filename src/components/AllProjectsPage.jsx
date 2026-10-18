@@ -14,6 +14,8 @@ import {
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { ALL_PROJECTS, GAME_FILTER_DISCIPLINES } from '../data/allProjectsData';
 import { getAssetUrl, isSpecificRepo, isSpecificLinkedIn } from '../utils/assetUrl';
+import { getProjectTheme } from '../utils/projectThemes';
+import { ProjectAtmosphere } from './gameAtmospheres';
 
 export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -153,6 +155,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
             const videoSrc = project.videoPreview || project.video;
             const isLiveDemo =
               Boolean(project.links?.demo) && project.links.demo.startsWith('/games/');
+            const theme = getProjectTheme(project.id);
 
             return (
               <motion.div
@@ -165,11 +168,14 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                   duration: 0.3,
                   delay: Math.min(index * 0.02, 0.15)
                 }}
-                className="group relative rounded-2xl bg-[#090b16]/95 border border-white/10 hover:border-indigo-400/60 p-5 backdrop-blur-xl flex flex-col justify-between shadow-xl hover:shadow-[0_10px_40px_rgba(99,102,241,0.2)] transition-all duration-300 hover:-translate-y-1"
+                className={`group relative rounded-2xl p-5 backdrop-blur-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 border overflow-hidden ${theme.compactContainerClass}`}
               >
-                <div>
+                {/* Dynamic Compact Game Atmospheric Effect */}
+                <ProjectAtmosphere projectId={project.id} isCompact={true} />
+
+                <div className="relative z-10">
                   {/* Media Viewport */}
-                  <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-950 border border-white/15 mb-4">
+                  <div className={`relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-950 border mb-4 transition-all ${theme.mediaHolderClass}`}>
                     {videoSrc ? (
                       <div
                         onClick={() => onSelectProject({ ...project, initialLightboxIndex: null })}
@@ -357,10 +363,10 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                   <button
                     type="button"
                     onClick={() => onSelectProject(project)}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600/25 hover:bg-indigo-600/45 text-indigo-200 hover:text-white text-[11px] font-mono font-bold uppercase tracking-wider border border-indigo-500/40 transition-all cursor-pointer"
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-mono font-bold uppercase tracking-wider border transition-all cursor-pointer ${theme.buttonClass}`}
                   >
-                    <span>Inspect</span>
-                    <BookOpen className="w-3 h-3 text-indigo-300" />
+                    <span>Overview</span>
+                    <BookOpen className="w-3 h-3" />
                   </button>
                 </div>
               </motion.div>

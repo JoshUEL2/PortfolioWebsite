@@ -23,8 +23,11 @@ import { GithubIcon, LinkedinIcon } from './Icons';
 import { getAssetUrl, isSpecificRepo, isSpecificLinkedIn } from '../utils/assetUrl';
 import { MARKETING_REPOS } from '../data/marketingReposData';
 import EmbeddedBrowserViewport from './EmbeddedBrowserViewport';
+import { getProjectTheme } from '../utils/projectThemes';
+import { ProjectAtmosphere } from './gameAtmospheres';
 
 export default function CaseStudyModal({ project, onClose }) {
+  const theme = getProjectTheme(project?.id);
   const versions = project?.versions || project?.splitPhases || null;
   const hasVersions = Boolean(versions && versions.length > 0);
 
@@ -119,10 +122,10 @@ export default function CaseStudyModal({ project, onClose }) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full max-w-4xl bg-[#0d0f1e] border border-indigo-500/30 rounded-3xl shadow-[0_0_80px_rgba(99,102,241,0.25)] overflow-hidden z-10 max-h-[90vh] flex flex-col my-auto"
+          className={`relative w-full max-w-4xl border rounded-3xl overflow-hidden z-10 max-h-[90vh] flex flex-col my-auto transition-all ${theme.modalClass}`}
         >
           {/* Top Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-4 border-b border-white/10 bg-[#090b16]">
+          <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-4 border-b border-white/10 bg-[#090b16]/90 backdrop-blur-md relative z-10">
             <div className="flex flex-wrap items-center gap-2.5">
               <span className="text-xs font-semibold px-3 py-1 rounded-full bg-indigo-950/60 border border-indigo-500/30 text-indigo-300">
                 {project.discipline || project.categoryLabel}
@@ -155,7 +158,9 @@ export default function CaseStudyModal({ project, onClose }) {
           </div>
 
           {/* Modal Scrollable Content */}
-          <div className="overflow-y-auto p-6 sm:p-8 space-y-7">
+          <div className="overflow-y-auto p-6 sm:p-8 space-y-7 relative z-10">
+            {/* Dynamic Game Atmospheric Layer for Modal */}
+            <ProjectAtmosphere projectId={project?.id} isModal={true} />
             {/* Dual-Phase Evolution Switcher (for Rastacats and Daydream Believer) */}
             {hasVersions && (
               <div className="bg-[#080a15] border border-indigo-500/35 rounded-2xl p-4 shadow-xl">
@@ -220,7 +225,7 @@ export default function CaseStudyModal({ project, onClose }) {
             )}
 
             {/* Hero Media: Local Gameplay Capture or Artwork */}
-            <div className="relative rounded-2xl overflow-hidden aspect-[16/9] max-h-96 bg-black border border-white/10 flex items-center justify-center">
+            <div className={`relative rounded-2xl overflow-hidden aspect-[16/9] max-h-96 bg-black border flex items-center justify-center transition-all ${theme.mediaHolderClass}`}>
               {activeVideo ? (
                 <video
                   key={activeVideo}
@@ -330,11 +335,17 @@ export default function CaseStudyModal({ project, onClose }) {
               </p>
             </div>
 
-            {/* Overview */}
-            <div>
-              <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-400 mb-2">
-                Overview
-              </h4>
+            {/* Overview Holder */}
+            <div className={`p-5 rounded-2xl border transition-all ${theme.overviewHolderClass}`}>
+              <div className="flex items-center justify-between mb-2.5">
+                <h4 className="text-xs font-mono uppercase tracking-wider text-indigo-300 font-bold flex items-center gap-2">
+                  <Layers className="w-3.5 h-3.5 text-indigo-400" />
+                  <span>Project Overview</span>
+                </h4>
+                <span className="text-[10px] font-mono px-2.5 py-0.5 rounded bg-black/40 text-slate-300 border border-white/10">
+                  SPECIFICATION ARCHIVE
+                </span>
+              </div>
               <p className="text-slate-200 text-sm sm:text-base leading-relaxed font-normal whitespace-pre-line">
                 {activeSummary}
               </p>

@@ -13,6 +13,7 @@ import {
   Terminal
 } from 'lucide-react';
 import { getAssetUrl } from '../utils/assetUrl';
+import { getProjectTheme } from '../utils/projectThemes';
 
 const CATEGORY_ICONS = {
   Gamepad2,
@@ -172,32 +173,35 @@ export default function ProjectShowcase({ onSelectProject, onViewAllProjects }) 
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            {quickShelfProjects.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => onSelectProject(item)}
-                className="flex items-center gap-3 p-2.5 rounded-xl bg-[#060813]/90 hover:bg-indigo-950/70 border border-white/10 hover:border-indigo-400/60 text-left transition-all cursor-pointer group/mini shadow-md hover:-translate-y-0.5"
-              >
-                <img
-                  src={getAssetUrl(item.image)}
-                  alt={item.title}
-                  className="w-12 h-12 rounded-lg object-cover shrink-0 border border-white/15 group-hover/mini:scale-105 transition-transform"
-                  loading="lazy"
-                />
-                <div className="min-w-0 flex-1">
-                  <div className="text-[10px] font-mono text-indigo-400 uppercase tracking-wider truncate">
-                    {item.discipline}
+            {quickShelfProjects.map((item) => {
+              const theme = getProjectTheme(item.id);
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => onSelectProject(item)}
+                  className={`flex items-center gap-3 p-2.5 rounded-xl border text-left transition-all cursor-pointer group/mini shadow-md hover:-translate-y-0.5 overflow-hidden relative ${theme.compactContainerClass}`}
+                >
+                  <img
+                    src={getAssetUrl(item.image)}
+                    alt={item.title}
+                    className={`w-12 h-12 rounded-lg object-cover shrink-0 border group-hover/mini:scale-105 transition-transform ${theme.mediaHolderClass}`}
+                    loading="lazy"
+                  />
+                  <div className="min-w-0 flex-1 relative z-10">
+                    <div className="text-[10px] font-mono text-indigo-400 uppercase tracking-wider truncate">
+                      {item.discipline}
+                    </div>
+                    <div className="text-xs font-bold text-white truncate group-hover/mini:text-indigo-200">
+                      {item.title.split(':')[0]}
+                    </div>
+                    <div className="text-[10px] font-mono text-slate-400 truncate">
+                      {item.engine.split('(')[0]}
+                    </div>
                   </div>
-                  <div className="text-xs font-bold text-white truncate group-hover/mini:text-indigo-200">
-                    {item.title.split(':')[0]}
-                  </div>
-                  <div className="text-[10px] font-mono text-slate-400 truncate">
-                    {item.engine.split('(')[0]}
-                  </div>
-                </div>
-              </button>
-            ))}
+                </button>
+              );
+            })}
 
             {/* 8th Slot: Direct Vault Launcher Tile */}
             <button

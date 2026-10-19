@@ -351,9 +351,9 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                         href={project.links.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="LinkedIn Breakdown"
+                        aria-label="View on LinkedIn"
                         className="p-1.5 rounded-lg bg-blue-950/60 hover:bg-blue-900/80 text-blue-300 border border-blue-500/30 transition-all hover:scale-110"
-                        title="LinkedIn Breakdown"
+                        title="View on LinkedIn"
                       >
                         <LinkedinIcon className="w-3.5 h-3.5 text-blue-400" />
                       </a>

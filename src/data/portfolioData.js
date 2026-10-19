@@ -124,7 +124,8 @@ export const PROJECTS = [
       github: "https://github.com/JoshUEL2",
       itch: "https://joshej.itch.io/rastacats",
       demo: null,
-      gdd: "/docs/Rastacats_Design_Document.docx"
+      gdd: "/docs/Rastacats_Design_Document.docx",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     shortDesc: "High-speed arcade bobsled runner built around a custom 360-degree cylindrical gravity controller, polar-to-cartesian obstacle spawning, and an object-pooled track generator. Toggle between Phase 1 and Phase 2 below.",
     summary: "Built across two development phases: Phase 1 established the core 360-degree pipe physics and procedural obstacle spawning (earning 92%), while Phase 2 overhauled the rendering pipeline, added a curved-world shader, and replaced actor destruction with an object pool.",
@@ -227,7 +228,8 @@ void ARastacatsTrackManager::SpawnObstacleOnPipe(float AxialX, float AngleDegree
     links: {
       github: "https://github.com/JoshUEL2",
       itch: "https://joshej.itch.io/state-machine-showcase",
-      demo: null
+      demo: null,
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     shortDesc: "A playable Unreal Engine 5 systems sandbox demonstrating modular AI Behaviour Trees, autonomous turret state machines, multi-floor elevator validation logic, and inventory-gated doors.",
     summary: "Designed from formal logic flowcharts to demonstrate clean, decoupled state management across NPC combat AI, autonomous turrets, environmental machinery, and regenerating pickups.",
@@ -293,7 +295,8 @@ void ATurretController::EvaluateStateTransition(float DistanceToTarget, bool bHa
       github: "https://github.com/JoshUEL2/Planet-Protectors",
       itch: "https://joshej.itch.io/planet-protectors",
       demo: null,
-      gdd: "/docs/Planet_Protectors_Design_Document.docx"
+      gdd: "/docs/Planet_Protectors_Design_Document.docx",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     marketingSite: {
       repoSlug: "planet-protectors",
@@ -350,7 +353,8 @@ void ABeatCorruptionNode::OnNodePurified(FVector NodeWorldLocation)
       github: "https://github.com/JoshUEL2",
       itch: "https://joshej.itch.io/randio",
       demo: null,
-      gdd: "/docs/Randio_Design_Document.docx"
+      gdd: "/docs/Randio_Design_Document.docx",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     shortDesc: "A 2D top-down roguelite shooter featuring stochastic Random Walker island generation, cellular automata coastline smoothing, and A* enemy pursuit pathfinding.",
     summary: "Built to explore procedural level generation from scratch without relying on pre-built engine tilemaps. Every run carves a fresh island layout, calculates bitmask shoreline autotiles, and spawns wave-based enemies that navigate around obstacles.",
@@ -419,7 +423,8 @@ def generate_island_grid(width: int, height: int, target_floor_ratio: float = 0.
       github: "https://github.com/JoshUEL2",
       itch: "https://joshej.itch.io/delirium",
       demo: null,
-      gdd: "/docs/Delirium_GDD_and_Design_Notes.zip"
+      gdd: "/docs/Delirium_GDD_and_Design_Notes.zip",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     shortDesc: "Built in 36 hours at Goldsmiths Global Game Jam. Players physically grip, push, and brake independent left/right wheelchair rims in VR to escape a sound-hunting entity.",
     summary: "VR horror game where movement requires physical effort. Instead of thumbstick teleportation, I built a twin-wheel differential drive rig in OpenXR where frantic hand strokes generate squeaking wheel audio that draws the monster toward you.",
@@ -477,7 +482,8 @@ void AWheelchairPawn::UpdateWheelPhysics(UVRControllerComponent* Hand, UPrimitiv
     links: {
       github: "https://github.com/JoshUEL2",
       itch: null,
-      demo: null
+      demo: null,
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     shortDesc: "A 2D rigid-body physics sandbox written from scratch in Python without external physics libraries, handling circle-to-circle and AABB impulse resolution.",
     summary: "Built to understand rigid-body collision maths under the hood rather than relying on Box2D. Implements elastic and inelastic momentum transfer, restitution coefficients, and positional projection to stop stacked bodies sinking into floors.",
@@ -535,7 +541,8 @@ def resolve_collision(body_a, body_b, normal: Vector2, depth: float, restitution
       github: "https://github.com/JoshUEL2/REM",
       itch: null,
       demo: null,
-      gdd: "/docs/REM_Game_Design_Document.docx"
+      gdd: "/docs/REM_Game_Design_Document.docx",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     marketingSite: {
       repoSlug: "rem",
@@ -603,7 +610,8 @@ float3 KuwaharaFilter(float2 UV, float2 TexelSize, int Radius)
       github: "https://github.com/JoshUEL2/Daydream-Believer-Marketing-Website",
       itch: "https://joshej.itch.io/daydream-believer",
       demo: null,
-      gdd: "/docs/Daydream_Believer_Design_Document.docx"
+      gdd: "/docs/Daydream_Believer_Design_Document.docx",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     marketingSite: {
       repoSlug: "daydream",
@@ -704,7 +712,8 @@ void ADaydreamPostProcessDirector::UpdateCognitiveShaderState(float FocusLevel, 
       github: "https://github.com/JoshUEL2",
       itch: null,
       demo: null,
-      gdd: "/docs/Project_Isla_Design_Document.docx"
+      gdd: "/docs/Project_Isla_Design_Document.docx",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     shortDesc: "A procedural 3D island generator that combines multi-octave 2D Perlin noise with a radial sigmoid fall-off mask and elevation-based biome splatting.",
     summary: "Generates natural archipelago landmasses at runtime by layering fractional Brownian motion (fBm) noise octaves, subtracting a radial distance gradient to guarantee ocean borders, and auto-assigning sand, grass, rock, and snow materials by slope and altitude.",
@@ -762,7 +771,8 @@ float UProceduralIslandComponent::SampleElevation(float X, float Y, int32 Octave
       itch: null,
       demo: null,
       video: "https://www.youtube.com/watch?v=t3xmVDuFvZU",
-      gdd: "/docs/LabRatz_Design_Document.docx"
+      gdd: "/docs/LabRatz_Design_Document.docx",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     shortDesc: "A 3-player asymmetrical co-op FPS level built in Unreal Engine 5 around three distinct player roles (Hacker, Assault, Engineer), complete with a 40-page GDD and walkthrough.",
     summary: "Designed a multi-wing bio-research facility where progression requires simultaneous spatial coordination between three specialised roles: elevated catwalks for overwatch, maintenance vents for engineering bypasses, and colour-coded power conduits guiding hackers to terminal nodes.",
@@ -815,7 +825,8 @@ void ALabSectorLock::EvaluateBreachReadiness()
       github: "https://github.com/JoshUEL2/Chanceway-Marketing-Website",
       itch: null,
       demo: null,
-      gdd: "/docs/Chanceway_Game_Design_Document.docx"
+      gdd: "/docs/Chanceway_Game_Design_Document.docx",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     marketingSite: {
       repoSlug: "chanceway",
@@ -874,7 +885,8 @@ bool AChancewayMazeDirector::TryReconfigureBehindPlayer(UCorridorSocket* Socket,
       github: "https://github.com/JoshUEL2",
       itch: null,
       demo: null,
-      gdd: "/docs/Baldis_Basics_2_Design_Document.docx"
+      gdd: "/docs/Baldis_Basics_2_Design_Document.docx",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     shortDesc: "A dark 3D Unreal Engine 5 reimagining of Baldi's Basics featuring an interconnected school facility lit by over 400 dynamic Lumen light sources and an acoustic-hunting pursuer AI.",
     summary: "Transforms the flat 2D retro parody into a tense, atmospheric 3D stealth-horror facility in Unreal Engine 5. Engineered to stress-test dynamic Lumen global illumination across long institutional hallways while balancing sightline loops for stealth evasion.",
@@ -925,7 +937,8 @@ void ABaldiPursuerAI::OnNotebookCollected(int32 TotalCollected, int32 MaxNoteboo
       github: "https://github.com/JoshUEL2/The-Quarry",
       itch: null,
       demo: "/games/the_quarry/index.html",
-      gdd: "/docs/The_Quarry_Branching_Script.docx"
+      gdd: "/docs/The_Quarry_Branching_Script.docx",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     shortDesc: "Playable directly in the browser. A branching psychological thriller built in Twine SugarCube using Jon Ingold's Accept/Reject/Deflect dialogue triads and a hidden Agitation state tracker.",
     summary: "Instead of binary good/evil choices, every conversation node is structured as an Accept, Reject, or Deflect triad that shifts an internal Agitation variable, rewriting subsequent room descriptions, NPC trust, and survival outcomes.",
@@ -976,7 +989,8 @@ void ABaldiPursuerAI::OnNotebookCollected(int32 TotalCollected, int32 MaxNoteboo
       github: "https://github.com/JoshUEL2/WaiWWai-Marketing-Website",
       itch: null,
       demo: null,
-      gdd: "/docs/WAIWWAI_Game_Design_Document.docx"
+      gdd: "/docs/WAIWWAI_Game_Design_Document.docx",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     marketingSite: {
       repoSlug: "waiwwai",
@@ -1034,7 +1048,8 @@ function updateMemoryFragment(fragment, deltaSeconds, clarityIndex) {
       github: "https://github.com/JoshUEL2/DearHiringManager",
       itch: "https://joshej.itch.io/dear-hiring-manager",
       demo: "https://github.com/JoshUEL2/DearHiringManager/releases/latest",
-      gdd: "/docs/Dear_Hiring_Manager_Screenplay.docx"
+      gdd: "/docs/Dear_Hiring_Manager_Screenplay.docx",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     shortDesc: "A complete portrait mobile corporate life-simulator built in Unity 6 UI Toolkit, turning dystopian tech recruitment, debt traps, and the corporate ladder into a high-stakes economy.",
     summary: "Built as a full portrait mobile title in Unity 6 using modern UI Toolkit (UIElements). The player starts in the Slums with $0, scrubbing dishes and dodging debt collectors, while balancing stress, education bootcamps, underground side hustles, and 20+ interactive minigames to climb from entry-level peon to Fortune 500 CEO.",
@@ -1091,7 +1106,8 @@ public void AdvanceWeek()
       github: "https://github.com/JoshUEL2",
       itch: null,
       demo: null,
-      gdd: "/docs/Faith_Over_Fear_Screenplay.docx"
+      gdd: "/docs/Faith_Over_Fear_Screenplay.docx",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     shortDesc: "A feature-length DLC concept and mocap screenplay set in post-collapse Hope County, blending environmental indexical storytelling with unreliable hallucination sequences.",
     summary: "Explores survivor guilt and cult indoctrination in the aftermath of Far Cry 5. Written for full performance-capture staging, pairing spoken dialogue with spatial blocking, camera lens cues, and seamless gameplay transitions.",
@@ -1287,7 +1303,8 @@ export const HARDWARE_BENCH_PROJECTS = [
     ],
     pipeline: ["Kinect v2 IR Depth", "PSVR Move IMU Gyros", "Python OSC Fusion Bridge", "UE5 LiveLink MetaHuman"],
     links: {
-      github: "https://github.com/JoshUEL2"
+      github: "https://github.com/JoshUEL2",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     }
   },
   {
@@ -1305,7 +1322,8 @@ export const HARDWARE_BENCH_PROJECTS = [
     ],
     pipeline: ["Wireshark USBPcap", "Hex Payload Diffing", "USB HID Endpoint Map", "SignalRGB JS Driver"],
     links: {
-      github: "https://github.com/JoshUEL2/SignalRGB-Aorus-P1200W-Plugin"
+      github: "https://github.com/JoshUEL2/SignalRGB-Aorus-P1200W-Plugin",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     }
   },
   {
@@ -1323,7 +1341,8 @@ export const HARDWARE_BENCH_PROJECTS = [
     ],
     pipeline: ["Hardware Sensor Poll", "C# .NET Frame Buffer", "Direct USB HID Write", "XC7 Waterblock LCD"],
     links: {
-      github: "https://github.com/JoshUEL2/HydroScreen-XC7-Compatiability"
+      github: "https://github.com/JoshUEL2/HydroScreen-XC7-Compatiability",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     }
   },
   {
@@ -1342,7 +1361,8 @@ export const HARDWARE_BENCH_PROJECTS = [
     pipeline: ["Oyster CSV / Mic Input", "Weighted Graph / LLM", "Leaflet GIS / Visemes", "Live Web & UE5 Tools"],
     links: {
       github: "https://github.com/JoshUEL2/TFL-Planner",
-      demo: "https://joshuel2.github.io/TFL-Planner/"
+      demo: "https://joshuel2.github.io/TFL-Planner/",
+      linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     }
   }
 ];

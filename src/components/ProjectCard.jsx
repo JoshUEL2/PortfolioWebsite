@@ -201,7 +201,7 @@ export default function ProjectCard({ project, onSelectProject }) {
           className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#0077b5]/20 hover:bg-[#0077b5]/30 text-sky-300 hover:text-white font-semibold text-xs tracking-wider uppercase border border-[#0077b5]/30 hover:scale-[1.02] active:scale-95 transition-all w-full"
         >
           <LinkedinIcon className="w-4 h-4 shrink-0" />
-          <span>Dev Post</span>
+          <span>View on LinkedIn</span>
         </a>
       )
     });

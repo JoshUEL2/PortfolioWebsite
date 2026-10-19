@@ -1,4 +1,4 @@
-﻿import { useEffect, useId, useRef } from 'react';
+import { useEffect, useId, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { getAssetUrl } from '../utils/assetUrl';
 
@@ -211,57 +211,79 @@ function InkDrench() {
 /* ------------------------------------------------------------------ */
 /* 3. PLANET PROTECTORS: a canopy of leaves falls all the way down      */
 /* ------------------------------------------------------------------ */
-const LEAF_COUNT = 96;
-const LEAVES = Array.from({ length: LEAF_COUNT }).map((_, i) => {
-  const top = rnd(i, 1) * 100;
-  return {
-    left: rnd(i, 2) * 100,
-    top,
-    size: 54 + rnd(i, 3) * 60,
-    rot: rnd(i, 4) * 360,
-    spin: 160 + rnd(i, 5) * 260,
-    sway: 18 + rnd(i, 6) * 36,
-    delay: 0.35 + ((100 - top) / 100) * 0.9 + rnd(i, 7) * 0.25,
-    tone: i % 3
-  };
-});
-const LEAF_FILLS = ['#10b981', '#059669', '#15803d'];
+const LEAF_COLS = 14;
+const LEAF_ROWS = 12;
+const LEAF_FILLS = ['#064e3b', '#047857', '#059669', '#10b981', '#15803d', '#166534', '#0f766e', '#14532d'];
+const LEAF_VEINS = ['#34d399', '#6ee7b7', '#a7f3d0', '#86efac'];
+
+const LEAVES = [];
+for (let r = 0; r < LEAF_ROWS; r++) {
+  for (let c = 0; c < LEAF_COLS; c++) {
+    const idx = r * LEAF_COLS + c;
+    const stagger = (r % 2) * 3.5;
+    const left = (c / (LEAF_COLS - 1)) * 108 - 4 + stagger + (rnd(idx, 1) - 0.5) * 5;
+    const top = (r / (LEAF_ROWS - 1)) * 108 - 4 + (rnd(idx, 2) - 0.5) * 5;
+    const size = 95 + rnd(idx, 3) * 65;
+    const rot = -40 + rnd(idx, 4) * 80;
+    const spin = 140 + rnd(idx, 5) * 260;
+    const sway = 25 + rnd(idx, 6) * 45;
+    const rowProgress = 1 - r / (LEAF_ROWS - 1);
+    const delay = 0.25 + rowProgress * 0.75 + rnd(idx, 7) * 0.2;
+    LEAVES.push({
+      left,
+      top,
+      size,
+      rot,
+      spin,
+      sway,
+      delay,
+      tone: idx % LEAF_FILLS.length,
+      vein: idx % LEAF_VEINS.length
+    });
+  }
+}
 
 function LeafFall() {
   return (
     <>
-      <motion.div
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 0 }}
-        transition={{ duration: 1.1, delay: 0.7, ease: 'easeOut' }}
-        className="absolute inset-0 bg-[#04180c]"
-      />
       {LEAVES.map((l, i) => (
         <motion.div
           key={i}
           initial={{ y: 0, x: 0, rotate: l.rot, opacity: 1 }}
           animate={{
-            y: 1400,
+            y: 1500,
             x: [0, l.sway, -l.sway, l.sway * 0.5],
             rotate: l.rot + l.spin
           }}
-          transition={{ delay: l.delay, duration: 1.5, ease: [0.5, 0, 0.9, 0.5] }}
+          transition={{ delay: l.delay, duration: 1.6, ease: [0.45, 0, 0.85, 0.45] }}
           className="absolute pointer-events-none transform-gpu will-change-transform"
-          style={{ left: `${l.left}%`, top: `${l.top}%`, width: l.size, height: l.size * 1.3 }}
+          style={{
+            left: `${l.left}%`,
+            top: `${l.top}%`,
+            width: l.size,
+            height: l.size * 1.35,
+            zIndex: 100 - Math.floor(l.top)
+          }}
         >
-          <svg viewBox="0 0 24 32" className="w-full h-full">
+          <svg viewBox="0 0 28 38" className="w-full h-full drop-shadow-[0_4px_6px_rgba(0,0,0,0.35)]">
             <path
-              d="M12 2 C6 7 2 14 2 20 C2 26 6.5 30 12 30 C17.5 30 22 26 22 20 C22 14 18 7 12 2 Z"
+              d="M14 2 C6 7 2 15 2 23 C2 31 7 36 14 36 C21 36 26 31 26 23 C26 15 22 7 14 2 Z"
               fill={LEAF_FILLS[l.tone]}
             />
-            <path d="M12 4 L12 29" stroke="#6ee7b7" strokeWidth="1.2" strokeLinecap="round" />
-            <path d="M12 10 L6 14 M12 10 L18 14 M12 16 L5 21 M12 16 L19 21 M12 22 L7 26 M12 22 L17 26" stroke="#a7f3d0" strokeWidth="0.8" strokeLinecap="round" />
+            <path d="M14 4 L14 35" stroke={LEAF_VEINS[l.vein]} strokeWidth="1.3" strokeLinecap="round" />
+            <path
+              d="M14 11 L6 16 M14 11 L22 16 M14 18 L5 24 M14 18 L23 24 M14 25 L7 30 M14 25 L21 30"
+              stroke={LEAF_VEINS[l.vein]}
+              strokeWidth="0.85"
+              strokeLinecap="round"
+            />
           </svg>
         </motion.div>
       ))}
     </>
   );
 }
+
 
 /* ------------------------------------------------------------------ */
 /* 4. DELIRIUM VR: flatline, pulse, defibrillator shocks, lights out    */
@@ -952,6 +974,269 @@ function CartoonCv() {
   );
 }
 
+/* ------------------------------------------------------------------ */
+/* 13. RAND.IO: multi-agent Drunkard's Walk procedural island generator*/
+/* ------------------------------------------------------------------ */
+function RandioWalkers() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animId;
+    const width = 48;
+    const height = 32;
+    const grid = Array.from({ length: height }, () => new Uint8Array(width));
+    const targetFloors = Math.floor(width * height * 0.44);
+    let floorCount = 0;
+
+    const walkers = [
+      { x: Math.floor(width / 2) - 1, y: Math.floor(height / 2) - 1, color: '#22c55e' },
+      { x: Math.floor(width / 2) + 1, y: Math.floor(height / 2) - 1, color: '#06b6d4' },
+      { x: Math.floor(width / 2) - 1, y: Math.floor(height / 2) + 1, color: '#f59e0b' },
+      { x: Math.floor(width / 2) + 1, y: Math.floor(height / 2) + 1, color: '#a855f7' }
+    ];
+
+    const dirs = [
+      [1, 0],
+      [-1, 0],
+      [0, 1],
+      [0, -1]
+    ];
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+
+    let frame = 0;
+    const render = () => {
+      const cw = canvas.width;
+      const ch = canvas.height;
+      if (cw === 0 || ch === 0) return;
+
+      const cellW = cw / width;
+      const cellH = ch / height;
+
+      if (floorCount < targetFloors) {
+        for (let step = 0; step < 7; step++) {
+          if (floorCount >= targetFloors) break;
+          for (const w of walkers) {
+            const [dx, dy] = dirs[Math.floor(Math.random() * dirs.length)];
+            w.x = Math.max(2, Math.min(width - 3, w.x + dx));
+            w.y = Math.max(2, Math.min(height - 3, w.y + dy));
+
+            for (let oy = 0; oy < 2; oy++) {
+              for (let ox = 0; ox < 2; ox++) {
+                const nx = w.x + ox;
+                const ny = w.y + oy;
+                if (nx < width && ny < height && grid[ny][nx] === 0) {
+                  grid[ny][nx] = 1;
+                  floorCount++;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      ctx.fillStyle = '#061727';
+      ctx.fillRect(0, 0, cw, ch);
+
+      ctx.fillStyle = '#0b2947';
+      for (let y = 1; y < height; y += 2) {
+        for (let x = 1; x < width; x += 2) {
+          if (grid[y][x] === 0) {
+            ctx.fillRect(x * cellW + cellW * 0.35, y * cellH + cellH * 0.35, cellW * 0.3, cellH * 0.3);
+          }
+        }
+      }
+
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          if (grid[y][x] === 1) {
+            const isShore =
+              (y > 0 && grid[y - 1][x] === 0) ||
+              (y < height - 1 && grid[y + 1][x] === 0) ||
+              (x > 0 && grid[y][x - 1] === 0) ||
+              (x < width - 1 && grid[y][x + 1] === 0);
+
+            if (isShore) {
+              ctx.fillStyle = '#eab308';
+            } else {
+              ctx.fillStyle = (x + y) % 2 === 0 ? '#16a34a' : '#15803d';
+            }
+            ctx.fillRect(x * cellW, y * cellH, cellW + 0.5, cellH + 0.5);
+          }
+        }
+      }
+
+      if (floorCount < targetFloors) {
+        for (const w of walkers) {
+          ctx.fillStyle = w.color;
+          ctx.beginPath();
+          ctx.arc((w.x + 0.5) * cellW, (w.y + 0.5) * cellH, Math.min(cellW, cellH) * 1.2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      frame++;
+      if (frame < 120) {
+        animId = requestAnimationFrame(render);
+      }
+    };
+
+    animId = requestAnimationFrame(render);
+    return () => cancelAnimationFrame(animId);
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 1, scale: 1 }}
+      animate={{ opacity: [1, 1, 0], scale: [1, 1, 1.06], y: [0, 0, 40] }}
+      transition={{ duration: 2.3, times: [0, 0.72, 1], ease: 'easeIn' }}
+      className="absolute inset-0 bg-[#061727]"
+    >
+      <canvas ref={canvasRef} className="w-full h-full block" />
+    </motion.div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* 14. PYBALL: SimpleGUI 2D physics simulation with BoxB and purple spheres */
+/* ------------------------------------------------------------------ */
+function PyBallSimulation() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animId;
+    const cols = 36;
+    const rows = 24;
+    const grid = [];
+
+    for (let r = 0; r < rows; r++) {
+      grid[r] = [];
+      for (let c = 0; c < cols; c++) {
+        const isBorder = r === 0 || r === rows - 1 || c === 0 || c === cols - 1;
+        const isPond = isBorder ? true : Math.random() < 0.1;
+        grid[r][c] = isPond ? 'blue' : 'green';
+      }
+    }
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+
+    const player = {
+      x: canvas.width * 0.48,
+      y: canvas.height * 0.5,
+      size: 18,
+      vx: 1.6,
+      vy: 1.1
+    };
+
+    const circles = Array.from({ length: 7 }, () => ({
+      x: canvas.width * (0.2 + Math.random() * 0.6),
+      y: canvas.height * (0.2 + Math.random() * 0.6),
+      r: 8,
+      vx: (Math.random() - 0.5) * 3.4,
+      vy: (Math.random() - 0.5) * 3.4
+    }));
+
+    let frame = 0;
+    const render = () => {
+      const cw = canvas.width;
+      const ch = canvas.height;
+      if (cw === 0 || ch === 0) return;
+
+      const cellW = cw / cols;
+      const cellH = ch / rows;
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (grid[r][c] === 'blue') {
+            ctx.fillStyle = '#1d4ed8';
+          } else {
+            ctx.fillStyle = (r + c) % 2 === 0 ? '#15803d' : '#16a34a';
+          }
+          ctx.fillRect(c * cellW, r * cellH, cellW + 0.5, cellH + 0.5);
+        }
+      }
+
+      player.x += player.vx;
+      player.y += player.vy;
+      if (player.x < cellW * 1.5 || player.x > cw - cellW * 2.5) player.vx *= -1;
+      if (player.y < cellH * 1.5 || player.y > ch - cellH * 2.5) player.vy *= -1;
+
+      ctx.fillStyle = '#ef4444';
+      ctx.fillRect(player.x - player.size / 2, player.y - player.size / 2, player.size, player.size);
+      ctx.strokeStyle = '#991b1b';
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(player.x - player.size / 2, player.y - player.size / 2, player.size, player.size);
+
+      for (const b of circles) {
+        const dx = b.x - player.x;
+        const dy = b.y - player.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 85 && dist > 1) {
+          b.vx += (dx / dist) * 0.45;
+          b.vy += (dy / dist) * 0.45;
+        }
+
+        const speed = Math.sqrt(b.vx * b.vx + b.vy * b.vy);
+        if (speed > 4.5) {
+          b.vx = (b.vx / speed) * 4.5;
+          b.vy = (b.vy / speed) * 4.5;
+        }
+
+        b.x += b.vx;
+        b.y += b.vy;
+
+        if (b.x < cellW * 1.5 || b.x > cw - cellW * 1.5) b.vx *= -1;
+        if (b.y < cellH * 1.5 || b.y > ch - cellH * 1.5) b.vy *= -1;
+
+        ctx.fillStyle = '#a855f7';
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#6b21a8';
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+      }
+
+      frame++;
+      if (frame < 120) {
+        animId = requestAnimationFrame(render);
+      }
+    };
+
+    animId = requestAnimationFrame(render);
+    return () => cancelAnimationFrame(animId);
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 1, scale: 1 }}
+      animate={{ opacity: [1, 1, 0], scale: [1, 1, 1.06] }}
+      transition={{ duration: 2.2, times: [0, 0.72, 1], ease: 'easeIn' }}
+      className="absolute inset-0 bg-[#0f172a]"
+    >
+      <canvas ref={canvasRef} className="w-full h-full block" />
+    </motion.div>
+  );
+}
+
 const EFFECTS = {
   rastacats: IceShatter,
   rem: InkDrench,
@@ -964,7 +1249,9 @@ const EFFECTS = {
   chanceway: CardDeal,
   'baldis-basics-2': ChalkboardWipe,
   waiwwai: VhsCollapse,
-  'dear-hiring-manager': CartoonCv
+  'dear-hiring-manager': CartoonCv,
+  'rand-io': RandioWalkers,
+  pyball: PyBallSimulation
 };
 
 export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 }) {

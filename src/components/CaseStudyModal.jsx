@@ -619,7 +619,7 @@ export default function CaseStudyModal({ project, onClose }) {
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600/30 hover:bg-blue-600/50 text-blue-200 font-semibold text-xs tracking-wider uppercase border border-blue-500/40 transition-colors"
                 >
                   <LinkedinIcon className="w-4 h-4" />
-                  <span>LinkedIn</span>
+                  <span>View on LinkedIn</span>
                 </a>
               )}
 

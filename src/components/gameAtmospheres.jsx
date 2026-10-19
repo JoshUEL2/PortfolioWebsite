@@ -343,6 +343,114 @@ export function WaiwwaiAtmosphere() {
 /**
  * Universal atmosphere dispatcher component for full project cards / modals.
  */
+// 11. Dear, Hiring Manager Corporate Cyberpunk Atmosphere with Timing Ring & HUD Telemetry
+export function DearHiringManagerAtmosphere({ isCompact = false }) {
+  const metrics = [
+    { text: '+$120.00', color: 'text-emerald-400', border: 'border-emerald-500/30' },
+    { text: '-$100.00', color: 'text-rose-400', border: 'border-rose-500/30' },
+    { text: 'STRESS 99%', color: 'text-rose-500', border: 'border-rose-500/40' },
+    { text: 'JOB LUCK 48%', color: 'text-amber-400', border: 'border-amber-500/30' },
+    { text: 'WEEK 3', color: 'text-cyan-400', border: 'border-cyan-500/30' }
+  ];
+
+  return (
+    <>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(225,29,72,0.18),transparent_70%)] pointer-events-none rounded-3xl" />
+      <div className="absolute inset-0 bg-[#060913]/40 pointer-events-none rounded-3xl" />
+      
+      {/* Corner Tech Brackets */}
+      <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-rose-500/40 rounded-tl-3xl pointer-events-none bg-gradient-to-br from-rose-600/10 to-transparent" />
+      <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-cyan-400/40 rounded-br-3xl pointer-events-none bg-gradient-to-tl from-cyan-500/10 to-transparent" />
+
+      {/* Rotating Cyberpunk Timing Ring Gauge from Minigame 02 */}
+      <div className="absolute top-2 right-2 w-16 sm:w-20 h-16 sm:h-20 pointer-events-none opacity-25">
+        <svg viewBox="0 0 100 100" className="w-full h-full">
+          <circle cx="50" cy="50" r="42" fill="none" stroke="#0ea5e9" strokeWidth="3" strokeDasharray="180 80" />
+          <circle cx="50" cy="50" r="34" fill="none" stroke="#e11d48" strokeWidth="2.5" strokeDasharray="60 160" />
+          <motion.circle
+            cx="50" cy="50" r="42" fill="none" stroke="#38bdf8" strokeWidth="5" strokeDasharray="25 240"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+            style={{ transformOrigin: '50px 50px' }}
+          />
+        </svg>
+      </div>
+
+      {/* Drifting Corporate HUD Telemetry Badges */}
+      {metrics.slice(0, isCompact ? 3 : 5).map((m, i) => (
+        <motion.div
+          key={i}
+          initial={{ y: 220, opacity: 0 }}
+          animate={{
+            y: ['0%', '-140%'],
+            opacity: [0, 0.75, 0.5, 0]
+          }}
+          transition={{
+            duration: 9 + i * 2,
+            repeat: Infinity,
+            delay: i * 1.8,
+            ease: 'linear'
+          }}
+          style={{ left: `${12 + i * 18}%` }}
+          className={`absolute pointer-events-none z-0 transform-gpu will-change-transform px-2 py-0.5 rounded bg-black/60 backdrop-blur-xs border ${m.border} font-mono text-[9px] font-bold tracking-wider ${m.color}`}
+        >
+          {m.text}
+        </motion.div>
+      ))}
+    </>
+  );
+}
+
+// 12. PyBall Python Arcade Simulation Atmosphere (Green Grass, Blue Ponds, Purple Circles, Red BoxB)
+export function PyballAtmosphere({ isCompact = false }) {
+  return (
+    <>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,197,94,0.18),transparent_65%)] pointer-events-none rounded-3xl" />
+      <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-green-500/40 rounded-tl-3xl pointer-events-none bg-gradient-to-br from-green-600/10 to-transparent" />
+      <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-blue-500/40 rounded-br-3xl pointer-events-none bg-gradient-to-tl from-blue-600/10 to-transparent" />
+
+      {/* Corner Blue Pond Accent */}
+      <div className="absolute top-2 left-2 w-10 h-10 rounded-lg bg-blue-900/40 border border-blue-400/30 pointer-events-none flex items-center justify-center">
+        <div className="w-4 h-4 rounded-full bg-blue-400/20" />
+      </div>
+
+      {/* Red Player Square BoxB */}
+      <motion.div
+        animate={{
+          x: [10, 80, 50, 10],
+          y: [20, 40, 10, 20]
+        }}
+        transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute top-1/3 left-1/4 w-3.5 h-3.5 rounded-sm bg-red-500 border border-red-300 shadow-[0_0_8px_rgba(239,68,68,0.8)] pointer-events-none z-0 transform-gpu will-change-transform"
+      />
+
+      {/* Floating Purple Enemy Circles Avoiding Player */}
+      {Array.from({ length: isCompact ? 3 : 5 }).map((_, i) => (
+        <motion.div
+          key={i}
+          animate={{
+            x: [0, (i % 2 === 0 ? 30 : -30), (i % 2 === 0 ? -20 : 20), 0],
+            y: [0, (i % 2 === 0 ? -40 : 40), (i % 2 === 0 ? 30 : -30), 0]
+          }}
+          transition={{
+            duration: 5 + i * 1.5,
+            repeat: Infinity,
+            delay: i * 0.7,
+            ease: 'easeInOut'
+          }}
+          style={{
+            left: `${20 + i * 16}%`,
+            top: `${25 + (i % 3) * 20}%`
+          }}
+          className="absolute pointer-events-none z-0 transform-gpu will-change-transform"
+        >
+          <div className="w-3.5 h-3.5 rounded-full bg-purple-500 border border-purple-300 shadow-[0_0_10px_rgba(168,85,247,0.9)]" />
+        </motion.div>
+      ))}
+    </>
+  );
+}
+
 export function ProjectAtmosphere({ projectId, isModal = false, isCompact = false }) {
   switch (projectId) {
     case 'rastacats':
@@ -366,6 +474,10 @@ export function ProjectAtmosphere({ projectId, isModal = false, isCompact = fals
       return <BaldiAtmosphere isModal={isModal} isCompact={isCompact} />;
     case 'waiwwai':
       return <WaiwwaiAtmosphere isModal={isModal} isCompact={isCompact} />;
+    case 'dear-hiring-manager':
+      return <DearHiringManagerAtmosphere isCompact={isCompact} />;
+    case 'pyball':
+      return <PyballAtmosphere isCompact={isCompact} />;
     default:
       return null;
   }
@@ -529,6 +641,24 @@ export function OverviewAtmosphere({ projectId }) {
     case 'labrats':
       return (
         <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-emerald-500/20 via-emerald-400/60 to-emerald-500/20 pointer-events-none" />
+      );
+
+    case 'dear-hiring-manager':
+      return (
+        <>
+          <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-rose-600/30 via-rose-500/80 to-cyan-400/60 pointer-events-none" />
+          <div className="absolute right-3 bottom-2 opacity-[0.08] pointer-events-none select-none -rotate-12 border-2 border-rose-500 rounded-md px-2 py-0.5 text-rose-400 font-extrabold text-xs tracking-widest font-mono">
+            HIRED!
+          </div>
+        </>
+      );
+
+    case 'pyball':
+      return (
+        <>
+          <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-green-500/40 via-blue-500/60 to-green-500/40 pointer-events-none" />
+          <div className="absolute right-2 top-1.5 w-2.5 h-2.5 rounded-full bg-purple-400/40 border border-purple-300/60 pointer-events-none" />
+        </>
       );
 
     default:

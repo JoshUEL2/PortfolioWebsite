@@ -1018,47 +1018,59 @@ function updateMemoryFragment(fragment, deltaSeconds, clarityIndex) {
   },
   {
     id: "dear-hiring-manager",
-    category: "narrative",
+    category: "gameplay",
     title: "Dear, Hiring Manager",
-    tagline: "Satirical Recruitment Screenplay & Systems Design Document",
-    discipline: "Narrative & Systems Design",
-    engine: "Screenplay & Systems GDD",
-    dates: "Feb 2025 - May 2025",
-    studio: "Solo Writer & Designer",
+    tagline: "Satirical Cyberpunk Corporate Life-Simulator & Mobile Systems Game",
+    discipline: "Lead Game Designer & Systems Programmer",
+    engine: "Unity 6 (6000.5.4f1) & UI Toolkit",
+    dates: "Oct 2025 - Oct 2026",
+    studio: "24-Hour Studios (Solo Project)",
     image: "/images/dear_hiring_manager.jpg",
     gallery: [
       "/images/dear_hiring_manager.jpg"
     ],
     videoPreview: null,
     links: {
-      github: "https://github.com/JoshUEL2",
-      itch: null,
-      demo: null,
+      github: "https://github.com/JoshUEL2/DearHiringManager",
+      itch: "https://joshej.itch.io/dear-hiring-manager",
+      demo: "https://github.com/JoshUEL2/DearHiringManager/releases/latest",
       gdd: "/docs/Dear_Hiring_Manager_Screenplay.docx"
     },
-    shortDesc: "A satirical narrative and mobile systems GDD turning modern tech recruitment dark patterns into a high-pressure resource-management game.",
-    summary: "Written as both a dramatic screenplay and a systems design document. Examines algorithmic CV filtering, ghost job listings, and emotional burnout by translating them into stamina-draining UI mechanics.",
+    shortDesc: "A complete portrait mobile corporate life-simulator built in Unity 6 UI Toolkit, turning dystopian tech recruitment, debt traps, and the corporate ladder into a high-stakes economy.",
+    summary: "Built as a full portrait mobile title in Unity 6 using modern UI Toolkit (UIElements). The player starts in the Slums with $0, scrubbing dishes and dodging debt collectors, while balancing stress, education bootcamps, underground side hustles, and 20+ interactive minigames to climb from entry-level peon to Fortune 500 CEO.",
     highlights: [
-      "Wrote a full industry-formatted screenplay alongside a companion mobile game systems specification.",
-      "Designed 'Emotional Bandwidth' and 'Financial Runway' resource loops where every automated rejection email triggers UI clutter and input latency.",
-      "Used dark comedy and fourth-wall-breaking applicant tracking prompts to critique automated hiring pipelines.",
-      "Downloadable in full as a formatted screenplay and design document."
+      "Architected 81+ procedural job task configurations and 20+ custom interactive minigames (Timing Rings, Falling Sorters, Agile Scrums, Grid Steer, Ledger Bookkeeping, Code Reviews).",
+      "Engineered a multi-layered economic simulation featuring compounding rent inflation, randomized market news events, underground side hustles, and fatal burnout/cardiovascular stress thresholds.",
+      "Designed a responsive UI Toolkit architecture utilizing safe-area insets, dynamic theme swaps (Dark, Light, Obsidian-Crimson), and scalable vector layouts for diverse mobile screen ratios.",
+      "Implemented a comprehensive adaptive audio manager with Lo-Fi BGM playlisting, contextual ambient murmurs, and hundreds of tactile mechanical SFX.",
+      "Authored a unified PowerShell and Unity batchmode deployment pipeline publishing Android APK builds directly to GitHub Releases and Itch.io."
     ],
-    technicalDeepDive: "The design document pairs narrative beats directly with UI degradation rules: as the protagonist's burnout counter climbs, auto-fill forms deliberately introduce typos that the player must manually correct under a ticking rent clock.",
-    codeSnippet: `// Burnout-Driven UI Input Latency & Form Auto-Fill Corruption
-float UApplicantHUDManager::CalculateEffectiveInputDelay(int32 RejectionStreak, float EmotionalBandwidth) const
+    technicalDeepDive: "Built upon an extensible IWeeklySystem architecture: at each turn advance (+ Week), the game executes synchronized lifecycle passes across FinancialSystem, JobSystem, EducationSystem, and DistrictSystem. Mini-games leverage reactive pointer-down input and UI Toolkit Painter2D canvas rendering with sub-pixel collision math.",
+    codeSnippet: `// Unified Weekly Turn Lifecycle & Economic Resolution Pass
+public void AdvanceWeek()
 {
-    const float FatigueRatio = 1.0f - FMath::Clamp(EmotionalBandwidth / 100.0f, 0.0f, 1.0f);
-    const float StreakPenalty = FMath::Min(RejectionStreak * 0.018f, 0.25f);
+    currentWeek++;
     
-    // Introduce subtle cursor drag and typo probability as burnout peaks
-    return BaseInputDelay + (FatigueRatio * 0.14f) + StreakPenalty;
+    // Execute registered lifecycle passes in deterministic priority order
+    foreach (var system in weeklySystems)
+    {
+        system.ProcessWeeklyTurn(currentData);
+    }
+    
+    // Evaluate stress thresholds and compound inflation
+    financialSystem.CompoundInflation(currentData);
+    if (currentData.stress >= 1.0f)
+    {
+        EvaluateBurnoutRisk(currentData);
+    }
+    
+    EventManager.Instance?.TriggerEvent(new WeekAdvancedEvent(currentWeek));
 }`,
     architectureNodes: [
-      { label: "ATS Portal Submission", sub: "CV Keyword Parser" },
-      { label: "Rejection Streak++", sub: "Bandwidth Drain Event" },
-      { label: "UI Friction Injector", sub: "Cursor Lag & Form Typos" },
-      { label: "Runway Clock Check", sub: "Narrative Branch Trigger" }
+      { label: "Turn Engine Clock", sub: "IWeeklySystem Lifecycle Pass" },
+      { label: "12-Tier Career Matrix", sub: "Education & Shift Verification" },
+      { label: "20+ Minigame Framework", sub: "Pointer-Capture Responsive UI" },
+      { label: "Adaptive Audio Engine", sub: "BGM Queues & Context Ambience" }
     ]
   },
   {

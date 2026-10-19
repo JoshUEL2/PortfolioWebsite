@@ -125,7 +125,7 @@ export default function CaseStudyModal({ project, onClose }) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className={`relative w-full max-w-4xl border rounded-3xl overflow-hidden z-10 max-h-[90vh] flex flex-col my-auto transition-all ${theme.modalClass}`}
+          className={`relative w-full max-w-4xl border rounded-3xl overflow-hidden z-10 max-h-[90vh] flex flex-col my-auto ${theme.modalClass}`}
         >
           {/* Cinematic Theatrical Curtain Entrance Reveal */}
           <ProjectTheatricalEntrance projectId={project?.id} animationKey={theatricalKey} />

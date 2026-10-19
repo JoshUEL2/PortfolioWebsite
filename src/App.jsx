@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProjectShowcase from './components/ProjectShowcase';
@@ -177,18 +178,22 @@ export default function App() {
       </div>
 
       {/* Full-screen Case Study Modal */}
-      {selectedProject && (
-        <CaseStudyModal
-          key={`${selectedProject.id}-${selectedProject.initialPhaseIndex ?? 0}`}
-          project={selectedProject}
-          onClose={() => handleSelectProject(null)}
-        />
-      )}
+      <AnimatePresence>
+        {selectedProject && (
+          <CaseStudyModal
+            key={`${selectedProject.id}-${selectedProject.initialPhaseIndex ?? 0}`}
+            project={selectedProject}
+            onClose={() => handleSelectProject(null)}
+          />
+        )}
+      </AnimatePresence>
 
-      {/* Showstopper Windows 11 & Binary Shatter Intro Experience */}
-      {showIntro && (
-        <ShowstopperIntro onComplete={() => setShowIntro(false)} />
-      )}
+      {/* Showstopper Windows 11 Intro Experience */}
+      <AnimatePresence>
+        {showIntro && (
+          <ShowstopperIntro onComplete={() => setShowIntro(false)} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

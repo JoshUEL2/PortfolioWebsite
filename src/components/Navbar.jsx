@@ -12,21 +12,28 @@ export default function Navbar({ currentView = 'featured', onViewChange, onRepla
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 40);
 
-      if (currentView === 'featured') {
-        const sections = ['home', 'portfolio', 'research', 'toolkit', 'about', 'contact'];
-        for (const section of sections) {
-          const el = document.getElementById(section);
-          if (el) {
-            const rect = el.getBoundingClientRect();
-            if (rect.top <= 260 && rect.bottom >= 260) {
-              setActiveSection(section);
-              break;
+          if (currentView === 'featured') {
+            const sections = ['home', 'portfolio', 'research', 'toolkit', 'about', 'contact'];
+            for (const section of sections) {
+              const el = document.getElementById(section);
+              if (el) {
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= 260 && rect.bottom >= 260) {
+                  setActiveSection(section);
+                  break;
+                }
+              }
             }
           }
-        }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 

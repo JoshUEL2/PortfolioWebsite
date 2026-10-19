@@ -274,8 +274,8 @@ export default function ShowstopperIntro({ onComplete }) {
       >
         {/* Authentic Windows 11 Desktop Wallpaper (Dark Bloom) */}
         <motion.div
-          animate={{ opacity: isMorphing ? 0 : 1 }}
-          transition={{ duration: 0.55, ease: 'easeInOut' }}
+          animate={{ opacity: isBrowserActive ? 0 : 1 }}
+          transition={{ duration: 0.45, ease: 'easeInOut' }}
           className="absolute inset-0 bg-[#0d1424] overflow-hidden pointer-events-none"
         >
           {/* Windows 11 Layered Bloom Silk Petals */}
@@ -484,13 +484,13 @@ export default function ShowstopperIntro({ onComplete }) {
                   }
             }
             transition={{
-              duration: isMorphing ? 0.65 : 0.6,
+              duration: isMorphing ? 0.5 : 0.6,
               ease: [0.16, 1, 0.3, 1]
             }}
-            className={`absolute z-40 bg-[#06070d] flex flex-col overflow-hidden transition-all duration-500 ${
+            className={`absolute z-40 bg-transparent flex flex-col overflow-hidden pointer-events-none ${
               isMorphing
                 ? 'inset-0 border-none shadow-none'
-                : 'inset-3 sm:inset-6 md:inset-10 border border-white/20 shadow-[0_25px_70px_rgba(0,0,0,0.95)]'
+                : 'inset-3 sm:inset-6 md:inset-8 border border-white/20 shadow-[0_25px_70px_rgba(0,0,0,0.95)]'
             }`}
           >
             {/* Browser Window Chrome (Tabs, Controls & Address Bar) */}
@@ -499,7 +499,7 @@ export default function ShowstopperIntro({ onComplete }) {
                 y: isMorphing ? -110 : 0,
                 opacity: isMorphing ? 0 : 1
               }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col bg-[#1a1f2c] border-b border-white/10 select-none shrink-0"
             >
               {/* Browser Tab Strip */}
@@ -568,83 +568,8 @@ export default function ShowstopperIntro({ onComplete }) {
               </div>
             </motion.div>
 
-            {/* Seamless Webpage Viewport Interior */}
-            <div className="relative flex-1 bg-[#06070d] overflow-hidden flex flex-col justify-center items-center text-center px-4 font-['Plus_Jakarta_Sans',sans-serif]">
-              {/* Background Ambient Glow & Grid matching live website */}
-              <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
-              <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-gradient-to-tr from-indigo-600/25 via-violet-600/20 to-transparent blur-[120px] rounded-full pointer-events-none" />
-
-              {/* Watermark */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-[0.03]">
-                <span className="font-extrabold text-[16vw] leading-none tracking-tighter text-white uppercase text-center font-['Syne',sans-serif]">
-                  JOSHUA<br />JOHNSON
-                </span>
-              </div>
-
-              {/* Matching Hero Elements */}
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
-                className="relative z-10 max-w-3xl flex flex-col items-center"
-              >
-                {/* Status Pill */}
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-950/70 border border-indigo-500/35 text-indigo-200 text-xs font-mono mb-4 backdrop-blur-md shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>Technical Game Designer • Unreal Engine 5 • London, UK</span>
-                </div>
-
-                {/* Big Headline */}
-                <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4 font-['Syne',sans-serif] leading-tight">
-                  I build gameplay physics,{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-300 to-cyan-300">
-                    custom shaders
-                  </span>{' '}
-                  & interactive worlds.
-                </h1>
-
-                <p className="text-slate-300 text-xs sm:text-sm font-mono max-w-xl text-slate-300/80 mb-6">
-                  Specialising in physical vehicle dynamics, VR interaction toolkits, HLSL shaders, and procedural systems.
-                </p>
-
-                {/* Interactive CTA buttons */}
-                <div className="flex flex-wrap items-center justify-center gap-3">
-                  <div className="px-5 py-2.5 rounded-full bg-indigo-600 text-white font-bold text-xs tracking-wider shadow-lg shadow-indigo-600/30">
-                    EXPLORE FEATURED WORK
-                  </div>
-                  <div className="px-5 py-2.5 rounded-full bg-white/10 border border-white/20 text-white font-medium text-xs">
-                    VIEW FULL DOSSIER
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Floating Capsule Header preview matching Navbar */}
-              <motion.div
-                animate={{
-                  y: isMorphing ? 0 : 20,
-                  opacity: isMorphing ? 1 : 0.85
-                }}
-                className="absolute top-4 sm:top-6 inset-x-0 flex justify-center px-4 pointer-events-none"
-              >
-                <div className="flex items-center justify-between w-full max-w-5xl px-4 md:px-6 py-2.5 rounded-full bg-[#090b16]/85 backdrop-blur-xl border border-white/10 shadow-lg">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center font-bold text-white text-xs shadow-md">
-                      JJ
-                    </div>
-                    <span className="font-bold text-xs text-white">Josh Johnson</span>
-                  </div>
-                  <div className="hidden sm:flex items-center gap-4 text-xs font-semibold text-slate-400">
-                    <span className="text-white">FEATURED</span>
-                    <span>RESEARCH</span>
-                    <span>HARDWARE LAB</span>
-                    <span>DOSSIER</span>
-                  </div>
-                  <div className="px-3 py-1 rounded-full bg-indigo-600/30 border border-indigo-500/40 text-indigo-300 text-[10px] font-bold">
-                    ALL GAMES
-                  </div>
-                </div>
-              </motion.div>
-            </div>
+            {/* Seamless Real Webpage Viewport Interior: 100% transparent to display the live website natively */}
+            <div className="relative flex-1 bg-transparent overflow-hidden pointer-events-none" />
           </motion.div>
         )}
 

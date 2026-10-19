@@ -229,12 +229,11 @@ export default function ProjectCard({ project, onSelectProject }) {
 
   return (
     <motion.div
-      layout
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.98 }}
       transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={`group relative rounded-3xl p-6 md:p-8 backdrop-blur-xl transition-all duration-300 border overflow-hidden ${theme.containerClass}`}
+      className={`group relative rounded-3xl p-6 md:p-8 backdrop-blur-xl transition-[border-color,box-shadow] duration-300 border overflow-hidden ${theme.containerClass}`}
     >
       {/* Dynamic Game Atmospheric Layer (Freeze, Falling Leaves, Inky Black Myndwell, etc.) */}
       <ProjectAtmosphere projectId={project.id} />

@@ -29,8 +29,8 @@ export default function BackgroundShader() {
       mouse.targetY = e.clientY;
     };
 
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('resize', handleResize, { passive: true });
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
     // Create particles
     const particleCount = Math.min(Math.floor((width * height) / 18000), 70);
@@ -87,23 +87,24 @@ export default function BackgroundShader() {
         ctx.fillStyle = p.color + p.baseAlpha + ')';
         ctx.fill();
 
-        // Connect nearby particles
+        // Connect nearby particles with squared distance check
         for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
-          const dx = p.x - p2.x;
-          const dy = p.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+           const p2 = particles[j];
+           const dx = p.x - p2.x;
+           const dy = p.y - p2.y;
+           const distSq = dx * dx + dy * dy;
 
-          if (dist < 130) {
-            const alpha = (1 - dist / 130) * 0.15;
-            ctx.strokeStyle = `rgba(148, 163, 184, ${alpha})`;
-            ctx.lineWidth = 0.75;
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.stroke();
-          }
-        }
+           if (distSq < 16900) {
+             const dist = Math.sqrt(distSq);
+             const alpha = (1 - dist / 130) * 0.15;
+             ctx.strokeStyle = `rgba(148, 163, 184, ${alpha})`;
+             ctx.lineWidth = 0.75;
+             ctx.beginPath();
+             ctx.moveTo(p.x, p.y);
+             ctx.lineTo(p2.x, p2.y);
+             ctx.stroke();
+           }
+         }
       }
 
       animationFrameId = requestAnimationFrame(render);

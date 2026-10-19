@@ -83,7 +83,7 @@ export function FreezeAtmosphere({ isModal = false, isCompact = false }) {
             delay: i * 0.6,
             ease: 'linear'
           }}
-          className="absolute pointer-events-none z-0"
+          className="absolute pointer-events-none z-0 transform-gpu will-change-transform"
         >
           {/* Shimmering Hexagonal Ice Shard */}
           <div className="w-2 h-2 rounded-[2px] bg-gradient-to-br from-white via-cyan-200 to-cyan-400 shadow-[0_0_10px_rgba(56,189,248,1)] rotate-45" />
@@ -150,7 +150,7 @@ export function InkyMyndwellAtmosphere({ isModal = false, isCompact = false }) {
               ease: [0.5, 0, 1, 1]
             }}
             style={{ left: `${(xPos / 600) * 100}%` }}
-            className="absolute pointer-events-none"
+            className="absolute pointer-events-none transform-gpu will-change-transform"
           >
             <svg width="8" height="18" viewBox="0 0 8 18" className="filter drop-shadow-[0_0_4px_rgba(6,182,212,0.9)]">
               <path
@@ -171,7 +171,7 @@ export function InkyMyndwellAtmosphere({ isModal = false, isCompact = false }) {
           opacity: [0.22, 0.4, 0.22]
         }}
         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-tr from-cyan-950/40 to-black blur-3xl pointer-events-none"
+        className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-tr from-cyan-950/40 to-black blur-3xl pointer-events-none transform-gpu will-change-transform"
       />
 
       {/* Clinical Myndwell International Header Banner */}
@@ -253,7 +253,7 @@ export function LeavesAtmosphere({ isModal = false, isCompact = false }) {
             delay: i * 0.75,
             ease: 'linear'
           }}
-          className="absolute pointer-events-none z-0"
+          className="absolute pointer-events-none z-0 transform-gpu will-change-transform"
         >
           {/* Detailed Botanical SVG Leaf with Veins */}
           <svg
@@ -359,7 +359,7 @@ export function DreamAtmosphere({ isModal = false, isCompact = false }) {
             delay: i * 0.9,
             ease: 'linear'
           }}
-          className="absolute pointer-events-none z-0"
+          className="absolute pointer-events-none z-0 transform-gpu will-change-transform"
         >
           <div className="w-2 h-2 rounded-full bg-purple-300 shadow-[0_0_10px_rgba(192,132,252,1)] blur-[0.3px]" />
         </motion.div>

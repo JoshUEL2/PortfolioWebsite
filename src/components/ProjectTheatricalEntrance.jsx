@@ -1,16 +1,17 @@
-import { useId } from 'react';
+﻿import { useEffect, useId, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { getAssetUrl } from '../utils/assetUrl';
 
 /**
  * Full-screen, text-free reveal for each project's overview modal.
  * Every effect covers the whole modal, then physically resolves to reveal the content behind it.
  * - Rastacats: ice sheet cracks from the centre, then the shards fall away
- * - REM / Myndwell: ink floods down until everything is black, then drains off the bottom as drips
+ * - REM / Myndwell: starts fully black, the ink melts away in goopy drips and the Myndwell mark melts with it
  * - Planet Protectors: a canopy of leaves falls all the way down
  * - Delirium VR: flatline, EKG pulse, defibrillator shocks, lights flicker out
  * - Daydream Believer: nebula clouds and stars drift apart
- * - Project Isla: layered tides recede
- * - LabRats: acid eats through a hazard-green seal
+ * - Project Isla: Perlin noise height map, sea level falls to reveal an archipelago
+ * - LabRats: acid eats through a hazard-green seal bearing the LabRats mark
  * - Chanceway: a table of card backs flips away
  * - Baldi's Basics 2: chalkboard rubbed clean by an eraser
  * - The Turnpike Echoes: VHS static and tracking bars, then CRT collapse
@@ -128,7 +129,16 @@ function IceShatter() {
 /* ------------------------------------------------------------------ */
 /* 2. REM: ink floods down, then drains off the bottom as drips         */
 /* ------------------------------------------------------------------ */
-const INK_COLS = 15;
+const INK_COLS = 24;
+const INK_COLUMNS = Array.from({ length: INK_COLS }).map((_, i) => ({
+  left: (i / INK_COLS) * 100 - 2.5,
+  width: 100 / INK_COLS + 5,
+  extra: 6 + rnd(i, 11) * 30,
+  delay: 0.45 + rnd(i, 12) * 0.95,
+  duration: 1.15 + rnd(i, 13) * 0.75,
+  dropSize: 26 + rnd(i, 14) * 30,
+  dropDelay: 0.55 + rnd(i, 15) * 0.8
+}));
 
 function InkDrench() {
   const gooId = `ink-${useId().replace(/:/g, '')}`;
@@ -136,40 +146,63 @@ function InkDrench() {
     <>
       <svg width="0" height="0" className="absolute" aria-hidden="true">
         <defs>
-          <filter id={gooId}>
-            <feGaussianBlur in="SourceGraphic" stdDeviation="9" result="blur" />
+          <filter id={gooId} x="-5%" y="-5%" width="110%" height="110%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur" />
             <feColorMatrix
               in="blur"
               mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 26 -11"
             />
           </filter>
         </defs>
       </svg>
       <div className="absolute inset-0" style={{ filter: `url(#${gooId})` }}>
-        {Array.from({ length: INK_COLS }).map((_, i) => {
-          const extra = 4 + rnd(i, 11) * 22;
-          return (
+        {INK_COLUMNS.map((c, i) => (
+          <motion.div
+            key={i}
+            initial={{ y: '0%' }}
+            animate={{ y: '135%' }}
+            transition={{ delay: c.delay, duration: c.duration, ease: [0.55, 0, 0.95, 0.55] }}
+            className="absolute top-0 bg-[#010204] transform-gpu will-change-transform"
+            style={{
+              left: `${c.left}%`,
+              width: `${c.width}%`,
+              bottom: `${-c.extra}%`,
+              borderRadius: '0 0 999px 999px / 0 0 120px 120px'
+            }}
+          >
             <motion.div
-              key={i}
-              initial={{ y: '-130%' }}
-              animate={{ y: ['-130%', '0%', '0%', '130%'] }}
+              initial={{ y: 0, scale: 1 }}
+              animate={{ y: [0, 10, 320], scale: [1, 1.15, 0.8] }}
               transition={{
-                duration: 2.7,
-                delay: rnd(i, 12) * 0.32,
-                times: [0, 0.3, 0.52, 1],
-                ease: ['easeIn', 'linear', 'easeIn']
+                delay: c.dropDelay,
+                duration: 1.25,
+                times: [0, 0.35, 1],
+                ease: [0.55, 0, 0.95, 0.55]
               }}
-              className="absolute top-0 bg-[#010204] transform-gpu will-change-transform"
+              className="absolute left-1/2 rounded-full bg-[#010204]"
               style={{
-                left: `${(i / INK_COLS) * 100 - 1}%`,
-                width: `${100 / INK_COLS + 2}%`,
-                bottom: `${-extra}%`,
-                borderRadius: '0 0 999px 999px / 0 0 90px 90px'
+                width: c.dropSize,
+                height: c.dropSize * 1.35,
+                marginLeft: -c.dropSize / 2,
+                bottom: -c.dropSize * 0.6
               }}
             />
-          );
-        })}
+          </motion.div>
+        ))}
+
+        {/* The Myndwell mark is part of the ink: it holds, sags, then melts down with the goop */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.img
+            src={getAssetUrl('/images/logos/myndwell-logo-white.png')}
+            alt=""
+            initial={{ opacity: 1, scaleY: 1, y: 0 }}
+            animate={{ opacity: [1, 1, 1, 0], scaleY: [1, 1, 1.9, 4.5], y: [0, 0, 30, 520] }}
+            transition={{ duration: 2.1, delay: 0.35, times: [0, 0.35, 0.65, 1], ease: 'easeIn' }}
+            className="w-44 sm:w-56 h-auto object-contain select-none"
+            style={{ transformOrigin: '50% 20%' }}
+          />
+        </div>
       </div>
     </>
   );
@@ -345,99 +378,224 @@ function DreamDissolve() {
 }
 
 /* ------------------------------------------------------------------ */
-/* 6. PROJECT ISLA: layered tides recede                                */
+/* 6. PROJECT ISLA: Perlin noise archipelago, sea level falls           */
 /* ------------------------------------------------------------------ */
-const TIDES = [
-  { fill: '#0b4a5a', delay: 1.15, speed: 2.6, dir: -1 },
-  { fill: '#0f766e', delay: 0.95, speed: 2.1, dir: 1 },
-  { fill: '#14b8a6', delay: 0.75, speed: 1.8, dir: -1 },
-  { fill: '#99f6e4', delay: 0.55, speed: 1.5, dir: 1 }
-];
+/* Classic 2D Perlin noise with fractal layering, rendered to a small canvas */
+function makePerlin(seed) {
+  const perm = Array.from({ length: 256 }, (_, i) => i);
+  let s = seed;
+  for (let i = 255; i > 0; i--) {
+    s = (s * 16807) % 2147483647;
+    const j = s % (i + 1);
+    [perm[i], perm[j]] = [perm[j], perm[i]];
+  }
+  const p = new Uint8Array(512);
+  for (let i = 0; i < 512; i++) p[i] = perm[i & 255];
+  const fade = (t) => t * t * t * (t * (t * 6 - 15) + 10);
+  const lerp = (a, b, t) => a + t * (b - a);
+  const grad = (h, x, y) => {
+    switch (h & 7) {
+      case 0: return x + y;
+      case 1: return -x + y;
+      case 2: return x - y;
+      case 3: return -x - y;
+      case 4: return x;
+      case 5: return -x;
+      case 6: return y;
+      default: return -y;
+    }
+  };
+  return (x, y) => {
+    const X = Math.floor(x) & 255;
+    const Y = Math.floor(y) & 255;
+    const xf = x - Math.floor(x);
+    const yf = y - Math.floor(y);
+    const u = fade(xf);
+    const v = fade(yf);
+    const aa = p[p[X] + Y];
+    const ab = p[p[X] + Y + 1];
+    const ba = p[p[X + 1] + Y];
+    const bb = p[p[X + 1] + Y + 1];
+    return lerp(
+      lerp(grad(aa, xf, yf), grad(ba, xf - 1, yf), u),
+      lerp(grad(ab, xf, yf - 1), grad(bb, xf - 1, yf - 1), u),
+      v
+    );
+  };
+}
 
-function TideOut() {
+const NOISE_W = 200;
+const NOISE_H = 125;
+
+function buildIslandField() {
+  const noise = makePerlin(48271);
+  const field = new Float32Array(NOISE_W * NOISE_H);
+  let min = Infinity;
+  let max = -Infinity;
+  for (let y = 0; y < NOISE_H; y++) {
+    for (let x = 0; x < NOISE_W; x++) {
+      let amp = 1;
+      let freq = 1;
+      let sum = 0;
+      for (let o = 0; o < 5; o++) {
+        sum += noise((x / NOISE_W) * 4.2 * freq + 7.3, (y / NOISE_H) * 2.8 * freq + 2.1) * amp;
+        amp *= 0.5;
+        freq *= 2;
+      }
+      field[y * NOISE_W + x] = sum;
+      if (sum < min) min = sum;
+      if (sum > max) max = sum;
+    }
+  }
+  for (let i = 0; i < field.length; i++) field[i] = (field[i] - min) / (max - min);
+  return field;
+}
+
+/* Sea level falls across a Perlin height map: water recedes into an archipelago and uncovers the page */
+function PerlinReveal() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return undefined;
+    const ctx = canvas.getContext('2d');
+    const field = buildIslandField();
+    const img = ctx.createImageData(NOISE_W, NOISE_H);
+    const data = img.data;
+    const DURATION = 2400;
+    const start = performance.now();
+    let raf;
+
+    const frame = (now) => {
+      const t = Math.min(1, (now - start) / DURATION);
+      const k = Math.min(1, Math.max(0, (t - 0.1) / 0.9));
+      const e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+      const level = 1.03 - 1.06 * e;
+
+      for (let i = 0; i < field.length; i++) {
+        const n = field[i];
+        const d = n - level;
+        const o = i * 4;
+        if (d >= 0) {
+          if (d < 0.03) {
+            const a = 1 - d / 0.03;
+            data[o] = 226;
+            data[o + 1] = 255;
+            data[o + 2] = 250;
+            data[o + 3] = 255 * a;
+          } else {
+            data[o + 3] = 0;
+          }
+        } else {
+          const depth = -d;
+          const shallow = Math.max(0, 1 - depth / 0.12);
+          let r = 6 + (22 - 6) * shallow;
+          let g = 52 + (160 - 52) * shallow;
+          let b = 72 + (158 - 72) * shallow;
+          const contour = (n * 16) % 1;
+          if (contour < 0.06) {
+            r += 16;
+            g += 36;
+            b += 34;
+          }
+          data[o] = r;
+          data[o + 1] = g;
+          data[o + 2] = b;
+          data[o + 3] = 255;
+        }
+      }
+      ctx.putImageData(img, 0, 0);
+      if (t < 1) {
+        raf = requestAnimationFrame(frame);
+      } else {
+        ctx.clearRect(0, 0, NOISE_W, NOISE_H);
+      }
+    };
+
+    raf = requestAnimationFrame(frame);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
   return (
-    <>
-      {TIDES.map((t, i) => (
-        <motion.div
-          key={i}
-          initial={{ y: '0%' }}
-          animate={{ y: '112%' }}
-          transition={{ delay: t.delay, duration: 1.15, ease: [0.45, 0, 0.7, 1] }}
-          className="absolute inset-0 transform-gpu will-change-transform"
-        >
-          <motion.svg
-            viewBox="0 0 1200 40"
-            preserveAspectRatio="none"
-            className="absolute left-0 w-[200%] h-12 -top-[46px]"
-            initial={{ x: t.dir === 1 ? '-50%' : '0%' }}
-            animate={{ x: t.dir === 1 ? '0%' : '-50%' }}
-            transition={{ duration: t.speed, repeat: Infinity, ease: 'linear' }}
-          >
-            <path
-              d="M0 22 Q75 0 150 22 T300 22 T450 22 T600 22 T750 22 T900 22 T1050 22 T1200 22 V40 H0 Z"
-              fill={t.fill}
-            />
-          </motion.svg>
-          <div className="absolute inset-0" style={{ background: t.fill }} />
-        </motion.div>
-      ))}
-    </>
+    <canvas
+      ref={canvasRef}
+      width={NOISE_W}
+      height={NOISE_H}
+      className="absolute inset-0 w-full h-full"
+      style={{ imageRendering: 'auto' }}
+    />
   );
 }
 
 /* ------------------------------------------------------------------ */
 /* 7. LABRATS: acid eats through a hazard-green seal                    */
 /* ------------------------------------------------------------------ */
-const ACID_HOLES = Array.from({ length: 12 }).map((_, i) => ({
-  cx: 6 + rnd(i, 31) * 88,
-  cy: 6 + rnd(i, 32) * 88,
-  delay: 0.2 + rnd(i, 33) * 0.9,
-  max: 38 + rnd(i, 34) * 22
-}));
+const ACID_HOLES = [
+  { cx: 50, cy: 50, delay: 0.6, max: 62 },
+  ...Array.from({ length: 11 }).map((_, i) => ({
+    cx: 6 + rnd(i, 31) * 88,
+    cy: 6 + rnd(i, 32) * 88,
+    delay: 0.15 + rnd(i, 33) * 0.9,
+    max: 38 + rnd(i, 34) * 22
+  }))
+];
 
 function AcidDissolve() {
   const maskId = `acid-${useId().replace(/:/g, '')}`;
   return (
-    <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 w-full h-full">
-      <defs>
-        <mask id={maskId}>
-          <rect width="100" height="100" fill="white" />
-          {ACID_HOLES.map((h, i) => (
-            <motion.circle
-              key={i}
-              cx={h.cx}
-              cy={h.cy}
-              fill="black"
-              initial={{ r: 0 }}
-              animate={{ r: h.max }}
-              transition={{ delay: h.delay, duration: 1.2, ease: [0.3, 0.6, 0.5, 1] }}
-            />
-          ))}
-        </mask>
-        <pattern id={`${maskId}-p`} width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-          <rect width="3" height="6" fill="rgba(163,230,53,0.10)" />
-        </pattern>
-      </defs>
-      <g mask={`url(#${maskId})`}>
-        <rect width="100" height="100" fill="#052e16" />
-        <rect width="100" height="100" fill={`url(#${maskId}-p)`} />
-      </g>
-      {ACID_HOLES.map((h, i) => (
-        <motion.circle
-          key={i}
-          cx={h.cx}
-          cy={h.cy}
-          fill="none"
-          stroke="#a3e635"
-          strokeWidth="2.5"
-          vectorEffect="non-scaling-stroke"
-          style={{ filter: 'drop-shadow(0 0 4px rgba(163,230,53,1))' }}
-          initial={{ r: 0, opacity: 0 }}
-          animate={{ r: h.max, opacity: [0, 1, 1, 0] }}
-          transition={{ delay: h.delay, duration: 1.2, times: [0, 0.1, 0.7, 1], ease: [0.3, 0.6, 0.5, 1] }}
-        />
-      ))}
-    </svg>
+    <>
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 w-full h-full">
+        <defs>
+          <mask id={maskId}>
+            <rect width="100" height="100" fill="white" />
+            {ACID_HOLES.map((h, i) => (
+              <motion.circle
+                key={i}
+                cx={h.cx}
+                cy={h.cy}
+                fill="black"
+                initial={{ r: 0 }}
+                animate={{ r: h.max }}
+                transition={{ delay: h.delay, duration: 1.2, ease: [0.3, 0.6, 0.5, 1] }}
+              />
+            ))}
+          </mask>
+          <pattern id={`${maskId}-p`} width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <rect width="3" height="6" fill="rgba(163,230,53,0.10)" />
+          </pattern>
+        </defs>
+        <g mask={`url(#${maskId})`}>
+          <rect width="100" height="100" fill="#052e16" />
+          <rect width="100" height="100" fill={`url(#${maskId}-p)`} />
+        </g>
+        {ACID_HOLES.map((h, i) => (
+          <motion.circle
+            key={i}
+            cx={h.cx}
+            cy={h.cy}
+            fill="none"
+            stroke="#a3e635"
+            strokeWidth="2.5"
+            vectorEffect="non-scaling-stroke"
+            style={{ filter: 'drop-shadow(0 0 4px rgba(163,230,53,1))' }}
+            initial={{ r: 0, opacity: 0 }}
+            animate={{ r: h.max, opacity: [0, 1, 1, 0] }}
+            transition={{ delay: h.delay, duration: 1.2, times: [0, 0.1, 0.7, 1], ease: [0.3, 0.6, 0.5, 1] }}
+          />
+        ))}
+      </svg>
+
+      {/* LabRats mark sits in the seal and is eaten by the acid at the centre */}
+      <motion.img
+        src={getAssetUrl('/images/logos/labrats-logo-transparent.png')}
+        alt=""
+        initial={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+        animate={{ opacity: [1, 1, 0], scale: [1, 1.02, 1.12], filter: ['blur(0px)', 'blur(0px)', 'blur(10px)'] }}
+        transition={{ duration: 1.6, times: [0, 0.5, 1], ease: 'easeIn' }}
+        className="absolute left-1/2 top-1/2 w-40 sm:w-56 h-auto object-contain -translate-x-1/2 -translate-y-1/2 select-none"
+        style={{ filter: 'drop-shadow(0 0 14px rgba(163,230,53,0.8))' }}
+      />
+    </>
   );
 }
 
@@ -446,7 +604,7 @@ function AcidDissolve() {
 /* ------------------------------------------------------------------ */
 const CARD_COLS = 6;
 const CARD_ROWS = 4;
-const SUITS = ['♠', '♥', '♣', '♦'];
+const SUITS = ['â™ ', 'â™¥', 'â™£', 'â™¦'];
 
 function CardDeal() {
   return (
@@ -651,18 +809,162 @@ function WireframeGrid() {
   );
 }
 
+/* ------------------------------------------------------------------ */
+/* 12. DEAR, HIRING MANAGER: cartoon CV gets stamped, then flies away   */
+/* ------------------------------------------------------------------ */
+const CV_LINES = [100, 78, 92, 64];
+
+function CartoonCv() {
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 1 }}
+        animate={{ opacity: [1, 1, 0] }}
+        transition={{ duration: 2.7, times: [0, 0.7, 1], ease: 'easeIn' }}
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(rgba(56,189,248,0.07) 1px, transparent 1px) 0 0 / 48px 48px, linear-gradient(90deg, rgba(56,189,248,0.07) 1px, transparent 1px) 0 0 / 48px 48px, radial-gradient(ellipse at 50% 40%, #12234a 0%, #070d1f 70%)'
+        }}
+      />
+
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center"
+        animate={{ x: [0, 0, -9, 8, -5, 3, 0], y: [0, 0, 7, -6, 3, -2, 0] }}
+        transition={{ duration: 2.7, times: [0, 0.43, 0.45, 0.48, 0.52, 0.56, 0.6] }}
+      >
+        <motion.div
+          initial={{ scale: 0.2, rotate: -14, y: 120, opacity: 0 }}
+          animate={{
+            scale: [0.2, 1, 1, 0.8],
+            rotate: [-14, 2, 2, 22],
+            y: [120, 0, 0, -1100],
+            opacity: [0, 1, 1, 1]
+          }}
+          transition={{ duration: 2.7, times: [0, 0.2, 0.66, 1], ease: ['backOut', 'linear', 'easeIn'] }}
+          className="relative w-[min(66%,360px)] aspect-[3/4] rounded-[28px] bg-gradient-to-b from-white to-slate-200 border-[6px] border-[#0b1226] transform-gpu will-change-transform"
+          style={{ boxShadow: '10px 12px 0 rgba(0,0,0,0.55)' }}
+        >
+          {/* Folded corner */}
+          <div
+            className="absolute -top-[6px] -right-[6px] w-[26%] aspect-square bg-slate-300 border-[6px] border-[#0b1226] rounded-bl-[22px]"
+            style={{ clipPath: 'polygon(0 0, 100% 100%, 0 100%)' }}
+          />
+
+          <div className="absolute inset-0 p-[9%] flex flex-col">
+            <div className="flex items-center gap-[6%]">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: [0, 1.2, 1] }}
+                transition={{ delay: 0.4, duration: 0.35 }}
+                className="w-[28%] aspect-square rounded-2xl bg-[#1e293b] border-4 border-[#0b1226] flex items-end justify-center overflow-hidden"
+              >
+                <svg viewBox="0 0 40 40" className="w-[80%] h-[80%]">
+                  <circle cx="20" cy="14" r="8" fill="#f8fafc" />
+                  <path d="M4 40 C4 26 12 22 20 22 C28 22 36 26 36 40 Z" fill="#f8fafc" />
+                </svg>
+              </motion.div>
+              <div className="flex-1 flex flex-col gap-[10%]">
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ delay: 0.55, duration: 0.3 }}
+                  className="h-4 sm:h-5 rounded-full bg-[#0b1226] origin-left"
+                />
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 0.62 }}
+                  transition={{ delay: 0.65, duration: 0.3 }}
+                  className="h-3 sm:h-3.5 rounded-full bg-slate-500 origin-left"
+                />
+              </div>
+            </div>
+
+            <div className="mt-[9%] flex flex-col gap-[5%]">
+              {CV_LINES.map((w, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: w / 100 }}
+                  transition={{ delay: 0.75 + i * 0.1, duration: 0.3, ease: 'easeOut' }}
+                  className="h-3 sm:h-4 rounded-full bg-slate-400 origin-left"
+                />
+              ))}
+            </div>
+
+            <div className="mt-[8%] flex gap-1.5">
+              {[0, 1, 2, 3, 4].map((i) => (
+                <motion.svg
+                  key={i}
+                  viewBox="0 0 24 24"
+                  className="w-6 h-6 sm:w-7 sm:h-7"
+                  initial={{ scale: 0, rotate: -90 }}
+                  animate={{ scale: [0, 1.4, 1], rotate: 0 }}
+                  transition={{ delay: 1.0 + i * 0.07, duration: 0.3 }}
+                >
+                  <path
+                    d="M12 2 L14.9 8.6 L22 9.3 L16.6 14 L18.2 21 L12 17.3 L5.8 21 L7.4 14 L2 9.3 L9.1 8.6 Z"
+                    fill={i < 4 ? '#fbbf24' : '#cbd5e1'}
+                    stroke="#0b1226"
+                    strokeWidth="1.2"
+                    strokeLinejoin="round"
+                  />
+                </motion.svg>
+              ))}
+            </div>
+          </div>
+
+          {/* Impact lines around the stamp */}
+          {Array.from({ length: 10 }).map((_, i) => {
+            const a = (i / 10) * Math.PI * 2;
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.3 }}
+                animate={{ opacity: [0, 1, 0], scale: [0.3, 1, 1.4] }}
+                transition={{ delay: 1.2, duration: 0.45 }}
+                className="absolute left-1/2 top-[70%] w-[3px] h-8 bg-[#0b1226] rounded-full"
+                style={{
+                  transform: `translate(-50%, -50%) rotate(${(a * 180) / Math.PI + 90}deg) translateY(-${110 + (i % 2) * 24}px)`
+                }}
+              />
+            );
+          })}
+
+          {/* HIRED! stamp slams down on the CV */}
+          <motion.div
+            initial={{ scale: 3.4, opacity: 0, rotate: -22 }}
+            animate={{ scale: [3.4, 0.9, 1], opacity: [0, 1, 1], rotate: [-22, -13, -13] }}
+            transition={{ delay: 1.15, duration: 0.3, times: [0, 0.7, 1], ease: 'easeIn' }}
+            className="absolute left-[-6%] right-[-6%] top-[56%] rounded-xl border-[5px] border-white bg-gradient-to-b from-[#f43f5e] to-[#be123c] text-center py-1 sm:py-2"
+            style={{
+              boxShadow: '0 0 0 4px #be123c, 6px 10px 0 rgba(0,0,0,0.5)',
+              fontFamily: "Impact, 'Arial Black', 'Montserrat', sans-serif"
+            }}
+          >
+            <span className="text-4xl sm:text-6xl tracking-wider text-white drop-shadow-[0_3px_0_rgba(0,0,0,0.35)]">
+              HIRED!
+            </span>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </>
+  );
+}
+
 const EFFECTS = {
   rastacats: IceShatter,
   rem: InkDrench,
   'planet-protectors': LeafFall,
   delirium: Defibrillator,
   daydream: DreamDissolve,
-  'project-isla': TideOut,
+  'project-isla': PerlinReveal,
   labrats: AcidDissolve,
   labraz: AcidDissolve,
   chanceway: CardDeal,
   'baldis-basics-2': ChalkboardWipe,
-  waiwwai: VhsCollapse
+  waiwwai: VhsCollapse,
+  'dear-hiring-manager': CartoonCv
 };
 
 export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 }) {

@@ -18,7 +18,7 @@ import {
   ChevronRight,
   RotateCcw,
   Maximize2,
-  Lock
+  Terminal
 } from 'lucide-react';
 import {
   PERSONAL_INFO,
@@ -58,7 +58,7 @@ const CREDENTIAL_THEME_STYLES = {
       'bg-[radial-gradient(ellipse_at_top,#2e1e07_0%,#151009_60%,#09080c_100%)] border-amber-400/45',
     headerAccent: 'text-amber-300',
     whyBox: 'bg-amber-950/35 border-amber-400/60 text-amber-50',
-    replayLabel: 'Replay Council Seal'
+    replayLabel: 'Replay Council Decree'
   },
   studio: {
     cardAccent:
@@ -80,7 +80,7 @@ const CREDENTIAL_THEME_STYLES = {
       'bg-[radial-gradient(ellipse_at_top,#4a044e_0%,#18081c_60%,#08050a_100%)] border-fuchsia-400/45',
     headerAccent: 'text-fuchsia-300',
     whyBox: 'bg-fuchsia-950/35 border-fuchsia-400/60 text-fuchsia-50',
-    replayLabel: 'Replay Cover Turn'
+    replayLabel: 'Replay Folio Flip'
   },
   cyber: {
     cardAccent:
@@ -91,7 +91,7 @@ const CREDENTIAL_THEME_STYLES = {
       'bg-[radial-gradient(ellipse_at_top,#063729_0%,#071512_60%,#050a09_100%)] border-emerald-400/45',
     headerAccent: 'text-emerald-300',
     whyBox: 'bg-emerald-950/35 border-emerald-400/60 text-emerald-50',
-    replayLabel: 'Replay Security Scan'
+    replayLabel: 'Replay Terminal Decryption'
   },
   robotics: {
     cardAccent:
@@ -102,7 +102,7 @@ const CREDENTIAL_THEME_STYLES = {
       'bg-[radial-gradient(ellipse_at_top,#0c2d48_0%,#081420_60%,#050911_100%)] border-sky-400/45',
     headerAccent: 'text-sky-300',
     whyBox: 'bg-sky-950/35 border-sky-400/60 text-sky-50',
-    replayLabel: 'Replay Blast Hatch'
+    replayLabel: 'Replay Mechatronic Iris'
   }
 };
 
@@ -154,114 +154,120 @@ function CredentialThemeAnimation({ theme, animationKey }) {
   }
 
   if (theme === 'governance') {
-    // Official Academic Council Mahogany Doors Parting with Wax Seal Dissolving
+    // Official Academic Council Charter Decree Unroll & Golden Wax Seal Stamp Wavefront
     return (
       <div
         key={`gov-${animationKey}`}
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
       >
-        {/* Left Heavy Polished Mahogany Door */}
         <motion.div
-          initial={{ x: '0%' }}
-          animate={{ x: '-95%' }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-amber-600/80 shadow-[20px_0_50px_rgba(0,0,0,0.9)] bg-[#211409]"
-          style={{
-            backgroundImage:
-              'repeating-linear-gradient(90deg, #1c1007 0px, #2b1a0c 30px, #1a0e06 60px)'
-          }}
+          initial={{ opacity: 1, scale: 1 }}
+          animate={{ opacity: 0, scale: 1.05 }}
+          transition={{ duration: 0.85, delay: 0.65, ease: 'easeOut' }}
+          className="absolute inset-0 bg-gradient-to-b from-[#1c1308] via-[#241a0b] to-[#120c05] border-2 border-amber-500/50 shadow-2xl flex flex-col items-center justify-center p-6 text-center select-none"
         >
-          <div className="absolute inset-y-0 right-4 w-2 bg-amber-500/30" />
-          <div className="absolute top-1/2 right-6 -translate-y-1/2 w-4 h-16 rounded-full border-2 border-amber-400/60 bg-amber-900/50" />
-        </motion.div>
+          {/* Ornamental Parchment Border Filigree */}
+          <div className="absolute inset-3 border border-amber-500/30 rounded-lg pointer-events-none" />
+          <div className="absolute inset-4 border border-amber-400/20 rounded-md pointer-events-none" />
 
-        {/* Right Heavy Polished Mahogany Door */}
-        <motion.div
-          initial={{ x: '0%' }}
-          animate={{ x: '95%' }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-amber-600/80 shadow-[-20px_0_50px_rgba(0,0,0,0.9)] bg-[#211409]"
-          style={{
-            backgroundImage:
-              'repeating-linear-gradient(90deg, #1c1007 0px, #2b1a0c 30px, #1a0e06 60px)'
-          }}
-        >
-          <div className="absolute inset-y-0 left-4 w-2 bg-amber-500/30" />
-          <div className="absolute top-1/2 left-6 -translate-y-1/2 w-4 h-16 rounded-full border-2 border-amber-400/60 bg-amber-900/50" />
-        </motion.div>
+          {/* Latin Header */}
+          <div className="text-[10px] font-mono tracking-[0.3em] uppercase text-amber-300/80 mb-3">
+            UNIVERSITAS ORIENTALIS LONDINENSIS • ACADEMIC SENATE
+          </div>
 
-        {/* Central Institutional Gold Seal Opening */}
-        <motion.div
-          initial={{ scale: 1, opacity: 1 }}
-          animate={{ scale: 1.35, opacity: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-4 border-amber-400 bg-gradient-to-br from-amber-600 to-amber-950 flex flex-col items-center justify-center text-center shadow-2xl text-amber-200"
-        >
-          <GraduationCap className="w-10 h-10 mb-1 text-amber-300" />
-          <span className="text-[9px] font-mono uppercase font-bold tracking-widest">
-            UEL BOARD SEAL
-          </span>
+          <h3 className="text-xl sm:text-2xl font-black text-amber-100 font-['Syne',sans-serif] tracking-wider uppercase mb-1">
+            Official Council Decree
+          </h3>
+          <p className="text-xs font-mono text-amber-300/70 mb-6">
+            Elected Cohort Representative • Sextennial School Review Board
+          </p>
+
+          {/* Central Heavy Golden Wax Seal Stamp */}
+          <motion.div
+            initial={{ scale: 1.7, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.35, ease: 'backOut', delay: 0.1 }}
+            className="relative w-28 h-28 rounded-full border-4 border-amber-300 bg-gradient-to-br from-amber-500 via-amber-700 to-amber-950 flex flex-col items-center justify-center text-center shadow-[0_0_50px_rgba(245,158,11,0.8)] text-amber-100"
+          >
+            <GraduationCap className="w-10 h-10 text-amber-200 mb-0.5" />
+            <span className="text-[8px] font-mono uppercase font-black tracking-widest text-amber-100">
+              SENATE SEAL
+            </span>
+          </motion.div>
+
+          {/* Golden Radial Shockwave Rings */}
+          {[0, 1, 2].map((i) => (
+            <motion.div
+              key={i}
+              initial={{ scale: 0.8, opacity: 0.85 }}
+              animate={{ scale: 3.2, opacity: 0 }}
+              transition={{ duration: 0.85, delay: 0.2 + i * 0.15, ease: 'easeOut' }}
+              className="absolute w-28 h-28 rounded-full border-2 border-amber-300 pointer-events-none"
+            />
+          ))}
         </motion.div>
       </div>
     );
   }
 
   if (theme === 'studio') {
-    // Soundproof Broadcast Isolation Booth Doors with Glowing ON AIR Beacon & VU Equalizer
+    // Broadcast Studio Radio Frequency Oscilloscope & Audio Equalizer Pulse
     return (
       <div
         key={`studio-${animationKey}`}
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
       >
-        {/* Top Glowing ON AIR Beacon */}
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: [1, 0.5, 1], y: 0 }}
-          transition={{ duration: 0.9, repeat: 1, delay: 0.1 }}
-          className="absolute top-3 left-1/2 -translate-x-1/2 z-40 px-4 py-1 rounded bg-red-600 text-white font-mono text-xs font-black uppercase tracking-[0.25em] shadow-[0_0_25px_rgba(239,68,68,0.9)] border border-red-300"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 0.8, delay: 0.75, ease: 'easeOut' }}
+          className="absolute inset-0 bg-[#0d0517] flex flex-col items-center justify-center p-6 text-center select-none"
         >
-          ● ON AIR
-        </motion.div>
+          {/* Top Glowing ON AIR Beacon */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: [1, 0.4, 1], y: 0 }}
+            transition={{ duration: 0.7, repeat: 1, delay: 0.05 }}
+            className="absolute top-4 left-1/2 -translate-x-1/2 z-40 px-5 py-1.5 rounded-full bg-red-600 text-white font-mono text-xs font-black uppercase tracking-[0.25em] shadow-[0_0_30px_rgba(239,68,68,1)] border border-red-300 flex items-center gap-2"
+          >
+            <span className="w-2 h-2 rounded-full bg-white animate-ping" />
+            <span>● ON AIR BROADCAST</span>
+          </motion.div>
 
-        {/* Left Studio Blast Door */}
-        <motion.div
-          initial={{ x: '0%' }}
-          animate={{ x: '-95%' }}
-          transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-purple-500/80 shadow-[20px_0_50px_rgba(0,0,0,0.9)] bg-[#11091f]"
-        >
-          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#9333ea_1px,transparent_1px)] [background-size:12px_12px]" />
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-end gap-1 h-28">
-            {[40, 70, 95, 60, 85, 45, 90, 30].map((h, i) => (
+          {/* Central Cardioid Microphone Node with Radial Acoustic Soundwaves */}
+          <div className="relative flex items-center justify-center mb-6">
+            <motion.div
+              initial={{ scale: 0.6, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.35, delay: 0.1 }}
+              className="w-24 h-24 rounded-full border-4 border-purple-400 bg-gradient-to-br from-purple-600 via-purple-900 to-black flex items-center justify-center shadow-[0_0_40px_rgba(168,85,247,0.9)] z-10"
+            >
+              <Radio className="w-10 h-10 text-purple-200" />
+            </motion.div>
+
+            {/* Concentric Audio Soundwave Shockwaves */}
+            {[0, 1, 2].map((i) => (
               <motion.div
                 key={i}
-                animate={{ height: [`${h}%`, `${Math.max(20, h - 25)}%`, `${h}%`] }}
-                transition={{ duration: 0.6 + i * 0.1, repeat: Infinity }}
-                className="w-1.5 bg-gradient-to-t from-emerald-400 via-amber-400 to-red-500 rounded-xs"
+                initial={{ scale: 0.3, opacity: 0.95 }}
+                animate={{ scale: 3.4, opacity: 0 }}
+                transition={{ duration: 0.8, delay: 0.15 + i * 0.15, ease: 'easeOut' }}
+                className="absolute w-24 h-24 rounded-full border-2 border-purple-400 pointer-events-none"
               />
             ))}
           </div>
-        </motion.div>
 
-        {/* Right Studio Blast Door */}
-        <motion.div
-          initial={{ x: '0%' }}
-          animate={{ x: '95%' }}
-          transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-purple-500/80 shadow-[-20px_0_50px_rgba(0,0,0,0.9)] bg-[#11091f]"
-        >
-          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#9333ea_1px,transparent_1px)] [background-size:12px_12px]" />
-          <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-end gap-1 h-28">
-            {[30, 80, 50, 90, 65, 85, 40, 75].map((h, i) => (
-              <motion.div
-                key={i}
-                animate={{ height: [`${h}%`, `${Math.max(20, h - 25)}%`, `${h}%`] }}
-                transition={{ duration: 0.6 + i * 0.1, repeat: Infinity }}
-                className="w-1.5 bg-gradient-to-t from-emerald-400 via-amber-400 to-red-500 rounded-xs"
-              />
-            ))}
+          {/* Glowing Center Oscilloscope Sine Wave SVG */}
+          <div className="w-full max-w-md h-12 mb-4 overflow-hidden">
+            <svg viewBox="0 0 400 60" preserveAspectRatio="none" className="w-full h-full stroke-purple-400 fill-none" strokeWidth="2.5">
+              <path d="M0,30 Q25,5 50,30 T100,30 T150,30 T200,5 T250,55 T300,30 T350,30 T400,30" />
+            </svg>
+          </div>
+
+          <div className="text-xs font-mono font-bold tracking-widest text-purple-300 uppercase">
+            FREQUENCY TUNED // 104.2 MHZ STUDIO TRANSMISSION
           </div>
         </motion.div>
       </div>
@@ -269,7 +275,7 @@ function CredentialThemeAnimation({ theme, animationKey }) {
   }
 
   if (theme === 'editorial') {
-    // Hardback Publication Cover Turning Open from Spine with CMYK Registration Marks
+    // 3D Hardcover Publication Cover Turning Open from Left Spine with CMYK Registration Marks
     return (
       <div
         key={`edit-${animationKey}`}
@@ -278,11 +284,25 @@ function CredentialThemeAnimation({ theme, animationKey }) {
       >
         <motion.div
           initial={{ rotateY: 0, opacity: 1 }}
-          animate={{ rotateY: -108, opacity: 0 }}
-          transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+          animate={{ rotateY: -112, opacity: 0 }}
+          transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
           style={{ transformOrigin: 'left center' }}
-          className="absolute inset-0 bg-gradient-to-br from-[#3b0742] via-[#240529] to-[#0f0212] border-r-8 border-fuchsia-400 shadow-[35px_0_70px_rgba(0,0,0,0.95)] flex flex-col items-center justify-center p-8"
+          className="absolute inset-0 bg-gradient-to-br from-[#3b0742] via-[#240529] to-[#0f0212] border-r-8 border-fuchsia-400 shadow-[35px_0_70px_rgba(0,0,0,0.95)] flex flex-col items-center justify-center p-8 select-none"
         >
+          {/* CMYK Registration Targets */}
+          <div className="absolute top-4 left-4 w-6 h-6 border border-fuchsia-300/40 rounded-full flex items-center justify-center text-[8px] font-mono text-fuchsia-300">
+            +
+          </div>
+          <div className="absolute top-4 right-4 w-6 h-6 border border-fuchsia-300/40 rounded-full flex items-center justify-center text-[8px] font-mono text-fuchsia-300">
+            +
+          </div>
+          <div className="absolute bottom-4 left-4 w-6 h-6 border border-fuchsia-300/40 rounded-full flex items-center justify-center text-[8px] font-mono text-fuchsia-300">
+            +
+          </div>
+          <div className="absolute bottom-4 right-4 w-6 h-6 border border-fuchsia-300/40 rounded-full flex items-center justify-center text-[8px] font-mono text-fuchsia-300">
+            +
+          </div>
+
           <div className="w-full max-w-md p-6 rounded-xl border-2 border-fuchsia-400/50 bg-black/60 text-center">
             <span className="text-[10px] font-mono text-fuchsia-300 uppercase tracking-[0.3em] block mb-2">
               YEARBOOK EDITORIAL FOLIO
@@ -300,7 +320,7 @@ function CredentialThemeAnimation({ theme, animationKey }) {
   }
 
   if (theme === 'cyber') {
-    // Biometric Security Defense Iris & Scanlines Unlock
+    // Hexadecimal Terminal Cascade & Biometric Retinal Laser Sweep
     return (
       <div
         key={`cyber-${animationKey}`}
@@ -308,36 +328,53 @@ function CredentialThemeAnimation({ theme, animationKey }) {
         className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
       >
         <motion.div
-          initial={{ x: '0%' }}
-          animate={{ x: '-95%' }}
-          transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-emerald-400 shadow-[20px_0_50px_rgba(0,0,0,0.9)] bg-[#04140d]"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 0.85, delay: 0.75, ease: 'easeOut' }}
+          className="absolute inset-0 bg-[#030d08] flex flex-col items-center justify-center p-6 text-center select-none"
         >
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(16,185,129,0.06)_51%)] bg-[length:100%_4px]" />
-        </motion.div>
+          {/* Vertical Green Laser Scanning Bar */}
+          <motion.div
+            initial={{ top: '0%' }}
+            animate={{ top: '100%' }}
+            transition={{ duration: 0.85, ease: 'easeInOut' }}
+            className="absolute inset-x-0 h-1 bg-emerald-400 shadow-[0_0_20px_rgba(52,211,153,1)] z-40"
+          />
 
-        <motion.div
-          initial={{ x: '0%' }}
-          animate={{ x: '95%' }}
-          transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-emerald-400 shadow-[-20px_0_50px_rgba(0,0,0,0.9)] bg-[#04140d]"
-        >
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_50%,rgba(16,185,129,0.06)_51%)] bg-[length:100%_4px]" />
-        </motion.div>
-
-        {/* Central Terminal Decryption Stamp */}
-        <motion.div
-          initial={{ scale: 1, opacity: 1 }}
-          animate={{ scale: 1.3, opacity: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-6 py-4 rounded-xl border-2 border-emerald-400 bg-black/90 font-mono text-emerald-400 text-center shadow-[0_0_40px_rgba(16,185,129,0.6)]"
-        >
-          <Lock className="w-6 h-6 mx-auto mb-1 text-emerald-300" />
-          <div className="text-xs font-bold tracking-widest uppercase">
-            [ACCESS GRANTED]
+          {/* Hexadecimal Memory Dump Cascade Background */}
+          <div className="absolute inset-0 opacity-20 font-mono text-[10px] text-emerald-400 leading-tight p-4 overflow-hidden text-left flex justify-between">
+            <div>
+              0x7F4A 0x88BC 0x00A1 0x91F2<br />
+              0x11C3 0xDE44 0xAA02 0x7701<br />
+              0x8922 0x55E1 0x33B9 0x22A0<br />
+              0xF001 0x4811 0xBC88 0x6641
+            </div>
+            <div className="hidden sm:block">
+              0xAA11 0xBB22 0xCC33 0xDD44<br />
+              0xEE55 0xFF66 0x0077 0x1188<br />
+              0x2299 0x33AA 0x44BB 0x55CC<br />
+              0x66DD 0x77EE 0x88FF 0x9900
+            </div>
           </div>
-          <div className="text-[10px] text-emerald-500">
-            CYBERCENTURION DEFENSE UNLOCKED
+
+          {/* Central Rotating Biometric Target Lock Ring */}
+          <div className="relative flex items-center justify-center mb-5">
+            <motion.div
+              initial={{ scale: 0.6, rotate: 0, opacity: 1 }}
+              animate={{ scale: 2.8, rotate: 180, opacity: 0 }}
+              transition={{ duration: 0.85, delay: 0.15 }}
+              className="w-28 h-28 rounded-full border-2 border-dashed border-emerald-400 pointer-events-none"
+            />
+            <div className="w-20 h-20 rounded-full border-2 border-emerald-400 bg-emerald-950/90 flex items-center justify-center shadow-[0_0_40px_rgba(16,185,129,0.8)] z-10">
+              <Terminal className="w-8 h-8 text-emerald-300" />
+            </div>
+          </div>
+
+          <div className="text-xs font-mono font-bold tracking-widest text-emerald-300 uppercase">
+            [ACCESS GRANTED] // CYBERCENTURION DEFENSE UNLOCKED
+          </div>
+          <div className="text-[10px] font-mono text-emerald-500 mt-1">
+            CLEARANCE: LEVEL 5 FORENSICS ARCHIVE
           </div>
         </motion.div>
       </div>
@@ -345,7 +382,7 @@ function CredentialThemeAnimation({ theme, animationKey }) {
   }
 
   if (theme === 'robotics') {
-    // Heavy Industrial Mechatronic Steel Blast Hatch with Hazard Chevrons & Pistons
+    // Rotating Mechatronic Camera Iris & Hydraulic Aperture Venting
     return (
       <div
         key={`robotics-${animationKey}`}
@@ -353,36 +390,47 @@ function CredentialThemeAnimation({ theme, animationKey }) {
         className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
       >
         <motion.div
-          initial={{ x: '0%' }}
-          animate={{ x: '-95%' }}
-          transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-sky-400 shadow-[20px_0_50px_rgba(0,0,0,0.9)] bg-[#081524]"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 0.85, delay: 0.75, ease: 'easeOut' }}
+          className="absolute inset-0 bg-[#06101c] flex flex-col items-center justify-center p-6 text-center select-none"
         >
-          <div className="absolute inset-y-0 right-0 w-8 bg-[repeating-linear-gradient(45deg,#0284c7,#0284c7_10px,#0f172a_10px,#0f172a_20px)]" />
-        </motion.div>
+          {/* Hydraulic Corner Steam Puffs */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: [0, 0.7, 0], scale: 1.6 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="absolute top-2 left-2 w-24 h-24 rounded-full bg-sky-400/20 blur-xl pointer-events-none"
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: [0, 0.7, 0], scale: 1.6 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="absolute bottom-2 right-2 w-24 h-24 rounded-full bg-sky-400/20 blur-xl pointer-events-none"
+          />
 
-        <motion.div
-          initial={{ x: '0%' }}
-          animate={{ x: '95%' }}
-          transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-sky-400 shadow-[-20px_0_50px_rgba(0,0,0,0.9)] bg-[#081524]"
-        >
-          <div className="absolute inset-y-0 left-0 w-8 bg-[repeating-linear-gradient(45deg,#0284c7,#0284c7_10px,#0f172a_10px,#0f172a_20px)]" />
-        </motion.div>
+          {/* Central Rotating Mechatronic Aperture Blades */}
+          <div className="relative flex items-center justify-center mb-5">
+            <motion.div
+              initial={{ rotate: 0, scale: 0.3 }}
+              animate={{ rotate: 140, scale: 3.2 }}
+              transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+              className="w-32 h-32 rounded-full border-4 border-sky-400/80 pointer-events-none"
+              style={{
+                background: 'conic-gradient(from 0deg, #0284c7 0deg 45deg, #0f172a 45deg 90deg, #0284c7 90deg 135deg, #0f172a 135deg 180deg, #0284c7 180deg 225deg, #0f172a 225deg 270deg, #0284c7 270deg 315deg, #0f172a 315deg 360deg)'
+              }}
+            />
 
-        {/* Central Mechatronic Clamp Stamp */}
-        <motion.div
-          initial={{ scale: 1, opacity: 1 }}
-          animate={{ scale: 1.3, opacity: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-6 py-4 rounded-xl border-2 border-sky-400 bg-black/90 font-mono text-sky-300 text-center shadow-[0_0_40px_rgba(14,165,233,0.6)]"
-        >
-          <Cpu className="w-6 h-6 mx-auto mb-1 text-sky-400" />
-          <div className="text-xs font-bold tracking-widest uppercase">
-            PNEUMATIC CLAMP RELEASE
+            <div className="absolute w-20 h-20 rounded-full border-2 border-sky-300 bg-sky-950 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(14,165,233,0.9)] z-10 text-sky-200">
+              <Cpu className="w-8 h-8 text-sky-300" />
+            </div>
           </div>
-          <div className="text-[10px] text-sky-500">
-            VEX ROBOTICS COMPETITION RIG
+
+          <div className="text-xs font-mono font-bold tracking-widest text-sky-200 uppercase">
+            PNEUMATIC APERTURE OPEN // TORQUE 180 NM
+          </div>
+          <div className="text-[10px] font-mono text-sky-400/80 mt-1">
+            VEX &amp; FIRST ROBOTICS TELEMETRY DISENGAGED
           </div>
         </motion.div>
       </div>

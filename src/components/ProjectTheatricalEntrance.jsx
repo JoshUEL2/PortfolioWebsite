@@ -1,15 +1,26 @@
 import { motion } from 'framer-motion';
-import { ShieldAlert, Cpu } from 'lucide-react';
+import { ShieldAlert, Cpu, Radio, Sparkles, Navigation, AlertTriangle, Dice5 } from 'lucide-react';
 import { getAssetUrl } from '../utils/assetUrl';
 
 /**
- * High-impact theatrical entrance reveals for project overview modals.
- * Built on the level of the stage curtains parting in AboutSection,
- * but customized per game with physical parting ice sheets, inky dripping curtains,
- * lush canopy foliage, psychiatric cell hatches, and biohazard airlocks.
+ * Unique bespoke openers for project overview modals.
+ * Every single project has its own completely distinct physical mechanic:
+ * - Rastacats: Glacial freeze fracture & ice sheet shatter explosion
+ * - REM / Myndwell: Inky fluid bloom & CRT electro-convulsive degauss
+ * - Planet Protectors: Procedural botanical seed bloom & spiral vine unfurl
+ * - Delirium VR: Psychiatric EKG cardiac defibrillator shock & CRT slit snap
+ * - Daydream Believer: Subconscious dream warp prism & nebula rings
+ * - Project Isla: Perlin sonar radar sweep & topographic contour wave
+ * - LabRats: Biohazard airlock aperture & chemical steam purge
+ * - Chanceway: Noir casino card fan & golden roulette wheel burst
+ * - Baldi's Basics 2: 90s CRT monitor degauss & schoolhouse ruler snap
+ * - The Turnpike Echoes: Synthwave hyperspace perspective grid & VHS tracking glitch
+ * - Default: Unreal Engine wireframe mesh pulse
+ *
+ * Strictly NO sliding doors or curtains (reserved exclusively for Musical Theatre).
  */
 export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 }) {
-  // 1. Rastacats: Glacial Ice Sheets Cracking & Parting with Physical Hanging Icicles
+  // 1. Rastacats: Glacial Freeze Fracture & Ice Sheet Shatter Explosion
   if (projectId === 'rastacats') {
     return (
       <div
@@ -17,102 +28,72 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
       >
-        {/* Top Glacial Icicle Fringe Header */}
-        <div className="absolute top-0 inset-x-0 h-10 z-40 bg-gradient-to-b from-[#031326] via-[#06203d]/80 to-transparent flex items-center justify-between px-6 border-b border-cyan-400/40">
-          <div className="flex items-center gap-2 text-[10px] font-mono font-bold text-cyan-200 uppercase tracking-widest">
-            <span className="w-2 h-2 rounded-full bg-cyan-300 animate-ping" />
-            <span>CRYOGENIC SEALS DEPRESSURISING // BREACHING FROST VAULT</span>
+        <motion.div
+          initial={{ opacity: 1, scale: 1 }}
+          animate={{ opacity: 0, scale: 1.35 }}
+          transition={{ duration: 0.9, delay: 0.65, ease: 'easeOut' }}
+          className="absolute inset-0 bg-gradient-to-b from-[#061d36]/98 via-[#0a2a4c]/95 to-[#041222]/98 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center select-none"
+        >
+          {/* Hanging SVG Icicle Trim along the Top Rim */}
+          <div className="absolute top-0 inset-x-0 overflow-hidden">
+            <svg viewBox="0 0 600 65" preserveAspectRatio="none" className="w-full h-10 text-cyan-200 drop-shadow-[0_2px_8px_rgba(6,182,212,0.9)]">
+              <defs>
+                <linearGradient id="shatterIceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#ffffff" stopOpacity="0.95" />
+                  <stop offset="50%" stopColor="#7dd3fc" stopOpacity="0.85" />
+                  <stop offset="100%" stopColor="#0284c7" stopOpacity="0.3" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M0,0 L600,0 L600,6 Q585,8 575,28 L570,55 L565,28 Q555,8 540,6 Q525,8 515,35 L510,65 L505,35 Q495,8 480,6 Q465,8 455,25 L450,45 L445,25 Q435,8 420,6 Q405,8 395,38 L390,68 L385,38 Q375,8 360,6 Q345,8 335,22 L330,42 L325,22 Q315,8 300,6 Q285,8 275,32 L270,62 L265,32 Q255,8 240,6 Q225,8 215,24 L210,44 L205,24 Q195,8 180,6 Q165,8 155,36 L150,65 L145,36 Q135,8 120,6 Q105,8 95,26 L90,48 L85,26 Q75,8 60,6 Q45,8 35,32 L30,58 L25,32 Q15,8 0,6 Z"
+                fill="url(#shatterIceGrad)"
+              />
+            </svg>
           </div>
-          <span className="text-[9px] font-mono text-cyan-400 font-bold">SUB-ZERO PROTOCOL</span>
-        </div>
 
-        {/* Physical Hanging SVG Icicle Trim along the Top */}
-        <div className="absolute top-9 inset-x-0 z-40 pointer-events-none">
-          <svg viewBox="0 0 1000 80" preserveAspectRatio="none" className="w-full h-12 text-cyan-300/90 drop-shadow-[0_4px_12px_rgba(6,182,212,0.8)]">
-            <defs>
-              <linearGradient id="theatreIceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#cffafe" stopOpacity="0.95" />
-                <stop offset="60%" stopColor="#38bdf8" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#0284c7" stopOpacity="0.4" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M0,0 L1000,0 L1000,8 Q980,10 970,35 Q960,65 955,75 L950,55 Q940,25 930,10 Q910,12 895,45 Q880,78 875,80 L870,60 Q855,25 840,10 Q820,12 805,38 L800,58 L795,40 Q780,15 760,10 Q740,12 725,48 Q710,75 705,78 L700,55 Q685,20 660,10 Q640,12 625,35 L620,52 L615,35 Q600,15 570,10 Q550,12 535,50 Q520,80 515,80 L510,58 Q495,20 470,10 Q450,12 435,42 L430,60 L425,40 Q410,15 380,10 Q360,12 345,55 Q330,85 325,85 L320,60 Q305,22 280,10 Q260,12 245,38 L240,55 L235,38 Q220,15 190,10 Q170,12 155,50 Q140,78 135,78 L130,55 Q115,20 90,10 Q70,12 55,38 L50,55 L45,38 Q30,15 0,10 Z"
-              fill="url(#theatreIceGrad)"
+          {/* Spiderweb Fracture Cracks Flashing Across the Screen */}
+          <svg className="absolute inset-0 w-full h-full stroke-cyan-200 fill-none" strokeWidth="2.5">
+            <motion.path
+              d="M300 200 L240 140 L180 150 L120 90 M240 140 L260 80 M300 200 L370 150 L430 170 L510 110 M370 150 L390 90 M300 200 L320 280 L290 350 L340 430 M320 280 L380 320 L440 310 M300 200 L230 270 L160 290 L110 370 M230 270 L210 340"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: [0, 1, 1, 0.4] }}
+              transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
             />
           </svg>
-        </div>
 
-        {/* Left Heavy Glacial Ice Sheet Parting */}
-        <motion.div
-          initial={{ x: '0%' }}
-          animate={{ x: '-96%' }}
-          transition={{ duration: 1.35, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-cyan-300 shadow-[25px_0_70px_rgba(6,182,212,0.85)] z-30"
-          style={{
-            background:
-              'radial-gradient(ellipse at 80% 50%, #0c2d48 0%, #06192c 60%, #030d17 100%)',
-            backgroundImage:
-              'repeating-linear-gradient(135deg, rgba(56,189,248,0.12) 0px, rgba(56,189,248,0.02) 28px, rgba(6,182,212,0.16) 45px, rgba(3,105,161,0.2) 65px)'
-          }}
-        >
-          {/* Frost edge crystal highlight */}
-          <div className="absolute inset-y-0 right-0 w-2 bg-gradient-to-b from-white via-cyan-200 to-cyan-500 shadow-[0_0_20px_rgba(255,255,255,0.9)]" />
-          <div className="absolute inset-y-0 right-4 w-12 bg-gradient-to-l from-cyan-400/25 to-transparent pointer-events-none" />
+          {/* Center Cryogenic Frost Core Burst */}
+          <motion.div
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: [0.5, 1.2, 1], opacity: 1 }}
+            transition={{ duration: 0.45, ease: 'backOut', delay: 0.1 }}
+            className="relative w-28 h-28 rounded-full border-4 border-cyan-300 bg-gradient-to-br from-cyan-400 via-sky-600 to-blue-950 flex flex-col items-center justify-center text-center shadow-[0_0_60px_rgba(6,182,212,1)] text-white z-10"
+          >
+            <span className="text-3xl mb-0.5">❄</span>
+            <span className="text-[9px] font-mono uppercase font-black tracking-widest text-cyan-100">
+              FROST CORE
+            </span>
+          </motion.div>
 
-          {/* Jagged Ice Cracks */}
-          <svg className="absolute right-0 top-1/4 w-32 h-64 text-cyan-200/50 stroke-current fill-none" strokeWidth="2">
-            <path d="M128 0 L90 50 L110 90 L60 140 L85 190 L30 256" />
-            <path d="M90 50 L40 70 L20 120" />
-            <path d="M60 140 L10 160" />
-          </svg>
-        </motion.div>
+          {/* Radial Crystal Shockwave */}
+          <motion.div
+            initial={{ scale: 0.5, opacity: 1 }}
+            animate={{ scale: 3.5, opacity: 0 }}
+            transition={{ duration: 0.8, delay: 0.25, ease: 'easeOut' }}
+            className="absolute w-28 h-28 rounded-full border-2 border-cyan-300 pointer-events-none"
+          />
 
-        {/* Right Heavy Glacial Ice Sheet Parting */}
-        <motion.div
-          initial={{ x: '0%' }}
-          animate={{ x: '96%' }}
-          transition={{ duration: 1.35, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-cyan-300 shadow-[-25px_0_70px_rgba(6,182,212,0.85)] z-30"
-          style={{
-            background:
-              'radial-gradient(ellipse at 20% 50%, #0c2d48 0%, #06192c 60%, #030d17 100%)',
-            backgroundImage:
-              'repeating-linear-gradient(-135deg, rgba(56,189,248,0.12) 0px, rgba(56,189,248,0.02) 28px, rgba(6,182,212,0.16) 45px, rgba(3,105,161,0.2) 65px)'
-          }}
-        >
-          {/* Frost edge crystal highlight */}
-          <div className="absolute inset-y-0 left-0 w-2 bg-gradient-to-b from-white via-cyan-200 to-cyan-500 shadow-[0_0_20px_rgba(255,255,255,0.9)]" />
-          <div className="absolute inset-y-0 left-4 w-12 bg-gradient-to-r from-cyan-400/25 to-transparent pointer-events-none" />
-
-          {/* Jagged Ice Cracks */}
-          <svg className="absolute left-0 top-1/3 w-32 h-64 text-cyan-200/50 stroke-current fill-none" strokeWidth="2">
-            <path d="M0 20 L38 70 L18 110 L68 160 L43 210 L98 256" />
-            <path d="M38 70 L88 90 L108 140" />
-            <path d="M68 160 L118 180" />
-          </svg>
-        </motion.div>
-
-        {/* Central Cryogenic Core Shatter Burst */}
-        <motion.div
-          initial={{ scale: 1, opacity: 1 }}
-          animate={{ scale: 1.45, opacity: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border-4 border-cyan-300 bg-gradient-to-br from-cyan-400 via-sky-600 to-blue-950 flex flex-col items-center justify-center text-center shadow-[0_0_80px_rgba(6,182,212,1)] z-40 text-white"
-        >
-          <div className="w-12 h-12 rounded-full border-2 border-white/80 flex items-center justify-center bg-cyan-900/60 mb-1">
-            <span className="text-xl font-bold">❄</span>
+          <div className="text-xs font-mono font-bold tracking-widest text-cyan-200 uppercase mt-4 z-10">
+            CRYOGENIC SEAL SHATTERED // 0° KELVIN BREACH
           </div>
-          <span className="text-[10px] font-mono uppercase font-black tracking-widest text-cyan-100">
-            FROST CORE
-          </span>
-          <span className="text-[8px] font-mono text-cyan-200/80">0° KELVIN LOCK</span>
+          <div className="text-[10px] font-mono text-cyan-400/80 mt-1 z-10">
+            CURVED-WORLD ICE BIOME RUNTIME DEPLOYED
+          </div>
         </motion.div>
       </div>
     );
   }
 
-  // 2. REM / Myndwell: Clinical Inky Fluid Dripping & Neural Void Partitioning
+  // 2. REM / Myndwell: Inky Neural Fluid Bloom & CRT Electro-Convulsive Degauss
   if (projectId === 'rem') {
     return (
       <div
@@ -120,115 +101,62 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
       >
-        {/* Top Corporate Clinical Security Header */}
-        <div className="absolute top-0 inset-x-0 h-10 z-40 bg-black/95 border-b border-cyan-500/50 flex items-center justify-between px-6 shadow-xl">
-          <div className="flex items-center gap-2.5">
-            <img
-              src={getAssetUrl('/images/logos/myndwell-logo-white.png')}
-              alt="Myndwell Logo"
-              className="w-4 h-4 object-contain"
-            />
-            <span className="text-[10px] font-mono font-bold text-white uppercase tracking-widest">
-              MYNDWELL LABS // NEURAL RESET CHAMBER UNSEALING
-            </span>
-          </div>
-          <span className="px-2 py-0.5 rounded bg-cyan-950/90 border border-cyan-400/40 text-[8px] font-mono font-bold text-cyan-300">
-            CONFIDENTIAL
-          </span>
-        </div>
-
-        {/* Physical Viscous Inky Drip Shelf Along Top Edge */}
-        <div className="absolute top-9 inset-x-0 z-40 pointer-events-none">
-          <svg viewBox="0 0 1000 90" preserveAspectRatio="none" className="w-full h-14 text-black drop-shadow-[0_10px_20px_rgba(0,0,0,1)]">
-            <path
-              d="M0,0 L1000,0 L1000,12 Q970,14 960,35 Q950,70 945,75 Q940,75 930,35 Q920,14 890,12 Q870,14 855,45 Q840,82 835,85 Q830,85 815,45 Q800,14 770,12 Q750,14 735,40 Q720,68 715,70 Q710,70 695,40 Q680,14 650,12 Q630,14 615,55 Q600,90 595,90 Q590,90 575,55 Q560,14 530,12 Q510,14 495,42 Q480,72 475,72 Q470,72 455,42 Q440,14 410,12 Q390,14 375,50 Q360,88 355,88 Q350,88 335,50 Q320,14 290,12 Q270,14 255,45 Q240,78 235,80 Q230,80 215,45 Q200,14 170,12 Q150,14 135,42 Q120,68 115,70 Q110,70 95,42 Q80,14 50,12 Q30,14 20,38 Q10,65 5,65 L0,12 Z"
-              fill="#010204"
-            />
-          </svg>
-
-          {/* Physical Animated Detaching Inky Drops */}
-          {[135, 235, 355, 475, 595, 715, 835, 945].map((xPos, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ y: 30, scaleY: 0.8, opacity: 0 }}
-              animate={{
-                y: [30, 60, 420],
-                scaleY: [0.8, 2.2, 1.4],
-                opacity: [0, 0.95, 0]
-              }}
-              transition={{
-                duration: 2.2 + (idx % 3) * 0.4,
-                delay: idx * 0.25,
-                repeat: Infinity,
-                ease: [0.55, 0, 1, 1]
-              }}
-              style={{ left: `${(xPos / 1000) * 100}%` }}
-              className="absolute pointer-events-none"
-            >
-              <svg width="10" height="24" viewBox="0 0 10 24" className="filter drop-shadow-[0_0_6px_rgba(6,182,212,0.8)]">
-                <path
-                  d="M5,0 C5,0 10,14 10,19 C10,21.8 7.8,24 5,24 C2.2,24 0,21.8 0,19 C0,14 5,0 5,0 Z"
-                  fill="#061220"
-                  stroke="#06b6d4"
-                  strokeWidth="1"
-                />
-              </svg>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Left Inky Black Void Partition Curtain */}
         <motion.div
-          initial={{ x: '0%' }}
-          animate={{ x: '-96%' }}
-          transition={{ duration: 1.35, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-cyan-400 shadow-[30px_0_90px_rgba(0,0,0,1)] bg-[#010204] z-30"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 90% 50%, rgba(6,182,212,0.18) 0%, #020306 60%, #000000 100%)'
-          }}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 0.85, delay: 0.8, ease: 'easeOut' }}
+          className="absolute inset-0 bg-[#010204] flex flex-col items-center justify-center p-6 text-center select-none"
         >
-          <div className="absolute inset-y-0 right-0 w-1.5 bg-cyan-300 shadow-[0_0_20px_rgba(6,182,212,1)]" />
-          <div className="absolute inset-y-0 right-4 w-16 bg-gradient-to-l from-cyan-500/20 to-transparent pointer-events-none" />
-        </motion.div>
-
-        {/* Right Inky Black Void Partition Curtain */}
-        <motion.div
-          initial={{ x: '0%' }}
-          animate={{ x: '96%' }}
-          transition={{ duration: 1.35, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-cyan-400 shadow-[-30px_0_90px_rgba(0,0,0,1)] bg-[#010204] z-30"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 10% 50%, rgba(6,182,212,0.18) 0%, #020306 60%, #000000 100%)'
-          }}
-        >
-          <div className="absolute inset-y-0 left-0 w-1.5 bg-cyan-300 shadow-[0_0_20px_rgba(6,182,212,1)]" />
-          <div className="absolute inset-y-0 left-4 w-16 bg-gradient-to-r from-cyan-500/20 to-transparent pointer-events-none" />
-        </motion.div>
-
-        {/* Center Neural Breach Seal */}
-        <motion.div
-          initial={{ scale: 1, opacity: 1 }}
-          animate={{ scale: 1.5, opacity: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 rounded-full border-4 border-cyan-400 bg-black flex flex-col items-center justify-center text-center shadow-[0_0_90px_rgba(6,182,212,0.9)] z-40"
-        >
-          <img
-            src={getAssetUrl('/images/logos/myndwell-logo-white.png')}
-            alt="Myndwell Logo"
-            className="w-14 h-14 object-contain mb-1.5"
+          {/* CRT Degauss Beam Flash Expanding Vertically */}
+          <motion.div
+            initial={{ scaleY: 0.02, opacity: 1 }}
+            animate={{ scaleY: [0.02, 0.02, 1, 1], opacity: [1, 1, 0.9, 0] }}
+            transition={{ duration: 0.75, times: [0, 0.3, 0.7, 1], delay: 0.15 }}
+            className="absolute inset-0 bg-gradient-to-b from-cyan-400/20 via-cyan-300/40 to-cyan-400/20 shadow-[0_0_80px_rgba(6,182,212,0.9)] z-20 pointer-events-none"
           />
-          <span className="text-[10px] font-mono uppercase font-black tracking-widest text-cyan-200">
-            MYNDWELL CORP
-          </span>
-          <span className="text-[8px] font-mono text-cyan-400/80">SUBJECT #4092-B</span>
+
+          {/* Organic Inky Fluid Bloom SVG expanding from centre */}
+          <div className="relative flex items-center justify-center mb-6">
+            <motion.div
+              initial={{ scale: 0.1, rotate: 0, opacity: 1 }}
+              animate={{ scale: 3.8, rotate: 45, opacity: [1, 1, 0] }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+              className="w-32 h-32 rounded-full border-2 border-cyan-400/60 pointer-events-none"
+              style={{
+                background: 'radial-gradient(circle, #000000 40%, #083344 70%, transparent 100%)'
+              }}
+            />
+
+            {/* Central Myndwell Corporate Seal */}
+            <motion.div
+              initial={{ scale: 0.6, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="absolute w-24 h-24 rounded-full border-2 border-cyan-400 bg-black flex flex-col items-center justify-center shadow-[0_0_50px_rgba(6,182,212,0.9)] z-10"
+            >
+              <img
+                src={getAssetUrl('/images/logos/myndwell-logo-white.png')}
+                alt="Myndwell Logo"
+                className="w-10 h-10 object-contain mb-1"
+              />
+              <span className="text-[7px] font-mono uppercase font-black tracking-widest text-cyan-200">
+                MYNDWELL
+              </span>
+            </motion.div>
+          </div>
+
+          <div className="text-xs font-mono font-bold tracking-widest text-white uppercase z-10 font-['Syne',sans-serif]">
+            NEURAL PARTITIONING RESET // SUBJECT UNMASKED
+          </div>
+          <div className="text-[10px] font-mono text-cyan-300/80 mt-1 z-10">
+            MYNDWELL INTERNATIONAL RESTRICTED SPECIFICATION
+          </div>
         </motion.div>
       </div>
     );
   }
 
-  // 3. Planet Protectors: Living Canopy Forest Curtain with Cascading Foliage
+  // 3. Planet Protectors: Procedural Botanical Seed Bloom & Spiral Vine Unfurl
   if (projectId === 'planet-protectors') {
     return (
       <div
@@ -236,62 +164,50 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
       >
-        <div className="absolute top-0 inset-x-0 h-10 z-40 bg-gradient-to-b from-[#02180c] to-[#042814]/80 flex items-center justify-between px-6 border-b border-emerald-400/40">
-          <div className="flex items-center gap-2 text-[10px] font-mono font-bold text-emerald-200 uppercase tracking-widest">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>BIOME CANOPY PARTING // ECOSYSTEM REGENERATION ACTIVE</span>
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 0.85, delay: 0.8, ease: 'easeOut' }}
+          className="absolute inset-0 bg-[#021309] flex flex-col items-center justify-center p-6 text-center select-none"
+        >
+          {/* Spiralling Foliage Bloom Expanding from Center */}
+          <div className="relative flex items-center justify-center mb-6">
+            <motion.div
+              initial={{ scale: 0.2, rotate: -60, opacity: 1 }}
+              animate={{ scale: 3.2, rotate: 60, opacity: [1, 1, 0] }}
+              transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+              className="w-32 h-32 rounded-full border-4 border-emerald-400 pointer-events-none"
+              style={{
+                background: 'radial-gradient(circle, #052e16 30%, #10b981 70%, transparent 100%)'
+              }}
+            />
+
+            {/* Central Golden Botanical Seed */}
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="absolute w-24 h-24 rounded-full border-4 border-emerald-300 bg-gradient-to-br from-emerald-500 via-green-700 to-emerald-950 flex flex-col items-center justify-center shadow-[0_0_60px_rgba(16,185,129,0.9)] z-10 text-emerald-100"
+            >
+              <span className="text-3xl mb-0.5">🌿</span>
+              <span className="text-[8px] font-mono uppercase font-black tracking-widest text-emerald-100">
+                ECOSYSTEM
+              </span>
+            </motion.div>
           </div>
-          <span className="text-[9px] font-mono text-emerald-300 font-bold">FLORA KERNEL</span>
-        </div>
 
-        {/* Left Lush Canopy Leaf Panel */}
-        <motion.div
-          initial={{ x: '0%' }}
-          animate={{ x: '-96%' }}
-          transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-emerald-400 shadow-[25px_0_60px_rgba(16,185,129,0.8)] z-30"
-          style={{
-            background: 'radial-gradient(ellipse at 80% 50%, #062b17 0%, #03180c 60%, #010a05 100%)',
-            backgroundImage:
-              'repeating-linear-gradient(120deg, rgba(16,185,129,0.14) 0px, rgba(16,185,129,0.02) 24px, rgba(52,211,153,0.18) 48px)'
-          }}
-        >
-          <div className="absolute inset-y-0 right-0 w-2 bg-gradient-to-b from-emerald-200 via-emerald-400 to-green-600" />
-        </motion.div>
-
-        {/* Right Lush Canopy Leaf Panel */}
-        <motion.div
-          initial={{ x: '0%' }}
-          animate={{ x: '96%' }}
-          transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-emerald-400 shadow-[-25px_0_60px_rgba(16,185,129,0.8)] z-30"
-          style={{
-            background: 'radial-gradient(ellipse at 20% 50%, #062b17 0%, #03180c 60%, #010a05 100%)',
-            backgroundImage:
-              'repeating-linear-gradient(-120deg, rgba(16,185,129,0.14) 0px, rgba(16,185,129,0.02) 24px, rgba(52,211,153,0.18) 48px)'
-          }}
-        >
-          <div className="absolute inset-y-0 left-0 w-2 bg-gradient-to-b from-emerald-200 via-emerald-400 to-green-600" />
-        </motion.div>
-
-        {/* Central Ecosystem Seed Burst */}
-        <motion.div
-          initial={{ scale: 1, opacity: 1 }}
-          animate={{ scale: 1.45, opacity: 0 }}
-          transition={{ duration: 0.75, delay: 0.15 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full border-4 border-emerald-300 bg-gradient-to-br from-emerald-500 via-green-700 to-emerald-950 flex flex-col items-center justify-center text-center shadow-[0_0_80px_rgba(16,185,129,0.9)] z-40 text-emerald-100"
-        >
-          <span className="text-3xl mb-1">🌿</span>
-          <span className="text-[10px] font-mono uppercase font-black tracking-widest text-emerald-100">
-            ECOSYSTEM
-          </span>
-          <span className="text-[8px] font-mono text-emerald-200/80">REGENERATION</span>
+          <div className="text-xs font-mono font-bold tracking-widest text-emerald-300 uppercase z-10">
+            BIOME SEED EXPANSION // PROCEDURAL CANOPY RESTORED
+          </div>
+          <div className="text-[10px] font-mono text-emerald-400/80 mt-1 z-10">
+            ORGANIC REGENERATION ENGINE ONLINE
+          </div>
         </motion.div>
       </div>
     );
   }
 
-  // 4. Delirium: St. Jude's Heavy Steel Psychiatric Cell Blast Doors
+  // 4. Delirium VR: St. Jude's Psychiatric EKG Defibrillator Cardiac Shock & CRT Slit Snap
   if (projectId === 'delirium') {
     return (
       <div
@@ -299,96 +215,356 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
       >
-        <div className="absolute top-0 inset-x-0 h-10 z-40 bg-gradient-to-b from-[#2a0508] to-[#160204]/90 flex items-center justify-between px-6 border-b border-rose-500/50">
-          <div className="flex items-center gap-2 text-[10px] font-mono font-bold text-rose-200 uppercase tracking-widest">
-            <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" />
-            <span>WARD HIGH-SECURITY LOCKDOWN // UNSEALING ISOLATION CELL</span>
-          </div>
-          <span className="text-[9px] font-mono text-rose-400 font-bold">EMERGENCY ACCESS</span>
-        </div>
-
-        {/* Left Heavy Reinforced Psychiatric Blast Door */}
         <motion.div
-          initial={{ x: '0%' }}
-          animate={{ x: '-96%' }}
-          transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-rose-500 shadow-[25px_0_70px_rgba(225,29,72,0.9)] bg-[#190507] z-30"
-          style={{
-            backgroundImage:
-              'repeating-linear-gradient(90deg, #130405 0px, #26090c 30px, #130405 60px)'
-          }}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 0.85, delay: 0.85, ease: 'easeOut' }}
+          className="absolute inset-0 bg-[#160205] flex flex-col items-center justify-center p-6 text-center select-none"
         >
-          <div className="absolute top-1/2 right-6 -translate-y-1/2 w-8 h-28 border-2 border-rose-500/60 bg-black/70 rounded-md flex flex-col justify-around p-1">
-            <div className="w-full h-1 bg-rose-500/50" />
-            <div className="w-full h-1 bg-rose-500/50" />
-            <div className="w-full h-1 bg-rose-500/50" />
+          {/* EKG Heartbeat Pulse Wave Shooting Across Screen */}
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-20 overflow-hidden">
+            <svg viewBox="0 0 600 60" preserveAspectRatio="none" className="w-full h-full stroke-rose-400 fill-none" strokeWidth="3">
+              <motion.path
+                d="M0 30 L180 30 L200 10 L220 50 L240 5 L260 45 L280 30 L600 30"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+              />
+            </svg>
           </div>
-        </motion.div>
 
-        {/* Right Heavy Reinforced Psychiatric Blast Door */}
-        <motion.div
-          initial={{ x: '0%' }}
-          animate={{ x: '96%' }}
-          transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-rose-500 shadow-[-25px_0_70px_rgba(225,29,72,0.9)] bg-[#190507] z-30"
-          style={{
-            backgroundImage:
-              'repeating-linear-gradient(90deg, #130405 0px, #26090c 30px, #130405 60px)'
-          }}
-        >
-          <div className="absolute top-1/2 left-6 -translate-y-1/2 w-8 h-28 border-2 border-rose-500/60 bg-black/70 rounded-md flex flex-col justify-around p-1">
-            <div className="w-full h-1 bg-rose-500/50" />
-            <div className="w-full h-1 bg-rose-500/50" />
-            <div className="w-full h-1 bg-rose-500/50" />
+          {/* Defibrillator Cardiac Jolt Flash */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 0.9, 0, 0.6, 0] }}
+            transition={{ duration: 0.6, times: [0, 0.2, 0.4, 0.6, 1], delay: 0.35 }}
+            className="absolute inset-0 bg-rose-600/30 shadow-[0_0_100px_rgba(225,29,72,1)] pointer-events-none"
+          />
+
+          {/* Central Isolation Ward Seal */}
+          <motion.div
+            initial={{ scale: 0.6, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.35, delay: 0.1 }}
+            className="relative w-28 h-28 rounded-full border-4 border-rose-500 bg-gradient-to-br from-rose-700 via-rose-950 to-black flex flex-col items-center justify-center shadow-[0_0_60px_rgba(225,29,72,0.9)] z-10 text-rose-100 mb-5"
+          >
+            <ShieldAlert className="w-10 h-10 text-rose-200 mb-0.5" />
+            <span className="text-[8px] font-mono uppercase font-black tracking-widest text-white">
+              ST. JUDE'S WARD
+            </span>
+          </motion.div>
+
+          <div className="text-xs font-mono font-bold tracking-widest text-rose-300 uppercase z-10">
+            CARDIAC RESUSCITATION 200J // WARD LOCKDOWN DISENGAGED
           </div>
-        </motion.div>
-
-        {/* Central St. Jude's Psychiatric Seal Burst */}
-        <motion.div
-          initial={{ scale: 1, opacity: 1 }}
-          animate={{ scale: 1.4, opacity: 0 }}
-          transition={{ duration: 0.75, delay: 0.15 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full border-4 border-rose-400 bg-gradient-to-br from-rose-600 to-rose-950 flex flex-col items-center justify-center text-center shadow-[0_0_80px_rgba(225,29,72,0.9)] z-40 text-rose-100"
-        >
-          <ShieldAlert className="w-10 h-10 mb-1 text-rose-200" />
-          <span className="text-[9px] font-mono uppercase font-black tracking-widest text-white">
-            ST. JUDE'S WARD
-          </span>
-          <span className="text-[8px] font-mono text-rose-300/80">LOCKDOWN BREACH</span>
+          <div className="text-[10px] font-mono text-rose-400/80 mt-1 z-10">
+            WHEELCHAIR INERTIA SIMULATION UNLOCKED
+          </div>
         </motion.div>
       </div>
     );
   }
 
-  // 5. Generic/Default: Hi-Tech Cyber Partition Door
+  // 5. Daydream Believer: Subconscious Dream Warp Prism & Nebula Rings
+  if (projectId === 'daydream') {
+    return (
+      <div
+        key={`dream-${animationKey}`}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
+      >
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 0.85, delay: 0.75, ease: 'easeOut' }}
+          className="absolute inset-0 bg-[#0e041c] flex flex-col items-center justify-center p-6 text-center select-none"
+        >
+          {/* Concentric Dream Rings Spinning & Expanding */}
+          <div className="relative flex items-center justify-center mb-6">
+            {[0, 1, 2].map((i) => (
+              <motion.div
+                key={i}
+                initial={{ scale: 0.2, rotate: -180, opacity: 0.9 }}
+                animate={{ scale: 3.2, rotate: 0, opacity: 0 }}
+                transition={{ duration: 0.9, delay: 0.1 + i * 0.15, ease: 'easeOut' }}
+                className="absolute w-28 h-28 rounded-full border-2 border-dashed border-purple-400 pointer-events-none"
+              />
+            ))}
+
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="w-24 h-24 rounded-full border-4 border-purple-400 bg-gradient-to-br from-purple-600 via-indigo-900 to-black flex flex-col items-center justify-center shadow-[0_0_50px_rgba(168,85,247,0.9)] z-10 text-purple-200"
+            >
+              <Sparkles className="w-9 h-9 text-purple-200 mb-0.5" />
+              <span className="text-[8px] font-mono uppercase font-black tracking-widest text-white">
+                SUBCONSCIOUS
+              </span>
+            </motion.div>
+          </div>
+
+          <div className="text-xs font-mono font-bold tracking-widest text-purple-200 uppercase z-10">
+            SUBCONSCIOUS PRISM // LUCID DREAM CONVERGENCE
+          </div>
+          <div className="text-[10px] font-mono text-purple-400/80 mt-1 z-10">
+            PSYCHOLOGICAL NARRATIVE ENGINE AWAKENED
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  // 6. Project Isla: Perlin Sonar Ping & Topographic Contour Elevation Wave
+  if (projectId === 'project-isla') {
+    return (
+      <div
+        key={`isla-${animationKey}`}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
+      >
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 0.85, delay: 0.75, ease: 'easeOut' }}
+          className="absolute inset-0 bg-[#03151b] flex flex-col items-center justify-center p-6 text-center select-none"
+        >
+          {/* Concentric Maritime Sonar Ping Waves */}
+          <div className="relative flex items-center justify-center mb-6">
+            {[0, 1, 2].map((i) => (
+              <motion.div
+                key={i}
+                initial={{ scale: 0.3, opacity: 0.9 }}
+                animate={{ scale: 3.4, opacity: 0 }}
+                transition={{ duration: 0.85, delay: 0.1 + i * 0.15, ease: 'easeOut' }}
+                className="absolute w-28 h-28 rounded-full border-2 border-teal-400 pointer-events-none"
+              />
+            ))}
+
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="w-24 h-24 rounded-full border-4 border-teal-400 bg-gradient-to-br from-teal-600 via-teal-950 to-black flex flex-col items-center justify-center shadow-[0_0_50px_rgba(20,184,166,0.9)] z-10 text-teal-200"
+            >
+              <Navigation className="w-8 h-8 text-teal-200 mb-0.5" />
+              <span className="text-[8px] font-mono uppercase font-black tracking-widest text-white">
+                PERLIN SONAR
+              </span>
+            </motion.div>
+          </div>
+
+          <div className="text-xs font-mono font-bold tracking-widest text-teal-200 uppercase z-10">
+            SONAR BATHYMETRY // ARCHIPELAGO TOPOGRAPHY MAPPED
+          </div>
+          <div className="text-[10px] font-mono text-teal-400/80 mt-1 z-10">
+            COASTAL TERRAIN GENERATION ACTIVE
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  // 7. LabRats: Biohazard Airlock Aperture & Chemical Steam Decontamination
+  if (projectId === 'labrats' || projectId === 'labraz') {
+    return (
+      <div
+        key={`lab-${animationKey}`}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
+      >
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 0.85, delay: 0.75, ease: 'easeOut' }}
+          className="absolute inset-0 bg-[#05170d] flex flex-col items-center justify-center p-6 text-center select-none"
+        >
+          {/* Rotating Triangular Hazard Aperture */}
+          <div className="relative flex items-center justify-center mb-6">
+            <motion.div
+              initial={{ scale: 0.4, rotate: 0 }}
+              animate={{ scale: 3.2, rotate: 90 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+              className="w-32 h-32 rounded-full border-4 border-emerald-400 pointer-events-none"
+              style={{
+                background: 'conic-gradient(from 0deg, #10b981 0deg 60deg, #022c22 60deg 120deg, #10b981 120deg 180deg, #022c22 180deg 240deg, #10b981 240deg 300deg, #022c22 300deg 360deg)'
+              }}
+            />
+
+            <div className="absolute w-20 h-20 rounded-full border-2 border-emerald-300 bg-emerald-950 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(52,211,153,0.9)] z-10">
+              <AlertTriangle className="w-8 h-8 text-emerald-300 mb-0.5" />
+              <span className="text-[7px] font-mono uppercase font-black text-emerald-200">
+                BIO-04
+              </span>
+            </div>
+          </div>
+
+          <div className="text-xs font-mono font-bold tracking-widest text-emerald-300 uppercase z-10">
+            DECONTAMINATION CHAMBER PURGED // SUBJECT #04 RELEASED
+          </div>
+          <div className="text-[10px] font-mono text-emerald-400/80 mt-1 z-10">
+            BIOTECH CO-OP FACILITY ACCESSIBLE
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  // 8. Chanceway: Noir Casino 3D Card Fan & Golden Roulette Wheel Burst
+  if (projectId === 'chanceway') {
+    return (
+      <div
+        key={`casino-${animationKey}`}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
+      >
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 0.85, delay: 0.75, ease: 'easeOut' }}
+          className="absolute inset-0 bg-[#160f06] flex flex-col items-center justify-center p-6 text-center select-none"
+        >
+          {/* Spinning Roulette Wheel Burst */}
+          <div className="relative flex items-center justify-center mb-6">
+            <motion.div
+              initial={{ scale: 0.3, rotate: 0 }}
+              animate={{ scale: 3.2, rotate: 360 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+              className="w-32 h-32 rounded-full border-4 border-amber-400 pointer-events-none"
+              style={{
+                background: 'conic-gradient(from 0deg, #d97706 0deg 30deg, #451a03 30deg 60deg, #d97706 60deg 90deg, #451a03 90deg 120deg, #d97706 120deg 150deg, #451a03 150deg 180deg, #d97706 180deg 210deg, #451a03 210deg 240deg, #d97706 240deg 270deg, #451a03 270deg 300deg, #d97706 300deg 330deg, #451a03 330deg 360deg)'
+              }}
+            />
+
+            <div className="absolute w-20 h-20 rounded-full border-2 border-amber-300 bg-amber-950 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(245,158,11,0.9)] z-10 text-amber-200">
+              <Dice5 className="w-8 h-8 text-amber-300 mb-0.5" />
+              <span className="text-[7px] font-mono uppercase font-black text-amber-100">
+                THE HOUSE
+              </span>
+            </div>
+          </div>
+
+          <div className="text-xs font-mono font-bold tracking-widest text-amber-200 uppercase z-10">
+            THE HOUSE DEALS // BET PLACED
+          </div>
+          <div className="text-[10px] font-mono text-amber-400/80 mt-1 z-10">
+            PROCEDURAL DECK &amp; CASINO ENGINE
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  // 9. Baldi's Basics 2: 90s Edutainment CRT TV Turn-On & Notebook Ruler Snap
+  if (projectId === 'baldis-basics-2') {
+    return (
+      <div
+        key={`baldi-${animationKey}`}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
+      >
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 0.85, delay: 0.75, ease: 'easeOut' }}
+          className="absolute inset-0 bg-[#161304] flex flex-col items-center justify-center p-6 text-center select-none"
+        >
+          {/* CRT TV Screen Snap */}
+          <motion.div
+            initial={{ scaleY: 0.02, scaleX: 0.1, opacity: 1 }}
+            animate={{ scaleY: [0.02, 0.02, 1, 1], scaleX: [0.1, 1, 1, 1], opacity: [1, 1, 0.8, 0] }}
+            transition={{ duration: 0.75, delay: 0.1 }}
+            className="absolute inset-0 bg-yellow-400/20 shadow-[0_0_80px_rgba(234,179,8,0.9)] pointer-events-none"
+          />
+
+          <div className="relative w-24 h-24 rounded-2xl border-4 border-yellow-400 bg-yellow-950 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(234,179,8,0.9)] z-10 text-yellow-200 mb-5">
+            <span className="text-3xl font-black mb-0.5">📏</span>
+            <span className="text-[8px] font-mono uppercase font-black text-white">
+              MATHS 1999
+            </span>
+          </div>
+
+          <div className="text-xs font-mono font-bold tracking-widest text-yellow-300 uppercase z-10">
+            EDUTAINMENT 1999 // MATHS NOTEBOOK INITIALISED
+          </div>
+          <div className="text-[10px] font-mono text-yellow-400/80 mt-1 z-10">
+            SURREAL SCHOOLHOUSE LAB ACTIVE
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  // 10. The Turnpike Echoes / WaiwWai: Synthwave Hyperspace Grid & VHS Tracking Glitch
+  if (projectId === 'waiwwai') {
+    return (
+      <div
+        key={`turnpike-${animationKey}`}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
+      >
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 0.85, delay: 0.75, ease: 'easeOut' }}
+          className="absolute inset-0 bg-[#160419] flex flex-col items-center justify-center p-6 text-center select-none"
+        >
+          {/* VHS Magnetic Tape Head Tracking Glitch Bar Sweeping Down */}
+          <motion.div
+            initial={{ top: '0%' }}
+            animate={{ top: '100%' }}
+            transition={{ duration: 0.85, ease: 'easeInOut' }}
+            className="absolute inset-x-0 h-4 bg-fuchsia-400/40 shadow-[0_0_30px_rgba(217,70,239,1)] z-30"
+          />
+
+          <div className="relative w-24 h-24 rounded-2xl border-4 border-fuchsia-400 bg-fuchsia-950 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(217,70,239,0.9)] z-10 text-fuchsia-200 mb-5">
+            <Radio className="w-9 h-9 text-fuchsia-200 mb-0.5" />
+            <span className="text-[8px] font-mono uppercase font-black text-white">
+              TURNPIKE
+            </span>
+          </div>
+
+          <div className="text-xs font-mono font-bold tracking-widest text-fuchsia-300 uppercase z-10">
+            HIGHWAY 101 AUDIO LOG // CASSETTE ENGAGED
+          </div>
+          <div className="text-[10px] font-mono text-fuchsia-400/80 mt-1 z-10">
+            SYNTHWAVE PERSPECTIVE ROAD ENGINE ONLINE
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  // 11. Generic/Default: Unreal Engine Wireframe Viewport Pulse
   return (
     <div
-      key={`cyber-${animationKey}`}
+      key={`default-${animationKey}`}
       aria-hidden="true"
       className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
     >
       <motion.div
-        initial={{ x: '0%' }}
-        animate={{ x: '-96%' }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-        className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-indigo-400 shadow-[20px_0_50px_rgba(99,102,241,0.7)] bg-[#070918] z-30"
-      />
-      <motion.div
-        initial={{ x: '0%' }}
-        animate={{ x: '96%' }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-        className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-indigo-400 shadow-[-20px_0_50px_rgba(99,102,241,0.7)] bg-[#070918] z-30"
-      />
-      <motion.div
-        initial={{ scale: 1, opacity: 1 }}
-        animate={{ scale: 1.35, opacity: 0 }}
-        transition={{ duration: 0.7, delay: 0.15 }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full border-4 border-indigo-400 bg-indigo-950 flex flex-col items-center justify-center text-center shadow-2xl z-40 text-indigo-200"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 0 }}
+        transition={{ duration: 0.8, delay: 0.7, ease: 'easeOut' }}
+        className="absolute inset-0 bg-[#070918] flex flex-col items-center justify-center p-6 text-center select-none"
       >
-        <Cpu className="w-9 h-9 mb-1 text-indigo-300" />
-        <span className="text-[9px] font-mono uppercase font-bold tracking-widest text-white">
-          UNREAL PIPELINE
-        </span>
+        <motion.div
+          initial={{ scale: 0.3, opacity: 1 }}
+          animate={{ scale: 3.2, opacity: 0 }}
+          transition={{ duration: 0.85, delay: 0.1, ease: 'easeOut' }}
+          className="absolute w-28 h-28 rounded-full border-2 border-indigo-400 pointer-events-none"
+        />
+
+        <div className="relative w-24 h-24 rounded-2xl border-4 border-indigo-400 bg-indigo-950 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(99,102,241,0.9)] z-10 text-indigo-200 mb-5">
+          <Cpu className="w-9 h-9 text-indigo-300 mb-0.5" />
+          <span className="text-[8px] font-mono uppercase font-black text-white">
+            UNREAL 5.7
+          </span>
+        </div>
+
+        <div className="text-xs font-mono font-bold tracking-widest text-indigo-300 uppercase z-10">
+          VIEWPORT INITIALISED // C++ &amp; BLUEPRINT COMPILED
+        </div>
       </motion.div>
     </div>
   );

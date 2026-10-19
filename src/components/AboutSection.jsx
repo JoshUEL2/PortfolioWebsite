@@ -16,7 +16,6 @@ import {
   Sparkles,
   CheckCircle2,
   ChevronRight,
-  RotateCcw,
   Maximize2,
   Terminal
 } from 'lucide-react';
@@ -171,31 +170,6 @@ function CredentialThemeAnimation({ theme, animationKey }) {
           <div className="absolute inset-3 border border-amber-500/30 rounded-lg pointer-events-none" />
           <div className="absolute inset-4 border border-amber-400/20 rounded-md pointer-events-none" />
 
-          {/* Latin Header */}
-          <div className="text-[10px] font-mono tracking-[0.3em] uppercase text-amber-300/80 mb-3">
-            UNIVERSITAS ORIENTALIS LONDINENSIS • ACADEMIC SENATE
-          </div>
-
-          <h3 className="text-xl sm:text-2xl font-black text-amber-100 font-['Syne',sans-serif] tracking-wider uppercase mb-1">
-            Official Council Decree
-          </h3>
-          <p className="text-xs font-mono text-amber-300/70 mb-6">
-            Elected Cohort Representative • Sextennial School Review Board
-          </p>
-
-          {/* Central Heavy Golden Wax Seal Stamp */}
-          <motion.div
-            initial={{ scale: 1.7, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.35, ease: 'backOut', delay: 0.1 }}
-            className="relative w-28 h-28 rounded-full border-4 border-amber-300 bg-gradient-to-br from-amber-500 via-amber-700 to-amber-950 flex flex-col items-center justify-center text-center shadow-[0_0_50px_rgba(245,158,11,0.8)] text-amber-100"
-          >
-            <GraduationCap className="w-10 h-10 text-amber-200 mb-0.5" />
-            <span className="text-[8px] font-mono uppercase font-black tracking-widest text-amber-100">
-              SENATE SEAL
-            </span>
-          </motion.div>
-
           {/* Golden Radial Shockwave Rings */}
           {[0, 1, 2].map((i) => (
             <motion.div
@@ -225,17 +199,6 @@ function CredentialThemeAnimation({ theme, animationKey }) {
           transition={{ duration: 0.8, delay: 0.75, ease: 'easeOut' }}
           className="absolute inset-0 bg-[#0d0517] flex flex-col items-center justify-center p-6 text-center select-none"
         >
-          {/* Top Glowing ON AIR Beacon */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: [1, 0.4, 1], y: 0 }}
-            transition={{ duration: 0.7, repeat: 1, delay: 0.05 }}
-            className="absolute top-4 left-1/2 -translate-x-1/2 z-40 px-5 py-1.5 rounded-full bg-red-600 text-white font-mono text-xs font-black uppercase tracking-[0.25em] shadow-[0_0_30px_rgba(239,68,68,1)] border border-red-300 flex items-center gap-2"
-          >
-            <span className="w-2 h-2 rounded-full bg-white animate-ping" />
-            <span>● ON AIR BROADCAST</span>
-          </motion.div>
-
           {/* Central Cardioid Microphone Node with Radial Acoustic Soundwaves */}
           <div className="relative flex items-center justify-center mb-6">
             <motion.div
@@ -264,10 +227,6 @@ function CredentialThemeAnimation({ theme, animationKey }) {
             <svg viewBox="0 0 400 60" preserveAspectRatio="none" className="w-full h-full stroke-purple-400 fill-none" strokeWidth="2.5">
               <path d="M0,30 Q25,5 50,30 T100,30 T150,30 T200,5 T250,55 T300,30 T350,30 T400,30" />
             </svg>
-          </div>
-
-          <div className="text-xs font-mono font-bold tracking-widest text-purple-300 uppercase">
-            FREQUENCY TUNED // 104.2 MHZ STUDIO TRANSMISSION
           </div>
         </motion.div>
       </div>
@@ -301,18 +260,6 @@ function CredentialThemeAnimation({ theme, animationKey }) {
           </div>
           <div className="absolute bottom-4 right-4 w-6 h-6 border border-fuchsia-300/40 rounded-full flex items-center justify-center text-[8px] font-mono text-fuchsia-300">
             +
-          </div>
-
-          <div className="w-full max-w-md p-6 rounded-xl border-2 border-fuchsia-400/50 bg-black/60 text-center">
-            <span className="text-[10px] font-mono text-fuchsia-300 uppercase tracking-[0.3em] block mb-2">
-              YEARBOOK EDITORIAL FOLIO
-            </span>
-            <h4 className="text-xl font-black text-white font-['Syne',sans-serif] uppercase tracking-wider mb-2">
-              150+ Iterations • 200+ Portrait Mosaic
-            </h4>
-            <div className="flex justify-center gap-3 text-[11px] font-mono text-fuchsia-200">
-              <span>CYAN</span> • <span>MAGENTA</span> • <span>YELLOW</span> • <span>BLACK</span>
-            </div>
           </div>
         </motion.div>
       </div>
@@ -369,13 +316,6 @@ function CredentialThemeAnimation({ theme, animationKey }) {
               <Terminal className="w-8 h-8 text-emerald-300" />
             </div>
           </div>
-
-          <div className="text-xs font-mono font-bold tracking-widest text-emerald-300 uppercase">
-            [ACCESS GRANTED] // CYBERCENTURION DEFENSE UNLOCKED
-          </div>
-          <div className="text-[10px] font-mono text-emerald-500 mt-1">
-            CLEARANCE: LEVEL 5 FORENSICS ARCHIVE
-          </div>
         </motion.div>
       </div>
     );
@@ -424,13 +364,6 @@ function CredentialThemeAnimation({ theme, animationKey }) {
             <div className="absolute w-20 h-20 rounded-full border-2 border-sky-300 bg-sky-950 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(14,165,233,0.9)] z-10 text-sky-200">
               <Cpu className="w-8 h-8 text-sky-300" />
             </div>
-          </div>
-
-          <div className="text-xs font-mono font-bold tracking-widest text-sky-200 uppercase">
-            PNEUMATIC APERTURE OPEN // TORQUE 180 NM
-          </div>
-          <div className="text-[10px] font-mono text-sky-400/80 mt-1">
-            VEX &amp; FIRST ROBOTICS TELEMETRY DISENGAGED
           </div>
         </motion.div>
       </div>
@@ -905,15 +838,6 @@ export default function AboutSection() {
                     </div>
 
                     <div className="flex items-center gap-2.5">
-                      <button
-                        type="button"
-                        onClick={() => setAnimationKey((prev) => prev + 1)}
-                        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-slate-100 border border-white/20 text-xs font-mono uppercase tracking-wider transition-colors cursor-pointer"
-                        title="Replay Entrance Animation"
-                      >
-                        <RotateCcw className="w-3.5 h-3.5" />
-                        <span>{style.replayLabel || 'Replay'}</span>
-                      </button>
                       <button
                         type="button"
                         onClick={() => setActiveCredential(null)}

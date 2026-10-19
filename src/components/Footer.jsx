@@ -4,7 +4,7 @@ import { getAssetUrl } from '../utils/assetUrl';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-export default function Footer({ onReplayIntro }) {
+export default function Footer() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showTopBtn, setShowTopBtn] = useState(false);
 
@@ -49,18 +49,6 @@ export default function Footer({ onReplayIntro }) {
               <Code2 className="w-3.5 h-3.5 text-indigo-400" />
               <span>Built with React, Vite & Tailwind CSS</span>
             </div>
-            {onReplayIntro && (
-              <>
-                <span className="hidden sm:inline text-slate-600">•</span>
-                <button
-                  type="button"
-                  onClick={onReplayIntro}
-                  className="text-cyan-400/90 hover:text-cyan-300 underline underline-offset-4 cursor-pointer transition-colors"
-                >
-                  Replay Intro
-                </button>
-              </>
-            )}
           </div>
 
           <div className="text-xs text-slate-400">

@@ -17,8 +17,7 @@ import {
   ZoomIn,
   Code2,
   Globe,
-  FileCode,
-  RotateCcw
+  FileCode
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { getAssetUrl, isSpecificRepo, isSpecificLinkedIn } from '../utils/assetUrl';
@@ -42,7 +41,7 @@ export default function CaseStudyModal({ project, onClose }) {
   // 'live' | 'source'
   const [marketingSubTab, setMarketingSubTab] = useState('live');
   const [activeRepoFileIdx, setActiveRepoFileIdx] = useState(0);
-  const [theatricalKey, setTheatricalKey] = useState(0);
+  const [theatricalKey] = useState(0);
 
   const currentVersion = hasVersions ? versions[activeVersionIndex] : null;
   const activeImage = currentVersion?.image || project?.image;
@@ -154,16 +153,6 @@ export default function CaseStudyModal({ project, onClose }) {
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => setTheatricalKey((k) => k + 1)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white text-xs font-mono border border-white/10 transition-all cursor-pointer shadow-sm active:scale-95"
-                title="Replay Theatrical Entrance Reveal"
-              >
-                <RotateCcw className="w-3.5 h-3.5 text-indigo-400" />
-                <span className="hidden sm:inline">Replay Reveal</span>
-              </button>
-
               <button
                 type="button"
                 onClick={onClose}

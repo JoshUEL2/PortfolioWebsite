@@ -137,7 +137,6 @@ export default function App() {
         <Navbar
           currentView={currentView}
           onViewChange={handleViewChange}
-          onReplayIntro={() => setShowIntro(true)}
         />
 
         {currentView === 'all-projects' ? (
@@ -174,7 +173,7 @@ export default function App() {
         )}
 
         {/* Footer */}
-        <Footer onReplayIntro={() => setShowIntro(true)} />
+        <Footer />
       </div>
 
       {/* Full-screen Case Study Modal */}

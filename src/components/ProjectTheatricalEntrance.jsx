@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion';
-import { ShieldAlert, Cpu, Radio, Sparkles, Navigation, AlertTriangle, Dice5 } from 'lucide-react';
-import { getAssetUrl } from '../utils/assetUrl';
 
 /**
  * Unique bespoke openers for project overview modals.
@@ -61,19 +59,6 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
             />
           </svg>
 
-          {/* Center Cryogenic Frost Core Burst */}
-          <motion.div
-            initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: [0.5, 1.2, 1], opacity: 1 }}
-            transition={{ duration: 0.45, ease: 'backOut', delay: 0.1 }}
-            className="relative w-28 h-28 rounded-full border-4 border-cyan-300 bg-gradient-to-br from-cyan-400 via-sky-600 to-blue-950 flex flex-col items-center justify-center text-center shadow-[0_0_60px_rgba(6,182,212,1)] text-white z-10"
-          >
-            <span className="text-3xl mb-0.5">❄</span>
-            <span className="text-[9px] font-mono uppercase font-black tracking-widest text-cyan-100">
-              FROST CORE
-            </span>
-          </motion.div>
-
           {/* Radial Crystal Shockwave */}
           <motion.div
             initial={{ scale: 0.5, opacity: 1 }}
@@ -81,13 +66,6 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
             transition={{ duration: 0.8, delay: 0.25, ease: 'easeOut' }}
             className="absolute w-28 h-28 rounded-full border-2 border-cyan-300 pointer-events-none"
           />
-
-          <div className="text-xs font-mono font-bold tracking-widest text-cyan-200 uppercase mt-4 z-10">
-            CRYOGENIC SEAL SHATTERED // 0° KELVIN BREACH
-          </div>
-          <div className="text-[10px] font-mono text-cyan-400/80 mt-1 z-10">
-            CURVED-WORLD ICE BIOME RUNTIME DEPLOYED
-          </div>
         </motion.div>
       </div>
     );
@@ -126,30 +104,6 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
                 background: 'radial-gradient(circle, #000000 40%, #083344 70%, transparent 100%)'
               }}
             />
-
-            {/* Central Myndwell Corporate Seal */}
-            <motion.div
-              initial={{ scale: 0.6, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="absolute w-24 h-24 rounded-full border-2 border-cyan-400 bg-black flex flex-col items-center justify-center shadow-[0_0_50px_rgba(6,182,212,0.9)] z-10"
-            >
-              <img
-                src={getAssetUrl('/images/logos/myndwell-logo-white.png')}
-                alt="Myndwell Logo"
-                className="w-10 h-10 object-contain mb-1"
-              />
-              <span className="text-[7px] font-mono uppercase font-black tracking-widest text-cyan-200">
-                MYNDWELL
-              </span>
-            </motion.div>
-          </div>
-
-          <div className="text-xs font-mono font-bold tracking-widest text-white uppercase z-10 font-['Syne',sans-serif]">
-            NEURAL PARTITIONING RESET // SUBJECT UNMASKED
-          </div>
-          <div className="text-[10px] font-mono text-cyan-300/80 mt-1 z-10">
-            MYNDWELL INTERNATIONAL RESTRICTED SPECIFICATION
           </div>
         </motion.div>
       </div>
@@ -181,26 +135,6 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
                 background: 'radial-gradient(circle, #052e16 30%, #10b981 70%, transparent 100%)'
               }}
             />
-
-            {/* Central Golden Botanical Seed */}
-            <motion.div
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="absolute w-24 h-24 rounded-full border-4 border-emerald-300 bg-gradient-to-br from-emerald-500 via-green-700 to-emerald-950 flex flex-col items-center justify-center shadow-[0_0_60px_rgba(16,185,129,0.9)] z-10 text-emerald-100"
-            >
-              <span className="text-3xl mb-0.5">🌿</span>
-              <span className="text-[8px] font-mono uppercase font-black tracking-widest text-emerald-100">
-                ECOSYSTEM
-              </span>
-            </motion.div>
-          </div>
-
-          <div className="text-xs font-mono font-bold tracking-widest text-emerald-300 uppercase z-10">
-            BIOME SEED EXPANSION // PROCEDURAL CANOPY RESTORED
-          </div>
-          <div className="text-[10px] font-mono text-emerald-400/80 mt-1 z-10">
-            ORGANIC REGENERATION ENGINE ONLINE
           </div>
         </motion.div>
       </div>
@@ -240,26 +174,6 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
             transition={{ duration: 0.6, times: [0, 0.2, 0.4, 0.6, 1], delay: 0.35 }}
             className="absolute inset-0 bg-rose-600/30 shadow-[0_0_100px_rgba(225,29,72,1)] pointer-events-none"
           />
-
-          {/* Central Isolation Ward Seal */}
-          <motion.div
-            initial={{ scale: 0.6, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.35, delay: 0.1 }}
-            className="relative w-28 h-28 rounded-full border-4 border-rose-500 bg-gradient-to-br from-rose-700 via-rose-950 to-black flex flex-col items-center justify-center shadow-[0_0_60px_rgba(225,29,72,0.9)] z-10 text-rose-100 mb-5"
-          >
-            <ShieldAlert className="w-10 h-10 text-rose-200 mb-0.5" />
-            <span className="text-[8px] font-mono uppercase font-black tracking-widest text-white">
-              ST. JUDE'S WARD
-            </span>
-          </motion.div>
-
-          <div className="text-xs font-mono font-bold tracking-widest text-rose-300 uppercase z-10">
-            CARDIAC RESUSCITATION 200J // WARD LOCKDOWN DISENGAGED
-          </div>
-          <div className="text-[10px] font-mono text-rose-400/80 mt-1 z-10">
-            WHEELCHAIR INERTIA SIMULATION UNLOCKED
-          </div>
         </motion.div>
       </div>
     );
@@ -290,25 +204,6 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
                 className="absolute w-28 h-28 rounded-full border-2 border-dashed border-purple-400 pointer-events-none"
               />
             ))}
-
-            <motion.div
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="w-24 h-24 rounded-full border-4 border-purple-400 bg-gradient-to-br from-purple-600 via-indigo-900 to-black flex flex-col items-center justify-center shadow-[0_0_50px_rgba(168,85,247,0.9)] z-10 text-purple-200"
-            >
-              <Sparkles className="w-9 h-9 text-purple-200 mb-0.5" />
-              <span className="text-[8px] font-mono uppercase font-black tracking-widest text-white">
-                SUBCONSCIOUS
-              </span>
-            </motion.div>
-          </div>
-
-          <div className="text-xs font-mono font-bold tracking-widest text-purple-200 uppercase z-10">
-            SUBCONSCIOUS PRISM // LUCID DREAM CONVERGENCE
-          </div>
-          <div className="text-[10px] font-mono text-purple-400/80 mt-1 z-10">
-            PSYCHOLOGICAL NARRATIVE ENGINE AWAKENED
           </div>
         </motion.div>
       </div>
@@ -340,25 +235,6 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
                 className="absolute w-28 h-28 rounded-full border-2 border-teal-400 pointer-events-none"
               />
             ))}
-
-            <motion.div
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="w-24 h-24 rounded-full border-4 border-teal-400 bg-gradient-to-br from-teal-600 via-teal-950 to-black flex flex-col items-center justify-center shadow-[0_0_50px_rgba(20,184,166,0.9)] z-10 text-teal-200"
-            >
-              <Navigation className="w-8 h-8 text-teal-200 mb-0.5" />
-              <span className="text-[8px] font-mono uppercase font-black tracking-widest text-white">
-                PERLIN SONAR
-              </span>
-            </motion.div>
-          </div>
-
-          <div className="text-xs font-mono font-bold tracking-widest text-teal-200 uppercase z-10">
-            SONAR BATHYMETRY // ARCHIPELAGO TOPOGRAPHY MAPPED
-          </div>
-          <div className="text-[10px] font-mono text-teal-400/80 mt-1 z-10">
-            COASTAL TERRAIN GENERATION ACTIVE
           </div>
         </motion.div>
       </div>
@@ -390,20 +266,6 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
                 background: 'conic-gradient(from 0deg, #10b981 0deg 60deg, #022c22 60deg 120deg, #10b981 120deg 180deg, #022c22 180deg 240deg, #10b981 240deg 300deg, #022c22 300deg 360deg)'
               }}
             />
-
-            <div className="absolute w-20 h-20 rounded-full border-2 border-emerald-300 bg-emerald-950 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(52,211,153,0.9)] z-10">
-              <AlertTriangle className="w-8 h-8 text-emerald-300 mb-0.5" />
-              <span className="text-[7px] font-mono uppercase font-black text-emerald-200">
-                BIO-04
-              </span>
-            </div>
-          </div>
-
-          <div className="text-xs font-mono font-bold tracking-widest text-emerald-300 uppercase z-10">
-            DECONTAMINATION CHAMBER PURGED // SUBJECT #04 RELEASED
-          </div>
-          <div className="text-[10px] font-mono text-emerald-400/80 mt-1 z-10">
-            BIOTECH CO-OP FACILITY ACCESSIBLE
           </div>
         </motion.div>
       </div>
@@ -435,20 +297,6 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
                 background: 'conic-gradient(from 0deg, #d97706 0deg 30deg, #451a03 30deg 60deg, #d97706 60deg 90deg, #451a03 90deg 120deg, #d97706 120deg 150deg, #451a03 150deg 180deg, #d97706 180deg 210deg, #451a03 210deg 240deg, #d97706 240deg 270deg, #451a03 270deg 300deg, #d97706 300deg 330deg, #451a03 330deg 360deg)'
               }}
             />
-
-            <div className="absolute w-20 h-20 rounded-full border-2 border-amber-300 bg-amber-950 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(245,158,11,0.9)] z-10 text-amber-200">
-              <Dice5 className="w-8 h-8 text-amber-300 mb-0.5" />
-              <span className="text-[7px] font-mono uppercase font-black text-amber-100">
-                THE HOUSE
-              </span>
-            </div>
-          </div>
-
-          <div className="text-xs font-mono font-bold tracking-widest text-amber-200 uppercase z-10">
-            THE HOUSE DEALS // BET PLACED
-          </div>
-          <div className="text-[10px] font-mono text-amber-400/80 mt-1 z-10">
-            PROCEDURAL DECK &amp; CASINO ENGINE
           </div>
         </motion.div>
       </div>
@@ -476,20 +324,6 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
             transition={{ duration: 0.75, delay: 0.1 }}
             className="absolute inset-0 bg-yellow-400/20 shadow-[0_0_80px_rgba(234,179,8,0.9)] pointer-events-none"
           />
-
-          <div className="relative w-24 h-24 rounded-2xl border-4 border-yellow-400 bg-yellow-950 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(234,179,8,0.9)] z-10 text-yellow-200 mb-5">
-            <span className="text-3xl font-black mb-0.5">📏</span>
-            <span className="text-[8px] font-mono uppercase font-black text-white">
-              MATHS 1999
-            </span>
-          </div>
-
-          <div className="text-xs font-mono font-bold tracking-widest text-yellow-300 uppercase z-10">
-            EDUTAINMENT 1999 // MATHS NOTEBOOK INITIALISED
-          </div>
-          <div className="text-[10px] font-mono text-yellow-400/80 mt-1 z-10">
-            SURREAL SCHOOLHOUSE LAB ACTIVE
-          </div>
         </motion.div>
       </div>
     );
@@ -516,20 +350,6 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
             transition={{ duration: 0.85, ease: 'easeInOut' }}
             className="absolute inset-x-0 h-4 bg-fuchsia-400/40 shadow-[0_0_30px_rgba(217,70,239,1)] z-30"
           />
-
-          <div className="relative w-24 h-24 rounded-2xl border-4 border-fuchsia-400 bg-fuchsia-950 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(217,70,239,0.9)] z-10 text-fuchsia-200 mb-5">
-            <Radio className="w-9 h-9 text-fuchsia-200 mb-0.5" />
-            <span className="text-[8px] font-mono uppercase font-black text-white">
-              TURNPIKE
-            </span>
-          </div>
-
-          <div className="text-xs font-mono font-bold tracking-widest text-fuchsia-300 uppercase z-10">
-            HIGHWAY 101 AUDIO LOG // CASSETTE ENGAGED
-          </div>
-          <div className="text-[10px] font-mono text-fuchsia-400/80 mt-1 z-10">
-            SYNTHWAVE PERSPECTIVE ROAD ENGINE ONLINE
-          </div>
         </motion.div>
       </div>
     );
@@ -554,17 +374,6 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
           transition={{ duration: 0.85, delay: 0.1, ease: 'easeOut' }}
           className="absolute w-28 h-28 rounded-full border-2 border-indigo-400 pointer-events-none"
         />
-
-        <div className="relative w-24 h-24 rounded-2xl border-4 border-indigo-400 bg-indigo-950 flex flex-col items-center justify-center shadow-[0_0_50px_rgba(99,102,241,0.9)] z-10 text-indigo-200 mb-5">
-          <Cpu className="w-9 h-9 text-indigo-300 mb-0.5" />
-          <span className="text-[8px] font-mono uppercase font-black text-white">
-            UNREAL 5.7
-          </span>
-        </div>
-
-        <div className="text-xs font-mono font-bold tracking-widest text-indigo-300 uppercase z-10">
-          VIEWPORT INITIALISED // C++ &amp; BLUEPRINT COMPILED
-        </div>
       </motion.div>
     </div>
   );

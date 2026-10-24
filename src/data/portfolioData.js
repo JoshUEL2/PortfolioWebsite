@@ -213,14 +213,13 @@ void ARastacatsTrackManager::SpawnObstacleOnPipe(float AxialX, float AngleDegree
     category: "gameplay",
     title: "State Machine Showcase",
     tagline: "AI Behaviour Trees, Autonomous Turrets & Interactive Systems",
-    discipline: "AI & Systems Architecture",
+    discipline: "AI & Systems Architecture (UEL MS4036)",
     engine: "Unreal Engine 5 (Blueprints & AI)",
     dates: "Apr 2025 - Jun 2025",
     studio: "Solo Developer",
     image: "/images/state_machine_cover.png",
     gallery: [
       "/images/state_machine_cover.png",
-      "/images/state_machine_keyart.jpg",
       "/images/state_machine_flowchart.png",
       "/images/state_machine_page.png"
     ],
@@ -232,12 +231,13 @@ void ARastacatsTrackManager::SpawnObstacleOnPipe(float AxialX, float AngleDegree
       linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     shortDesc: "A playable Unreal Engine 5 systems sandbox demonstrating modular AI Behaviour Trees, autonomous turret state machines, multi-floor elevator validation logic, and inventory-gated doors.",
-    summary: "Designed from formal logic flowcharts to demonstrate clean, decoupled state management across NPC combat AI, autonomous turrets, environmental machinery, and regenerating pickups.",
+    summary: "Developed for UEL Year 1 Term 2 Introduction to Game Scripting (MS4036 CW1). Translated formal Microsoft Visio state machine diagrams into a decoupled, event-driven Unreal Engine 5 gameplay systems laboratory.",
     highlights: [
-      "Built a patrolling NPC Behaviour Tree that follows spline paths, evaluates sight cones, and transitions between Patrol, Chase, and Attack states.",
-      "Engineered an autonomous AI turret cycling cleanly through Idle, Detect, Track, Fire, and Cooldown states without tick polling.",
-      "Created a multi-floor elevator state machine with external call-locking and floor input validation.",
-      "Published a 926 MB standalone playable Windows build on itch.io."
+      "Authored formal Visio state transition diagrams for each gameplay system (NPC, Turret, Security Door, Elevator, Health Pickup) prior to engine scripting.",
+      "Built a patrolling NPC Behaviour Tree that follows spline paths, evaluates perception sight cones, and transitions cleanly between Patrol, Chase, and Attack states.",
+      "Engineered an autonomous AI turret cycling through Idle (sweep scan), Detect, Track, Fire (projectile burst), and Cooldown without per-frame tick polling.",
+      "Implemented interactive world mechanics: key-locked security doors with inventory verification and a multi-floor elevator with external call-locking.",
+      "Shipped as a 926 MB standalone playable Windows build on itch.io."
     ],
     technicalDeepDive: "To prevent AI state thrashing when the player hovers near the edge of an enemy's detection radius, I separated perception updates from locomotion state transitions using Blackboard hysteresis timers and Blueprint Interfaces.",
     codeSnippet: `// Autonomous Turret Finite State Machine Transition Logic

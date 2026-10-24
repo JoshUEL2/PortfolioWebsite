@@ -451,6 +451,62 @@ export function PyballAtmosphere({ isCompact = false }) {
   );
 }
 
+// 13. State Machine Showcase: Unreal Engine Blueprint logic graph & FSM state transitions
+export function StateMachineAtmosphere({ isCompact = false }) {
+  return (
+    <>
+      <div
+        className="absolute inset-0 pointer-events-none rounded-3xl opacity-30"
+        style={{
+          background:
+            'linear-gradient(rgba(14,165,233,0.12) 1px, transparent 1px) 0 0 / 28px 28px, linear-gradient(90deg, rgba(14,165,233,0.12) 1px, transparent 1px) 0 0 / 28px 28px, radial-gradient(ellipse at 50% 30%, rgba(14,165,233,0.15), transparent 70%)'
+        }}
+      />
+
+      <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-sky-500/20 via-sky-400/80 to-emerald-400/60 pointer-events-none" />
+
+      {/* Rotating perception cone / turret targeting reticle in top-right corner */}
+      <div className="absolute -top-6 -right-6 w-32 h-32 pointer-events-none select-none opacity-20">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+          className="w-full h-full"
+        >
+          <svg viewBox="0 0 100 100" className="w-full h-full stroke-cyan-400 fill-none" strokeWidth="1">
+            <circle cx="50" cy="50" r="45" strokeDasharray="3 4" />
+            <circle cx="50" cy="50" r="28" />
+            <line x1="50" y1="5" x2="50" y2="95" strokeDasharray="2 3" />
+            <line x1="5" y1="50" x2="95" y2="50" strokeDasharray="2 3" />
+            <path d="M50 50 L85 20 A 45 45 0 0 1 85 80 Z" fill="rgba(14,165,233,0.15)" stroke="none" />
+          </svg>
+        </motion.div>
+      </div>
+
+      {/* Blueprint bezier logic connection wire */}
+      <div className="absolute inset-x-4 top-4 bottom-4 pointer-events-none overflow-hidden opacity-35">
+        <svg viewBox="0 0 400 120" preserveAspectRatio="none" className="w-full h-full">
+          <path
+            d="M 20 60 C 90 20, 130 100, 200 60 C 270 20, 310 100, 380 60"
+            fill="none"
+            stroke="#0284c7"
+            strokeWidth="1.5"
+            strokeDasharray="4 4"
+          />
+        </svg>
+      </div>
+
+      {!isCompact && (
+        <div className="absolute left-3 bottom-3 flex items-center gap-2 pointer-events-none select-none opacity-45 font-mono text-[9px]">
+          <span className="px-1.5 py-0.5 rounded bg-sky-950/70 border border-sky-500/40 text-sky-300 font-bold">
+            FSM: ACTIVE
+          </span>
+          <span className="text-sky-400/80">IDLE &gt; TRACK &gt; FIRE</span>
+        </div>
+      )}
+    </>
+  );
+}
+
 export function ProjectAtmosphere({ projectId, isModal = false, isCompact = false }) {
   switch (projectId) {
     case 'rastacats':
@@ -478,6 +534,8 @@ export function ProjectAtmosphere({ projectId, isModal = false, isCompact = fals
       return <DearHiringManagerAtmosphere isCompact={isCompact} />;
     case 'pyball':
       return <PyballAtmosphere isCompact={isCompact} />;
+    case 'state-machine-showcase':
+      return <StateMachineAtmosphere isCompact={isCompact} />;
     default:
       return null;
   }
@@ -658,6 +716,17 @@ export function OverviewAtmosphere({ projectId }) {
         <>
           <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-green-500/40 via-blue-500/60 to-green-500/40 pointer-events-none" />
           <div className="absolute right-2 top-1.5 w-2.5 h-2.5 rounded-full bg-purple-400/40 border border-purple-300/60 pointer-events-none" />
+        </>
+      );
+
+    case 'state-machine-showcase':
+      return (
+        <>
+          <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-sky-500/30 via-cyan-400/80 to-emerald-400/50 pointer-events-none" />
+          <div className="absolute right-3 top-2 opacity-30 pointer-events-none select-none font-mono text-[10px] text-sky-400 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span>FSM: EVAL</span>
+          </div>
         </>
       );
 

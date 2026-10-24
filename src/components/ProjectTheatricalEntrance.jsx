@@ -1237,6 +1237,154 @@ function PyBallSimulation() {
   );
 }
 
+/* ------------------------------------------------------------------ */
+/* 15. STATE MACHINE SHOWCASE: Unreal Blueprint FSM logic compiler    */
+/* ------------------------------------------------------------------ */
+const FSM_NODES = [
+  { id: 'perc', title: 'AI PERCEPTION', tag: 'Sight Cone 90°', x: 8, y: 18, color: '#0284c7', w: 190 },
+  { id: 'door', title: 'KEYCARD CHECK', tag: 'Inventory Query', x: 8, y: 56, color: '#d97706', w: 190 },
+  { id: 'turret', title: 'TURRET FSM', tag: 'Idle > Track > Fire', x: 38, y: 15, color: '#0284c7', w: 220 },
+  { id: 'npc', title: 'NPC BEHAVIOUR', tag: 'Patrol > Chase > Attack', x: 38, y: 44, color: '#059669', w: 220 },
+  { id: 'lift', title: 'ELEVATOR FSM', tag: 'Floor Call & Shaft Lock', x: 38, y: 72, color: '#7c3aed', w: 220 },
+  { id: 'fire', title: 'EXECUTE COMBAT', tag: 'Spawn Projectile Burst', x: 74, y: 22, color: '#e11d48', w: 200 },
+  { id: 'world', title: 'ACTUATE WORLD', tag: 'Open Door / Cycle Lift', x: 74, y: 62, color: '#10b981', w: 200 }
+];
+
+const FSM_WIRES = [
+  { d: 'M 198 42 C 280 42, 290 39, 380 39', delay: 0.15 },
+  { d: 'M 198 42 C 280 42, 290 68, 380 68', delay: 0.25 },
+  { d: 'M 198 80 C 280 80, 290 96, 380 96', delay: 0.35 },
+  { d: 'M 600 39 C 660 39, 680 46, 740 46', delay: 0.65 },
+  { d: 'M 600 68 C 660 68, 680 46, 740 46', delay: 0.75 },
+  { d: 'M 600 96 C 660 96, 680 86, 740 86', delay: 0.85 }
+];
+
+function StateMachineEntrance() {
+  return (
+    <motion.div
+      initial={{ opacity: 1, scale: 1 }}
+      animate={{ opacity: [1, 1, 0], scale: [1, 1, 1.07] }}
+      transition={{ duration: 2.3, times: [0, 0.74, 1], ease: 'easeIn' }}
+      className="absolute inset-0 bg-[#060c18] overflow-hidden select-none"
+    >
+      {/* Technical Blueprint Grid with coordinate intersections */}
+      <div
+        className="absolute inset-0 opacity-40 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(circle at 50% 50%, rgba(14,165,233,0.18), transparent 75%), linear-gradient(rgba(14,165,233,0.14) 1px, transparent 1px) 0 0 / 32px 32px, linear-gradient(90deg, rgba(14,165,233,0.14) 1px, transparent 1px) 0 0 / 32px 32px'
+        }}
+      />
+
+      {/* Blueprint Header Ribbon */}
+      <div className="absolute top-3 left-4 right-4 flex items-center justify-between text-[11px] font-mono text-sky-400/60 border-b border-sky-500/20 pb-1.5 pointer-events-none">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-sky-400 animate-ping" />
+          <span className="text-sky-300 font-semibold">GRAPH :: StateMachine_Sandbox.uasset</span>
+        </div>
+        <span className="hidden sm:inline text-sky-400/40">EVALUATION: TICK_EVENT</span>
+      </div>
+
+      {/* SVG Connecting Bezier Splines & Animated Pulses */}
+      <svg
+        viewBox="0 0 1000 130"
+        preserveAspectRatio="none"
+        className="absolute inset-0 w-full h-full pointer-events-none"
+      >
+        {FSM_WIRES.map((w, idx) => (
+          <g key={idx}>
+            {/* Background connection wire */}
+            <path
+              d={w.d}
+              fill="none"
+              stroke="#0f3458"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            {/* Travelling logic pulse */}
+            <motion.path
+              d={w.d}
+              fill="none"
+              stroke="#38bdf8"
+              strokeWidth="3.5"
+              strokeLinecap="round"
+              strokeDasharray="24 160"
+              initial={{ strokeDashoffset: 184 }}
+              animate={{ strokeDashoffset: -184 }}
+              transition={{
+                delay: w.delay,
+                duration: 1.1,
+                repeat: 1,
+                ease: 'easeInOut'
+              }}
+              style={{ filter: 'drop-shadow(0 0 6px rgba(56,189,248,1))' }}
+            />
+          </g>
+        ))}
+      </svg>
+
+      {/* Blueprint State Machine Nodes */}
+      {FSM_NODES.map((node, i) => (
+        <motion.div
+          key={node.id}
+          initial={{ opacity: 0, scale: 0.88, y: 10 }}
+          animate={{
+            opacity: [0, 1, 1],
+            scale: [0.88, 1, 1],
+            y: [10, 0, 0]
+          }}
+          transition={{
+            delay: 0.1 + i * 0.08,
+            duration: 0.4,
+            ease: 'easeOut'
+          }}
+          className="absolute rounded-lg border border-sky-500/30 bg-[#091122]/90 shadow-[0_8px_24px_rgba(0,0,0,0.6)] backdrop-blur-sm overflow-hidden pointer-events-none"
+          style={{
+            left: `${node.x}%`,
+            top: `${node.y}%`,
+            width: `min(26%, ${node.w}px)`
+          }}
+        >
+          {/* Node Header */}
+          <div
+            className="px-2.5 py-1 text-[10px] sm:text-[11px] font-bold tracking-wider text-white flex items-center justify-between"
+            style={{ backgroundColor: node.color }}
+          >
+            <span>{node.title}</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-white/80" />
+          </div>
+
+          {/* Node Body */}
+          <div className="px-2.5 py-1.5 font-mono text-[9px] sm:text-[10px] text-slate-300 flex items-center justify-between">
+            <span className="text-slate-400 truncate">{node.tag}</span>
+            <motion.span
+              animate={{
+                color: ['#94a3b8', '#38bdf8', '#34d399', '#94a3b8']
+              }}
+              transition={{
+                delay: 0.4 + i * 0.15,
+                duration: 0.8,
+                repeat: 1
+              }}
+              className="text-[8px] font-bold uppercase ml-1 shrink-0"
+            >
+              OK
+            </motion.span>
+          </div>
+        </motion.div>
+      ))}
+
+      {/* Final Compilation Flash Wave */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 0, 0.45, 0] }}
+        transition={{ duration: 0.5, delay: 1.35, times: [0, 0.2, 0.5, 1] }}
+        className="absolute inset-0 bg-cyan-400 pointer-events-none mix-blend-screen"
+      />
+    </motion.div>
+  );
+}
+
 const EFFECTS = {
   rastacats: IceShatter,
   rem: InkDrench,
@@ -1251,7 +1399,8 @@ const EFFECTS = {
   waiwwai: VhsCollapse,
   'dear-hiring-manager': CartoonCv,
   'rand-io': RandioWalkers,
-  pyball: PyBallSimulation
+  pyball: PyBallSimulation,
+  'state-machine-showcase': StateMachineEntrance
 };
 
 export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 }) {

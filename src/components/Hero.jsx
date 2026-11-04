@@ -3,12 +3,15 @@ import { motion } from 'framer-motion';
 import { ArrowDown, Gamepad2, Terminal, FileText, Play, Sparkles, Layers, ExternalLink } from 'lucide-react';
 import { PERSONAL_INFO, HERO_REELS, PROJECTS } from '../data/portfolioData';
 import { getAssetUrl } from '../utils/assetUrl';
+import { audioEngine } from '../utils/audioEngine';
+import SafeVideoPlayer from './SafeVideoPlayer';
 
 export default function Hero({ onExploreClick, onSelectProject }) {
   const [activeReelIdx, setActiveReelIdx] = useState(0);
   const activeReel = HERO_REELS[activeReelIdx] || HERO_REELS[0];
 
   const handleOpenReelProject = () => {
+    audioEngine.playSweep();
     if (!onSelectProject) return;
     const found = PROJECTS.find((p) => p.id === activeReel.projectId);
     if (found) {
@@ -62,10 +65,7 @@ export default function Hero({ onExploreClick, onSelectProject }) {
 
             {/* First-Person Grounded Bio */}
             <p className="text-sm sm:text-base md:text-lg text-slate-300 mb-6 leading-relaxed font-normal max-w-xl">
-              I&apos;m <strong className="text-white font-semibold">Josh Johnson</strong>, a London-based Technical Game Designer and BSc Computer Games Design School Representative. I love solving the awkward problems where design and maths collide, whether that means overriding Unreal Engine 5&apos;s planar gravity for{' '}
-              <strong className="text-indigo-200 font-semibold">360° cylindrical pipe racing</strong>, writing{' '}
-              <strong className="text-indigo-200 font-semibold">multi-directional Kuwahara watercolour shaders</strong>, or anchoring seated VR horror to{' '}
-              <strong className="text-indigo-200 font-semibold">physical wheelchair inertia</strong>.
+              I&apos;m <strong className="text-white font-semibold">Josh Johnson</strong>, a London-based Technical Game Designer and elected Media School Representative. My rule is simple: <strong className="text-indigo-200 font-semibold">if I don&apos;t know it, I learn it; if I need it, I make it</strong>. I don&apos;t wait for ideal conditions—I build with what I have. Whether that means overriding Unreal Engine 5&apos;s planar gravity for <strong className="text-indigo-200 font-semibold">360° cylindrical pipe racing (92% 1st Class)</strong>, engineering open-source pipelines for <strong className="text-indigo-200 font-semibold">authentic mixed-race representation</strong>, or building DIY hardware from scrap to bypass expensive studio gatekeeping.
             </p>
 
             {/* Primary Action Bar */}
@@ -167,23 +167,17 @@ export default function Hero({ onExploreClick, onSelectProject }) {
                 </div>
               </div>
 
-              {/* Active Video Feed */}
+              {/* Active Video Feed with Resilient Error Handling & Viewport Gating */}
               <div
                 onClick={handleOpenReelProject}
                 className="relative aspect-[16/10] bg-black cursor-pointer group overflow-hidden"
               >
-                <video
-                  key={activeReel.video}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  poster={activeReel.poster ? getAssetUrl(activeReel.poster) : undefined}
+                <SafeVideoPlayer
+                  src={activeReel.video}
+                  poster={activeReel.poster}
+                  title={activeReel.title}
                   className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                >
-                  <source src={getAssetUrl(activeReel.video)} type="video/mp4" />
-                </video>
+                />
 
                 {/* Bottom Gradient Overlay with Reel Title */}
                 <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end justify-between gap-3">
@@ -263,7 +257,10 @@ export default function Hero({ onExploreClick, onSelectProject }) {
                       <button
                         key={reel.id}
                         type="button"
-                        onClick={() => setActiveReelIdx(idx)}
+                        onClick={() => {
+                          audioEngine.playTick(600 + idx * 80, 250);
+                          setActiveReelIdx(idx);
+                        }}
                         className={`p-2 rounded-xl text-left transition-all cursor-pointer border ${
                           isSelected
                             ? 'bg-indigo-600/25 border-indigo-400/70 text-white shadow-md shadow-indigo-950/50'

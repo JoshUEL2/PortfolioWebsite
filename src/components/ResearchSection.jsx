@@ -6,10 +6,12 @@ import {
   Presentation,
   ChevronLeft,
   ChevronRight,
-  Library
+  Library,
+  ExternalLink
 } from 'lucide-react';
 import { DISSERTATION_RESEARCH } from '../data/portfolioData';
 import { getAssetUrl } from '../utils/assetUrl';
+import { audioEngine } from '../utils/audioEngine';
 
 export default function ResearchSection() {
   const [activeSlideIdx, setActiveSlideIdx] = useState(0);
@@ -19,10 +21,12 @@ export default function ResearchSection() {
   const currentSlide = slides[activeSlideIdx] || slides[0];
 
   const handlePrevSlide = () => {
+    audioEngine.playTick(700, 300);
     setActiveSlideIdx((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   const handleNextSlide = () => {
+    audioEngine.playTick(700, 300);
     setActiveSlideIdx((prev) => (prev + 1) % slides.length);
   };
 
@@ -93,6 +97,18 @@ export default function ResearchSection() {
                   <span>Pitch Slides (.pptx)</span>
                 </a>
               )}
+              {DISSERTATION_RESEARCH.oneDriveFolder && (
+                <a
+                  href={DISSERTATION_RESEARCH.oneDriveFolder}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-[#141b2b] hover:bg-[#1a263d] text-sky-200 hover:text-white font-semibold text-xs uppercase tracking-wider border border-sky-500/40 transition-colors shadow-sm"
+                  title="Open UEL SharePoint / OneDrive Submission Folder"
+                >
+                  <ExternalLink className="w-4 h-4 text-sky-400" />
+                  <span>Submission Folder</span>
+                </a>
+              )}
             </div>
           </motion.div>
 
@@ -121,6 +137,18 @@ export default function ResearchSection() {
               <div className="p-5 bg-[#181715] border-l-2 border-[#c89d66] text-[#d6cec2] font-['Newsreader',Georgia,serif] italic text-base leading-relaxed">
                 &ldquo;When racial heritage is coded only through visual ambiguity without explicit narrative canon, players default to assuming whiteness or racial neutrality (Dietrich, 2013).&rdquo;
               </div>
+
+              {/* Primary Research Question Card */}
+              {DISSERTATION_RESEARCH.researchQuestion && (
+                <div className="p-4 rounded-xl bg-[#171614] border border-[#c89d66]/35 text-[#f5f2eb]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#c89d66] mb-1.5 font-bold">
+                    Primary Research Question
+                  </div>
+                  <div className="text-sm font-['Newsreader',Georgia,serif] italic text-[#e7e2d8] leading-relaxed">
+                    &ldquo;{DISSERTATION_RESEARCH.researchQuestion}&rdquo;
+                  </div>
+                </div>
+              )}
             </motion.div>
 
             {/* Right Column: Interactive Archival Slide Plate */}
@@ -183,7 +211,10 @@ export default function ResearchSection() {
                       <button
                         key={s.src}
                         type="button"
-                        onClick={() => setActiveSlideIdx(idx)}
+                        onClick={() => {
+                          audioEngine.playTick(600 + idx * 60, 200);
+                          setActiveSlideIdx(idx);
+                        }}
                         className={`rounded overflow-hidden aspect-[16/9] border transition-all cursor-pointer ${
                           isSelected
                             ? 'border-[#c89d66] ring-1 ring-[#c89d66]/60 opacity-100'

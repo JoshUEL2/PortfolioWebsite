@@ -1,15 +1,30 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Gamepad2, Menu, X, ArrowUpRight, FileText, Sparkles } from 'lucide-react';
+import { Gamepad2, Menu, X, ArrowUpRight, FileText, Sparkles, Volume2, VolumeX } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { ALL_PROJECTS } from '../data/allProjectsData';
 import { getAssetUrl } from '../utils/assetUrl';
+import { audioEngine } from '../utils/audioEngine';
 
 export default function Navbar({ currentView = 'featured', onViewChange }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [isMuted, setIsMuted] = useState(() => audioEngine.isMuted());
+
+  useEffect(() => {
+    const handleMuteChange = (e) => {
+      setIsMuted(e.detail.isMuted);
+    };
+    window.addEventListener('portfolio_audio_mute_toggle', handleMuteChange);
+    return () => window.removeEventListener('portfolio_audio_mute_toggle', handleMuteChange);
+  }, []);
+
+  const handleToggleAudio = () => {
+    const next = audioEngine.toggleMute();
+    setIsMuted(next);
+  };
 
   useEffect(() => {
     let ticking = false;
@@ -50,6 +65,7 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
   ];
 
   const handleBrandClick = () => {
+    audioEngine.playTick(900, 300);
     if (currentView !== 'featured' && onViewChange) {
       onViewChange('featured');
     }
@@ -57,6 +73,7 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
   };
 
   const scrollTo = (id) => {
+    audioEngine.playTick();
     setMobileMenuOpen(false);
     if (currentView !== 'featured' && onViewChange) {
       onViewChange('featured');
@@ -80,6 +97,7 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
   };
 
   const handleOpenAllProjects = () => {
+    audioEngine.playSweep();
     setMobileMenuOpen(false);
     if (onViewChange) {
       onViewChange('all-projects');
@@ -201,6 +219,21 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
             >
               <Gamepad2 className="w-4 h-4 text-rose-400" />
             </a>
+
+            {/* Audio SFX Toggle Button */}
+            <button
+              type="button"
+              onClick={handleToggleAudio}
+              className={`p-2 rounded-full border transition-all cursor-pointer ${
+                isMuted
+                  ? 'bg-white/[0.03] text-slate-500 border-white/10 hover:text-slate-300 hover:border-white/20'
+                  : 'bg-indigo-600/20 text-indigo-300 border-indigo-500/40 shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:scale-105'
+              }`}
+              title={isMuted ? 'Interface SFX: Muted (Click to Enable)' : 'Interface SFX: Active (Click to Mute)'}
+              aria-label="Toggle Interface Audio"
+            >
+              {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+            </button>
 
             {/* Mobile Hamburger */}
             <button

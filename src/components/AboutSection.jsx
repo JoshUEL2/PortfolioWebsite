@@ -493,29 +493,72 @@ export default function AboutSection() {
             {/* Executive Statement Box */}
             <div className="relative p-6 rounded-xl bg-[#0c121e] border-l-4 border-l-sky-400 border border-slate-700/80 shadow-lg">
               <div className="text-[11px] font-mono uppercase tracking-widest text-sky-400 mb-1.5">
-                Design &amp; Engineering Principle
+                Core Engineering Creed
               </div>
               <blockquote className="text-lg sm:text-2xl font-extrabold text-white font-['Syne',sans-serif] leading-snug">
-                &ldquo;{PERSONAL_INFO.motto}&rdquo;
+                &ldquo;If I don&apos;t know it, I learn it; if I need it, I make it. I don&apos;t wait for ideal conditions—I build with what I have.&rdquo;
               </blockquote>
             </div>
 
             {/* First-Person Bio Card */}
             <div className="p-6 sm:p-7 rounded-xl bg-[#0c121e]/90 border border-slate-700/70 space-y-4 text-slate-200 leading-relaxed font-normal text-sm sm:text-base">
               <p>
-                I&apos;m a <strong className="text-white font-semibold">Technical Game Designer</strong> studying BSc (Hons) Computer Games Design at the{' '}
-                <strong className="text-white font-semibold">University of East London (UEL)</strong>, where I also serve as{' '}
-                <strong className="text-white font-semibold">School Representative</strong> for Architecture, Computing &amp; Engineering and sat on the{' '}
-                <strong className="text-white font-semibold">Sextennial School Review</strong> panel reviewing the university&apos;s computing and games degrees.
+                My approach to engineering and game design has always been simple: <strong className="text-white font-semibold">if I don&apos;t know it, I learn it; if I need it, I make it.</strong> I don&apos;t wait for ideal conditions or expensive toolkits—I build with what I have.
               </p>
               <p>
-                I gravitate toward the problems that sit right on the boundary between game design, maths, and technical art. When our spline-based pipe racer{' '}
-                <strong className="text-white font-semibold">Rastacats (92%, 1st Class)</strong> needed players to ride seamlessly up walls and upside-down across ceilings, I bypassed Unreal Engine 5&apos;s default planar gravity and wrote a custom polar cross-section controller, then followed it up in my remaster with a curved-world WPO vertex shader and tangent-aligned decal projection maths.
+                When motion-capture suits cost thousands, I built my own from an Xbox Kinect, PSVR gyros, and Python OSC. When our school had no 3D assets for our game, I taught myself Blender and rebuilt the entire campus at full scale, combining 2,377 textures so it would run smoothly. And when Unreal Engine 5&apos;s default character movement component assumed flat planar gravity, I worked out the surface normals and quaternion slerp to let players drive 360° inside and outside cylindrical pipes in <strong className="text-white font-semibold">Rastacats (92% Distinction, 1st Class)</strong>.
               </p>
               <p>
-                Before focusing full-time on games, I spent over five years acting on stage in musicals like <em>Les Misérables</em> and <em>The Addams Family</em> as well as acting on film sets. That background directly shapes how I direct performance capture, block cameras inside Unreal Engine, and write interactive dialogue. It also led me to build{' '}
-                <strong className="text-white font-semibold">Project K.I.N.E.T.I.C.</strong>, a DIY motion-capture rig fusing an Xbox Kinect v2 with PSVR Move gyros over Python OSC to animate UE5 MetaHumans on a student budget.
+                As a mixed-race developer, games became where I could build worlds from scratch, set my own rules, and create the belonging I didn&apos;t find elsewhere. That personal perspective drives my final-year dissertation, <strong className="text-sky-300 font-semibold">&ldquo;Representing the Spectrum&rdquo;</strong>, where I&apos;m auditing 100 commercial game characters to challenge the &ldquo;Illusion of Parity&rdquo; and building an open-source Unreal Engine 5 character pipeline with accurate 3C/4A hair curls and dual-heritage facial topology.
               </p>
+              <p>
+                That same attitude shapes how I lead. Selected through an anonymous application and panel interview as <strong className="text-white font-semibold">School Representative for the Media School</strong>, I represent thousands of students across our games and computing cohorts, sit on the Student Leadership Committee and Sextennial Review, and run weekly Unreal Engine workshops for classmates who are falling behind—because I know what it&apos;s like to learn without support.
+              </p>
+            </div>
+
+            {/* What Sets Me Apart // Three Pillars Card */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
+              <div className="p-4 rounded-xl bg-[#080d17] border border-slate-800 flex flex-col justify-between">
+                <div>
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-sky-400 font-bold mb-1">
+                    01 // Scrappy Engineering
+                  </div>
+                  <h4 className="text-sm font-bold text-white mb-1.5 font-['Syne',sans-serif]">
+                    Building From Scratch
+                  </h4>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Zero waiting for budgets or proprietary black boxes. From DIY Kinect mocap rigs to 1:1 photogrammetry, I engineer practical systems with what is at hand.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-[#080d17] border border-slate-800 flex flex-col justify-between">
+                <div>
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 font-bold mb-1">
+                    02 // Design × Mathematics
+                  </div>
+                  <h4 className="text-sm font-bold text-white mb-1.5 font-['Syne',sans-serif]">
+                    Calculated Game Feel
+                  </h4>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Bridging polar coordinate gravity, WPO vertex shaders, and hierarchical state machines to turn complex maths into visceral 60+ FPS gameplay.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-[#080d17] border border-slate-800 flex flex-col justify-between">
+                <div>
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold mb-1">
+                    03 // Peer Leadership
+                  </div>
+                  <h4 className="text-sm font-bold text-white mb-1.5 font-['Syne',sans-serif]">
+                    Lifting As I Climb
+                  </h4>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Running weekly Unreal workshops for struggling peers and authoring open-source research pipelines so other developers can build with care.
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Verified First-Class Honours Module Ledger */}

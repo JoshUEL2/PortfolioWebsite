@@ -16,6 +16,7 @@ import { ALL_PROJECTS, GAME_FILTER_DISCIPLINES } from '../data/allProjectsData';
 import { getAssetUrl, isSpecificRepo, isSpecificLinkedIn } from '../utils/assetUrl';
 import { getProjectTheme } from '../utils/projectThemes';
 import { ProjectAtmosphere } from './gameAtmospheres';
+import { audioEngine } from '../utils/audioEngine';
 
 export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -55,7 +56,10 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
       <div className="flex flex-wrap items-center justify-between gap-4 mb-8 p-3.5 rounded-2xl bg-[#090b16]/90 border border-indigo-500/30 backdrop-blur-xl">
         <button
           type="button"
-          onClick={onBackToHome}
+          onClick={() => {
+            audioEngine.playTick();
+            onBackToHome();
+          }}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600/25 hover:bg-indigo-600/45 text-indigo-200 hover:text-white border border-indigo-400/40 transition-all hover:scale-[1.03] active:scale-95 text-xs font-mono font-bold uppercase tracking-wider cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4 text-indigo-300" />
@@ -115,7 +119,10 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
             <button
               key={filter.id}
               type="button"
-              onClick={() => setActiveFilter(filter.id)}
+              onClick={() => {
+                audioEngine.playTick(600, 250);
+                setActiveFilter(filter.id);
+              }}
               className={`relative px-4 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer flex items-center gap-2 ${
                 isActive ? 'text-white bg-gradient-to-r from-indigo-600 to-violet-600 border border-indigo-300/60 shadow-[0_0_25px_rgba(99,102,241,0.4)]'
                   : 'text-slate-400 hover:text-slate-200 bg-[#090b16]/80 border border-white/10 hover:border-indigo-500/40'

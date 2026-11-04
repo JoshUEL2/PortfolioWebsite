@@ -1,7 +1,7 @@
 export const PERSONAL_INFO = {
   name: "Joshua Johnson",
   title: "Technical Game Designer & Unreal Engine Systems Builder",
-  headline: "I build high-velocity gameplay physics, custom post-processing shaders, and interactive narrative systems in Unreal Engine 5.",
+  headline: "If I don't know it, I learn it; if I need it, I make it. I build high-velocity gameplay physics, custom shaders, and interactive systems in Unreal Engine 5.",
   location: "London, UK",
   email: "joshua06johnson@gmail.com",
   github: "https://github.com/JoshUEL2",
@@ -9,14 +9,14 @@ export const PERSONAL_INFO = {
   itch: "https://joshej.itch.io/",
   cv: "/docs/Joshua_Johnson_CV.pdf",
   institution: "University of East London (UEL)",
-  role: "BSc (Hons) Computer Games Design • School Representative",
-  motto: "If I don't know it, I learn it; if I need it, I build it.",
-  bio: "I am a London-based Technical Game Designer focused on Unreal Engine 5 gameplay programming, HLSL and Material Graph shaders, and interactive narrative design. I enjoy solving the technical problems where design and maths meet, whether that means overriding Unreal Engine's default planar gravity for 360° pipe racing, projecting decals onto vertex-displaced meshes, or anchoring seated VR horror to physical wheelchair inertia.",
+  role: "BSc (Hons) Computer Games Design • Media School Representative",
+  motto: "If I don't know it, I learn it; if I need it, I make it.",
+  bio: "I don't wait for ideal conditions—I build with what I have. Whether that means building a DIY mocap rig from an Xbox Kinect and PSVR gyros when commercial suits cost thousands, rebuilding an entire campus across 2,377 textures in Blender, or overriding Unreal Engine 5's planar gravity for 360° pipe racing at 200 km/h. As elected School Representative for the Media School at UEL, I bridge the space where design and mathematics collide—and I run weekly Unreal workshops because I know what it's like to learn without support.",
   stats: [
-    { label: "Games & Prototypes", value: "15", sub: "UE5, Unity, Python & Web" },
     { label: "Gameplay Prototyping", value: "92%", sub: "1st Class Honours Top Mark" },
-    { label: "CPU Tick Reduction", value: "-65%", sub: "ISM Actor Pooling (UE 5.7)" },
-    { label: "Live Exhibitions", value: "2×", sub: "Sole Year 2 in Final Year Hall" }
+    { label: "CPU Tick Reduction", value: "-65%", sub: "ISM Actor Pooling & Shaders" },
+    { label: "Student Leadership", value: "School Rep", sub: "Elected • Thousands Represented" },
+    { label: "Games & Prototypes", value: "15+", sub: "UE5, C++, Shaders & Unity" }
   ]
 };
 
@@ -1140,17 +1140,20 @@ void ABlissHallucinationDirector::EvaluateTargetPerception(AActor*ObservedActor,
 ];
 
 export const DISSERTATION_RESEARCH = {
-  badge: "02 // Academic Research & Provisional BSc Dissertation",
-  title: "Counting the Spectrum: Mixed-Race Representation in Commercial Video Games",
-  subtitle: "An Empirical and Practice-Based Investigation into Scarcity, Racial Ambiguity, and Playable Lead Agency",
-  status: "Final Year BSc Research Project (Level 6) • University of East London",
-  abstract: "Recent demographic studies such as the Virtual Census 2.0 (Jones et al., 2025) report that biracial video game characters rose from 1.39% in 2005 to 3.15% in 2017. However, surface headcounts mask a major representational gap: commercial games routinely code characters through vague visual ambiguity (a tan skin tone or textured hair) rather than explicit narrative canon, which leads players to default to assuming whiteness or racial neutrality (Dietrich, 2013). Furthermore, while mixed-race youth make up 5% to 10% of the UK urban population and over 15% of the US youth demographic, canonically mixed characters are virtually absent as primary playable box-art leads outside isolated figures like Miles Morales. My research combines a 100-character commercial audit, a production-ready 3D Flagship Protagonist Dossier, and an empirical A/B player validation survey to establish an actionable character pipeline for studios.",
-  downloadProposal: "/docs/Counting_the_Spectrum_Research_Proposal.docx",
-  downloadSlides: "/docs/Counting_the_Spectrum_Slides.pptx",
+  badge: "02 // Academic Research & BSc Dissertation",
+  title: "Representing the Spectrum: An Empirical Audit and Design Framework for Mixed-Race Characters in Commercial Video Games",
+  subtitle: "An Empirical Audit and Design Framework for Mixed-Race Characters in Commercial Video Games",
+  status: "MS6033 Final Project: Development (Level 6) • University of East London",
+  studentInfo: "Josh Johnson • Student ID: 2696032",
+  abstract: "Recent demographic analysis indicates that biracial video game characters rose from 1.39% in 2005 to 3.15% in 2017, nominally exceeding earlier US population baselines of 2.13% (Jones et al., 2025). However, headcount parity masks a persistent representational gap: in commercial titles, mixed-race characters are frequently coded only through visual ambiguity, leading players to default to assuming whiteness or racial neutrality rather than recognising authentic multiracial heritage (Dietrich, 2013). Furthermore, national census benchmarks of declared mixed race people (2.9% in the UK; 10.2% in the US) obscure generational realities: multiracial populations are heavily concentrated in younger demographics, where mixed youth exceed 5–10% in the UK and 15% in the US—the core video game audience. Crucially, commercial gaming lacks games-native multiracial leads (even Miles Morales, for example, was inherited from Marvel comics rather than originating in game development pipelines). This project investigates whether mixed-race characters are truly represented when scrutinised through explicit narrative canon, lead playability, and youth gamer demographics, addressing systemic barriers that hurt ludic immersion (Passmore et al., 2018).",
+  downloadProposal: "/docs/Representing_the_Spectrum_Research_Proposal.docx",
+  downloadSlides: "/docs/Representing_the_Spectrum_Slides.pptx",
+  oneDriveFolder: "https://uelac-my.sharepoint.com/:f:/g/personal/u2696032_uel_ac_uk/IgDOvqnftlE9R4I8eFW2A9eGAa0OcalNIa5AF1tcZEfOIBs?e=ptHja6",
+  researchQuestion: "Across top-selling commercial video games, does mixed-race representation reflect contemporary demographics when evaluated by explicit canonical status, playability, and player perception?",
   slides: [
     {
       src: "/images/dissertation_slide_1.png",
-      caption: "Slide 1: Research Title & Problem Space (Counting the Spectrum)"
+      caption: "Slide 1: Research Title & Problem Space (Representing the Spectrum)"
     },
     {
       src: "/images/dissertation_slide_2.png",
@@ -1176,47 +1179,48 @@ export const DISSERTATION_RESEARCH = {
   hypotheses: [
     {
       number: "01",
-      title: "Explicit Canon vs Visual Ambiguity",
-      stat: "3.15% vs <0.5%",
-      summary: "Published audits code characters based on surface visual cues and paratext. Without explicit dual-heritage narrative canon, sociological research (Dietrich, 2013) proves players default to assuming whiteness or raceless neutrality. I hypothesise that explicitly confirmed mixed-race characters appear at a fraction of ambiguously coded avatars."
+      title: "Explicit Canon vs. Visual Ambiguity",
+      stat: "3.15% Headcount vs. <0.5% Canon",
+      summary: "Published audits code characters based on surface visual cues and marketing paratext. Without explicitly confirmed dual-heritage narrative canon, sociological research (Dietrich, 2013) proves players default to assuming whiteness or raceless neutrality. I hypothesise that explicit mixed characters appear at significantly lower rates than ambiguously coded characters."
     },
     {
       number: "02",
       title: "Playable Agency & The Box-Art Deficit",
-      stat: "<1% Box-Art Leads",
-      summary: "Even when mixed characters appear in background rosters, over 75% of primary playable leads remain white. Outside of Miles Morales (Marvel's Spider-Man), playable box-art multiracial protagonists are virtually non-existent, relegating mixed identities to secondary NPCs or narrative devices (Phillips, 2022)."
+      stat: "<1% Games-Native Leads",
+      summary: "Mixed characters face an acute agency deficit. Outside of licensed comic acquisitions like Miles Morales, games-native multiracial protagonists are virtually non-existent on commercial box art and relegated to secondary roles or plot tools to symbolize racial harmony rather than deep, independent individuals (Phillips, 2022)."
     },
     {
       number: "03",
       title: "The Youth Gamer Demographic Gap",
-      stat: "10% to 15% Youth Audience",
-      summary: "National census averages (2.9% UK; 10.2% US) include older non-gaming generations and obscure the actual gaming audience. Among under-18s and urban hubs like London, multiracial identification exceeds 5% to 10% in the UK and 15% in the US, revealing a 5× to 10× representation deficit."
+      stat: "5–10% UK / 15% US Youth",
+      summary: "National census benchmarks of declared mixed race individuals (2.9% in the UK; 10.2% in the US) obscure generational realities. Among under-18s and core gaming demographics, multiracial populations exceed 5% to 10% in the UK and 15% in the US, revealing an acute representation deficit compared to the modern audience."
     }
   ],
   methodology: [
     {
-      phase: "Phase 1: Objective 100-Character Commercial Audit",
-      badge: "Quantitative Content Analysis",
-      details: "To eliminate subjective cherry-picking, I audit an objective sample drawn from official UKIE/GfK (UK) and Circana (US) annual best-selling charts (2018 to 2024). Using a reproducible formula (the Primary Playable Protagonist plus the Top 4 Credited Cast across 20 commercial titles = 100 characters), each character is coded across Explicit Canon, Implied Ambiguity, and Box-Art Playable Agency, with a 20% subsample independently cross-coded to verify inter-coder reliability via Cohen's kappa (κ ≥ 0.80)."
+      phase: "Phase 1: Stratified Purposive 100-Character Commercial Audit",
+      badge: "Empirical Content Analysis (UKIE & Circana)",
+      details: "To eliminate cherry-picking, I conduct a stratified purposive audit of 20 bestselling commercial games from official UKIE/GfK and Circana annual charts (2018–2024), excluding annualized sports rosters whose licensed athlete lists distort metrics. A standardized scoring sheet audits 100 characters (the primary lead plus the top four credited supporting cast across 20 titles), evaluating explicit canon, implied ambiguity, box-art agency, and census alignment (ONS, 2022). To ensure objective reliability, a second researcher independently scores a random 20% sample to calculate inter-rater reliability via Cohen's Kappa (κ ≥ 0.80)."
     },
     {
-      phase: "Phase 2: Practice-as-Research Flagship Protagonist Dossier",
-      badge: "3D Technical Art & Narrative Pipeline",
-      details: "Synthesising the audit findings into a tangible studio solution, I design one deep, production-ready Flagship Multiracial Protagonist Dossier. This combines a Dual-Heritage Narrative Lore Brief (documented family lineage and lived cultural traditions) with 3D Technical Art Specifications (non-Eurocentric facial mesh topology, calibrated 3C/4A curl and braided hair groom guides, and calibrated melanin subsurface scattering profiles in Unreal Engine 5)."
+      phase: "Phase 2: Practice-Informed Flagship Protagonist Design Dossier",
+      badge: "Unreal Engine MetaHuman & Narrative Bible",
+      details: "Synthesizing audit findings to address the representational void, I produce a production-ready protagonist dossier. Using Unreal Engine's MetaHuman Creator, I produce high-fidelity character renders featuring carefully blended facial structures from dual-heritage backgrounds, realistic skin undertones, and textured hair, countering the generic ambiguity found in commercial games. This visual design is paired with a comprehensive narrative character bible (backstory, dual-lineage lore, material keepsakes, and sample dialogue barks) grounded in Root's (1996) bicultural navigation principles for player evaluation rather than an interactive game."
     },
     {
       phase: "Phase 3: Empirical A/B Player Validation Survey",
-      badge: "Pre-Test / Post-Test Intervention",
-      details: "To scientifically validate the design rather than leaving it untested, I run an anonymous, GDPR-compliant online survey of 30 to 50 self-identified mixed-race gamers. Using an A/B intervention structure based on Passmore et al. (2018) immersion scales, participants rate a baseline ambiguous commercial avatar against the Flagship Dossier (first visually, then with explicit dual-heritage lore revealed) to measure whether canonical lineage and calibrated 3D features significantly increase felt representation and player immersion."
+      badge: "A/B Intervention & Paired t-Tests",
+      details: "Validated through an anonymous online survey using purposive digital sampling of 25 to 35 self-identified mixed-race players recruited across gaming communities. Using an A/B intervention structure, participants evaluate a baseline ambiguous commercial character from the audit against the flagship dossier (assessed visually, then with narrative lore revealed) across semantic differential scales measuring authenticity and relatability. Pre- and post-intervention shifts are evaluated using paired-samples t-tests alongside thematic coding of qualitative testimony. Adheres to GDPR, WCAG accessibility, content warnings, and unconditional exit options."
     }
   ],
   references: [
-    "Dietrich, D.R. (2013) 'Avatars of whiteness: racial expression in video game characters', Sociological Inquiry, 83(1), pp. 82-105.",
-    "Jones, S.S.Y., Harrisson, A., Pedraça, S., Marchessault-Brown, J., Williams, D. and Consalvo, M. (2025) 'The virtual census 2.0: a continued investigation on the representations of gender, race, and age in videogames', New Media & Society.",
+    "Dietrich, D.R. (2013) 'Avatars of whiteness: racial expression in video game characters', Sociological Inquiry, 83(1), pp. 82-105. Available at: https://doi.org/10.1111/soin.12001.",
+    "Jones, S.S.Y., Harrisson, A., Pedraça, S., Marchessault-Brown, J., Williams, D. and Consalvo, M. (2025) 'The virtual census 2.0: a continued investigation on the representations of gender, race, and age in videogames', New Media & Society. Available at: https://doi.org/10.1177/14614448251336427.",
     "Office for National Statistics (2022) Ethnic group, England and Wales: Census 2021.",
-    "Passmore, C.J., Birk, M.V. and Mandryk, R.L. (2018) 'The privilege of immersion: racial and ethnic experiences, perceptions, and beliefs in digital gaming', Proceedings of CHI '18. ACM, pp. 1-12.",
-    "Phillips, A. (2022) 'Fixing the past: memory tourism, multiraciality, and white innocence in video games', ROMchip: A Journal of Game Histories, 4(1).",
-    "Williams, D., Martins, N., Consalvo, M. and Ivory, J.D. (2009) 'The virtual census: representations of gender, race and age in video games', New Media & Society, 11(5), pp. 815-834."
+    "Passmore, C.J., Birk, M.V. and Mandryk, R.L. (2018) 'The privilege of immersion: racial and ethnic experiences, perceptions, and beliefs in digital gaming', in Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems (CHI '18). Montreal, QC, Canada: ACM, pp. 1-12. Available at: https://doi.org/10.1145/3173574.3173957.",
+    "Phillips, A. (2022) 'Fixing the past: memory tourism, multiraciality, and white innocence in video games', ROMchip: A Journal of Game Histories, 4(1). Available at: https://romchip.org/index.php/romchip-journal/article/view/156.",
+    "Root, M.P.P. (ed.) (1996) The multiracial experience: racial borders as the new frontier. Thousand Oaks, CA: SAGE Publications.",
+    "Williams, D., Martins, N., Consalvo, M. and Ivory, J.D. (2009) 'The virtual census: representations of gender, race and age in video games', New Media & Society, 11(5), pp. 815-834. Available at: https://doi.org/10.1177/1461444809105354."
   ]
 };
 

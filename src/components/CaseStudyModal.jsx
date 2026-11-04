@@ -26,6 +26,8 @@ import EmbeddedBrowserViewport from './EmbeddedBrowserViewport';
 import { getProjectTheme } from '../utils/projectThemes';
 import { ProjectAtmosphere, OverviewAtmosphere } from './gameAtmospheres';
 import ProjectTheatricalEntrance from './ProjectTheatricalEntrance';
+import { audioEngine } from '../utils/audioEngine';
+import SafeVideoPlayer from './SafeVideoPlayer';
 
 export default function CaseStudyModal({ project, onClose }) {
   const theme = getProjectTheme(project?.id);
@@ -55,6 +57,8 @@ export default function CaseStudyModal({ project, onClose }) {
       : [];
 
   useEffect(() => {
+    audioEngine.playSweep();
+
     const handleKeyDown = (e) => {
       if (lightboxIndex !== null) {
         if (e.key === 'Escape') {
@@ -66,14 +70,27 @@ export default function CaseStudyModal({ project, onClose }) {
         }
         return;
       }
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') {
+        audioEngine.playDismiss();
+        onClose();
+      }
     };
     window.addEventListener('keydown', handleKeyDown);
+
+    // Prevent desktop scrollbar layout snap by measuring scrollbar width
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    const prevOverflow = document.body.style.overflow;
+    const prevPaddingRight = document.body.style.paddingRight;
+
     document.body.style.overflow = 'hidden';
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = prevOverflow;
+      document.body.style.paddingRight = prevPaddingRight;
     };
   }, [onClose, lightboxIndex, activeGallery.length]);
 
@@ -155,7 +172,10 @@ export default function CaseStudyModal({ project, onClose }) {
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                onClick={onClose}
+                onClick={() => {
+                  audioEngine.playDismiss();
+                  onClose();
+                }}
                 className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors cursor-pointer"
                 aria-label="Close modal"
               >
@@ -231,22 +251,65 @@ export default function CaseStudyModal({ project, onClose }) {
               </div>
             )}
 
+            {/* 3-Second Recruiter HUD */}
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-[#090b16]/95 border border-indigo-500/35 shadow-lg backdrop-blur-xl">
+              <div className="flex flex-wrap items-center justify-between gap-2.5 pb-2.5 mb-2.5 border-b border-white/10 text-xs font-mono">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-white font-bold">{project.discipline || 'Technical Game Designer'}</span>
+                  <span className="text-slate-500">•</span>
+                  <span className="text-indigo-300 font-semibold">{activeEngine}</span>
+                </div>
+                {project.gradeBadge && (
+                  <span className="px-2 py-0.5 rounded-full bg-amber-950/80 border border-amber-500/40 text-amber-300 font-bold text-[10px]">
+                    {project.gradeBadge}
+                  </span>
+                )}
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+                <div className="md:col-span-8">
+                  <div className="text-[10px] uppercase font-mono tracking-wider text-slate-400">Core Technical Innovation</div>
+                  <div className="text-xs sm:text-sm font-semibold text-slate-200 mt-0.5">
+                    {project.tagline || activeSubtitle}
+                  </div>
+                </div>
+                <div className="md:col-span-4 flex flex-wrap items-center justify-end gap-2">
+                  {project.links?.itch && (
+                    <a
+                      href={project.links.itch}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold font-mono tracking-wide transition-all shadow-sm"
+                    >
+                      <Gamepad2 className="w-3.5 h-3.5" />
+                      <span>Play Build</span>
+                    </a>
+                  )}
+                  {project.links?.github && (
+                    <a
+                      href={project.links.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-medium transition-all"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
+                      <span>Source</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+
             {/* Hero Media: Local Gameplay Capture or Artwork */}
             <div className={`relative rounded-2xl overflow-hidden aspect-[16/9] max-h-96 bg-black border flex items-center justify-center transition-all ${theme.mediaHolderClass}`}>
               {activeVideo ? (
-                <video
-                  key={activeVideo}
-                  controls
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  poster={activeImage ? getAssetUrl(activeImage) : undefined}
+                <SafeVideoPlayer
+                  src={activeVideo}
+                  poster={activeImage}
+                  title={activeTitle}
+                  controls={true}
                   className="w-full h-full object-contain"
-                >
-                  <source src={getAssetUrl(activeVideo)} type="video/mp4" />
-                </video>
+                />
               ) : (
                 <>
                   <img

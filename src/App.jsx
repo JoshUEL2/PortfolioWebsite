@@ -1,18 +1,20 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProjectShowcase from './components/ProjectShowcase';
-import AllProjectsPage from './components/AllProjectsPage';
 import ResearchSection from './components/ResearchSection';
 import Competencies from './components/Competencies';
 import AboutSection from './components/AboutSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
-import CaseStudyModal from './components/CaseStudyModal';
 import BackgroundShader from './components/BackgroundShader';
-import ShowstopperIntro from './components/ShowstopperIntro';
 import { PROJECTS } from './data/portfolioData';
+
+// Code-split heavy interactive overlays & secondary route pages
+const AllProjectsPage = lazy(() => import('./components/AllProjectsPage'));
+const CaseStudyModal = lazy(() => import('./components/CaseStudyModal'));
+const ShowstopperIntro = lazy(() => import('./components/ShowstopperIntro'));
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -141,10 +143,12 @@ export default function App() {
 
         {currentView === 'all-projects' ? (
           <main className="flex-1">
-            <AllProjectsPage
-              onSelectProject={handleSelectProject}
-              onBackToHome={() => handleViewChange('featured')}
-            />
+            <Suspense fallback={<div className="min-h-screen pt-36 text-center text-slate-400 font-mono text-xs">INITIALIZING ARCHIVE VAULT...</div>}>
+              <AllProjectsPage
+                onSelectProject={handleSelectProject}
+                onBackToHome={() => handleViewChange('featured')}
+              />
+            </Suspense>
           </main>
         ) : (
           <main className="flex-1">
@@ -179,18 +183,22 @@ export default function App() {
       {/* Full-screen Case Study Modal */}
       <AnimatePresence>
         {selectedProject && (
-          <CaseStudyModal
-            key={`${selectedProject.id}-${selectedProject.initialPhaseIndex ?? 0}`}
-            project={selectedProject}
-            onClose={() => handleSelectProject(null)}
-          />
+          <Suspense fallback={null}>
+            <CaseStudyModal
+              key={`${selectedProject.id}-${selectedProject.initialPhaseIndex ?? 0}`}
+              project={selectedProject}
+              onClose={() => handleSelectProject(null)}
+            />
+          </Suspense>
         )}
       </AnimatePresence>
 
       {/* Showstopper Windows 11 Intro Experience */}
       <AnimatePresence>
         {showIntro && (
-          <ShowstopperIntro onComplete={() => setShowIntro(false)} />
+          <Suspense fallback={null}>
+            <ShowstopperIntro onComplete={() => setShowIntro(false)} />
+          </Suspense>
         )}
       </AnimatePresence>
     </div>

@@ -21,6 +21,8 @@ import { MARKETING_REPOS } from '../data/marketingReposData';
 import EmbeddedBrowserViewport from './EmbeddedBrowserViewport';
 import { getProjectTheme } from '../utils/projectThemes';
 import { ProjectAtmosphere, OverviewAtmosphere } from './gameAtmospheres';
+import { audioEngine } from '../utils/audioEngine';
+import SafeVideoPlayer from './SafeVideoPlayer';
 
 export default function ProjectCard({ project, onSelectProject }) {
   const versions = project.versions || project.splitPhases || null;
@@ -70,6 +72,7 @@ export default function ProjectCard({ project, onSelectProject }) {
 
   // Pass initialLightboxIndex when a user clicks a specific image/thumbnail on the card
   const handleOpenCaseStudy = (initialLightboxIndex = null) => {
+    audioEngine.playSweep();
     onSelectProject({
       ...project,
       initialVersionIndex: activeVersionIndex,
@@ -625,18 +628,12 @@ export default function ProjectCard({ project, onSelectProject }) {
               aria-label={`Open ${activeTitle} overview`}
               className={`relative group/vid cursor-pointer overflow-hidden rounded-2xl bg-black border shadow-2xl aspect-[16/10] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all ${theme.mediaHolderClass}`}
             >
-              <video
-                key={activeVideo}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-                poster={activeImage ? getAssetUrl(activeImage) : undefined}
+              <SafeVideoPlayer
+                src={activeVideo}
+                poster={activeImage}
+                title={activeTitle}
                 className="w-full h-full object-cover group-hover/vid:scale-105 transition-transform duration-500 ease-out"
-              >
-                <source src={getAssetUrl(activeVideo)} type="video/mp4" />
-              </video>
+              />
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover/vid:opacity-100 transition-opacity" />
 

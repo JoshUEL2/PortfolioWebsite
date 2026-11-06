@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowUp, Code2 } from 'lucide-react';
 import { getAssetUrl } from '../utils/assetUrl';
+import { audioEngine } from '../utils/audioEngine';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -11,9 +12,9 @@ export default function Footer() {
   useEffect(() => {
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.scrollY / totalHeight) * 100;
+      const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
       setScrollProgress(progress);
-      setShowTopBtn(window.scrollY > 400);
+      setShowTopBtn(window.scrollY > 300);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -21,37 +22,38 @@ export default function Footer() {
   }, []);
 
   const scrollToTop = () => {
+    audioEngine.playTick(900, 200);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <>
-      <footer className="relative py-12 px-4 border-t border-white/[0.08] bg-[#05060a]">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+      <footer className="relative py-12 px-4 sm:px-6 lg:px-12 border-t border-[#1A2234] bg-[#06070D]">
+        <div className="max-w-[1360px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
           <div className="flex items-center gap-3">
             <img
               src={getAssetUrl('/images/logos/3j-logo.png')}
               alt="3J Studio Logo"
-              className="w-10 h-10 rounded-xl object-contain bg-white/5 border border-white/10 p-1 shrink-0 shadow-md"
+              className="w-9 h-9 rounded object-contain bg-[#0D111A] border border-[#1A2234] p-1 shrink-0"
             />
             <div>
-              <div className="font-extrabold text-white text-base tracking-tight font-['Syne',sans-serif]">
+              <div className="font-bold text-[#F8FAFC] text-sm tracking-tight font-['Space_Grotesk',sans-serif] uppercase">
                 Joshua Johnson
               </div>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-xs text-[#94A3B8] font-mono mt-0.5">
                 Technical Game Designer • Unreal Engine 5 • London, UK
               </p>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-3 text-xs text-slate-400 font-mono">
+          <div className="flex flex-col sm:flex-row items-center gap-3 text-xs text-[#64748B] font-mono">
             <div className="flex items-center gap-1.5">
-              <Code2 className="w-3.5 h-3.5 text-indigo-400" />
-              <span>Built with React, Vite & Tailwind CSS</span>
+              <Code2 className="w-3.5 h-3.5 text-[#00F2FE]" />
+              <span>Built with React 19, Vite &amp; Tailwind CSS</span>
             </div>
           </div>
 
-          <div className="text-xs text-slate-400">
+          <div className="text-xs text-[#64748B] font-mono">
             © {CURRENT_YEAR} Joshua Johnson. All rights reserved.
           </div>
         </div>
@@ -62,15 +64,14 @@ export default function Footer() {
         <button
           onClick={scrollToTop}
           aria-label="Scroll to top"
-          className="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-[#0c0e1c]/90 border border-indigo-500/40 text-indigo-300 hover:text-white hover:bg-indigo-600/30 backdrop-blur-xl shadow-2xl hover:scale-110 active:scale-95 transition-all group"
+          className="fixed bottom-6 right-6 z-40 p-2.5 rounded bg-[#0D111A] border border-[#00F2FE] text-[#00F2FE] hover:bg-[#131926] shadow-2xl transition-all cursor-pointer group active:scale-[0.95]"
         >
-          <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
-          {/* Circular progress SVG */}
+          <ArrowUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
           <svg className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none p-0.5">
             <circle
               cx="50%"
               cy="50%"
-              r="20"
+              r="17"
               className="stroke-white/10"
               strokeWidth="2"
               fill="none"
@@ -78,11 +79,11 @@ export default function Footer() {
             <circle
               cx="50%"
               cy="50%"
-              r="20"
-              className="stroke-indigo-400"
+              r="17"
+              className="stroke-[#00F2FE]"
               strokeWidth="2"
-              strokeDasharray="125.6"
-              strokeDashoffset={125.6 - (125.6 * scrollProgress) / 100}
+              strokeDasharray="106.8"
+              strokeDashoffset={106.8 - (106.8 * scrollProgress) / 100}
               strokeLinecap="round"
               fill="none"
             />

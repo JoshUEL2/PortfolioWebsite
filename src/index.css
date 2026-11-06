@@ -1,99 +1,128 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Syne", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
   --font-body: "Plus Jakarta Sans", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  --color-hud-bg: #06070d;
-  --color-hud-panel: #090b16;
-  --color-hud-border: rgba(99, 102, 241, 0.25);
-  --color-hud-accent: #6366f1;
+  --color-canvas: #06070D;
+  --color-surface: #0D111A;
+  --color-surface-elevated: #131926;
+  --color-surface-hover: #172033;
+  --color-border-subtle: #1A2234;
+  --color-border-muted: #243048;
+  --color-border-active: #00F2FE;
+  --color-border-amber: #F59E0B;
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-tertiary: #64748B;
+  --color-accent-cyan: #00F2FE;
+  --color-accent-amber: #F59E0B;
+  --color-accent-emerald: #10B981;
+}
+
+:root {
+  --canvas: #06070D;
+  --surface: #0D111A;
+  --surface-elevated: #131926;
+  --surface-hover: #172033;
+  --border-subtle: #1A2234;
+  --border-active: #00F2FE;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --accent-cyan: #00F2FE;
+  --accent-amber: #F59E0B;
+  --accent-emerald: #10B981;
+  
+  --container-max-w: 1360px;
+  --gutter: clamp(16px, 4vw, 48px);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
     color-scheme: dark;
+    background-color: var(--canvas);
+    color: var(--text-primary);
   }
 
   body {
-    background-color: #06070d;
-    color: #f1f5f9;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--canvas);
+    color: var(--text-primary);
+    font-family: var(--font-body);
     overflow-x: hidden;
-    selection-background-color: #6366f1;
-    selection-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  ::selection {
+    background-color: #00F2FE;
+    color: #06070D;
+  }
+
+  :focus-visible {
+    outline: 2px solid #00F2FE;
+    outline-offset: 2px;
   }
 }
 
-/* Custom glowing effects and scrollbar */
+/* Custom telemetry scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #06070d;
+  background: #06070D;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e2238;
-  border-radius: 9999px;
-  border: 2px solid #06070d;
+  background: #1A2234;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6366f1;
+  background: #00F2FE;
 }
 
-.text-glow {
-  text-shadow: 0 0 30px rgba(99, 102, 241, 0.4), 0 0 60px rgba(139, 92, 246, 0.2);
-}
-
-.card-glow {
-  box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.15);
-}
-
-.card-glow:hover {
-  box-shadow: 0 0 60px -5px rgba(139, 92, 246, 0.3);
-}
-
-/* Layer 01: Game Engine Viewport Grid */
-.bg-grid-pattern {
-  background-size: 40px 40px;
+/* Diegetic Grid & Viewport Vignette */
+.bg-engine-grid {
+  background-size: 48px 48px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
-.bg-radial-vignette {
-  background: radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0) 0%, rgba(6, 7, 13, 0.8) 70%, #06070d 100%);
+.bg-viewport-vignette {
+  background: radial-gradient(circle at 50% 50%, rgba(6, 7, 13, 0) 30%, rgba(6, 7, 13, 0.85) 85%, #06070D 100%);
 }
 
-/* Layer 02: Formal Academic Editorial Paper Surface */
+/* Academic Editorial Surface */
 .bg-editorial-paper {
-  background-color: #111110;
+  background-color: #0A0D14;
   background-image:
-    radial-gradient(circle at 50% 0%, rgba(200, 157, 102, 0.06) 0%, transparent 60%),
+    radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.04) 0%, transparent 60%),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
   background-size: 100% 100%, 100% 32px;
 }
 
-/* Layer 03: Grungy Hardware PCB & Copper Circuit Trace Pattern */
+/* Technical Circuit Grid */
 .bg-circuit-pattern {
-  background-color: #070b09;
+  background-color: #080C14;
   background-image:
-    radial-gradient(circle at 15% 20%, rgba(217, 119, 6, 0.07) 0%, transparent 45%),
-    radial-gradient(circle at 85% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 45%),
-    url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d97706' stroke-width='1' stroke-opacity='0.09'%3E%3Cpath d='M0 20h20l10 10h20l10-10h20M0 60h15l10-10h30l10 10h15M20 0v20M60 0v20M40 30v20M25 50v30M65 50v30'/%3E%3Ccircle cx='20' cy='20' r='2' fill='%2310b981' fill-opacity='0.15'/%3E%3Ccircle cx='50' cy='30' r='2' fill='%23d97706' fill-opacity='0.15'/%3E%3Ccircle cx='25' cy='50' r='2' fill='%2310b981' fill-opacity='0.15'/%3E%3Ccircle cx='65' cy='60' r='2' fill='%23d97706' fill-opacity='0.15'/%3E%3C/g%3E%3C/svg%3E");
+    radial-gradient(circle at 20% 20%, rgba(0, 242, 254, 0.04) 0%, transparent 45%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px, 32px 32px;
 }
 
-/* Layer 04: Corporate-Studio Executive Dossier Blueprint Grid */
-.bg-dossier-grid {
-  background-color: #080c14;
-  background-image:
-    radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.06) 0%, transparent 55%),
-    linear-gradient(to right, rgba(148, 163, 184, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
-  background-size: 100% 100%, 64px 64px, 64px 64px;
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -3,6 +3,7 @@ import { Wrench, ExternalLink, Cpu, Terminal, CheckCircle2, ArrowRight, Sparkles
 import { HARDWARE_BENCH_PROJECTS } from '../data/portfolioData';
 import { GithubIcon } from './Icons';
 import { getAssetUrl } from '../utils/assetUrl';
+import { audioEngine } from '../utils/audioEngine';
 
 const APPLIED_ENGINE_LEDGER = [
   {
@@ -60,245 +61,204 @@ const APPLIED_ENGINE_LEDGER = [
 
 export default function Competencies() {
   return (
-    <section id="toolkit" className="relative w-full overflow-hidden">
-      {/* Full-Bleed Grungy PCB Circuit & Hardware Workbench Biome */}
-      <div className="bg-circuit-pattern pt-32 pb-32 px-4 sm:px-6 relative">
-        {/* Seamless Single Top Crossfade from Editorial Research (#111110) into PCB Workbench */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-[#111110] via-[#0c0f0d]/85 to-transparent pointer-events-none z-0"
-        />
-        {/* Bottom Atmospheric Crossfade into Studio Dossier (#080c14) */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#080c14] via-[#070b09]/80 to-transparent pointer-events-none z-0"
-        />
+    <section id="toolkit" className="relative py-20 px-4 sm:px-6 lg:px-12 bg-[#06070D] border-t border-[#1A2234]">
+      <div className="max-w-[1360px] mx-auto w-full">
+        {/* Diagnostic Header Bar */}
+        <div className="p-3 rounded bg-[#0D111A] border border-[#1A2234] mb-10 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px]">
+          <div className="flex items-center gap-2 text-[#00F2FE] font-bold uppercase tracking-wider">
+            <Cpu className="w-4 h-4 text-[#00F2FE] shrink-0" />
+            <span>ENGINE LAB // HARDWARE WORKBENCH &amp; REVERSE-ENGINEERING</span>
+          </div>
+          <div className="flex items-center gap-3 text-[#10B981]">
+            <span className="inline-flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
+              <span>BENCH: ONLINE</span>
+            </span>
+            <span className="text-[#1A2234]">|</span>
+            <span className="text-[#94A3B8]">MOCAP // USB_HID // SHADERS</span>
+          </div>
+        </div>
 
-        <div className="max-w-6xl mx-auto relative z-10">
-          {/* Top Industrial PCB Bus Diagnostic Header (No Layer Numbers) */}
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45 }}
-            className="p-3.5 rounded-lg bg-[#050806]/90 border border-amber-500/35 mb-10 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px]"
-          >
-            <div className="flex items-center gap-2.5 text-amber-400 font-bold uppercase tracking-widest">
-              <Cpu className="w-4 h-4 text-amber-400 shrink-0" />
-              <span>HARDWARE TINKERING, REVERSE-ENGINEERING &amp; APPLIED ENGINE LAB</span>
+        {/* Section Headline */}
+        <div className="mb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-[#1A2234]">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#0D111A] border border-[#1A2234] text-[#F59E0B] text-xs font-mono uppercase tracking-wider mb-3">
+              <Wrench className="w-3.5 h-3.5 text-[#F59E0B]" />
+              <span>Systems Builder &amp; Technical Toolmaker</span>
             </div>
-            <div className="flex items-center gap-3 text-emerald-400">
-              <span className="inline-flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>WORKBENCH: ACTIVE</span>
-              </span>
-              <span className="text-amber-500/50">|</span>
-              <span className="text-amber-300/80">MOCAP // USB_HID // SHADERS</span>
-            </div>
-          </motion.div>
-
-          {/* Section Headline & Tinkerer Manifesto */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6"
-          >
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-mono uppercase tracking-wider mb-3">
-                <Wrench className="w-3.5 h-3.5 text-amber-400" />
-                <span>Hands-On Hardware Hacker &amp; Systems Builder</span>
-              </div>
-              <h2 className="text-3xl sm:text-5xl font-black text-amber-50 tracking-tight font-['Space_Grotesk',sans-serif] uppercase leading-[1.08]">
-                If a Tool Costs £10,000 or Doesn&apos;t Exist, I Build It Myself.
-              </h2>
-              <p className="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">
-                I don&apos;t just use game engines out of the box. When I needed motion capture on a student budget, I fused an Xbox Kinect with PlayStation VR gyros over Python OSC. When vendor RGB/LCD software bloated my custom watercooled PC, I sniffed the raw 64-byte USB HID packets in Wireshark and wrote my own drivers. Here is the exact hardware and engine work from my bench.
-              </p>
-            </div>
-
-            <div className="px-4 py-3 rounded-xl bg-[#070c09]/95 border border-emerald-500/35 font-mono text-xs text-emerald-300 shrink-0">
-              <div className="text-[10px] uppercase tracking-widest text-amber-400/90 mb-0.5">
-                Custom Rig &amp; Driver Proof
-              </div>
-              <div className="font-bold text-white">
-                4 Scratch-Built Hardware &amp; Systems Logs
-              </div>
-            </div>
-          </motion.div>
-
-          {/* 2x2 Grid of Deep-Dive Hardware & Reverse-Engineering Bench Logs (Zero Text Cutoff) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-14">
-            {HARDWARE_BENCH_PROJECTS.map((bench, idx) => (
-              <motion.article
-                key={bench.id}
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.06 }}
-                className="rounded-2xl bg-[#070c09]/95 border border-amber-500/35 hover:border-amber-400/70 shadow-[0_20px_50px_rgba(0,0,0,0.75)] overflow-hidden flex flex-col justify-between transition-all"
-              >
-                <div>
-                  {/* Top Visual Header Banner */}
-                  <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-black border-b border-amber-500/25">
-                    <img
-                      src={getAssetUrl(bench.image)}
-                      alt={bench.title}
-                      className="w-full h-full object-cover opacity-55 hover:opacity-75 transition-opacity duration-500"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#070c09] via-[#070c09]/45 to-transparent" />
-
-                    {/* Top Tag & Action Links */}
-                    <div className="absolute top-3 inset-x-4 flex items-center justify-between gap-2">
-                      <span className="px-2.5 py-1 rounded bg-black/85 border border-amber-500/45 text-[10px] font-mono font-bold uppercase tracking-widest text-amber-300 backdrop-blur-md">
-                        {bench.tag}
-                      </span>
-
-                      <div className="flex items-center gap-2">
-                        {bench.links?.github && (
-                          <a
-                            href={bench.links.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-black/85 hover:bg-amber-500 hover:text-slate-950 text-amber-200 border border-amber-500/40 text-[11px] font-mono font-semibold transition-colors backdrop-blur-md"
-                          >
-                            <GithubIcon className="w-3.5 h-3.5" />
-                            <span>Source</span>
-                          </a>
-                        )}
-                        {bench.links?.demo && (
-                          <a
-                            href={bench.links.demo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-emerald-950/90 hover:bg-emerald-400 hover:text-slate-950 text-emerald-300 border border-emerald-500/50 text-[11px] font-mono font-semibold transition-colors backdrop-blur-md"
-                          >
-                            <ExternalLink className="w-3.5 h-3.5" />
-                            <span>Live Tool</span>
-                          </a>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Title Overlay at Bottom of Banner */}
-                    <div className="absolute bottom-3 inset-x-5">
-                      <h3 className="text-lg sm:text-xl font-bold text-white font-['Space_Grotesk',sans-serif] leading-tight">
-                        {bench.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  {/* Card Body */}
-                  <div className="p-5 sm:p-6 space-y-4">
-                    {/* Full Non-Truncated Tech Stack Bar */}
-                    <div className="p-2.5 rounded-lg bg-[#0b130f] border border-emerald-500/30 flex items-start gap-2 text-xs font-mono text-emerald-300 leading-relaxed">
-                      <Terminal className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                      <span className="break-words">{bench.subtitle}</span>
-                    </div>
-
-                    {/* Problem vs How I Built It */}
-                    <div className="space-y-3 text-xs sm:text-sm leading-relaxed">
-                      <div className="p-3.5 rounded-xl bg-amber-950/20 border-l-2 border-amber-400 text-slate-200">
-                        <span className="block text-[10px] font-mono font-bold uppercase tracking-widest text-amber-400 mb-1">
-                          The Problem I Hit:
-                        </span>
-                        {bench.problem}
-                      </div>
-
-                      <div className="p-3.5 rounded-xl bg-emerald-950/15 border-l-2 border-emerald-400 text-slate-200">
-                        <span className="block text-[10px] font-mono font-bold uppercase tracking-widest text-emerald-400 mb-1">
-                          How I Built / Reverse-Engineered It:
-                        </span>
-                        {bench.tinkeringSolution}
-                      </div>
-                    </div>
-
-                    {/* Proof Points */}
-                    <ul className="space-y-1.5 pt-1">
-                      {bench.proofPoints.map((pt) => (
-                        <li key={pt} className="flex items-start gap-2 text-xs text-slate-300 leading-relaxed">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
-                          <span>{pt}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Bottom 4-Stage Hardware Signal Flow Footer */}
-                <div className="px-5 py-3.5 bg-[#050806] border-t border-amber-500/20">
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-amber-400/80 mb-2">
-                    Signal &amp; Data Pipeline:
-                  </div>
-                  <div className="flex flex-wrap items-center gap-1.5">
-                    {bench.pipeline.map((step, sIdx) => (
-                      <div key={step} className="inline-flex items-center gap-1.5">
-                        <span className="px-2 py-1 rounded bg-[#0c1410] border border-amber-500/30 text-[11px] font-mono text-amber-100">
-                          {step}
-                        </span>
-                        {sIdx < bench.pipeline.length - 1 && (
-                          <ArrowRight className="w-3 h-3 text-emerald-400 shrink-0" />
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.article>
-            ))}
+            <h2 className="text-3xl sm:text-5xl font-bold text-[#F8FAFC] tracking-tight font-['Space_Grotesk',sans-serif] uppercase leading-[1.05]">
+              If a Tool Costs £10,000 or Doesn&apos;t Exist, I Build It Myself.
+            </h2>
+            <p className="text-[#94A3B8] text-sm sm:text-base mt-3 leading-relaxed font-['Plus_Jakarta_Sans',sans-serif]">
+              I don&apos;t just use engines off-the-shelf. When I needed motion capture on a student budget, I fused an Xbox Kinect with PlayStation VR gyros over Python OSC. When vendor RGB/LCD software bloated my custom watercooled PC, I sniffed raw 64-byte USB HID packets in Wireshark and wrote custom device drivers.
+            </p>
           </div>
 
-          {/* Applied Production Ledger: "Where I Used Every Engine & Shader Skill" */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45 }}
-            className="rounded-2xl bg-[#060a08]/95 border border-amber-500/35 p-6 sm:p-8 shadow-2xl"
-          >
-            <div className="flex flex-wrap items-center justify-between gap-4 pb-5 mb-6 border-b border-amber-500/25">
-              <div>
-                <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold mb-1">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>Zero Buzzwords // Verified Production Index</span>
-                </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white font-['Space_Grotesk',sans-serif]">
-                  Where I Built Each Engine, Shader &amp; Physics System
-                </h3>
-              </div>
-              <span className="text-xs font-mono text-slate-400">
-                Every technical skill mapped directly to a shipped build above
-              </span>
+          <div className="px-4 py-3 rounded bg-[#0D111A] border border-[#1A2234] font-mono text-xs text-[#00F2FE] shrink-0">
+            <div className="text-[10px] uppercase tracking-wider text-[#64748B] mb-0.5">
+              SYSTEM LOGS
             </div>
+            <div className="font-bold text-[#F8FAFC]">
+              4 Production Hardware &amp; Tooling Builds
+            </div>
+          </div>
+        </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {APPLIED_ENGINE_LEDGER.map((col) => (
-                <div
-                  key={col.domain}
-                  className="p-5 rounded-xl bg-[#0a100d] border border-amber-500/25 flex flex-col justify-between space-y-4"
-                >
-                  <div>
-                    <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 pb-2.5 mb-3.5 border-b border-amber-500/20">
-                      {col.domain}
-                    </h4>
-                    <div className="space-y-3.5">
-                      {col.items.map((entry) => (
-                        <div key={entry.skill} className="space-y-1">
-                          <div className="text-xs sm:text-sm font-bold text-white font-['Space_Grotesk',sans-serif]">
-                            {entry.skill}
-                          </div>
-                          <p className="text-xs text-slate-300 leading-relaxed">
-                            {entry.where}
-                          </p>
-                        </div>
-                      ))}
+        {/* 2x2 Grid of Hardware Logs */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+          {HARDWARE_BENCH_PROJECTS.map((bench) => (
+            <article
+              key={bench.id}
+              className="rounded bg-[#0D111A] border border-[#1A2234] hover:border-[#00F2FE] overflow-hidden flex flex-col justify-between transition-colors group"
+            >
+              <div>
+                {/* Banner */}
+                <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-black border-b border-[#1A2234]">
+                  <img
+                    src={getAssetUrl(bench.image)}
+                    alt={bench.title}
+                    className="w-full h-full object-cover opacity-60 group-hover:opacity-85 transition-opacity duration-300"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D111A] via-transparent to-transparent" />
+
+                  <div className="absolute top-3 inset-x-4 flex items-center justify-between gap-2">
+                    <span className="px-2 py-0.5 rounded bg-black/80 border border-[#00F2FE]/40 text-[10px] font-mono font-bold uppercase tracking-wider text-[#00F2FE]">
+                      {bench.tag}
+                    </span>
+
+                    <div className="flex items-center gap-2 font-mono">
+                      {bench.links?.github && (
+                        <a
+                          href={bench.links.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => audioEngine.playTick(600, 150)}
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#06070D] hover:bg-[#131926] text-[#F8FAFC] border border-[#1A2234] text-[11px] transition-colors"
+                        >
+                          <GithubIcon className="w-3.5 h-3.5" />
+                          <span>Source</span>
+                        </a>
+                      )}
+                      {bench.links?.demo && (
+                        <a
+                          href={bench.links.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => audioEngine.playTick(600, 150)}
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#06070D] hover:bg-[#131926] text-[#00F2FE] border border-[#00F2FE]/40 text-[11px] transition-colors"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                          <span>Live Tool</span>
+                        </a>
+                      )}
                     </div>
                   </div>
+
+                  <div className="absolute bottom-3 inset-x-4">
+                    <h3 className="text-lg font-bold text-white font-['Space_Grotesk',sans-serif] uppercase leading-tight">
+                      {bench.title}
+                    </h3>
+                  </div>
                 </div>
-              ))}
+
+                {/* Body */}
+                <div className="p-5 space-y-4">
+                  <div className="p-2 rounded bg-[#06070D] border border-[#1A2234] flex items-start gap-2 text-xs font-mono text-[#00F2FE]">
+                    <Terminal className="w-3.5 h-3.5 text-[#00F2FE] shrink-0 mt-0.5" />
+                    <span>{bench.subtitle}</span>
+                  </div>
+
+                  <div className="space-y-3 text-xs sm:text-sm font-['Plus_Jakarta_Sans',sans-serif]">
+                    <div className="p-3 rounded bg-[#06070D] border border-[#1A2234] text-[#94A3B8]">
+                      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#F59E0B]/10 text-[10px] font-mono font-bold uppercase tracking-wider text-[#F59E0B] mb-1.5 border border-[#F59E0B]/20">
+                        PROBLEM ENCOUNTERED:
+                      </span>
+                      <p className="mt-1">{bench.problem}</p>
+                    </div>
+
+                    <div className="p-3 rounded bg-[#06070D] border border-[#1A2234] text-[#94A3B8]">
+                      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#00F2FE]/10 text-[10px] font-mono font-bold uppercase tracking-wider text-[#00F2FE] mb-1.5 border border-[#00F2FE]/20">
+                        HOW I ENGINEERED IT:
+                      </span>
+                      <p className="mt-1">{bench.tinkeringSolution}</p>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-1.5 pt-1">
+                    {bench.proofPoints.map((pt) => (
+                      <li key={pt} className="flex items-start gap-2 text-xs text-[#94A3B8] font-['Plus_Jakarta_Sans',sans-serif]">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#00F2FE] shrink-0 mt-0.5" />
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Pipeline Footer */}
+              <div className="px-5 py-3 bg-[#080C14] border-t border-[#1A2234]">
+                <div className="text-[10px] font-mono uppercase tracking-wider text-[#64748B] mb-1.5">
+                  SIGNAL &amp; DATA PIPELINE:
+                </div>
+                <div className="flex flex-wrap items-center gap-1.5">
+                  {bench.pipeline.map((step, sIdx) => (
+                    <div key={step} className="inline-flex items-center gap-1.5">
+                      <span className="px-2 py-0.5 rounded bg-[#06070D] border border-[#1A2234] text-[10px] font-mono text-[#F8FAFC]">
+                        {step}
+                      </span>
+                      {sIdx < bench.pipeline.length - 1 && (
+                        <ArrowRight className="w-3 h-3 text-[#00F2FE] shrink-0" />
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Applied Production Ledger */}
+        <div className="rounded bg-[#0D111A] border border-[#1A2234] p-6 sm:p-8">
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-5 mb-6 border-b border-[#1A2234]">
+            <div>
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#00F2FE] font-bold mb-1">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>VERIFIED PRODUCTION INDEX</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-[#F8FAFC] font-['Space_Grotesk',sans-serif] uppercase">
+                Where I Implemented Each Engine, Shader &amp; Physics System
+              </h3>
             </div>
-          </motion.div>
+            <span className="text-xs font-mono text-[#64748B]">
+              Every entry verified in a shipped build
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {APPLIED_ENGINE_LEDGER.map((col) => (
+              <div
+                key={col.domain}
+                className="p-4 rounded bg-[#080C14] border border-[#1A2234] space-y-4"
+              >
+                <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#00F2FE] pb-2 border-b border-[#1A2234]">
+                  {col.domain}
+                </h4>
+                <div className="space-y-3">
+                  {col.items.map((entry) => (
+                    <div key={entry.skill} className="space-y-1">
+                      <div className="text-xs font-bold text-[#F8FAFC] font-['Space_Grotesk',sans-serif]">
+                        {entry.skill}
+                      </div>
+                      <p className="text-xs text-[#94A3B8] leading-relaxed font-['Plus_Jakarta_Sans',sans-serif]">
+                        {entry.where}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

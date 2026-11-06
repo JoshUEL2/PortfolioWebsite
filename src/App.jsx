@@ -125,7 +125,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#06070d] text-slate-100 overflow-x-hidden selection:bg-indigo-500 selection:text-white font-['Plus_Jakarta_Sans',sans-serif]">
+    <div className="relative min-h-screen bg-[#06070D] text-[#F8FAFC] overflow-x-hidden selection:bg-[#00F2FE] selection:text-[#06070D] font-['Plus_Jakarta_Sans',sans-serif]">
       {/* Interactive 60fps Ambient Particle Shader (Layer 01 Backdrop) */}
       <BackgroundShader />
 

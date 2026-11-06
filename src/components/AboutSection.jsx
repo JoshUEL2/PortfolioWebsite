@@ -122,7 +122,7 @@ function CredentialThemeAnimation({ theme, animationKey }) {
           initial={{ x: '0%' }}
           animate={{ x: '-94%' }}
           transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-amber-400/90 shadow-[25px_0_60px_rgba(0,0,0,0.95)]"
+          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-2 border-amber-400/90 shadow-[25px_0_60px_rgba(0,0,0,0.95)]"
           style={{
             backgroundImage:
               'repeating-linear-gradient(90deg, #450a0a 0px, #7f1d1d 22px, #991b1b 36px, #450a0a 56px)'
@@ -134,7 +134,7 @@ function CredentialThemeAnimation({ theme, animationKey }) {
           initial={{ x: '0%' }}
           animate={{ x: '94%' }}
           transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-amber-400/90 shadow-[-25px_0_60px_rgba(0,0,0,0.95)]"
+          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-2 border-amber-400/90 shadow-[-25px_0_60px_rgba(0,0,0,0.95)]"
           style={{
             backgroundImage:
               'repeating-linear-gradient(90deg, #450a0a 0px, #7f1d1d 22px, #991b1b 36px, #450a0a 56px)'
@@ -246,7 +246,7 @@ function CredentialThemeAnimation({ theme, animationKey }) {
           animate={{ rotateY: -112, opacity: 0 }}
           transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
           style={{ transformOrigin: 'left center' }}
-          className="absolute inset-0 bg-gradient-to-br from-[#3b0742] via-[#240529] to-[#0f0212] border-r-8 border-fuchsia-400 shadow-[35px_0_70px_rgba(0,0,0,0.95)] flex flex-col items-center justify-center p-8 select-none"
+          className="absolute inset-0 bg-gradient-to-br from-[#3b0742] via-[#240529] to-[#0f0212] border-r-2 border-fuchsia-400 shadow-[35px_0_70px_rgba(0,0,0,0.95)] flex flex-col items-center justify-center p-8 select-none"
         >
           {/* CMYK Registration Targets */}
           <div className="absolute top-4 left-4 w-6 h-6 border border-fuchsia-300/40 rounded-full flex items-center justify-center text-[8px] font-mono text-fuchsia-300">
@@ -397,53 +397,32 @@ export default function AboutSection() {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [activeCredential, activeShowcaseSlide]);
 
-  // Duplicate showcase items for a seamless infinite marquee loop
-  const marqueeItems = [...SHOWCASE_EXHIBITIONS, ...SHOWCASE_EXHIBITIONS];
-
   return (
     <section
       id="about"
-      className="relative w-full bg-dossier-grid border-t border-slate-700/70 text-slate-100 overflow-hidden"
+      className="relative w-full bg-[#06070D] border-t border-[#1A2234] text-[#F8FAFC] overflow-hidden"
     >
-      {/* Inline Keyframes for Smooth Infinite Revolving Showcase Strip */}
-      <style>{`
-        @keyframes showcaseMarquee {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-showcase-strip {
-          display: flex;
-          width: max-content;
-          animation: showcaseMarquee 48s linear infinite;
-        }
-        .animate-showcase-strip:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
-
-      {/* Top Atmospheric Transition from PCB (#070b09) to Studio Dossier (#080c14) */}
-      <div className="h-14 w-full bg-gradient-to-b from-[#070b09] to-transparent pointer-events-none" />
 
       {/* Top Executive Dossier Identification Bar */}
-      <div className="max-w-6xl mx-auto px-4 pt-2">
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-slate-700/80 text-[11px] font-mono uppercase tracking-[0.2em] text-slate-400">
-          <div className="flex items-center gap-2.5">
-            <Building2 className="w-3.5 h-3.5 text-sky-400" />
-            <span className="text-sky-300 font-bold">
-              STUDIO CANDIDATE DOSSIER &amp; VERIFIED CREDENTIALS
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-12 pt-6">
+        <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[#1A2234] text-[11px] font-mono uppercase tracking-widest text-[#94A3B8]">
+          <div className="flex items-center gap-2">
+            <Building2 className="w-3.5 h-3.5 text-[#00F2FE]" />
+            <span className="text-[#00F2FE] font-bold">
+              STUDIO CANDIDATE DOSSIER &amp; CREDENTIALS
             </span>
           </div>
           <div className="flex items-center gap-4">
             <span>REF: JJ-UEL-2026</span>
-            <span className="hidden sm:inline text-slate-600">|</span>
-            <span className="hidden sm:inline text-emerald-400">
+            <span className="hidden sm:inline text-[#1A2234]">|</span>
+            <span className="hidden sm:inline text-[#10B981]">
               STATUS: AVAILABLE FOR STUDIO ROLES
             </span>
           </div>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-14 sm:py-16">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-12 py-14 sm:py-16">
         {/* Section Header */}
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
@@ -484,24 +463,25 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           {/* Left Column: Grounded First-Person Bio & Verified 1st Class Module Record */}
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45 }}
             className="lg:col-span-7 space-y-6"
           >
             {/* Executive Statement Box */}
-            <div className="relative p-6 rounded-xl bg-[#0c121e] border-l-4 border-l-sky-400 border border-slate-700/80 shadow-lg">
-              <div className="text-[11px] font-mono uppercase tracking-widest text-sky-400 mb-1.5">
-                Core Engineering Creed
+            <div className="relative p-6 rounded bg-[#0D111A] border border-[#00F2FE]/50 shadow-xl">
+              <div className="text-[11px] font-mono uppercase tracking-widest text-[#00F2FE] mb-1.5 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00F2FE]"></span>
+                <span>Core Engineering Creed</span>
               </div>
-              <blockquote className="text-lg sm:text-2xl font-extrabold text-white font-['Syne',sans-serif] leading-snug">
+              <blockquote className="text-lg sm:text-2xl font-bold text-[#F8FAFC] font-['Space_Grotesk',sans-serif] leading-snug">
                 &ldquo;If I don&apos;t know it, I learn it; if I need it, I make it. I don&apos;t wait for ideal conditions—I build with what I have.&rdquo;
               </blockquote>
             </div>
 
             {/* First-Person Bio Card */}
-            <div className="p-6 sm:p-7 rounded-xl bg-[#0c121e]/90 border border-slate-700/70 space-y-4 text-slate-200 leading-relaxed font-normal text-sm sm:text-base">
+            <div className="p-6 sm:p-7 rounded bg-[#0D111A] border border-[#1A2234] space-y-4 text-[#CBD5E1] leading-relaxed font-normal text-sm sm:text-base">
               <p>
                 My approach to engineering and game design has always been simple: <strong className="text-white font-semibold">if I don&apos;t know it, I learn it; if I need it, I make it.</strong> I don&apos;t wait for ideal conditions or expensive toolkits—I build with what I have.
               </p>
@@ -624,7 +604,7 @@ export default function AboutSection() {
 
           {/* Right Column: 6 Dedicated Clickable Credential Dossiers */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45 }}
@@ -712,69 +692,61 @@ export default function AboutSection() {
                 <Award className="w-4 h-4 text-amber-400" />
                 <span>Live Public Exhibitions &amp; Floor Showcases</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-['Syne',sans-serif]">
-                Showcases I&apos;ve Been a Part Of
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#F8FAFC] font-['Space_Grotesk',sans-serif] uppercase">
+                Showcases &amp; Demonstrations
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1">
-                Featuring the <strong className="text-white">UEL Annual ACE Showcase 2026</strong> (where <em>Rastacats</em> was the sole Level 5 project chosen to exhibit downstairs with Level 6 honours projects, and <em>Delirium VR</em> was upstairs in the dedicated VR suite) alongside the <strong className="text-white">Summer VR Demonstration Series</strong> with Patrick Quinnell. Hover to pause or click any photo to enlarge.
+              <p className="text-xs sm:text-sm text-[#94A3B8] mt-1 font-['Plus_Jakarta_Sans',sans-serif]">
+                Featuring the <strong className="text-white">UEL Annual ACE Showcase 2026</strong> (where <em>Rastacats</em> was the sole Level 5 project chosen to exhibit with Level 6 honours projects, and <em>Delirium VR</em> in the dedicated VR suite) alongside the <strong className="text-white">Summer VR Demonstration Series</strong> with Patrick Quinnell.
               </p>
             </div>
-            <div className="text-[11px] font-mono text-amber-300/90 uppercase tracking-wider shrink-0">
-              Revolving Gallery • Click Any Frame
+            <div className="text-[11px] font-mono text-[#00F2FE] uppercase tracking-wider shrink-0">
+              Verified Photographic Logs • Click Any Frame
             </div>
           </div>
 
-          {/* Revolving Strip Container with Left/Right Edge Masks */}
-          <div className="relative w-full overflow-hidden rounded-2xl bg-[#090e18] border border-slate-700/80 py-5 shadow-2xl">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-20 bg-gradient-to-r from-[#090e18] to-transparent z-10"
-            />
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-20 bg-gradient-to-l from-[#090e18] to-transparent z-10"
-            />
-
-            <div className="animate-showcase-strip gap-5 px-5">
-              {marqueeItems.map((item, idx) => (
-                <button
-                  key={`${item.id}-${idx}`}
-                  type="button"
-                  onClick={() => setActiveShowcaseSlide(item)}
-                  className="w-72 sm:w-80 shrink-0 text-left rounded-xl bg-[#0c1322] border border-slate-700/80 hover:border-amber-400/70 overflow-hidden shadow-lg group transition-all cursor-pointer flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="relative aspect-video w-full overflow-hidden bg-black">
-                      <img
-                        src={getAssetUrl(item.src)}
-                        alt={item.caption}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0c1322] via-transparent to-black/40" />
-                      <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-black/80 border border-amber-400/45 text-[10px] font-mono font-bold uppercase tracking-wider text-amber-300 backdrop-blur-sm">
-                        {item.event}
-                      </span>
-                      <span className="absolute top-2.5 right-2.5 p-1.5 rounded-lg bg-black/75 text-white opacity-0 group-hover:opacity-100 transition-opacity border border-white/15">
-                        <Maximize2 className="w-3.5 h-3.5" />
-                      </span>
-                    </div>
-
-                    <div className="p-4">
-                      <div className="text-[10px] font-mono uppercase tracking-wider text-sky-300 mb-1">
-                        {item.location}
-                      </div>
-                      <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-amber-300 transition-colors leading-snug mb-1.5">
-                        {item.highlight}
-                      </h4>
-                      <p className="text-xs text-slate-300 leading-relaxed line-clamp-2">
-                        {item.caption}
-                      </p>
-                    </div>
+          {/* Fully Contained 4-Column Responsive Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {SHOWCASE_EXHIBITIONS.map((item, idx) => (
+              <button
+                key={`${item.id}-${idx}`}
+                type="button"
+                onClick={() => {
+                  audioEngine.playTick(600, 150);
+                  setActiveShowcaseSlide(item);
+                }}
+                className="text-left rounded bg-[#0D111A] border border-[#1A2234] hover:border-[#00F2FE] overflow-hidden group transition-all cursor-pointer flex flex-col justify-between"
+              >
+                <div>
+                  <div className="relative aspect-video w-full overflow-hidden bg-black">
+                    <img
+                      src={getAssetUrl(item.src)}
+                      alt={item.caption}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0D111A] via-transparent to-transparent" />
+                    <span className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/80 border border-[#00F2FE]/40 text-[10px] font-mono font-bold uppercase tracking-wider text-[#00F2FE]">
+                      {item.event}
+                    </span>
+                    <span className="absolute top-2 right-2 p-1 rounded bg-black/80 text-white opacity-0 group-hover:opacity-100 transition-opacity border border-white/20">
+                      <Maximize2 className="w-3 h-3 text-[#00F2FE]" />
+                    </span>
                   </div>
-                </button>
-              ))}
-            </div>
+
+                  <div className="p-3.5">
+                    <div className="text-[10px] font-mono uppercase tracking-wider text-[#00F2FE] mb-1">
+                      {item.location}
+                    </div>
+                    <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-[#00F2FE] transition-colors leading-snug mb-1 font-['Space_Grotesk',sans-serif]">
+                      {item.highlight}
+                    </h4>
+                    <p className="text-xs text-[#94A3B8] leading-relaxed line-clamp-2 font-['Plus_Jakarta_Sans',sans-serif]">
+                      {item.caption}
+                    </p>
+                  </div>
+                </div>
+              </button>
+            ))}
           </div>
         </motion.div>
       </div>
@@ -936,7 +908,7 @@ export default function AboutSection() {
 
                         {/* Why It Matters for Game Studios & Highlights */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                          <div className={`p-4 rounded-xl border-l-4 ${style.whyBox}`}>
+                          <div className={`p-4 rounded border ${style.whyBox}`}>
                             <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider font-bold mb-1.5">
                               <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                               <span>How This Shapes My Game Development</span>
@@ -1024,7 +996,7 @@ export default function AboutSection() {
                             </p>
                           </div>
 
-                          <div className={`p-4 rounded-xl border-l-4 ${style.whyBox}`}>
+                          <div className={`p-4 rounded border ${style.whyBox}`}>
                             <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider font-bold mb-1">
                               <Sparkles className="w-3.5 h-3.5" />
                               <span>How This Shapes My Game Development</span>

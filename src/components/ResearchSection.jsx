@@ -21,320 +21,284 @@ export default function ResearchSection() {
   const currentSlide = slides[activeSlideIdx] || slides[0];
 
   const handlePrevSlide = () => {
-    audioEngine.playTick(700, 300);
+    audioEngine.playTick(700, 200);
     setActiveSlideIdx((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   const handleNextSlide = () => {
-    audioEngine.playTick(700, 300);
+    audioEngine.playTick(700, 200);
     setActiveSlideIdx((prev) => (prev + 1) % slides.length);
   };
 
   return (
-    <section id="research" className="relative w-full overflow-hidden">
-      {/* Smooth Top Atmospheric Blend: Game Viewport (#06070d) -> Warm Editorial Charcoal (#111110) */}
-      <div className="h-28 w-full bg-gradient-to-b from-transparent via-[#0b0b0c]/85 to-[#111110] pointer-events-none" />
+    <section id="research" className="relative py-20 px-4 sm:px-6 lg:px-12 bg-[#080C14] border-t border-[#1A2234]">
+      <div className="max-w-[1360px] mx-auto w-full">
+        {/* Formal Academic Journal Masthead Bar */}
+        <div className="py-3 mb-10 border-b border-[#F59E0B]/30 flex flex-wrap items-center justify-between gap-4 text-[11px] font-mono uppercase tracking-widest text-[#F59E0B]">
+          <div className="flex items-center gap-2">
+            <BookOpen className="w-3.5 h-3.5 text-[#F59E0B]" />
+            <span>ACADEMIC MONOGRAPH // BSc DISSERTATION</span>
+          </div>
+          <div className="text-[#94A3B8]">
+            UNIVERSITY OF EAST LONDON • ROUTE B (PRACTICE-AS-RESEARCH)
+          </div>
+        </div>
 
-      {/* Full-Bleed Editorial Research Paper Biome */}
-      <div className="bg-editorial-paper border-t border-[#c89d66]/30 pt-24 pb-16 px-4 sm:px-6 relative">
-        <div className="max-w-6xl mx-auto">
-          {/* Formal Academic Journal Masthead Bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="border-t-2 border-b border-[#c89d66]/45 py-3.5 mb-12 flex flex-wrap items-center justify-between gap-4 text-[11px] font-mono uppercase tracking-[0.18em] text-[#c89d66]"
-          >
-            <div className="flex items-center gap-2.5">
-              <BookOpen className="w-3.5 h-3.5 text-[#c89d66]" />
-              <span>ACADEMIC RESEARCH &amp; BSc DISSERTATION</span>
+        {/* Editorial Title & Manuscript Downloads */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-10 mb-10 border-b border-[#1A2234]">
+          <div className="max-w-3xl">
+            <div className="text-xs font-mono uppercase tracking-wider text-[#F59E0B] mb-2 font-bold">
+              Provisional Undergraduate Dissertation Research
             </div>
-            <div className="text-[#a8a29e]">
-              UNIVERSITY OF EAST LONDON • ROUTE B (PRACTICE-AS-RESEARCH)
-            </div>
-          </motion.div>
-
-          {/* Editorial Title & Manuscript Download Bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55 }}
-            className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-12 mb-12 border-b border-[#e7e2d8]/15"
-          >
-            <div className="max-w-3xl">
-              <div className="text-xs font-mono uppercase tracking-[0.15em] text-[#c89d66] mb-3">
-                Provisional Undergraduate Dissertation Monograph
-              </div>
-              <h2 className="text-3xl sm:text-5xl font-bold text-[#f5f2eb] tracking-tight font-['Newsreader',Georgia,serif] leading-[1.12]">
-                {DISSERTATION_RESEARCH.title}
-              </h2>
-              <p className="text-lg sm:text-xl text-[#d6cec2] italic font-['Newsreader',Georgia,serif] mt-3 leading-relaxed">
-                {DISSERTATION_RESEARCH.subtitle}
-              </p>
-            </div>
-
-            {/* Formal Manuscript & Slide Downloads */}
-            <div className="flex flex-wrap items-center gap-3 shrink-0">
-              {DISSERTATION_RESEARCH.downloadProposal && (
-                <a
-                  href={getAssetUrl(DISSERTATION_RESEARCH.downloadProposal)}
-                  download
-                  className="inline-flex items-center gap-2.5 px-5 py-3 rounded-lg bg-[#c89d66] hover:bg-[#d6ad77] text-[#111110] font-bold text-xs uppercase tracking-wider transition-colors shadow-md"
-                >
-                  <FileText className="w-4 h-4" />
-                  <span>Research Proposal (.docx)</span>
-                </a>
-              )}
-              {DISSERTATION_RESEARCH.downloadSlides && (
-                <a
-                  href={getAssetUrl(DISSERTATION_RESEARCH.downloadSlides)}
-                  download
-                  className="inline-flex items-center gap-2.5 px-5 py-3 rounded-lg bg-[#1c1b19] hover:bg-[#262522] text-[#f5f2eb] font-semibold text-xs uppercase tracking-wider border border-[#c89d66]/45 transition-colors"
-                >
-                  <Presentation className="w-4 h-4 text-[#c89d66]" />
-                  <span>Pitch Slides (.pptx)</span>
-                </a>
-              )}
-              {DISSERTATION_RESEARCH.oneDriveFolder && (
-                <a
-                  href={DISSERTATION_RESEARCH.oneDriveFolder}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-3 rounded-lg bg-[#141b2b] hover:bg-[#1a263d] text-sky-200 hover:text-white font-semibold text-xs uppercase tracking-wider border border-sky-500/40 transition-colors shadow-sm"
-                  title="Open UEL SharePoint / OneDrive Submission Folder"
-                >
-                  <ExternalLink className="w-4 h-4 text-sky-400" />
-                  <span>Submission Folder</span>
-                </a>
-              )}
-            </div>
-          </motion.div>
-
-          {/* SECTION I: Abstract & Interactive Figure Plate (6-Slide Deck) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start pb-14 mb-14 border-b border-[#e7e2d8]/15">
-            {/* Left Column: Formal Abstract */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="lg:col-span-5 space-y-5"
-            >
-              <div className="flex items-center gap-3">
-                <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#c89d66] font-bold">
-                  Section I // Abstract &amp; Problem Space
-                </span>
-                <div className="h-[1px] flex-1 bg-[#c89d66]/25" />
-              </div>
-
-              <p className="text-[#e7e2d8] text-sm sm:text-base leading-[1.8] font-normal text-justify">
-                {DISSERTATION_RESEARCH.abstract}
-              </p>
-
-              {/* Formal Pull-Quote Box */}
-              <div className="p-5 bg-[#181715] border-l-2 border-[#c89d66] text-[#d6cec2] font-['Newsreader',Georgia,serif] italic text-base leading-relaxed">
-                &ldquo;When racial heritage is coded only through visual ambiguity without explicit narrative canon, players default to assuming whiteness or racial neutrality (Dietrich, 2013).&rdquo;
-              </div>
-
-              {/* Primary Research Question Card */}
-              {DISSERTATION_RESEARCH.researchQuestion && (
-                <div className="p-4 rounded-xl bg-[#171614] border border-[#c89d66]/35 text-[#f5f2eb]">
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-[#c89d66] mb-1.5 font-bold">
-                    Primary Research Question
-                  </div>
-                  <div className="text-sm font-['Newsreader',Georgia,serif] italic text-[#e7e2d8] leading-relaxed">
-                    &ldquo;{DISSERTATION_RESEARCH.researchQuestion}&rdquo;
-                  </div>
-                </div>
-              )}
-            </motion.div>
-
-            {/* Right Column: Interactive Archival Slide Plate */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="lg:col-span-7"
-            >
-              <div className="rounded-xl bg-[#161514] border border-[#c89d66]/35 overflow-hidden shadow-2xl">
-                {/* Plate Header */}
-                <div className="flex items-center justify-between px-4 py-3 bg-[#0d0c0b] border-b border-[#c89d66]/25">
-                  <span className="text-[11px] font-mono uppercase tracking-[0.15em] text-[#c89d66]">
-                    FIG. 1.{activeSlideIdx + 1} // PRESENTATION PLATE
-                  </span>
-                  <span className="text-[11px] font-mono text-[#a8a29e]">
-                    Plate {activeSlideIdx + 1} of {slides.length}
-                  </span>
-                </div>
-
-                {/* Slide Viewport */}
-                <div className="relative aspect-[16/9] bg-[#0a0908] flex items-center justify-center">
-                  {currentSlide && (
-                    <img
-                      src={getAssetUrl(currentSlide.src)}
-                      alt={currentSlide.caption}
-                      className="w-full h-full object-contain"
-                    />
-                  )}
-
-                  <button
-                    type="button"
-                    onClick={handlePrevSlide}
-                    className="absolute left-3 p-2 rounded-md bg-[#111110]/90 hover:bg-[#c89d66] text-[#f5f2eb] hover:text-[#111110] border border-[#c89d66]/40 transition-colors cursor-pointer"
-                    aria-label="Previous plate"
-                  >
-                    <ChevronLeft className="w-4 h-4" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleNextSlide}
-                    className="absolute right-3 p-2 rounded-md bg-[#111110]/90 hover:bg-[#c89d66] text-[#f5f2eb] hover:text-[#111110] border border-[#c89d66]/40 transition-colors cursor-pointer"
-                    aria-label="Next plate"
-                  >
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                </div>
-
-                {/* Plate Caption */}
-                <div className="px-4 py-3 bg-[#141312] border-t border-[#c89d66]/20 text-xs font-['Newsreader',Georgia,serif] italic text-[#d6cec2]">
-                  {currentSlide?.caption}
-                </div>
-
-                {/* Thumbnail Strip */}
-                <div className="grid grid-cols-6 gap-2 p-3 bg-[#0d0c0b] border-t border-[#c89d66]/20">
-                  {slides.map((s, idx) => {
-                    const isSelected = idx === activeSlideIdx;
-                    return (
-                      <button
-                        key={s.src}
-                        type="button"
-                        onClick={() => {
-                          audioEngine.playTick(600 + idx * 60, 200);
-                          setActiveSlideIdx(idx);
-                        }}
-                        className={`rounded overflow-hidden aspect-[16/9] border transition-all cursor-pointer ${
-                          isSelected
-                            ? 'border-[#c89d66] ring-1 ring-[#c89d66]/60 opacity-100'
-                            : 'border-white/10 opacity-50 hover:opacity-85'
-                        }`}
-                        title={s.caption}
-                      >
-                        <img
-                          src={getAssetUrl(s.src)}
-                          alt={`Plate ${idx + 1}`}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            </motion.div>
+            <h2 className="text-3xl sm:text-5xl font-bold text-[#F8FAFC] tracking-tight font-['Space_Grotesk',sans-serif] uppercase leading-[1.05]">
+              {DISSERTATION_RESEARCH.title}
+            </h2>
+            <p className="text-base sm:text-lg text-[#94A3B8] mt-3 font-['Plus_Jakarta_Sans',sans-serif]">
+              {DISSERTATION_RESEARCH.subtitle}
+            </p>
           </div>
 
-          {/* SECTION II: The Three Core Hypotheses */}
-          <div className="pb-14 mb-14 border-b border-[#e7e2d8]/15">
-            <div className="flex items-center gap-3 mb-8">
-              <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#c89d66] font-bold">
-                Section II // Research Hypotheses (The Illusion of Parity)
-              </span>
-              <div className="h-[1px] flex-1 bg-[#c89d66]/25" />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {DISSERTATION_RESEARCH.hypotheses.map((hyp, idx) => (
-                <motion.div
-                  key={hyp.number}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.08 }}
-                  className="p-6 rounded-xl bg-[#171614] border border-[#c89d66]/30 flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex items-center justify-between gap-2 pb-3 mb-4 border-b border-[#e7e2d8]/10">
-                      <span className="text-xs font-mono uppercase tracking-widest text-[#c89d66]">
-                        Hypothesis {hyp.number}
-                      </span>
-                      <span className="px-2.5 py-0.5 rounded bg-[#c89d66]/15 border border-[#c89d66]/40 text-[11px] font-mono font-bold text-[#e5c18d]">
-                        {hyp.stat}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold text-[#f5f2eb] font-['Newsreader',Georgia,serif] mb-3">
-                      {hyp.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-[#d6cec2] leading-relaxed">
-                      {hyp.summary}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* SECTION III: Triangulated Closed-Loop Methodology */}
-          <div className="pb-14 mb-12 border-b border-[#e7e2d8]/15">
-            <div className="flex items-center gap-3 mb-8">
-              <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#c89d66] font-bold">
-                Section III // Triangulated 3-Phase Methodology
-              </span>
-              <div className="h-[1px] flex-1 bg-[#c89d66]/25" />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {DISSERTATION_RESEARCH.methodology.map((m, idx) => (
-                <motion.div
-                  key={m.phase}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.08 }}
-                  className="p-6 rounded-xl bg-[#151413] border border-[#e7e2d8]/15 hover:border-[#c89d66]/45 transition-colors"
-                >
-                  <div className="text-[11px] font-mono uppercase tracking-wider text-[#c89d66] mb-2">
-                    {m.badge}
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[#f5f2eb] font-['Newsreader',Georgia,serif] mb-3">
-                    {m.phase}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#d6cec2] leading-relaxed">
-                    {m.details}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* SECTION IV: Cite Them Right Harvard Bibliography */}
-          <div className="rounded-xl bg-[#161514] border border-[#c89d66]/30 p-6">
-            <button
-              type="button"
-              onClick={() => setShowRefs(!showRefs)}
-              className="w-full flex items-center justify-between text-left cursor-pointer"
-            >
-              <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono uppercase tracking-[0.15em] text-[#c89d66] font-bold">
-                <Library className="w-4 h-4 text-[#c89d66]" />
-                <span>Section IV // Peer-Reviewed Literature &amp; Census Sources (Harvard Format)</span>
-              </div>
-              <span className="text-xs font-mono text-[#a8a29e] hover:text-[#f5f2eb]">
-                {showRefs ? 'Collapse [-]' : 'Expand [+]'}
-              </span>
-            </button>
-
-            {showRefs && (
-              <ul className="mt-5 pt-5 border-t border-[#e7e2d8]/15 space-y-2.5 text-xs sm:text-sm text-[#d6cec2] font-['Newsreader',Georgia,serif] leading-relaxed">
-                {DISSERTATION_RESEARCH.references.map((ref, idx) => (
-                  <li key={idx} className="pl-4 border-l border-[#c89d66]/40">
-                    {ref}
-                  </li>
-                ))}
-              </ul>
+          {/* Formal Manuscript & Slide Downloads */}
+          <div className="flex flex-wrap items-center gap-3 shrink-0 font-mono">
+            {DISSERTATION_RESEARCH.downloadProposal && (
+              <a
+                href={getAssetUrl(DISSERTATION_RESEARCH.downloadProposal)}
+                download
+                onClick={() => audioEngine.playTick(600, 150)}
+                className="inline-flex items-center gap-2 px-4 py-3 rounded bg-[#F59E0B] hover:bg-[#FBBF24] active:scale-[0.97] text-[#06070D] font-bold text-xs uppercase tracking-wider transition-all shadow-md"
+              >
+                <FileText className="w-4 h-4" />
+                <span>Proposal (.docx)</span>
+              </a>
+            )}
+            {DISSERTATION_RESEARCH.downloadSlides && (
+              <a
+                href={getAssetUrl(DISSERTATION_RESEARCH.downloadSlides)}
+                download
+                onClick={() => audioEngine.playTick(600, 150)}
+                className="inline-flex items-center gap-2 px-4 py-3 rounded bg-[#0D111A] hover:bg-[#131926] active:scale-[0.97] text-[#F8FAFC] font-semibold text-xs uppercase tracking-wider border border-[#F59E0B]/40 transition-all"
+              >
+                <Presentation className="w-4 h-4 text-[#F59E0B]" />
+                <span>Pitch (.pptx)</span>
+              </a>
+            )}
+            {DISSERTATION_RESEARCH.oneDriveFolder && (
+              <a
+                href={DISSERTATION_RESEARCH.oneDriveFolder}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => audioEngine.playTick(600, 150)}
+                className="inline-flex items-center gap-2 px-4 py-3 rounded bg-[#0D111A] hover:bg-[#131926] active:scale-[0.97] text-[#00F2FE] font-semibold text-xs uppercase tracking-wider border border-[#00F2FE]/40 transition-all"
+              >
+                <ExternalLink className="w-4 h-4 text-[#00F2FE]" />
+                <span>UEL Folder</span>
+              </a>
             )}
           </div>
+        </div>
+
+        {/* SECTION I: Abstract & Interactive Figure Plate */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pb-12 mb-12 border-b border-[#1A2234]">
+          {/* Left Column: Formal Abstract */}
+          <div className="lg:col-span-5 space-y-4">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#F59E0B] font-bold">
+                Section I // Abstract &amp; Problem Space
+              </span>
+              <div className="h-[1px] flex-1 bg-[#F59E0B]/20" />
+            </div>
+
+            <p className="text-[#94A3B8] text-sm sm:text-base leading-relaxed font-['Plus_Jakarta_Sans',sans-serif]">
+              {DISSERTATION_RESEARCH.abstract}
+            </p>
+
+            {/* Formal Quote Box */}
+            <div className="p-4 bg-[#0D111A] border-l-2 border-[#F59E0B] text-[#F8FAFC] text-sm leading-relaxed font-['Plus_Jakarta_Sans',sans-serif] italic">
+              &ldquo;When racial heritage is coded only through visual ambiguity without explicit narrative canon, players default to assuming whiteness or racial neutrality (Dietrich, 2013).&rdquo;
+            </div>
+
+            {/* Primary Research Question Card */}
+            {DISSERTATION_RESEARCH.researchQuestion && (
+              <div className="p-4 rounded bg-[#0D111A] border border-[#1A2234] text-[#F8FAFC]">
+                <div className="text-[10px] font-mono uppercase tracking-widest text-[#F59E0B] mb-1 font-bold">
+                  Primary Research Question
+                </div>
+                <div className="text-sm font-['Plus_Jakarta_Sans',sans-serif] text-[#F8FAFC] leading-relaxed">
+                  &ldquo;{DISSERTATION_RESEARCH.researchQuestion}&rdquo;
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Right Column: Interactive Archival Slide Plate */}
+          <div className="lg:col-span-7">
+            <div className="rounded bg-[#0D111A] border border-[#1A2234] overflow-hidden shadow-xl">
+              {/* Plate Header */}
+              <div className="flex items-center justify-between px-4 py-2.5 bg-[#080C14] border-b border-[#1A2234]">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[#F59E0B]">
+                  FIG. 1.{activeSlideIdx + 1} // RESEARCH EVIDENCE PLATE
+                </span>
+                <span className="text-[11px] font-mono text-[#64748B]">
+                  Plate {activeSlideIdx + 1} of {slides.length}
+                </span>
+              </div>
+
+              {/* Slide Viewport */}
+              <div className="relative aspect-[16/9] bg-black flex items-center justify-center">
+                {currentSlide && (
+                  <img
+                    src={getAssetUrl(currentSlide.src)}
+                    alt={currentSlide.caption}
+                    className="w-full h-full object-contain"
+                  />
+                )}
+
+                <button
+                  type="button"
+                  onClick={handlePrevSlide}
+                  className="absolute left-3 p-2 rounded bg-[#0D111A]/90 hover:bg-[#F59E0B] text-[#F8FAFC] hover:text-[#06070D] border border-[#1A2234] transition-colors cursor-pointer"
+                  aria-label="Previous plate"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={handleNextSlide}
+                  className="absolute right-3 p-2 rounded bg-[#0D111A]/90 hover:bg-[#F59E0B] text-[#F8FAFC] hover:text-[#06070D] border border-[#1A2234] transition-colors cursor-pointer"
+                  aria-label="Next plate"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Plate Caption */}
+              <div className="px-4 py-2.5 bg-[#080C14] border-t border-[#1A2234] text-xs font-mono text-[#94A3B8]">
+                {currentSlide?.caption}
+              </div>
+
+              {/* Thumbnail Strip */}
+              <div className="grid grid-cols-6 gap-2 p-2.5 bg-[#06070D] border-t border-[#1A2234]">
+                {slides.map((s, idx) => {
+                  const isSelected = idx === activeSlideIdx;
+                  return (
+                    <button
+                      key={s.src}
+                      type="button"
+                      onClick={() => {
+                        audioEngine.playTick(600 + idx * 50, 150);
+                        setActiveSlideIdx(idx);
+                      }}
+                      className={`rounded overflow-hidden aspect-[16/9] border transition-all cursor-pointer ${
+                        isSelected
+                          ? 'border-[#F59E0B] ring-1 ring-[#F59E0B] opacity-100'
+                          : 'border-[#1A2234] opacity-50 hover:opacity-100'
+                      }`}
+                      title={s.caption}
+                    >
+                      <img
+                        src={getAssetUrl(s.src)}
+                        alt={`Plate ${idx + 1}`}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* SECTION II: Hypotheses */}
+        <div className="pb-12 mb-12 border-b border-[#1A2234]">
+          <div className="flex items-center gap-2 mb-6">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#F59E0B] font-bold">
+              Section II // Core Research Hypotheses
+            </span>
+            <div className="h-[1px] flex-1 bg-[#F59E0B]/20" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {DISSERTATION_RESEARCH.hypotheses.map((hyp) => (
+              <div
+                key={hyp.number}
+                className="p-5 rounded bg-[#0D111A] border border-[#1A2234] flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-[#1A2234]">
+                    <span className="text-xs font-mono uppercase tracking-widest text-[#F59E0B]">
+                      Hypothesis {hyp.number}
+                    </span>
+                    <span className="px-2 py-0.5 rounded bg-[#F59E0B]/15 border border-[#F59E0B]/40 text-[10px] font-mono font-bold text-[#F59E0B]">
+                      {hyp.stat}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold text-[#F8FAFC] font-['Space_Grotesk',sans-serif] uppercase mb-2">
+                    {hyp.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed font-['Plus_Jakarta_Sans',sans-serif]">
+                    {hyp.summary}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* SECTION III: Methodology */}
+        <div className="pb-12 mb-12 border-b border-[#1A2234]">
+          <div className="flex items-center gap-2 mb-6">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#F59E0B] font-bold">
+              Section III // Triangulated 3-Phase Methodology
+            </span>
+            <div className="h-[1px] flex-1 bg-[#F59E0B]/20" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {DISSERTATION_RESEARCH.methodology.map((m) => (
+              <div
+                key={m.phase}
+                className="p-5 rounded bg-[#0D111A] border border-[#1A2234]"
+              >
+                <div className="text-[11px] font-mono uppercase tracking-wider text-[#00F2FE] mb-2 font-bold">
+                  {m.badge}
+                </div>
+                <h3 className="text-lg font-bold text-[#F8FAFC] font-['Space_Grotesk',sans-serif] uppercase mb-2">
+                  {m.phase}
+                </h3>
+                <p className="text-xs sm:text-sm text-[#94A3B8] leading-relaxed font-['Plus_Jakarta_Sans',sans-serif]">
+                  {m.details}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* SECTION IV: Bibliography */}
+        <div className="rounded bg-[#0D111A] border border-[#1A2234] p-5 sm:p-6">
+          <button
+            type="button"
+            onClick={() => setShowRefs(!showRefs)}
+            className="w-full flex items-center justify-between text-left cursor-pointer"
+          >
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-mono uppercase tracking-wider text-[#F59E0B] font-bold">
+              <Library className="w-4 h-4 text-[#F59E0B]" />
+              <span>Section IV // Harvard Format Bibliography</span>
+            </div>
+            <span className="text-xs font-mono text-[#64748B] hover:text-[#F8FAFC]">
+              {showRefs ? 'COLLAPSE [-]' : 'EXPAND [+]'}
+            </span>
+          </button>
+
+          {showRefs && (
+            <ul className="mt-4 pt-4 border-t border-[#1A2234] space-y-2 text-xs text-[#94A3B8] font-mono leading-relaxed">
+              {DISSERTATION_RESEARCH.references.map((ref, idx) => (
+                <li key={idx} className="pl-3 border-l border-[#F59E0B]/40">
+                  {ref}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </section>

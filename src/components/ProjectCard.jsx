@@ -92,7 +92,7 @@ export default function ProjectCard({ project, onSelectProject }) {
           href={project.links.itch}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#FF1E56] to-[#E11D48] hover:from-[#FF3366] hover:to-[#F43F5E] text-white font-bold text-xs tracking-wider uppercase shadow-lg shadow-rose-950/60 border border-rose-400/40 hover:scale-[1.02] active:scale-95 transition-all w-full"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white font-semibold text-xs tracking-wider uppercase shadow-md shadow-rose-900/30 hover:scale-[1.02] active:scale-95 transition-all w-full"
         >
           <Gamepad2 className="w-4 h-4 shrink-0" />
           <span>Play on Itch.io</span>
@@ -110,7 +110,7 @@ export default function ProjectCard({ project, onSelectProject }) {
           href={getAssetUrl(project.links.demo)}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-xs tracking-wider uppercase shadow-md shadow-indigo-950/40 hover:scale-[1.02] active:scale-95 transition-all w-full"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-semibold text-xs tracking-wider uppercase shadow-md shadow-indigo-950/40 hover:scale-[1.02] active:scale-95 transition-all w-full"
         >
           <Gamepad2 className="w-4 h-4 shrink-0" />
           <span>Play in Browser</span>
@@ -127,7 +127,7 @@ export default function ProjectCard({ project, onSelectProject }) {
           key="gdd"
           href={getAssetUrl(project.links.gdd)}
           download
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#92400E] to-[#78350F] hover:from-[#B45309] hover:to-[#92400E] text-amber-100 font-bold text-xs tracking-wider uppercase shadow-lg shadow-amber-950/60 border border-amber-500/50 hover:scale-[1.02] active:scale-95 transition-all w-full"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-amber-600/25 hover:bg-amber-600/40 text-amber-200 font-semibold text-xs tracking-wider uppercase border border-amber-500/40 hover:scale-[1.02] active:scale-95 transition-all w-full"
         >
           <BookOpen className="w-4 h-4 text-amber-300 shrink-0" />
           <span>Download GDD</span>
@@ -147,7 +147,7 @@ export default function ProjectCard({ project, onSelectProject }) {
             setViewMode('marketing');
             setMarketingSubTab('live');
           }}
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#047857] to-[#065F46] hover:from-[#059669] hover:to-[#047857] text-emerald-100 font-bold text-xs tracking-wider uppercase shadow-lg shadow-emerald-950/60 border border-emerald-400/50 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer w-full"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600/25 hover:bg-emerald-600/40 text-emerald-200 font-semibold text-xs tracking-wider uppercase border border-emerald-500/40 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer w-full"
         >
           <Globe className="w-4 h-4 text-emerald-300 shrink-0" />
           <span>Companion Site</span>
@@ -165,7 +165,7 @@ export default function ProjectCard({ project, onSelectProject }) {
           href={getAssetUrl(project.links.video)}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-red-600/30 hover:bg-red-600/50 text-red-200 font-bold text-xs tracking-wider uppercase border border-red-500/40 hover:scale-[1.02] active:scale-95 transition-all w-full"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-red-600/25 hover:bg-red-600/40 text-red-200 font-semibold text-xs tracking-wider uppercase border border-red-500/40 hover:scale-[1.02] active:scale-95 transition-all w-full"
         >
           <Clapperboard className="w-4 h-4 text-red-400 shrink-0" />
           <span>YouTube Walkthrough</span>
@@ -183,7 +183,7 @@ export default function ProjectCard({ project, onSelectProject }) {
           href={project.links.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#161B2E] hover:bg-[#202742] text-slate-100 font-bold text-xs tracking-wider uppercase shadow-md border border-white/20 hover:scale-[1.02] active:scale-95 transition-all w-full"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] text-slate-200 hover:text-white font-semibold text-xs tracking-wider uppercase border border-white/10 hover:scale-[1.02] active:scale-95 transition-all w-full"
         >
           <GithubIcon className="w-4 h-4 shrink-0" />
           <span>Source Code</span>
@@ -201,7 +201,7 @@ export default function ProjectCard({ project, onSelectProject }) {
           href={project.links.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#0284C7] to-[#0369A1] hover:from-[#0EA5E9] hover:to-[#0284C7] text-white font-bold text-xs tracking-wider uppercase shadow-lg shadow-sky-950/60 border border-sky-400/50 hover:scale-[1.02] active:scale-95 transition-all w-full"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#0077b5]/20 hover:bg-[#0077b5]/30 text-sky-300 hover:text-white font-semibold text-xs tracking-wider uppercase border border-[#0077b5]/30 hover:scale-[1.02] active:scale-95 transition-all w-full"
         >
           <LinkedinIcon className="w-4 h-4 shrink-0" />
           <span>View on LinkedIn</span>
@@ -218,9 +218,9 @@ export default function ProjectCard({ project, onSelectProject }) {
         key="breakdown"
         type="button"
         onClick={() => handleOpenCaseStudy(null)}
-        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#4F46E5] to-[#4338CA] hover:from-[#6366F1] hover:to-[#4F46E5] text-white font-bold text-xs tracking-wider uppercase shadow-lg shadow-indigo-950/60 border border-indigo-400/50 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer w-full"
+        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/35 text-indigo-200 hover:text-white font-semibold text-xs tracking-wider uppercase border border-indigo-500/35 hover:border-indigo-400/60 transition-all cursor-pointer w-full"
       >
-        <BookOpen className="w-3.5 h-3.5 text-indigo-200 shrink-0" />
+        <BookOpen className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
         <span>Full Breakdown &amp; Gallery</span>
       </button>
     )
@@ -236,7 +236,7 @@ export default function ProjectCard({ project, onSelectProject }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.98 }}
       transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={`group relative rounded-3xl p-6 md:p-8 backdrop-blur-xl transition-[border-color,box-shadow] duration-300 border overflow-hidden ${theme.containerClass}`}
+      className={`group relative rounded-3xl p-5 sm:p-6 md:p-8 backdrop-blur-xl transition-[border-color,box-shadow] duration-300 border overflow-hidden ${theme.containerClass}`}
     >
       {/* Dynamic Game Atmospheric Layer (Freeze, Falling Leaves, Inky Black Myndwell, etc.) */}
       <ProjectAtmosphere projectId={project.id} />
@@ -299,7 +299,7 @@ export default function ProjectCard({ project, onSelectProject }) {
             {/* Title */}
             <h3
               onClick={() => handleOpenCaseStudy(null)}
-              className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-1.5 font-['Space_Grotesk',sans-serif] group-hover:text-indigo-200 transition-colors cursor-pointer"
+              className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-1.5 font-['Space_Grotesk',sans-serif] group-hover:text-indigo-200 transition-colors cursor-pointer"
             >
               {activeTitle}
             </h3>
@@ -333,11 +333,14 @@ export default function ProjectCard({ project, onSelectProject }) {
                       <button
                         key={ver.id || idx}
                         type="button"
-                        onClick={() => setActiveVersionIndex(idx)}
+                        onClick={() => {
+                          audioEngine.playTick(650 + idx * 80, 200);
+                          setActiveVersionIndex(idx);
+                        }}
                         className={`px-3.5 py-2.5 rounded-xl text-left transition-all cursor-pointer flex items-center justify-between gap-2 border ${
                           isSelected
-                            ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white border-2 border-violet-400/80 shadow-[0_0_20px_rgba(139,92,246,0.6)]'
-                            : 'bg-[#09081a] hover:bg-white/[0.06] text-slate-400 hover:text-slate-200 border-white/10'
+                            ? 'bg-gradient-to-r from-indigo-600/80 to-violet-600/80 text-white border-indigo-300/70 shadow-md shadow-indigo-950/70'
+                            : 'bg-[#05070f]/80 hover:bg-white/[0.06] text-slate-400 hover:text-slate-200 border-white/10'
                         }`}
                       >
                         <div className="min-w-0">
@@ -357,9 +360,9 @@ export default function ProjectCard({ project, onSelectProject }) {
                         </div>
                         {ver.badge && (
                           <span
-                            className={`text-[10px] font-mono px-2 py-0.5 rounded shrink-0 font-bold ${
+                            className={`text-[10px] font-mono px-1.5 py-0.5 rounded shrink-0 ${
                               isSelected
-                                ? 'bg-black/50 text-emerald-300 border border-emerald-400/30'
+                                ? 'bg-black/35 text-emerald-300'
                                 : 'bg-white/5 text-slate-400'
                             }`}
                           >
@@ -374,17 +377,17 @@ export default function ProjectCard({ project, onSelectProject }) {
             )}
 
             {/* On-Card View Mode Switcher: [What I Built] | [Under the Hood: Maths & Logic] | [Companion Site & Repo Code] */}
-            <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-xl bg-[#090718]/90 border border-indigo-500/30 mb-4 w-fit">
+            <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-xl bg-[#060811] border border-white/10 mb-4 w-fit">
               <button
                 type="button"
                 onClick={() => setViewMode('overview')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
                   viewMode === 'overview'
-                    ? 'bg-indigo-600 text-white border border-indigo-400/70 shadow-[0_0_15px_rgba(79,70,229,0.5)]'
+                    ? 'bg-indigo-600/35 text-white border border-indigo-500/50 shadow-sm'
                     : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
-                <Layers className="w-3.5 h-3.5 text-indigo-200" />
+                <Layers className="w-3.5 h-3.5 text-indigo-400" />
                 <span>What I Built</span>
               </button>
 
@@ -394,7 +397,7 @@ export default function ProjectCard({ project, onSelectProject }) {
                   onClick={() => setViewMode('code')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
                     viewMode === 'code'
-                      ? 'bg-indigo-600 text-white border border-indigo-400/70 shadow-[0_0_15px_rgba(79,70,229,0.5)]'
+                      ? 'bg-indigo-600/35 text-indigo-200 border border-indigo-500/50 shadow-sm'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -409,7 +412,7 @@ export default function ProjectCard({ project, onSelectProject }) {
                   onClick={() => setViewMode('marketing')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
                     viewMode === 'marketing'
-                      ? 'bg-emerald-600/40 text-emerald-100 border border-emerald-400/60 shadow-[0_0_15px_rgba(16,185,129,0.4)]'
+                      ? 'bg-emerald-600/30 text-emerald-200 border border-emerald-500/50 shadow-sm'
                       : 'text-emerald-300/80 hover:text-emerald-200'
                   }`}
                 >
@@ -446,12 +449,13 @@ export default function ProjectCard({ project, onSelectProject }) {
                       {project.architectureNodes.map((node, nIdx) => (
                         <div
                           key={nIdx}
-                          className="p-2.5 rounded-xl bg-[#09081a]/90 border border-indigo-500/30 hover:border-indigo-400/50 transition-colors"
+                          className="p-2.5 rounded-xl bg-[#060812] border border-white/10 hover:border-indigo-400/40 transition-colors flex flex-col justify-between"
+                          title={`${node.label}: ${node.sub}`}
                         >
-                          <div className="text-[11px] font-bold text-white font-['Space_Grotesk',sans-serif] truncate">
+                          <div className="text-[11px] font-bold text-white leading-snug">
                             {node.label}
                           </div>
-                          <div className="text-[10px] font-mono text-indigo-300/80 truncate mt-0.5">
+                          <div className="text-[10px] font-mono text-indigo-300/80 mt-1 leading-snug break-words">
                             {node.sub}
                           </div>
                         </div>

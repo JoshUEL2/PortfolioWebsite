@@ -81,7 +81,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
             <Terminal className="w-3.5 h-3.5 text-emerald-400" />
             <span>COMPLETE ARCHIVE // {ALL_PROJECTS.length} GAMES, PROTOTYPES &amp; DESIGN BIBLES</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight font-['Syne',sans-serif]">
+          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight font-['Space_Grotesk',sans-serif]">
             The Complete Project Vault
           </h1>
           <p className="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl leading-relaxed">
@@ -279,7 +279,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                   {/* Title */}
                   <h3
                     onClick={() => onSelectProject(project)}
-                    className="text-base font-bold text-white tracking-tight mb-2 group-hover:text-indigo-200 transition-colors line-clamp-2 cursor-pointer font-['Syne',sans-serif]"
+                    className="text-base font-bold text-white tracking-tight mb-2 group-hover:text-indigo-200 transition-colors line-clamp-2 cursor-pointer font-['Space_Grotesk',sans-serif]"
                   >
                     {project.title}
                   </h3>

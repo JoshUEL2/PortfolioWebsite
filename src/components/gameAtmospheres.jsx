@@ -466,7 +466,7 @@ export function StateMachineAtmosphere({ isCompact = false }) {
       <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-sky-500/20 via-sky-400/80 to-emerald-400/60 pointer-events-none" />
 
       {/* Rotating perception cone / turret targeting reticle in top-right corner */}
-      <div className="absolute top-2 right-2 w-20 h-20 pointer-events-none select-none opacity-20 overflow-hidden">
+      <div className="absolute -top-6 -right-6 w-32 h-32 pointer-events-none select-none opacity-20">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}

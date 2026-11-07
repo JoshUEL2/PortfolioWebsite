@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Copy, Check, Send, MapPin, Gamepad2, Radio } from 'lucide-react';
+import { Mail, Copy, Check, Send, MapPin, Gamepad2 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import confetti from 'canvas-confetti';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { audioEngine } from '../utils/audioEngine';
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -17,21 +16,19 @@ export default function ContactSection() {
   const [status, setStatus] = useState({ type: null, message: '' });
 
   const handleCopyEmail = () => {
-    audioEngine.playTick(800, 150);
     navigator.clipboard.writeText(PERSONAL_INFO.email);
     setCopied(true);
     confetti({
-      particleCount: 40,
-      spread: 50,
+      particleCount: 50,
+      spread: 60,
       origin: { y: 0.8 },
-      colors: ['#00F2FE', '#F59E0B', '#10B981']
+      colors: ['#38bdf8', '#6366f1', '#10b981']
     });
     setTimeout(() => setCopied(false), 2500);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    audioEngine.playSweep();
     if (!formData.name || !formData.email || !formData.message) {
       setStatus({ type: 'error', message: 'Please complete all required fields.' });
       return;
@@ -51,129 +48,139 @@ export default function ContactSection() {
     });
 
     confetti({
-      particleCount: 60,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['#00F2FE', '#F59E0B', '#10B981']
+      particleCount: 80,
+      spread: 80,
+      origin: { y: 0.6 }
     });
   };
 
   return (
     <section
       id="contact"
-      className="relative w-full bg-[#070814] border-t border-indigo-500/25 text-[#F8FAFC] py-20 px-4 sm:px-6 lg:px-12"
+      className="relative w-full bg-dossier-grid border-t border-slate-800/90 text-slate-100 py-20"
     >
-      <div className="max-w-[1360px] mx-auto w-full">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-left max-w-2xl mb-12 pb-6 border-b border-indigo-500/25">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#0c0a22]/90 border border-indigo-500/35 text-indigo-300 text-xs font-mono uppercase tracking-wider mb-3 shadow-sm">
-            <Radio className="w-3.5 h-3.5 text-indigo-400" />
-            <span>TRANSMISSION CHANNEL // DIRECT CONTACT</span>
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-900 border border-slate-700 text-sky-300 text-xs font-mono uppercase tracking-wider mb-4">
+            <Mail className="w-3.5 h-3.5 text-sky-400" />
+            <span>Studio Inquiries &amp; Recruitment</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold text-[#F8FAFC] tracking-tight mb-3 font-['Space_Grotesk',sans-serif] uppercase">
-            Direct Studio Inquiry
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4 font-['Space_Grotesk',sans-serif]">
+            Direct Studio Contact
           </h2>
-          <p className="text-slate-300 text-base font-['Plus_Jakarta_Sans',sans-serif]">
-            Currently open to Technical Game Design, Systems Engineering, and Technical Artist roles across AAA and independent game studios.
+          <p className="text-slate-300 text-base sm:text-lg">
+            Currently open to Technical Game Design, Systems Engineering, and Technical Artist roles across AAA and independent studios.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Direct Info & Quick Copy */}
-          <div className="lg:col-span-5 space-y-4 font-mono">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-5 space-y-4"
+          >
             {/* Quick Copy Email Card */}
-            <div className="p-5 sm:p-6 rounded-2xl bg-[#0c0a22]/90 border border-indigo-500/25 shadow-lg">
-              <h3 className="text-xs uppercase tracking-wider text-indigo-300 mb-2 font-bold">
-                PRIMARY TRANSMISSION LINE
+            <div className="p-6 rounded-xl bg-[#0c121e] border border-slate-700/80 shadow-xl">
+              <h3 className="text-xs font-mono uppercase tracking-wider text-sky-400 mb-2">
+                Primary Correspondence
               </h3>
-              <p className="text-xs text-slate-400 mb-4 font-['Plus_Jakarta_Sans',sans-serif]">
-                Click below to copy direct studio email address:
+              <p className="text-sm text-slate-300 mb-4">
+                Click below to copy my direct email address to your clipboard:
               </p>
 
               <button
                 onClick={handleCopyEmail}
-                className="w-full flex items-center justify-between p-3.5 rounded-xl bg-[#09071a] hover:bg-[#13112c] border border-indigo-500/30 hover:border-indigo-400 text-[#F8FAFC] text-xs sm:text-sm transition-all group cursor-pointer active:scale-[0.98]"
+                className="w-full flex items-center justify-between p-3.5 rounded-lg bg-[#080c14] hover:bg-slate-900 border border-slate-700 text-white font-mono text-xs sm:text-sm transition-all group cursor-pointer"
               >
                 <div className="flex items-center gap-2.5 truncate">
-                  <Mail className="w-4 h-4 text-indigo-400 shrink-0" />
+                  <Mail className="w-4 h-4 text-sky-400 shrink-0" />
                   <span className="truncate">{PERSONAL_INFO.email}</span>
                 </div>
-                <div className="shrink-0 p-1.5 rounded-lg bg-indigo-500/20 text-indigo-300">
-                  {copied ? <Check className="w-4 h-4 text-[#10B981]" /> : <Copy className="w-4 h-4" />}
+                <div className="shrink-0 p-1.5 rounded bg-sky-500/20 text-sky-300 group-hover:bg-sky-500/30 transition-colors">
+                  {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
                 </div>
               </button>
 
               {copied && (
-                <p className="text-xs text-[#10B981] font-mono mt-2 flex items-center gap-1">
+                <motion.p
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-xs text-emerald-400 font-medium mt-2 flex items-center gap-1"
+                >
                   <Check className="w-3.5 h-3.5" /> Email copied to clipboard!
-                </p>
+                </motion.p>
               )}
             </div>
 
             {/* Location & Status Card */}
-            <div className="p-5 sm:p-6 rounded-2xl bg-[#0c0a22]/90 border border-indigo-500/25 shadow-lg">
-              <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-indigo-300 mb-2 font-bold">
-                <MapPin className="w-4 h-4 text-indigo-400" />
-                <span>LOCATION &amp; OPERATING STATUS</span>
+            <div className="p-6 rounded-xl bg-[#0c121e] border border-slate-700/80 shadow-lg">
+              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">
+                <MapPin className="w-4 h-4 text-sky-400" />
+                <span>Location &amp; Availability</span>
               </div>
-              <div className="text-sm font-bold text-[#F8FAFC] mb-1 font-['Space_Grotesk',sans-serif]">
+              <div className="text-base font-bold text-white mb-1">
                 London, England, UK (GMT / BST)
               </div>
-              <p className="text-xs text-[#94A3B8] font-['Plus_Jakarta_Sans',sans-serif]">
-                Available for hybrid or on-site studio roles in London and remote partnerships worldwide.
+              <p className="text-xs text-slate-300">
+                Available for hybrid or on-site studio roles in London and remote opportunities worldwide.
               </p>
             </div>
 
             {/* Social Links Bar */}
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-3">
               <a
                 href={PERSONAL_INFO.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => audioEngine.playTick(600, 150)}
-                className="flex flex-col items-center justify-center p-3 rounded bg-[#0D111A] hover:bg-[#131926] border border-[#1A2234] hover:border-[#00F2FE] text-[#94A3B8] hover:text-[#00F2FE] transition-colors text-xs font-mono active:scale-[0.97]"
+                className="flex flex-col items-center justify-center p-3.5 rounded-xl bg-[#0c121e] hover:bg-slate-800 border border-slate-700/80 hover:border-sky-500/50 text-slate-300 hover:text-white transition-all text-xs font-medium"
               >
-                <LinkedinIcon className="w-4 h-4 mb-1" />
+                <LinkedinIcon className="w-5 h-5 text-sky-400 mb-1" />
                 <span>LinkedIn</span>
               </a>
               <a
                 href={PERSONAL_INFO.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => audioEngine.playTick(600, 150)}
-                className="flex flex-col items-center justify-center p-3 rounded bg-[#0D111A] hover:bg-[#131926] border border-[#1A2234] hover:border-[#00F2FE] text-[#94A3B8] hover:text-[#00F2FE] transition-colors text-xs font-mono active:scale-[0.97]"
+                className="flex flex-col items-center justify-center p-3.5 rounded-xl bg-[#0c121e] hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 text-slate-300 hover:text-white transition-all text-xs font-medium"
               >
-                <GithubIcon className="w-4 h-4 mb-1" />
+                <GithubIcon className="w-5 h-5 text-slate-200 mb-1" />
                 <span>GitHub</span>
               </a>
               <a
                 href={PERSONAL_INFO.itch}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => audioEngine.playTick(600, 150)}
-                className="flex flex-col items-center justify-center p-3 rounded bg-[#0D111A] hover:bg-[#131926] border border-[#1A2234] hover:border-[#F59E0B] text-[#94A3B8] hover:text-[#F59E0B] transition-colors text-xs font-mono active:scale-[0.97]"
+                className="flex flex-col items-center justify-center p-3.5 rounded-xl bg-[#0c121e] hover:bg-slate-800 border border-slate-700/80 hover:border-rose-500/50 text-slate-300 hover:text-white transition-all text-xs font-medium"
               >
-                <Gamepad2 className="w-4 h-4 mb-1 text-[#F59E0B]" />
+                <Gamepad2 className="w-5 h-5 text-rose-400 mb-1" />
                 <span>Itch.io</span>
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Direct Message Form */}
-          <div className="lg:col-span-7 p-6 sm:p-8 rounded bg-[#0D111A] border border-[#1A2234]">
-            <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#1A2234]">
-              <h3 className="text-xl font-bold text-[#F8FAFC] font-['Space_Grotesk',sans-serif] uppercase">
-                Compose Direct Transmission
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-7 p-6 sm:p-8 rounded-xl bg-[#0c121e] border border-slate-700/80 shadow-xl"
+          >
+            <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-800">
+              <h3 className="text-xl font-bold text-white font-['Space_Grotesk',sans-serif]">
+                Send a Direct Studio Inquiry
               </h3>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#64748B]">
-                DISPATCH // MAILTO
+              <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400">
+                FORM // DIRECT-MAILTO
               </span>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-[#94A3B8] mb-1.5">
+                  <label className="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1.5">
                     Your Name *
                   </label>
                   <input
@@ -182,12 +189,12 @@ export default function ContactSection() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Alex Smith"
-                    className="w-full px-3.5 py-2.5 rounded bg-[#06070D] border border-[#1A2234] focus:border-[#00F2FE] focus:outline-none text-[#F8FAFC] text-sm font-['Plus_Jakarta_Sans',sans-serif] transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-[#080c14] border border-slate-700 focus:border-sky-400 focus:outline-none text-white text-sm transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-[#94A3B8] mb-1.5">
+                  <label className="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1.5">
                     Your Email *
                   </label>
                   <input
@@ -196,19 +203,19 @@ export default function ContactSection() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="alex@studio.com"
-                    className="w-full px-3.5 py-2.5 rounded bg-[#06070D] border border-[#1A2234] focus:border-[#00F2FE] focus:outline-none text-[#F8FAFC] text-sm font-['Plus_Jakarta_Sans',sans-serif] transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-[#080c14] border border-slate-700 focus:border-sky-400 focus:outline-none text-white text-sm transition-colors"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-[#94A3B8] mb-1.5">
-                  Subject / Discipline Focus
+                <label className="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1.5">
+                  Inquiry Topic
                 </label>
                 <select
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded bg-[#06070D] border border-[#1A2234] focus:border-[#00F2FE] focus:outline-none text-[#F8FAFC] text-sm font-mono transition-colors"
+                  className="w-full px-4 py-3 rounded-lg bg-[#080c14] border border-slate-700 focus:border-sky-400 focus:outline-none text-white text-sm transition-colors"
                 >
                   <option value="Game Design Role">Technical Game Designer Role</option>
                   <option value="Systems / Shader Engineering">Systems / Shader Engineering</option>
@@ -219,7 +226,7 @@ export default function ContactSection() {
               </div>
 
               <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-[#94A3B8] mb-1.5">
+                <label className="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1.5">
                   Message *
                 </label>
                 <textarea
@@ -228,15 +235,15 @@ export default function ContactSection() {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Tell me about the role, project, or technical challenge..."
-                  className="w-full px-3.5 py-2.5 rounded bg-[#06070D] border border-[#1A2234] focus:border-[#00F2FE] focus:outline-none text-[#F8FAFC] text-sm font-['Plus_Jakarta_Sans',sans-serif] transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-lg bg-[#080c14] border border-slate-700 focus:border-sky-400 focus:outline-none text-white text-sm transition-colors resize-none"
                 />
               </div>
 
               {status.message && (
                 <div
-                  className={`p-3 rounded text-xs font-mono ${
+                  className={`p-3 rounded-lg text-xs font-medium ${
                     status.type === 'success'
-                      ? 'bg-[#10B981]/20 text-[#10B981] border border-[#10B981]/40'
+                      ? 'bg-emerald-950/60 text-emerald-300 border border-emerald-500/30'
                       : 'bg-rose-950/60 text-rose-300 border border-rose-500/30'
                   }`}
                 >
@@ -246,13 +253,13 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                className="w-full py-3.5 rounded bg-[#00F2FE] hover:bg-[#38BDF8] active:scale-[0.98] text-[#06070D] font-mono font-bold text-xs uppercase tracking-wider shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm uppercase tracking-wider shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <Send className="w-4 h-4 text-[#06070D]" />
-                <span>Transmit Email Inquiry</span>
+                <Send className="w-4 h-4" />
+                <span>Launch Email Draft</span>
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

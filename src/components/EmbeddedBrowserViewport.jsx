@@ -56,7 +56,7 @@ export default function EmbeddedBrowserViewport({ src, title }) {
                 alt="Myndwell Logo"
                 className="w-4 h-4 object-contain"
               />
-              <span className="font-bold text-xs tracking-wider text-white uppercase font-['Syne',sans-serif]">
+              <span className="font-bold text-xs tracking-wider text-white uppercase font-['Space_Grotesk',sans-serif]">
                 Myndwell International
               </span>
               <span className="hidden sm:inline-block text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 font-semibold">

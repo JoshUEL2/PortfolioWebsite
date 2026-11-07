@@ -397,7 +397,7 @@ export default function CaseStudyModal({ project, onClose }) {
                   </span>
                 </div>
               )}
-              <h2 className="text-2xl sm:text-4xl font-black text-white font-['Syne',sans-serif] tracking-tight">
+              <h2 className="text-2xl sm:text-4xl font-black text-white font-['Space_Grotesk',sans-serif] tracking-tight">
                 {activeTitle}
               </h2>
               <p className="text-sm font-semibold text-indigo-300 mt-1">

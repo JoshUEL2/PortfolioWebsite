@@ -61,19 +61,19 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative w-full bg-[#06070D] border-t border-[#1A2234] text-[#F8FAFC] py-20 px-4 sm:px-6 lg:px-12"
+      className="relative w-full bg-[#070814] border-t border-indigo-500/25 text-[#F8FAFC] py-20 px-4 sm:px-6 lg:px-12"
     >
       <div className="max-w-[1360px] mx-auto w-full">
         {/* Header */}
-        <div className="text-left max-w-2xl mb-12 pb-6 border-b border-[#1A2234]">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#0D111A] border border-[#1A2234] text-[#00F2FE] text-xs font-mono uppercase tracking-wider mb-3">
-            <Radio className="w-3.5 h-3.5 text-[#00F2FE]" />
+        <div className="text-left max-w-2xl mb-12 pb-6 border-b border-indigo-500/25">
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#0c0a22]/90 border border-indigo-500/35 text-indigo-300 text-xs font-mono uppercase tracking-wider mb-3 shadow-sm">
+            <Radio className="w-3.5 h-3.5 text-indigo-400" />
             <span>TRANSMISSION CHANNEL // DIRECT CONTACT</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold text-[#F8FAFC] tracking-tight mb-3 font-['Space_Grotesk',sans-serif] uppercase">
             Direct Studio Inquiry
           </h2>
-          <p className="text-[#94A3B8] text-base font-['Plus_Jakarta_Sans',sans-serif]">
+          <p className="text-slate-300 text-base font-['Plus_Jakarta_Sans',sans-serif]">
             Currently open to Technical Game Design, Systems Engineering, and Technical Artist roles across AAA and independent game studios.
           </p>
         </div>
@@ -82,23 +82,23 @@ export default function ContactSection() {
           {/* Left Column: Direct Info & Quick Copy */}
           <div className="lg:col-span-5 space-y-4 font-mono">
             {/* Quick Copy Email Card */}
-            <div className="p-5 sm:p-6 rounded bg-[#0D111A] border border-[#1A2234]">
-              <h3 className="text-xs uppercase tracking-wider text-[#00F2FE] mb-2 font-bold">
+            <div className="p-5 sm:p-6 rounded-2xl bg-[#0c0a22]/90 border border-indigo-500/25 shadow-lg">
+              <h3 className="text-xs uppercase tracking-wider text-indigo-300 mb-2 font-bold">
                 PRIMARY TRANSMISSION LINE
               </h3>
-              <p className="text-xs text-[#94A3B8] mb-4 font-['Plus_Jakarta_Sans',sans-serif]">
+              <p className="text-xs text-slate-400 mb-4 font-['Plus_Jakarta_Sans',sans-serif]">
                 Click below to copy direct studio email address:
               </p>
 
               <button
                 onClick={handleCopyEmail}
-                className="w-full flex items-center justify-between p-3.5 rounded bg-[#06070D] hover:bg-[#131926] border border-[#1A2234] hover:border-[#00F2FE] text-[#F8FAFC] text-xs sm:text-sm transition-all group cursor-pointer active:scale-[0.98]"
+                className="w-full flex items-center justify-between p-3.5 rounded-xl bg-[#09071a] hover:bg-[#13112c] border border-indigo-500/30 hover:border-indigo-400 text-[#F8FAFC] text-xs sm:text-sm transition-all group cursor-pointer active:scale-[0.98]"
               >
                 <div className="flex items-center gap-2.5 truncate">
-                  <Mail className="w-4 h-4 text-[#00F2FE] shrink-0" />
+                  <Mail className="w-4 h-4 text-indigo-400 shrink-0" />
                   <span className="truncate">{PERSONAL_INFO.email}</span>
                 </div>
-                <div className="shrink-0 p-1.5 rounded bg-[#00F2FE]/20 text-[#00F2FE]">
+                <div className="shrink-0 p-1.5 rounded-lg bg-indigo-500/20 text-indigo-300">
                   {copied ? <Check className="w-4 h-4 text-[#10B981]" /> : <Copy className="w-4 h-4" />}
                 </div>
               </button>
@@ -111,9 +111,9 @@ export default function ContactSection() {
             </div>
 
             {/* Location & Status Card */}
-            <div className="p-5 sm:p-6 rounded bg-[#0D111A] border border-[#1A2234]">
-              <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-[#64748B] mb-2 font-bold">
-                <MapPin className="w-4 h-4 text-[#00F2FE]" />
+            <div className="p-5 sm:p-6 rounded-2xl bg-[#0c0a22]/90 border border-indigo-500/25 shadow-lg">
+              <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-indigo-300 mb-2 font-bold">
+                <MapPin className="w-4 h-4 text-indigo-400" />
                 <span>LOCATION &amp; OPERATING STATUS</span>
               </div>
               <div className="text-sm font-bold text-[#F8FAFC] mb-1 font-['Space_Grotesk',sans-serif]">

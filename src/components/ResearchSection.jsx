@@ -31,7 +31,7 @@ export default function ResearchSection() {
   };
 
   return (
-    <section id="research" className="relative py-20 px-4 sm:px-6 lg:px-12 bg-[#080C14] border-t border-[#1A2234]">
+    <section id="research" className="relative py-20 px-4 sm:px-6 lg:px-12 bg-[#080718] border-t border-indigo-500/25">
       <div className="max-w-[1360px] mx-auto w-full">
         {/* Formal Academic Journal Masthead Bar */}
         <div className="py-3 mb-10 border-b border-[#F59E0B]/30 flex flex-wrap items-center justify-between gap-4 text-[11px] font-mono uppercase tracking-widest text-[#F59E0B]">
@@ -45,7 +45,7 @@ export default function ResearchSection() {
         </div>
 
         {/* Editorial Title & Manuscript Downloads */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-10 mb-10 border-b border-[#1A2234]">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-10 mb-10 border-b border-indigo-500/25">
           <div className="max-w-3xl">
             <div className="text-xs font-mono uppercase tracking-wider text-[#F59E0B] mb-2 font-bold">
               Provisional Undergraduate Dissertation Research
@@ -53,7 +53,7 @@ export default function ResearchSection() {
             <h2 className="text-3xl sm:text-5xl font-bold text-[#F8FAFC] tracking-tight font-['Space_Grotesk',sans-serif] uppercase leading-[1.05]">
               {DISSERTATION_RESEARCH.title}
             </h2>
-            <p className="text-base sm:text-lg text-[#94A3B8] mt-3 font-['Plus_Jakarta_Sans',sans-serif]">
+            <p className="text-base sm:text-lg text-slate-300 mt-3 font-['Plus_Jakarta_Sans',sans-serif]">
               {DISSERTATION_RESEARCH.subtitle}
             </p>
           </div>
@@ -65,7 +65,7 @@ export default function ResearchSection() {
                 href={getAssetUrl(DISSERTATION_RESEARCH.downloadProposal)}
                 download
                 onClick={() => audioEngine.playTick(600, 150)}
-                className="inline-flex items-center gap-2 px-4 py-3 rounded bg-[#F59E0B] hover:bg-[#FBBF24] active:scale-[0.97] text-[#06070D] font-bold text-xs uppercase tracking-wider transition-all shadow-md"
+                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 active:scale-[0.97] text-[#06070D] font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-amber-950/40 hover:scale-[1.02]"
               >
                 <FileText className="w-4 h-4" />
                 <span>Proposal (.docx)</span>
@@ -76,7 +76,7 @@ export default function ResearchSection() {
                 href={getAssetUrl(DISSERTATION_RESEARCH.downloadSlides)}
                 download
                 onClick={() => audioEngine.playTick(600, 150)}
-                className="inline-flex items-center gap-2 px-4 py-3 rounded bg-[#0D111A] hover:bg-[#131926] active:scale-[0.97] text-[#F8FAFC] font-semibold text-xs uppercase tracking-wider border border-[#F59E0B]/40 transition-all"
+                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-[#0c0a22] hover:bg-[#161338] active:scale-[0.97] text-amber-200 font-semibold text-xs uppercase tracking-wider border border-amber-500/40 transition-all hover:scale-[1.02]"
               >
                 <Presentation className="w-4 h-4 text-[#F59E0B]" />
                 <span>Pitch (.pptx)</span>
@@ -88,9 +88,9 @@ export default function ResearchSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => audioEngine.playTick(600, 150)}
-                className="inline-flex items-center gap-2 px-4 py-3 rounded bg-[#0D111A] hover:bg-[#131926] active:scale-[0.97] text-[#00F2FE] font-semibold text-xs uppercase tracking-wider border border-[#00F2FE]/40 transition-all"
+                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-[#0c0a22] hover:bg-[#161338] active:scale-[0.97] text-indigo-300 font-semibold text-xs uppercase tracking-wider border border-indigo-500/40 transition-all hover:scale-[1.02]"
               >
-                <ExternalLink className="w-4 h-4 text-[#00F2FE]" />
+                <ExternalLink className="w-4 h-4 text-indigo-400" />
                 <span>UEL Folder</span>
               </a>
             )}
@@ -98,7 +98,7 @@ export default function ResearchSection() {
         </div>
 
         {/* SECTION I: Abstract & Interactive Figure Plate */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pb-12 mb-12 border-b border-[#1A2234]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pb-12 mb-12 border-b border-indigo-500/25">
           {/* Left Column: Formal Abstract */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-2">
@@ -108,12 +108,12 @@ export default function ResearchSection() {
               <div className="h-[1px] flex-1 bg-[#F59E0B]/20" />
             </div>
 
-            <p className="text-[#94A3B8] text-sm sm:text-base leading-relaxed font-['Plus_Jakarta_Sans',sans-serif]">
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-['Plus_Jakarta_Sans',sans-serif]">
               {DISSERTATION_RESEARCH.abstract}
             </p>
 
             {/* Formal Quote Box */}
-            <div className="p-4 bg-[#0D111A] border-l-2 border-[#F59E0B] text-[#F8FAFC] text-sm leading-relaxed font-['Plus_Jakarta_Sans',sans-serif] italic">
+            <div className="p-4 rounded-xl bg-[#0c0a22]/90 border border-amber-500/30 text-[#F8FAFC] text-sm leading-relaxed font-['Plus_Jakarta_Sans',sans-serif] italic shadow-inner">
               &ldquo;When racial heritage is coded only through visual ambiguity without explicit narrative canon, players default to assuming whiteness or racial neutrality (Dietrich, 2013).&rdquo;
             </div>
 

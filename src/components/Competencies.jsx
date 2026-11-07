@@ -61,44 +61,44 @@ const APPLIED_ENGINE_LEDGER = [
 
 export default function Competencies() {
   return (
-    <section id="toolkit" className="relative py-20 px-4 sm:px-6 lg:px-12 bg-[#06070D] border-t border-[#1A2234]">
+    <section id="toolkit" className="relative py-20 px-4 sm:px-6 lg:px-12 bg-[#070814] border-t border-indigo-500/25">
       <div className="max-w-[1360px] mx-auto w-full">
         {/* Diagnostic Header Bar */}
-        <div className="p-3 rounded bg-[#0D111A] border border-[#1A2234] mb-10 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px]">
-          <div className="flex items-center gap-2 text-[#00F2FE] font-bold uppercase tracking-wider">
-            <Cpu className="w-4 h-4 text-[#00F2FE] shrink-0" />
+        <div className="p-3 rounded-xl bg-[#0c0a22]/90 border border-indigo-500/25 mb-10 flex flex-wrap items-center justify-between gap-4 font-mono text-[11px] shadow-sm">
+          <div className="flex items-center gap-2 text-indigo-300 font-bold uppercase tracking-wider">
+            <Cpu className="w-4 h-4 text-indigo-400 shrink-0" />
             <span>ENGINE LAB // HARDWARE WORKBENCH &amp; REVERSE-ENGINEERING</span>
           </div>
-          <div className="flex items-center gap-3 text-[#10B981]">
+          <div className="flex items-center gap-3 text-emerald-400">
             <span className="inline-flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>BENCH: ONLINE</span>
             </span>
-            <span className="text-[#1A2234]">|</span>
-            <span className="text-[#94A3B8]">MOCAP // USB_HID // SHADERS</span>
+            <span className="text-indigo-500/40">|</span>
+            <span className="text-slate-400">MOCAP // USB_HID // SHADERS</span>
           </div>
         </div>
 
         {/* Section Headline */}
-        <div className="mb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-[#1A2234]">
+        <div className="mb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-indigo-500/25">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#0D111A] border border-[#1A2234] text-[#F59E0B] text-xs font-mono uppercase tracking-wider mb-3">
-              <Wrench className="w-3.5 h-3.5 text-[#F59E0B]" />
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#0c0a22]/90 border border-indigo-500/35 text-amber-300 text-xs font-mono uppercase tracking-wider mb-3 shadow-sm">
+              <Wrench className="w-3.5 h-3.5 text-amber-400" />
               <span>Systems Builder &amp; Technical Toolmaker</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-bold text-[#F8FAFC] tracking-tight font-['Space_Grotesk',sans-serif] uppercase leading-[1.05]">
               If a Tool Costs £10,000 or Doesn&apos;t Exist, I Build It Myself.
             </h2>
-            <p className="text-[#94A3B8] text-sm sm:text-base mt-3 leading-relaxed font-['Plus_Jakarta_Sans',sans-serif]">
+            <p className="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed font-['Plus_Jakarta_Sans',sans-serif]">
               I don&apos;t just use engines off-the-shelf. When I needed motion capture on a student budget, I fused an Xbox Kinect with PlayStation VR gyros over Python OSC. When vendor RGB/LCD software bloated my custom watercooled PC, I sniffed raw 64-byte USB HID packets in Wireshark and wrote custom device drivers.
             </p>
           </div>
 
-          <div className="px-4 py-3 rounded bg-[#0D111A] border border-[#1A2234] font-mono text-xs text-[#00F2FE] shrink-0">
-            <div className="text-[10px] uppercase tracking-wider text-[#64748B] mb-0.5">
+          <div className="px-4 py-3 rounded-xl bg-[#0c0a22]/90 border border-indigo-500/35 font-mono text-xs text-indigo-300 shrink-0 shadow-sm">
+            <div className="text-[10px] uppercase tracking-wider text-slate-400 mb-0.5">
               SYSTEM LOGS
             </div>
-            <div className="font-bold text-[#F8FAFC]">
+            <div className="font-bold text-white">
               4 Production Hardware &amp; Tooling Builds
             </div>
           </div>
@@ -109,21 +109,21 @@ export default function Competencies() {
           {HARDWARE_BENCH_PROJECTS.map((bench) => (
             <article
               key={bench.id}
-              className="rounded bg-[#0D111A] border border-[#1A2234] hover:border-[#00F2FE] overflow-hidden flex flex-col justify-between transition-colors group"
+              className="rounded-2xl bg-[#0c0a22]/90 border border-indigo-500/25 hover:border-indigo-400/60 shadow-[0_0_35px_rgba(99,102,241,0.12)] overflow-hidden flex flex-col justify-between transition-all group"
             >
               <div>
                 {/* Banner */}
-                <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-black border-b border-[#1A2234]">
+                <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-black border-b border-indigo-500/25">
                   <img
                     src={getAssetUrl(bench.image)}
                     alt={bench.title}
                     className="w-full h-full object-cover opacity-60 group-hover:opacity-85 transition-opacity duration-300"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D111A] via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0c0a22] via-transparent to-transparent" />
 
                   <div className="absolute top-3 inset-x-4 flex items-center justify-between gap-2">
-                    <span className="px-2 py-0.5 rounded bg-black/80 border border-[#00F2FE]/40 text-[10px] font-mono font-bold uppercase tracking-wider text-[#00F2FE]">
+                    <span className="px-2 py-0.5 rounded bg-black/80 border border-indigo-400/40 text-[10px] font-mono font-bold uppercase tracking-wider text-indigo-300">
                       {bench.tag}
                     </span>
 
@@ -134,7 +134,7 @@ export default function Competencies() {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={() => audioEngine.playTick(600, 150)}
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#06070D] hover:bg-[#131926] text-[#F8FAFC] border border-[#1A2234] text-[11px] transition-colors"
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#09071a] hover:bg-[#161338] text-[#F8FAFC] border border-indigo-500/35 text-[11px] transition-colors"
                         >
                           <GithubIcon className="w-3.5 h-3.5" />
                           <span>Source</span>
@@ -146,7 +146,7 @@ export default function Competencies() {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={() => audioEngine.playTick(600, 150)}
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#06070D] hover:bg-[#131926] text-[#00F2FE] border border-[#00F2FE]/40 text-[11px] transition-colors"
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#09071a] hover:bg-[#161338] text-indigo-300 border border-indigo-500/40 text-[11px] transition-colors"
                         >
                           <ExternalLink className="w-3.5 h-3.5" />
                           <span>Live Tool</span>

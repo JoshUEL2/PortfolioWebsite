@@ -1,84 +1,77 @@
 ---
 name: Joshua Johnson Portfolio Design System
-version: "2.0.0"
-direction: "The Diegetic Engine Profiler & Architectural Stage Archive"
+version: "2.1.0"
+direction: "Cosmic Indigo & Cyberpunk Metagame: Merged Architectural Telemetry"
 taste_skill_dials:
   mode: "Experience / Persuade"
   site_kind: "gaming / software"
   page_type: "portfolio"
-  visual_world: "Obsidian Slate & Telemetry Cyan/Amber"
-  anti_slop: "Zero mesh gradients, zero glassmorphism, zero marquee tickers, equal gutters"
+  visual_world: "Cosmic Midnight (#070814), Deep Indigo (#0C0A22), Vibrant Saturated Game Accents"
+  layout_discipline: "Equal 1360px gutters, modular work bubbles, zero horizontal overflow"
 colors:
-  canvas: "#06070D"
-  surface: "#0D111A"
-  surface-elevated: "#131926"
-  surface-hover: "#172033"
-  border-subtle: "#1A2234"
-  border-muted: "#243048"
-  border-active: "#00F2FE"
-  border-amber: "#F59E0B"
+  canvas: "#070814"
+  surface: "#0C0A22"
+  surface-elevated: "#151236"
+  surface-hover: "#1D1948"
+  border-subtle: "rgba(99, 102, 241, 0.25)"
+  border-muted: "rgba(139, 92, 246, 0.3)"
+  border-active: "#8B5CF6"
+  accent-rose: "#FF1E56"
+  accent-amber: "#F59E0B"
+  accent-emerald: "#10B981"
+  accent-sky: "#0284C7"
+  accent-purple: "#7C3AED"
+  accent-cyan: "#00F2FE"
   text-primary: "#F8FAFC"
   text-secondary: "#94A3B8"
   text-tertiary: "#64748B"
-  accent-cyan: "#00F2FE"
-  accent-amber: "#F59E0B"
-  accent-emerald: "#10B981"
-  accent-danger: "#EF4444"
 typography:
   display:
     fontFamily: "Space Grotesk, sans-serif"
     fontWeight: 700
-    letterSpacing: "-0.035em"
-    scale:
-      hero: "clamp(2.75rem, 6.5vw, 6.25rem)"
-      section: "clamp(1.75rem, 3.5vw, 2.75rem)"
-      subheading: "clamp(1.25rem, 2vw, 1.75rem)"
+    letterSpacing: "-0.03em"
   mono:
     fontFamily: "JetBrains Mono, monospace"
     fontWeight: 500
     letterSpacing: "0.05em"
-    scale:
-      sm: "0.75rem"
-      base: "0.875rem"
   body:
     fontFamily: "Plus Jakarta Sans, sans-serif"
     fontWeight: 400
     lineHeight: 1.65
-    scale:
-      sm: "0.875rem"
-      base: "1rem"
-      lg: "1.125rem"
 rounded:
-  none: "0px"
-  sm: "3px"
-  md: "6px"
-  lg: "10px"
+  sm: "6px"
+  md: "10px"
+  lg: "16px"
+  xl: "24px"
 spacing:
   gutter: "clamp(16px, 4vw, 48px)"
   container_max: "1360px"
   section_y: "clamp(64px, 8vh, 104px)"
 ---
 
-# Design Authority & Visual Standards
+# Design Authority & Visual Standards (v2.1.0 Merged Edition)
 
 ## 1. Architectural Concept
-The portfolio embodies the authentic environment of an in-engine developer telemetry suite (Unreal Engine Profiler / `DrawDebugString` / `stat unit`) paired with the colossal typographic scale of high-caliber international portfolios (Seth Lukin, Reino Studio). The site is an interactive diegetic artifact that demonstrates systems engineering, tactile game feel, and spatial rigor before a single word is read.
+A seamless synthesis of the developer's original atmospheric identity—deep cosmic violet/indigo canvases, bespoke game atmospheres, tactile multi-colored action controls—with the mathematical rigor of the Phase 5 engineering refactor (colossal Space Grotesk typography, zero horizontal leaks across any viewport, modular work bubbles, equal 1360px grid alignment, and procedural Web Audio feedback).
 
-## 2. Color System & Roles
-- **Canvas (`#06070D`)**: Deep obsidian substrate representing an engine viewport in standby mode. Zero purple or cyan background blur orbs.
-- **Surface (`#0D111A`)**: Structural panels, stage cards, and technical dossiers. Opaque depth with crisp 1px borders. Zero generic glassmorphic card backgrounds.
-- **Border Subtle (`#1A2234`)**: Structural framing lines adhering to a strict 12-column architectural grid with equal gutters.
-- **Telemetry Cyan (`#00F2FE`)**: Active module indicator; highlights selected project stages, active filter tabs, and live coordinates.
-- **Phosphor Amber (`#F59E0B`)**: Academic dissertation spotlight, engine version badges (`UE 5.8`, `C++`), and git telemetry.
+## 2. Palette & Game Accent Roles
+- **Canvas (`#070814`)**: Cosmic midnight with subtle radial indigo depth and 60fps ambient particle shader.
+- **Card Surfaces (`#0C0A22` / `#090718`)**: Deep obsidian-indigo containers with delicate violet glowing borders (`border-indigo-500/35`).
+- **Play Action (`#FF1E56` / Rose-Crimson)**: High-contrast punch for Itch.io playable builds.
+- **Academic & GDD (`#F59E0B` / Phosphor Amber)**: Design bibles, dissertation monographs, and engineering honors.
+- **Companion Portals (`#10B981` / Emerald)**: Web companion archives, live telemetry feeds, and system online states.
+- **Source Code (`#161B2E` / Charcoal Slate)**: Clean developer repository and architecture access.
+- **Industry & Network (`#0284C7` / LinkedIn Blue)**: Verified industry credentials and professional transmission.
+- **Deep Dives & Iterations (`#7C3AED` / Royal Violet)**: Iteration switchers, math breakdowns, and full case study galleries.
 
-## 3. Typography Discipline
-- **Display (`Space Grotesk`)**: Colossal uppercase headers with tight tracking (`-0.035em`) and authoritative line height (`0.95`–`1.05`).
-- **Telemetry (`JetBrains Mono`)**: Micro metadata, coordinate readouts, FPS, draw calls, hotkey indicators (`[1]..[5]`, `[ESC]`, `[M]`), and code tokens.
-- **Body (`Plus Jakarta Sans`)**: High-legibility technical case studies, research methodology, and personal statement copy.
+## 3. The "Work Bubbles" Paradigm
+- Modular rounded containers for all project telemetry, version switchers, and pipeline blocks.
+- Clean typography hierarchy: Space Grotesk display headings, Plus Jakarta Sans body copy, and JetBrains Mono metadata.
+- Zero truncation and zero off-center crowding.
 
-## 4. Layout & Equal Margin Discipline
-- **Unified Container**: All sections conform to a single maximum content width of `1360px` with equal responsive padding: `padding-left: clamp(16px, 4vw, 48px)` and `padding-right: clamp(16px, 4vw, 48px)`.
-- **Zero Overflow**: Every visual element is strictly bounded within its container. The runaway marquee and uncontained `text-[17vw]` are replaced with a structured architectural grid.
+## 4. Scaling & Multi-Viewport Discipline
+- Strict 1360px max container with equal responsive padding (`px-4 sm:px-6 lg:px-12`).
+- 0 horizontal overflows across 375px (mobile), 768px (tablet), 1280px (laptop), and 1920px (desktop).
 
 ## 5. Purposeful Motion & Animation Justification (Rule 4)
 | Interaction | Transition / Curve | Timing | What it Communicates | What is Lost if Removed |

@@ -125,12 +125,14 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#06070D] text-[#F8FAFC] overflow-x-hidden selection:bg-[#00F2FE] selection:text-[#06070D] font-['Plus_Jakarta_Sans',sans-serif]">
+    <div className="relative min-h-screen bg-[#070814] text-[#F8FAFC] overflow-x-hidden selection:bg-indigo-500 selection:text-white font-['Plus_Jakarta_Sans',sans-serif]">
       {/* Interactive 60fps Ambient Particle Shader (Layer 01 Backdrop) */}
       <BackgroundShader />
 
-      {/* Subtle Ambient Vignettes & Grid */}
-      <div className="fixed inset-0 bg-grid-pattern opacity-40 pointer-events-none z-0" />
+      {/* Cosmic Indigo/Violet Ambient Glows & Grid */}
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(99,102,241,0.18),transparent_70%)] pointer-events-none z-0" />
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_60%_50%_at_85%_50%,rgba(139,92,246,0.12),transparent_70%)] pointer-events-none z-0" />
+      <div className="fixed inset-0 bg-grid-pattern opacity-25 pointer-events-none z-0" />
       <div className="fixed inset-0 bg-radial-vignette pointer-events-none z-0" />
 
       {/* Main Content Container */}

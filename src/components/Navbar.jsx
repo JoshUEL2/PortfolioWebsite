@@ -126,32 +126,32 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className={`pointer-events-auto flex items-center justify-between w-full px-4 sm:px-6 py-2.5 rounded bg-[#0D111A]/95 border transition-all ${
+            className={`pointer-events-auto flex items-center justify-between w-full px-4 sm:px-6 py-2.5 rounded-xl bg-[#0c0a20]/95 border transition-all ${
               scrolled
-                ? 'border-[#00F2FE]/50 shadow-2xl shadow-black/80'
-                : 'border-[#1A2234] shadow-lg'
+                ? 'border-indigo-500/60 shadow-2xl shadow-black/80'
+                : 'border-indigo-500/35 shadow-lg'
             }`}
           >
             {/* Brand / Logo */}
             <button
               onClick={handleBrandClick}
-              className="flex items-center gap-3 text-left group cursor-pointer focus-visible:ring-1 focus-visible:ring-[#00F2FE]"
+              className="flex items-center gap-3 text-left group cursor-pointer focus-visible:ring-1 focus-visible:ring-indigo-400"
             >
-              <div className="w-7 h-7 rounded bg-[#00F2FE] text-[#06070D] font-mono font-bold text-xs flex items-center justify-center tracking-tighter">
+              <div className="w-7 h-7 rounded bg-gradient-to-br from-indigo-500 to-violet-600 text-white font-mono font-bold text-xs flex items-center justify-center tracking-tighter shadow-sm shadow-indigo-950/60">
                 JJ
               </div>
               <div className="flex flex-col">
                 <span className="font-['Space_Grotesk',sans-serif] font-bold text-sm tracking-tight text-[#F8FAFC] uppercase">
                   Joshua Johnson
                 </span>
-                <span className="text-[10px] font-mono text-[#00F2FE] tracking-wider uppercase">
+                <span className="text-[10px] font-mono text-indigo-300 tracking-wider uppercase">
                   UE5 Systems Designer
                 </span>
               </div>
             </button>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center gap-1 bg-[#06070D] border border-[#1A2234] rounded p-1">
+            <div className="hidden md:flex items-center gap-1 bg-[#070616] border border-indigo-500/25 rounded-lg p-1">
               {navLinks.map((link) => {
                 const isActive = currentView === 'featured' && activeSection === link.id;
                 return (
@@ -160,8 +160,8 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
                     onClick={() => scrollTo(link.id)}
                     className={`relative px-3 py-1 text-xs font-mono font-semibold tracking-wider transition-all duration-150 cursor-pointer rounded ${
                       isActive
-                        ? 'text-[#06070D] bg-[#00F2FE]'
-                        : 'text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-[#131926]'
+                        ? 'text-white bg-gradient-to-r from-indigo-600 to-violet-600 shadow-md shadow-indigo-950/60'
+                        : 'text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-[#13112c]'
                     }`}
                   >
                     {link.label}
@@ -173,8 +173,8 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
                 onClick={handleOpenAllProjects}
                 className={`relative ml-1 px-3 py-1 rounded text-xs font-mono font-bold tracking-wider transition-all cursor-pointer ${
                   currentView === 'all-projects'
-                    ? 'bg-[#F59E0B] text-[#06070D]'
-                    : 'text-[#F59E0B] border border-[#F59E0B]/40 hover:bg-[#F59E0B]/15'
+                    ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-[#06070D]'
+                    : 'text-amber-300 border border-amber-500/40 hover:bg-amber-500/15'
                 }`}
               >
                 VAULT ({ALL_PROJECTS.length})
@@ -188,17 +188,17 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
                 type="button"
                 onClick={handleToggleAudio}
                 aria-label={isMuted ? 'Unmute procedural audio (M key)' : 'Mute procedural audio (M key)'}
-                className={`px-2.5 py-1.5 rounded text-xs font-mono flex items-center gap-1.5 border transition-all cursor-pointer ${
+                className={`px-2.5 py-1.5 rounded-lg text-xs font-mono flex items-center gap-1.5 border transition-all cursor-pointer ${
                   isMuted
-                    ? 'bg-[#06070D] text-[#64748B] border-[#1A2234] hover:text-[#F8FAFC]'
-                    : 'bg-[#06070D] text-[#00F2FE] border-[#00F2FE]/50 shadow-[0_0_10px_rgba(0,242,254,0.2)]'
+                    ? 'bg-[#070616] text-[#64748B] border-indigo-500/25 hover:text-[#F8FAFC]'
+                    : 'bg-[#070616] text-indigo-300 border-indigo-500/50 shadow-[0_0_12px_rgba(99,102,241,0.25)]'
                 }`}
                 title="Toggle Web Audio cues [M]"
               >
                 {isMuted ? (
                   <VolumeX className="w-3.5 h-3.5" />
                 ) : (
-                  <Volume2 className="w-3.5 h-3.5 text-[#00F2FE]" />
+                  <Volume2 className="w-3.5 h-3.5 text-indigo-300" />
                 )}
                 <span className="hidden sm:inline text-[10px] uppercase font-bold">
                   {isMuted ? 'MUTED' : 'AUDIO'}

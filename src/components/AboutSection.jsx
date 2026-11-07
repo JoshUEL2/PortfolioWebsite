@@ -470,9 +470,9 @@ export default function AboutSection() {
             className="lg:col-span-7 space-y-6"
           >
             {/* Executive Statement Box */}
-            <div className="relative p-6 rounded bg-[#0D111A] border border-[#00F2FE]/50 shadow-xl">
-              <div className="text-[11px] font-mono uppercase tracking-widest text-[#00F2FE] mb-1.5 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00F2FE]"></span>
+            <div className="relative p-6 rounded-2xl bg-[#0c0a22]/90 border border-violet-500/40 shadow-[0_0_35px_rgba(139,92,246,0.15)]">
+              <div className="text-[11px] font-mono uppercase tracking-widest text-violet-300 mb-1.5 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-violet-400"></span>
                 <span>Core Engineering Creed</span>
               </div>
               <blockquote className="text-lg sm:text-2xl font-bold text-[#F8FAFC] font-['Space_Grotesk',sans-serif] leading-snug">
@@ -481,7 +481,7 @@ export default function AboutSection() {
             </div>
 
             {/* First-Person Bio Card */}
-            <div className="p-6 sm:p-7 rounded bg-[#0D111A] border border-[#1A2234] space-y-4 text-[#CBD5E1] leading-relaxed font-normal text-sm sm:text-base">
+            <div className="p-6 sm:p-7 rounded-2xl bg-[#0c0a22]/90 border border-indigo-500/25 space-y-4 text-slate-300 leading-relaxed font-normal text-sm sm:text-base">
               <p>
                 My approach to engineering and game design has always been simple: <strong className="text-white font-semibold">if I don&apos;t know it, I learn it; if I need it, I make it.</strong> I don&apos;t wait for ideal conditions or expensive toolkits—I build with what I have.
               </p>
@@ -489,7 +489,7 @@ export default function AboutSection() {
                 When motion-capture suits cost thousands, I built my own from an Xbox Kinect, PSVR gyros, and Python OSC. When our school had no 3D assets for our game, I taught myself Blender and rebuilt the entire campus at full scale, combining 2,377 textures so it would run smoothly. And when Unreal Engine 5&apos;s default character movement component assumed flat planar gravity, I worked out the surface normals and quaternion slerp to let players drive 360° inside and outside cylindrical pipes in <strong className="text-white font-semibold">Rastacats (92% Distinction, 1st Class)</strong>.
               </p>
               <p>
-                As a mixed-race developer, games became where I could build worlds from scratch, set my own rules, and create the belonging I didn&apos;t find elsewhere. That personal perspective drives my final-year dissertation, <strong className="text-sky-300 font-semibold">&ldquo;Representing the Spectrum&rdquo;</strong>, where I&apos;m auditing 100 commercial game characters to challenge the &ldquo;Illusion of Parity&rdquo; and building an open-source Unreal Engine 5 character pipeline with accurate 3C/4A hair curls and dual-heritage facial topology.
+                As a mixed-race developer, games became where I could build worlds from scratch, set my own rules, and create the belonging I didn&apos;t find elsewhere. That personal perspective drives my final-year dissertation, <strong className="text-indigo-300 font-semibold">&ldquo;Representing the Spectrum&rdquo;</strong>, where I&apos;m auditing 100 commercial game characters to challenge the &ldquo;Illusion of Parity&rdquo; and building an open-source Unreal Engine 5 character pipeline with accurate 3C/4A hair curls and dual-heritage facial topology.
               </p>
               <p>
                 That same attitude shapes how I lead. Selected through an anonymous application and panel interview as <strong className="text-white font-semibold">School Representative for the Media School</strong>, I represent thousands of students across our games and computing cohorts, sit on the Student Leadership Committee and Sextennial Review, and run weekly Unreal Engine workshops for classmates who are falling behind—because I know what it&apos;s like to learn without support.
@@ -498,12 +498,12 @@ export default function AboutSection() {
 
             {/* What Sets Me Apart // Three Pillars Card */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
-              <div className="p-4 rounded-xl bg-[#080d17] border border-slate-800 flex flex-col justify-between">
+              <div className="p-4 rounded-xl bg-[#09071a] border border-indigo-500/25 flex flex-col justify-between">
                 <div>
                   <div className="text-[10px] font-mono uppercase tracking-wider text-sky-400 font-bold mb-1">
                     01 // Scrappy Engineering
                   </div>
-                  <h4 className="text-sm font-bold text-white mb-1.5 font-['Syne',sans-serif]">
+                  <h4 className="text-sm font-bold text-white mb-1.5 font-['Space_Grotesk',sans-serif]">
                     Building From Scratch
                   </h4>
                   <p className="text-xs text-slate-400 leading-relaxed">
@@ -512,12 +512,12 @@ export default function AboutSection() {
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#080d17] border border-slate-800 flex flex-col justify-between">
+              <div className="p-4 rounded-xl bg-[#09071a] border border-indigo-500/25 flex flex-col justify-between">
                 <div>
                   <div className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 font-bold mb-1">
                     02 // Design × Mathematics
                   </div>
-                  <h4 className="text-sm font-bold text-white mb-1.5 font-['Syne',sans-serif]">
+                  <h4 className="text-sm font-bold text-white mb-1.5 font-['Space_Grotesk',sans-serif]">
                     Calculated Game Feel
                   </h4>
                   <p className="text-xs text-slate-400 leading-relaxed">

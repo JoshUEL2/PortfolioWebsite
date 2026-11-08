@@ -425,7 +425,7 @@ export default function AboutSection() {
       <div className="h-14 w-full bg-gradient-to-b from-[#070b09] to-transparent pointer-events-none" />
 
       {/* Top Executive Dossier Identification Bar */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-2">
+      <div className="max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 pt-2">
         <div className="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-slate-700/80 text-[11px] font-mono uppercase tracking-[0.2em] text-slate-400">
           <div className="flex items-center gap-2.5">
             <Building2 className="w-3.5 h-3.5 text-sky-400" />
@@ -443,7 +443,7 @@ export default function AboutSection() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+      <div className="max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 py-14 sm:py-16">
         {/* Section Header */}
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>

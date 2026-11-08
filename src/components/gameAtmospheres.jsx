@@ -7,12 +7,12 @@ export function FreezeAtmosphere({ isCompact = false }) {
     <>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(56,189,248,0.22),transparent_70%)] pointer-events-none rounded-3xl" />
 
-      {/* Physical Hanging SVG Icicle Trim along the Top Rim of the Holder */}
-      <div className="absolute top-0 inset-x-0 pointer-events-none z-10 overflow-hidden">
+      {/* Physical Hanging SVG Icicle Trim along the Top Rim of the Holder (Kept to top border to prevent overlap with badges) */}
+      <div className="absolute top-0 inset-x-0 pointer-events-none z-0 overflow-hidden">
         <svg
           viewBox="0 0 600 70"
           preserveAspectRatio="none"
-          className="w-full h-9 sm:h-12 text-cyan-200 drop-shadow-[0_2px_8px_rgba(6,182,212,0.8)]"
+          className="w-full h-4 sm:h-6 text-cyan-200/90 drop-shadow-[0_2px_6px_rgba(6,182,212,0.7)]"
         >
           <defs>
             <linearGradient id="icicleFacetGrad" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -101,12 +101,12 @@ export function InkyMyndwellAtmosphere() {
       <div className="absolute top-0 right-0 w-80 h-80 bg-[radial-gradient(circle_at_top_right,rgba(6,182,212,0.18),transparent_70%)] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-[radial-gradient(circle_at_bottom_left,rgba(8,145,178,0.14),transparent_70%)] pointer-events-none" />
 
-      {/* Physical Viscous Inky Drip Shelf Along Top Edge */}
-      <div className="absolute top-0 inset-x-0 pointer-events-none z-10 overflow-hidden">
+      {/* Physical Viscous Inky Drip Shelf Along Top Edge (Kept strictly to top border to prevent badge overlap) */}
+      <div className="absolute top-0 inset-x-0 pointer-events-none z-0 overflow-hidden">
         <svg
           viewBox="0 0 600 60"
           preserveAspectRatio="none"
-          className="w-full h-8 sm:h-11 text-[#010204] drop-shadow-[0_4px_10px_rgba(0,0,0,1)]"
+          className="w-full h-4 sm:h-5 text-[#010204] drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
         >
           <path
             d="M0,0 L600,0 L600,8 Q580,10 570,25 Q560,50 555,54 Q550,54 540,25 Q530,10 500,8 Q480,10 465,30 Q450,56 445,58 Q440,58 425,30 Q410,10 380,8 Q360,10 350,22 Q340,40 335,42 Q330,42 320,22 Q310,10 270,8 Q250,10 240,28 Q230,52 225,54 Q220,54 210,28 Q200,10 160,8 Q140,10 130,24 Q120,44 115,46 Q110,46 100,24 Q90,10 60,8 Q40,10 30,26 Q20,48 15,50 Q10,50 0,26 Z"
@@ -120,11 +120,11 @@ export function InkyMyndwellAtmosphere() {
         {[15, 115, 225, 335, 445, 555].map((xPos, idx) => (
           <motion.div
             key={idx}
-            initial={{ y: 8, scaleY: 0.8, opacity: 0 }}
+            initial={{ y: 4, scaleY: 0.8, opacity: 0 }}
             animate={{
-              y: [8, 25, 160],
-              scaleY: [0.8, 2.0, 1.3],
-              opacity: [0, 0.95, 0]
+              y: [4, 18, 55],
+              scaleY: [0.8, 1.6, 1.1],
+              opacity: [0, 0.8, 0]
             }}
             transition={{
               duration: 2.3 + (idx % 3) * 0.4,
@@ -178,25 +178,25 @@ export function LeavesAtmosphere({ isCompact = false }) {
         </svg>
       </div>
 
-      {/* Multi-veined Falling Leaves Swaying Gently Across Container */}
-      {Array.from({ length: isCompact ? 6 : 9 }).map((_, i) => (
+      {/* Multi-veined Falling Leaves Swaying Gently Across Container (Confined to upper 75% so they never obstruct action buttons) */}
+      {Array.from({ length: isCompact ? 5 : 7 }).map((_, i) => (
         <motion.div
           key={i}
           initial={{
             y: -25,
-            x: `${(i * 12 + 4) % 92}%`,
+            x: `${(i * 14 + 4) % 88}%`,
             rotate: i * 40,
             opacity: 0
           }}
           animate={{
-            y: ['0%', '115%'],
+            y: ['0%', '70%'],
             x: [
-              `${(i * 12 + 4) % 92}%`,
-              `${((i * 12 + 4) % 92) + ((i % 2 === 0 ? 1 : -1) * 7)}%`,
-              `${(i * 12 + 4) % 92}%`
+              `${(i * 14 + 4) % 88}%`,
+              `${((i * 14 + 4) % 88) + ((i % 2 === 0 ? 1 : -1) * 6)}%`,
+              `${(i * 14 + 4) % 88}%`
             ],
-            rotate: [i * 40, i * 40 + 160, i * 40 + 320],
-            opacity: [0, 0.85, 0.75, 0]
+            rotate: [i * 40, i * 40 + 120, i * 40 + 240],
+            opacity: [0, 0.65, 0.45, 0]
           }}
           transition={{
             duration: 8 + (i % 4) * 2,
@@ -550,12 +550,12 @@ export function OverviewAtmosphere({ projectId }) {
     case 'rastacats':
       return (
         <>
-          {/* Physical Hanging SVG Icicle Trim along the Top of the Overview Holder */}
-          <div className="absolute top-0 inset-x-0 pointer-events-none z-10 overflow-hidden">
+          {/* Subtle Accent Along Top Rim of Overview Holder (Zero text overlap) */}
+          <div className="absolute top-0 inset-x-0 pointer-events-none z-0 overflow-hidden h-2.5">
             <svg
               viewBox="0 0 500 45"
               preserveAspectRatio="none"
-              className="w-full h-6 text-cyan-200 drop-shadow-[0_2px_6px_rgba(6,182,212,0.8)]"
+              className="w-full h-full text-cyan-300/40"
             >
               <defs>
                 <linearGradient id="overviewIcicleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -587,12 +587,12 @@ export function OverviewAtmosphere({ projectId }) {
     case 'rem':
       return (
         <>
-          {/* Physical Viscous Inky Drip Shelf Along Top of the Overview Holder */}
-          <div className="absolute top-0 inset-x-0 pointer-events-none z-10 overflow-hidden">
+          {/* Subtle Top Rim Accent of the Overview Holder (Zero text overlap) */}
+          <div className="absolute top-0 inset-x-0 pointer-events-none z-0 overflow-hidden h-2">
             <svg
               viewBox="0 0 500 40"
               preserveAspectRatio="none"
-              className="w-full h-5 text-[#010204] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+              className="w-full h-full text-[#010204]"
             >
               <path
                 d="M0,0 L500,0 L500,6 Q480,8 470,18 Q460,35 455,38 Q450,38 440,18 Q430,8 400,6 Q380,8 365,20 Q350,38 345,40 Q340,40 325,20 Q310,8 270,6 Q250,8 240,20 Q230,36 225,38 Q220,38 210,20 Q200,8 160,6 Q140,8 130,16 Q120,30 115,32 Q110,32 100,16 Q90,8 60,6 Q40,8 30,18 Q20,34 15,36 Q10,36 0,18 Z"

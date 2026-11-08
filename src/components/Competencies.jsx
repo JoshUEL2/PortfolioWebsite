@@ -10,7 +10,7 @@ const APPLIED_ENGINE_LEDGER = [
     items: [
       {
         skill: '360° Polar Cross-Section Gravity & Spline Banking',
-        where: 'Built for Rastacats (92% 1st Class) to let players ride seamlessly up walls and upside-down across ceilings.'
+        where: 'Built for Rastacats (92% 1st Class) to maintain wheel traction at 90° wall angles and inverted ceiling loops.'
       },
       {
         skill: '37-State Hierarchical Finite State Machine (HFSM)',
@@ -74,7 +74,7 @@ export default function Competencies() {
           className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#080c14] via-[#070b09]/80 to-transparent pointer-events-none z-0"
         />
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10">
           {/* Top Industrial PCB Bus Diagnostic Header (No Layer Numbers) */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}

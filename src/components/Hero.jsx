@@ -63,7 +63,7 @@ export default function Hero({ onExploreClick, onSelectProject }) {
       {/* Ambient Glow */}
       <div className="absolute top-1/3 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[400px] bg-gradient-to-tr from-indigo-600/20 via-violet-600/15 to-transparent blur-[130px] rounded-full pointer-events-none -z-10" />
 
-      <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1720px] mx-auto w-full px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           {/* LEFT COLUMN: First-Person Identity, Pitch & CTAs */}
           <motion.div

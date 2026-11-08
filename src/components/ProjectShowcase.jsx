@@ -32,7 +32,7 @@ export default function ProjectShowcase({ onSelectProject, onViewAllProjects }) 
   const quickShelfProjects = PROJECTS.filter((p) => p.category !== activeCategory).slice(0, 7);
 
   return (
-    <section id="portfolio" className="relative py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full overflow-hidden">
+    <section id="portfolio" className="relative py-24 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1720px] mx-auto w-full overflow-hidden">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-12">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-950/70 border border-indigo-500/35 text-indigo-300 text-xs font-mono uppercase tracking-wider mb-4 shadow-sm">
@@ -172,7 +172,7 @@ export default function ProjectShowcase({ onSelectProject, onViewAllProjects }) 
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-8 gap-3">
             {quickShelfProjects.map((item) => {
               const theme = getProjectTheme(item.id);
               return (

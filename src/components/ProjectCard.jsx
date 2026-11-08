@@ -92,7 +92,8 @@ export default function ProjectCard({ project, onSelectProject }) {
           href={project.links.itch}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white font-semibold text-xs tracking-wider uppercase shadow-md shadow-rose-900/30 hover:scale-[1.02] active:scale-95 transition-all w-full"
+          onClick={() => audioEngine.playPop()}
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-rose-700 hover:from-rose-500 hover:to-rose-600 text-white font-bold text-xs tracking-wider uppercase shadow-md shadow-rose-950/40 hover:scale-[1.02] active:scale-95 transition-all w-full cursor-pointer select-none"
         >
           <Gamepad2 className="w-4 h-4 shrink-0" />
           <span>Play on Itch.io</span>
@@ -110,7 +111,8 @@ export default function ProjectCard({ project, onSelectProject }) {
           href={getAssetUrl(project.links.demo)}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-semibold text-xs tracking-wider uppercase shadow-md shadow-indigo-950/40 hover:scale-[1.02] active:scale-95 transition-all w-full"
+          onClick={() => audioEngine.playPop()}
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-xs tracking-wider uppercase shadow-md shadow-indigo-950/40 hover:scale-[1.02] active:scale-95 transition-all w-full cursor-pointer select-none"
         >
           <Gamepad2 className="w-4 h-4 shrink-0" />
           <span>Play in Browser</span>
@@ -127,7 +129,8 @@ export default function ProjectCard({ project, onSelectProject }) {
           key="gdd"
           href={getAssetUrl(project.links.gdd)}
           download
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-amber-600/25 hover:bg-amber-600/40 text-amber-200 font-semibold text-xs tracking-wider uppercase border border-amber-500/40 hover:scale-[1.02] active:scale-95 transition-all w-full"
+          onClick={() => audioEngine.playPop()}
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#78350f] hover:bg-[#92400e] text-amber-100 font-bold text-xs tracking-wider uppercase border border-amber-500/50 shadow-md shadow-amber-950/40 hover:scale-[1.02] active:scale-95 transition-all w-full cursor-pointer select-none"
         >
           <BookOpen className="w-4 h-4 text-amber-300 shrink-0" />
           <span>Download GDD</span>
@@ -144,10 +147,11 @@ export default function ProjectCard({ project, onSelectProject }) {
           key="marketing"
           type="button"
           onClick={() => {
+            audioEngine.playPop();
             setViewMode('marketing');
             setMarketingSubTab('live');
           }}
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600/25 hover:bg-emerald-600/40 text-emerald-200 font-semibold text-xs tracking-wider uppercase border border-emerald-500/40 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer w-full"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#065f46] hover:bg-[#047857] text-emerald-100 font-bold text-xs tracking-wider uppercase border border-emerald-400/50 shadow-md shadow-emerald-950/40 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer w-full select-none"
         >
           <Globe className="w-4 h-4 text-emerald-300 shrink-0" />
           <span>Companion Site</span>
@@ -165,9 +169,10 @@ export default function ProjectCard({ project, onSelectProject }) {
           href={getAssetUrl(project.links.video)}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-red-600/25 hover:bg-red-600/40 text-red-200 font-semibold text-xs tracking-wider uppercase border border-red-500/40 hover:scale-[1.02] active:scale-95 transition-all w-full"
+          onClick={() => audioEngine.playPop()}
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#b91c1c] hover:bg-[#991b1b] text-white font-bold text-xs tracking-wider uppercase border border-red-400/50 shadow-md shadow-red-950/40 hover:scale-[1.02] active:scale-95 transition-all w-full cursor-pointer select-none"
         >
-          <Clapperboard className="w-4 h-4 text-red-400 shrink-0" />
+          <Clapperboard className="w-4 h-4 text-red-200 shrink-0" />
           <span>YouTube Walkthrough</span>
         </a>
       )
@@ -183,7 +188,8 @@ export default function ProjectCard({ project, onSelectProject }) {
           href={project.links.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] text-slate-200 hover:text-white font-semibold text-xs tracking-wider uppercase border border-white/10 hover:scale-[1.02] active:scale-95 transition-all w-full"
+          onClick={() => audioEngine.playPop()}
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#1e293b] hover:bg-[#334155] text-slate-100 hover:text-white font-bold text-xs tracking-wider uppercase border border-slate-600/50 shadow-md shadow-slate-950/40 hover:scale-[1.02] active:scale-95 transition-all w-full cursor-pointer select-none"
         >
           <GithubIcon className="w-4 h-4 shrink-0" />
           <span>Source Code</span>
@@ -201,7 +207,8 @@ export default function ProjectCard({ project, onSelectProject }) {
           href={project.links.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#0077b5]/20 hover:bg-[#0077b5]/30 text-sky-300 hover:text-white font-semibold text-xs tracking-wider uppercase border border-[#0077b5]/30 hover:scale-[1.02] active:scale-95 transition-all w-full"
+          onClick={() => audioEngine.playPop()}
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#0077b5] hover:bg-[#006097] text-white font-bold text-xs tracking-wider uppercase border border-sky-400/50 shadow-md shadow-sky-950/40 hover:scale-[1.02] active:scale-95 transition-all w-full cursor-pointer select-none"
         >
           <LinkedinIcon className="w-4 h-4 shrink-0" />
           <span>View on LinkedIn</span>
@@ -218,9 +225,9 @@ export default function ProjectCard({ project, onSelectProject }) {
         key="breakdown"
         type="button"
         onClick={() => handleOpenCaseStudy(null)}
-        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/35 text-indigo-200 hover:text-white font-semibold text-xs tracking-wider uppercase border border-indigo-500/35 hover:border-indigo-400/60 transition-all cursor-pointer w-full"
+        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#4338ca] hover:bg-[#4f46e5] text-indigo-100 hover:text-white font-bold text-xs tracking-wider uppercase border border-indigo-400/50 shadow-md shadow-indigo-950/40 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer w-full select-none"
       >
-        <BookOpen className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+        <BookOpen className="w-3.5 h-3.5 text-indigo-300 shrink-0" />
         <span>Full Breakdown &amp; Gallery</span>
       </button>
     )

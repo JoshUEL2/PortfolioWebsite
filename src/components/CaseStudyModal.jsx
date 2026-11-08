@@ -644,9 +644,9 @@ export default function CaseStudyModal({ project, onClose }) {
                   href={getAssetUrl(project.links.video)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-xs tracking-wider uppercase transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#b91c1c] hover:bg-[#991b1b] text-white font-bold text-xs tracking-wider uppercase border border-red-400/50 shadow-md shadow-red-950/40 transition-all"
                 >
-                  <Clapperboard className="w-4 h-4" />
+                  <Clapperboard className="w-4 h-4 text-red-200" />
                   <span>YouTube Walkthrough</span>
                 </a>
               )}
@@ -655,9 +655,9 @@ export default function CaseStudyModal({ project, onClose }) {
                 <a
                   href={getAssetUrl(project.links.gdd)}
                   download
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-600/30 hover:bg-amber-600/50 text-amber-200 font-semibold text-xs tracking-wider uppercase border border-amber-500/40 transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#78350f] hover:bg-[#92400e] text-amber-100 font-bold text-xs tracking-wider uppercase border border-amber-500/50 shadow-md shadow-amber-950/40 transition-all"
                 >
-                  <BookOpen className="w-4 h-4" />
+                  <BookOpen className="w-4 h-4 text-amber-300" />
                   <span>Download GDD</span>
                 </a>
               )}
@@ -667,7 +667,7 @@ export default function CaseStudyModal({ project, onClose }) {
                   href={project.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs tracking-wider uppercase transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1e293b] hover:bg-[#334155] text-slate-100 hover:text-white font-bold text-xs tracking-wider uppercase border border-slate-600/50 shadow-md shadow-slate-950/40 transition-all"
                 >
                   <GithubIcon className="w-4 h-4" />
                   <span>Source Code</span>
@@ -679,7 +679,7 @@ export default function CaseStudyModal({ project, onClose }) {
                   href={project.links.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600/30 hover:bg-blue-600/50 text-blue-200 font-semibold text-xs tracking-wider uppercase border border-blue-500/40 transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0077b5] hover:bg-[#006097] text-white font-bold text-xs tracking-wider uppercase border border-sky-400/50 shadow-md shadow-sky-950/40 transition-all"
                 >
                   <LinkedinIcon className="w-4 h-4" />
                   <span>View on LinkedIn</span>
@@ -691,7 +691,7 @@ export default function CaseStudyModal({ project, onClose }) {
                   href={getAssetUrl(project.links.demo)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs tracking-wider uppercase transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-xs tracking-wider uppercase shadow-md shadow-indigo-950/40 transition-all"
                 >
                   <ExternalLink className="w-4 h-4" />
                   <span>Play in Browser</span>

@@ -112,7 +112,7 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className={`pointer-events-auto flex items-center justify-between w-full max-w-6xl px-4 md:px-6 py-2.5 md:py-3 rounded-2xl transition-all duration-300 ${
+          className={`pointer-events-auto flex items-center justify-between w-full max-w-[1720px] px-4 sm:px-8 lg:px-12 xl:px-16 py-2.5 md:py-3 rounded-2xl transition-all duration-300 ${
             scrolled
               ? 'bg-[#090b16]/90 backdrop-blur-xl border border-white/15 shadow-[0_10px_35px_rgba(0,0,0,0.7)]'
               : 'bg-[#090b16]/75 backdrop-blur-md border border-white/10 shadow-lg'

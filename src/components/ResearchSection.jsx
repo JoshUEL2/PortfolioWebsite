@@ -37,7 +37,7 @@ export default function ResearchSection() {
 
       {/* Full-Bleed Editorial Research Paper Biome */}
       <div className="bg-editorial-paper border-t border-[#c89d66]/30 pt-24 pb-16 relative">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
           {/* Formal Academic Journal Masthead Bar */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

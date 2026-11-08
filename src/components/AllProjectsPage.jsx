@@ -51,7 +51,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
   }, [searchQuery, activeFilter]);
 
   return (
-    <div className="min-h-screen pt-28 pb-24 px-4 max-w-7xl mx-auto">
+    <div className="min-h-screen pt-28 pb-24 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1720px] mx-auto">
       {/* Top Game-Launcher HUD Bar */}
       <div className="flex flex-wrap items-center justify-between gap-4 mb-8 p-3.5 rounded-2xl bg-[#090b16]/90 border border-indigo-500/30 backdrop-blur-xl">
         <button

@@ -4,7 +4,7 @@ import { getAssetUrl } from '../utils/assetUrl';
 
 /**
  * SafeVideoPlayer
- * Robust video component with:
+ * Fail-safe HTML5 video player with:
  * 1. Automatic error handling and high-res poster fallback (zero black-screens).
  * 2. IntersectionObserver-based playback gating (pauses off-screen feeds to prevent GPU decode storms).
  * 3. Graceful handling of browser autoplay policies.

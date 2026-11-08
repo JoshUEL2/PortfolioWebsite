@@ -27,7 +27,7 @@ export default function Footer() {
   return (
     <>
       <footer className="relative py-12 px-4 border-t border-white/[0.08] bg-[#05060a]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+        <div className="max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
           <div className="flex items-center gap-3">
             <img
               src={getAssetUrl('/images/logos/3j-logo.png')}

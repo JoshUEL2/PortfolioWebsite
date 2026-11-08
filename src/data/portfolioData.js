@@ -135,7 +135,7 @@ export const PROJECTS = [
       "Layered procedural bone tilts over standard skeletal animations so the bobsled leans naturally into tight turns.",
       "Built a custom curved-world vertex shader to bend the horizon and mask chunk pop-in."
     ],
-    technicalDeepDive: "Standard Unreal character movement assumes a fixed -Z gravity vector. To let the bobsled drive seamlessly around the inside and outside of a cylinder, I bypassed default planar movement and calculated surface normals every tick, interpolating the pawn's Up-Vector via quaternion slerp while projecting forward velocity onto the pipe's tangent plane.",
+    technicalDeepDive: "Standard Unreal character movement assumes a fixed -Z gravity vector. To keep the bobsled pinned to the cylindrical hull without physics clipping around the inside and outside of the pipe, I bypassed default planar movement and calculated surface normals every tick, interpolating the pawn's Up-Vector via quaternion slerp while projecting forward velocity onto the pipe's tangent plane.",
     codeSnippet: `// Polar-to-Cartesian Cylindrical Track Spawner & Normal Alignment
 void ARastacatsTrackManager::SpawnObstacleOnPipe(float AxialX, float AngleDegrees, float PipeRadius)
 {
@@ -1060,7 +1060,7 @@ function updateMemoryFragment(fragment, deltaSeconds, clarityIndex) {
       "Implemented a comprehensive adaptive audio manager with Lo-Fi BGM playlisting, contextual ambient murmurs, and hundreds of tactile mechanical SFX.",
       "Authored a unified PowerShell and Unity batchmode deployment pipeline publishing Android APK builds directly to GitHub Releases and Itch.io."
     ],
-    technicalDeepDive: "Built upon an extensible IWeeklySystem architecture: at each turn advance (+ Week), the game executes synchronized lifecycle passes across FinancialSystem, JobSystem, EducationSystem, and DistrictSystem. Mini-games leverage reactive pointer-down input and UI Toolkit Painter2D canvas rendering with sub-pixel collision math.",
+    technicalDeepDive: "Built upon an extensible IWeeklySystem architecture: at each turn advance (+ Week), the game executes synchronized lifecycle passes across FinancialSystem, JobSystem, EducationSystem, and DistrictSystem. Mini-games execute on low-latency pointer-down callbacks and UI Toolkit Painter2D canvas rendering with sub-pixel collision math.",
     codeSnippet: `// Unified Weekly Turn Lifecycle & Economic Resolution Pass
 public void AdvanceWeek()
 {
@@ -1110,7 +1110,7 @@ public void AdvanceWeek()
       linkedin: "https://www.linkedin.com/in/joshgamedev/details/projects/"
     },
     shortDesc: "A feature-length DLC concept and mocap screenplay set in post-collapse Hope County, blending environmental indexical storytelling with unreliable hallucination sequences.",
-    summary: "Explores survivor guilt and cult indoctrination in the aftermath of Far Cry 5. Written for full performance-capture staging, pairing spoken dialogue with spatial blocking, camera lens cues, and seamless gameplay transitions.",
+    summary: "Explores survivor guilt and cult indoctrination in the aftermath of Far Cry 5. Written for full performance-capture staging, pairing spoken dialogue with spatial blocking, camera lens cues, and uninterrupted gameplay transitions.",
     highlights: [
       "Authored a full mocap-ready screenplay complete with camera blocking, actor posture notes, and combat-to-cutscene transitions.",
       "Designed environmental 'indexical storytelling' loops where burned bunker props and radio static shift subtly when the player isn't looking.",

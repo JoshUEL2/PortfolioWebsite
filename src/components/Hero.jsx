@@ -27,13 +27,37 @@ export default function Hero({ onExploreClick, onSelectProject }) {
       id="home"
       className="relative min-h-[92vh] flex flex-col justify-center pt-28 pb-16 overflow-hidden"
     >
-      {/* Subtle Background Watermark */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden -z-10 opacity-[0.025]">
-        <span className="font-extrabold text-[15vw] leading-none tracking-tighter text-white uppercase text-center font-['Space_Grotesk',sans-serif]">
-          JOSHUA
-          <br />
-          JOHNSON
-        </span>
+      {/* Dynamic Architectural Background Watermark */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden -z-10 [mask-image:radial-gradient(ellipse_80%_65%_at_50%_45%,black_40%,transparent_90%)] max-w-full">
+        <motion.div
+          animate={{ y: [0, -8, 0], scale: [1, 1.012, 1] }}
+          transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
+          className="relative flex flex-col items-center justify-center w-full max-w-5xl px-4"
+        >
+          {/* Subtle Technical Frame Accents */}
+          <div className="w-full flex items-center justify-between px-4 mb-2 text-[10px] font-mono tracking-[0.25em] text-white/10 uppercase select-none">
+            <span>// ARCH // 51.5074° N, 0.1278° W</span>
+            <span className="hidden sm:inline">UE5.8 ENGINE VIEWPORT DECK</span>
+            <span>SPEC: 16-BIT //</span>
+          </div>
+
+          <span
+            className="font-extrabold text-[14vw] sm:text-[13vw] leading-[0.88] tracking-tighter uppercase text-center font-['Space_Grotesk',sans-serif] select-none text-transparent bg-clip-text bg-gradient-to-b from-white/[0.09] via-white/[0.04] to-transparent"
+            style={{
+              WebkitTextStroke: '1px rgba(255, 255, 255, 0.05)'
+            }}
+          >
+            JOSHUA
+            <br />
+            JOHNSON
+          </span>
+
+          <div className="w-full flex items-center justify-between px-4 mt-2 text-[9px] font-mono tracking-[0.3em] text-white/[0.07] uppercase select-none">
+            <span>[STAGE: ROOT_PHYSICS]</span>
+            <span className="h-px flex-1 mx-4 bg-gradient-to-r from-white/10 via-white/[0.04] to-transparent" />
+            <span>[RENDER: LUMEN_VIRTUALIZED]</span>
+          </div>
+        </motion.div>
       </div>
 
       {/* Ambient Glow */}

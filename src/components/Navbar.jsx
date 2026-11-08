@@ -112,22 +112,22 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className={`pointer-events-auto flex items-center justify-between w-full max-w-6xl px-4 md:px-6 py-2.5 md:py-3 rounded-full transition-all duration-300 ${
+          className={`pointer-events-auto flex items-center justify-between w-full max-w-6xl px-4 md:px-6 py-2.5 md:py-3 rounded-2xl transition-all duration-300 ${
             scrolled
-              ? 'bg-[#090b16]/90 backdrop-blur-xl border border-indigo-500/30 shadow-[0_10px_35px_rgba(0,0,0,0.6)]'
+              ? 'bg-[#090b16]/90 backdrop-blur-xl border border-white/15 shadow-[0_10px_35px_rgba(0,0,0,0.7)]'
               : 'bg-[#090b16]/75 backdrop-blur-md border border-white/10 shadow-lg'
           }`}
         >
-          {/* Brand & Instant Home Reset */}
+          {/* Brand & Instant Home Reset (Squircle Avatar & Neutral Tone) */}
           <button
             onClick={handleBrandClick}
             className="flex items-center gap-2.5 text-left group cursor-pointer"
           >
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center font-bold text-white text-sm shadow-md shadow-indigo-500/25 group-hover:scale-105 transition-transform">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 border border-white/20 flex items-center justify-center font-bold text-white text-sm shadow-md shadow-black/40 group-hover:border-white/35 group-hover:scale-105 transition-all">
               JJ
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-sm tracking-tight text-white group-hover:text-indigo-300 transition-colors">
+              <span className="font-bold text-sm tracking-tight text-white group-hover:text-slate-200 transition-colors">
                 Josh Johnson
               </span>
               <span className="flex items-center gap-1.5 text-[10px] text-emerald-400 font-medium">
@@ -137,23 +137,23 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
             </div>
           </button>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/[0.06] rounded-full p-1">
+          {/* Desktop Navigation Links (Squircles, No Purple) */}
+          <div className="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/[0.08] rounded-xl p-1">
             {navLinks.map((link) => {
               const isActive = currentView === 'featured' && activeSection === link.id;
               return (
                 <button
                   key={link.id}
                   onClick={() => scrollTo(link.id)}
-                  className={`relative px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-200 cursor-pointer ${
-                    isActive ? 'text-white' : 'text-slate-400 hover:text-slate-200'
+                  className={`relative px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wider transition-all duration-200 cursor-pointer ${
+                    isActive ? 'text-white' : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.04]'
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="navPill"
                       transition={{ type: 'spring', stiffness: 450, damping: 30 }}
-                      className="absolute inset-0 bg-indigo-600/30 border border-indigo-500/40 rounded-full -z-10"
+                      className="absolute inset-0 bg-white/[0.12] border border-white/20 rounded-lg shadow-sm -z-10"
                     />
                   )}
                   {link.label}
@@ -161,31 +161,31 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
               );
             })}
 
-            {/* Highlighted Game Vault Launcher Pill */}
+            {/* Highlighted Game Vault Launcher Squircle Button */}
             <button
               onClick={handleOpenAllProjects}
-              className={`relative ml-1 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wider transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
+              className={`relative ml-1 px-3 py-1.5 rounded-lg text-xs font-bold tracking-wider transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
                 currentView === 'all-projects'
-                  ? 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-[0_0_20px_rgba(99,102,241,0.5)]'
-                  : 'bg-indigo-950/70 hover:bg-indigo-900/70 text-indigo-300 hover:text-white border border-indigo-500/40'
+                  ? 'bg-white/20 text-white border border-white/30 shadow-[0_0_15px_rgba(255,255,255,0.15)]'
+                  : 'bg-white/[0.06] hover:bg-white/[0.12] text-slate-200 hover:text-white border border-white/15 hover:border-white/30 shadow-sm'
               }`}
             >
-              <Sparkles className="w-3 h-3 text-indigo-300" />
+              <Sparkles className="w-3 h-3 text-amber-400" />
               <span>ALL GAMES ({ALL_PROJECTS.length})</span>
             </button>
           </div>
 
-          {/* Social Links, CV & Mobile Toggle */}
+          {/* Social Links, CV & Mobile Toggle (Squircles, Zero Purple) */}
           <div className="flex items-center gap-2">
             {PERSONAL_INFO.cv && (
               <a
                 href={getAssetUrl(PERSONAL_INFO.cv)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden lg:inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-white/[0.05] hover:bg-white/[0.12] text-slate-200 hover:text-white border border-white/10 transition-all hover:scale-105"
+                className="hidden lg:inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-white/[0.05] hover:bg-white/[0.12] text-slate-200 hover:text-white border border-white/10 transition-all hover:scale-105"
                 title="View CV (PDF)"
               >
-                <FileText className="w-3.5 h-3.5 text-indigo-400" />
+                <FileText className="w-3.5 h-3.5 text-slate-300" />
                 <span>CV</span>
               </a>
             )}
@@ -194,9 +194,9 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
               href={PERSONAL_INFO.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 transition-all hover:scale-105"
+              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 hover:text-white border border-sky-500/30 transition-all hover:scale-105"
             >
-              <LinkedinIcon className="w-3.5 h-3.5 text-indigo-400" />
+              <LinkedinIcon className="w-3.5 h-3.5 text-sky-400" />
               <span>LinkedIn</span>
             </a>
 
@@ -205,7 +205,7 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile"
-              className="hidden sm:inline-flex p-2 rounded-full bg-white/[0.04] hover:bg-white/[0.1] text-slate-300 hover:text-white border border-white/10 transition-all hover:scale-105"
+              className="hidden sm:inline-flex p-2 rounded-lg bg-white/[0.04] hover:bg-white/[0.1] text-slate-300 hover:text-white border border-white/10 transition-all hover:scale-105"
             >
               <GithubIcon className="w-4 h-4" />
             </a>
@@ -215,19 +215,19 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Itch.io Games"
-              className="hidden sm:inline-flex p-2 rounded-full bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 transition-all hover:scale-105"
+              className="hidden sm:inline-flex p-2 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 hover:text-white border border-rose-500/30 transition-all hover:scale-105"
             >
               <Gamepad2 className="w-4 h-4 text-rose-400" />
             </a>
 
-            {/* Audio SFX Toggle Button */}
+            {/* Audio SFX Toggle Button (Squircle, Clean Emerald Status) */}
             <button
               type="button"
               onClick={handleToggleAudio}
-              className={`p-2 rounded-full border transition-all cursor-pointer ${
+              className={`p-2 rounded-lg border transition-all cursor-pointer ${
                 isMuted
                   ? 'bg-white/[0.03] text-slate-500 border-white/10 hover:text-slate-300 hover:border-white/20'
-                  : 'bg-indigo-600/20 text-indigo-300 border-indigo-500/40 shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:scale-105'
+                  : 'bg-emerald-500/15 text-emerald-300 border-emerald-500/40 shadow-[0_0_12px_rgba(16,185,129,0.25)] hover:scale-105'
               }`}
               title={isMuted ? 'Interface SFX: Muted (Click to Enable)' : 'Interface SFX: Active (Click to Mute)'}
               aria-label="Toggle Interface Audio"
@@ -235,10 +235,10 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
               {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
             </button>
 
-            {/* Mobile Hamburger */}
+            {/* Mobile Hamburger Squircle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-full bg-white/[0.05] text-slate-200 hover:text-white cursor-pointer"
+              className="md:hidden p-2 rounded-lg bg-white/[0.05] text-slate-200 hover:text-white border border-white/10 cursor-pointer"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -247,14 +247,14 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
         </motion.nav>
       </header>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer Menu (Squircle & Neutral Tones) */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-x-4 top-20 z-40 bg-[#0c0e1a]/95 backdrop-blur-2xl border border-indigo-500/30 rounded-2xl p-5 shadow-2xl md:hidden"
+            className="fixed inset-x-4 top-20 z-40 bg-[#0a0c16]/95 backdrop-blur-2xl border border-white/15 rounded-2xl p-5 shadow-2xl md:hidden"
           >
             <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
@@ -270,13 +270,13 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
 
               <button
                 onClick={handleOpenAllProjects}
-                className="w-full text-left py-3 px-4 rounded-xl text-xs font-bold tracking-wider bg-gradient-to-r from-indigo-600/40 to-violet-600/40 border border-indigo-500/40 text-white transition-all flex items-center justify-between cursor-pointer"
+                className="w-full text-left py-3 px-4 rounded-xl text-xs font-bold tracking-wider bg-white/[0.08] hover:bg-white/[0.14] border border-white/20 text-white transition-all flex items-center justify-between cursor-pointer"
               >
                 <span className="flex items-center gap-2">
-                  <Sparkles className="w-3.5 h-3.5 text-indigo-300" />
+                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                   EXPLORE ALL {ALL_PROJECTS.length} PROJECTS
                 </span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-indigo-300" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-amber-400" />
               </button>
 
               <div className="pt-4 mt-2 border-t border-white/10 flex flex-wrap items-center justify-around gap-2">
@@ -285,9 +285,9 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
                     href={getAssetUrl(PERSONAL_INFO.cv)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs text-white font-medium py-2 px-3 rounded-lg bg-indigo-600/30 border border-indigo-500/40"
+                    className="flex items-center gap-1.5 text-xs text-white font-medium py-2 px-3 rounded-lg bg-white/[0.06] border border-white/15"
                   >
-                    <FileText className="w-4 h-4 text-indigo-300" />
+                    <FileText className="w-4 h-4 text-slate-300" />
                     CV (PDF)
                   </a>
                 )}
@@ -295,9 +295,9 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
                   href={PERSONAL_INFO.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs text-indigo-300 font-medium py-2 px-3 rounded-lg bg-indigo-950/50 border border-indigo-500/30"
+                  className="flex items-center gap-1.5 text-xs text-sky-300 font-medium py-2 px-3 rounded-lg bg-sky-500/10 border border-sky-500/30"
                 >
-                  <LinkedinIcon className="w-4 h-4 text-indigo-400" />
+                  <LinkedinIcon className="w-4 h-4 text-sky-400" />
                   LinkedIn
                 </a>
                 <a
@@ -313,7 +313,7 @@ export default function Navbar({ currentView = 'featured', onViewChange }) {
                   href={PERSONAL_INFO.itch}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs text-rose-300 font-medium py-2 px-3 rounded-lg bg-rose-950/50 border border-rose-500/30"
+                  className="flex items-center gap-1.5 text-xs text-rose-300 font-medium py-2 px-3 rounded-lg bg-rose-500/10 border border-rose-500/30"
                 >
                   <Gamepad2 className="w-4 h-4 text-rose-400" />
                   Itch.io

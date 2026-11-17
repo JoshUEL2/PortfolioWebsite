@@ -114,7 +114,7 @@ function CredentialThemeAnimation({ theme, animationKey }) {
   const [doneKey, setDoneKey] = useState(null);
 
   useEffect(() => {
-    const t = window.setTimeout(() => setDoneKey(currentKey), 700);
+    const t = window.setTimeout(() => setDoneKey(currentKey), 1800);
     return () => window.clearTimeout(t);
   }, [currentKey]);
 
@@ -132,7 +132,7 @@ function CredentialThemeAnimation({ theme, animationKey }) {
         <motion.div
           initial={{ x: '0%' }}
           animate={{ x: '-96%' }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
+          transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
           className="absolute top-0 bottom-0 left-0 w-1/2 border-r-2 border-amber-400/90 shadow-[25px_0_60px_rgba(0,0,0,0.95)]"
           style={{
             backgroundImage:
@@ -144,7 +144,7 @@ function CredentialThemeAnimation({ theme, animationKey }) {
         <motion.div
           initial={{ x: '0%' }}
           animate={{ x: '96%' }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
+          transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: 0.12 }}
           className="absolute top-0 bottom-0 right-0 w-1/2 border-l-2 border-amber-400/90 shadow-[-25px_0_60px_rgba(0,0,0,0.95)]"
           style={{
             backgroundImage:
@@ -246,7 +246,7 @@ function CredentialThemeAnimation({ theme, animationKey }) {
         <motion.div
           initial={{ rotateY: 0, opacity: 1 }}
           animate={{ rotateY: -108, opacity: 0 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
+          transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           style={{ transformOrigin: 'left center' }}
           className="absolute inset-0 bg-[#14100b] border-r-2 border-amber-400/70 shadow-2xl flex flex-col items-center justify-center p-8 select-none"
         >

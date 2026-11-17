@@ -255,7 +255,7 @@ function LeafFall() {
             x: [0, l.sway, -l.sway, l.sway * 0.5],
             rotate: l.rot + l.spin
           }}
-          transition={{ delay: l.delay * 0.25, duration: 0.65, ease: [0.45, 0, 0.85, 0.45] }}
+          transition={{ delay: l.delay * 0.65, duration: 1.25, ease: [0.45, 0, 0.85, 0.45] }}
           className="absolute pointer-events-none transform-gpu will-change-transform"
           style={{
             left: `${l.left}%`,
@@ -1409,7 +1409,8 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
   const [finishedKey, setFinishedKey] = useState(null);
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setFinishedKey(currentKey), 720);
+    // Allow every bespoke curtain/shatter/dissolve effect to play its full natural sequence (~2.4s)
+    const timer = window.setTimeout(() => setFinishedKey(currentKey), 2500);
     return () => window.clearTimeout(timer);
   }, [currentKey]);
 
@@ -1417,15 +1418,12 @@ export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 
 
   const Effect = EFFECTS[projectId] || WireframeGrid;
   return (
-    <motion.div
-      key={`${projectId}-${animationKey}`}
+    <div
+      key={currentKey}
       aria-hidden="true"
-      initial={{ opacity: 0.95 }}
-      animate={{ opacity: [0.95, 0.75, 0] }}
-      transition={{ duration: 0.68, times: [0, 0.45, 1], ease: 'easeOut' }}
       className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
     >
       <Effect />
-    </motion.div>
+    </div>
   );
 }

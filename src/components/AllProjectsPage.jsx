@@ -17,6 +17,7 @@ import { getAssetUrl, isSpecificRepo, isSpecificLinkedIn } from '../utils/assetU
 import { getProjectTheme } from '../utils/projectThemes';
 import { ProjectAtmosphere } from './gameAtmospheres';
 import { audioEngine } from '../utils/audioEngine';
+import SafeVideoPlayer from './SafeVideoPlayer';
 
 export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -52,24 +53,24 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
 
   return (
     <div className="min-h-screen pt-28 pb-24 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1720px] mx-auto">
-      {/* Top Game-Launcher HUD Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-8 p-3.5 rounded-2xl bg-[#090b16]/90 border border-indigo-500/30 backdrop-blur-xl">
+      {/* Top Vault Navigation HUD */}
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-8 p-3.5 rounded-2xl bg-[#0b0e14] border border-white/10">
         <button
           type="button"
           onClick={() => {
             audioEngine.playTick();
             onBackToHome();
           }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600/25 hover:bg-indigo-600/45 text-indigo-200 hover:text-white border border-indigo-400/40 transition-all hover:scale-[1.03] active:scale-95 text-xs font-mono font-bold uppercase tracking-wider cursor-pointer"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-600/20 hover:bg-sky-600/35 text-sky-200 hover:text-white border border-sky-400/40 transition-all hover:scale-[1.02] active:scale-95 text-xs font-mono font-bold uppercase tracking-wider cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
         >
-          <ArrowLeft className="w-4 h-4 text-indigo-300" />
+          <ArrowLeft className="w-4 h-4 text-sky-300" />
           <span>Return to Main Portfolio</span>
         </button>
 
-        <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-black/50 border border-white/10 text-xs font-mono text-slate-300">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+        <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-[#07090f] border border-white/10 text-xs font-mono text-slate-300">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 motion-safe:animate-pulse" />
           <span>
-            GAME VAULT ONLINE // SHOWING {filteredProjects.length} OF {ALL_PROJECTS.length} PROJECTS
+            PROJECT VAULT // SHOWING {filteredProjects.length} OF {ALL_PROJECTS.length} PROJECTS
           </span>
         </div>
       </div>
@@ -77,7 +78,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
       {/* Vault Header & Search Bar */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/70 border border-indigo-500/35 text-indigo-300 text-xs font-mono uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-950/60 border border-sky-400/30 text-sky-300 text-xs font-mono uppercase tracking-wider mb-3">
             <Terminal className="w-3.5 h-3.5 text-emerald-400" />
             <span>COMPLETE ARCHIVE // {ALL_PROJECTS.length} GAMES, PROTOTYPES &amp; DESIGN BIBLES</span>
           </div>
@@ -91,19 +92,21 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
 
         {/* Search Input */}
         <div className="relative w-full lg:w-96 shrink-0">
-          <Search className="w-4 h-4 text-indigo-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-sky-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
+            aria-label="Search projects by title, engine, shader, or mechanic"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search by title, engine, shader, mechanic..."
-            className="w-full pl-10 pr-10 py-3 rounded-2xl bg-[#090b16]/95 border border-indigo-500/35 focus:border-indigo-400 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 transition-all shadow-inner"
+            className="w-full pl-10 pr-10 py-3 rounded-2xl bg-[#0b0e14] border border-white/15 focus:border-sky-400 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/40 transition-all"
           />
           {searchQuery && (
             <button
               type="button"
+              aria-label="Clear search query"
               onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white cursor-pointer"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white cursor-pointer p-1"
             >
               <X className="w-4 h-4" />
             </button>
@@ -111,7 +114,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
         </div>
       </div>
 
-      {/* Game-HUD Discipline Filter Tabs */}
+      {/* Discipline Filter Tabs */}
       <div className="flex flex-wrap items-center gap-2 pb-8 mb-8 border-b border-white/10">
         {GAME_FILTER_DISCIPLINES.map((filter) => {
           const isActive = activeFilter === filter.id;
@@ -123,9 +126,10 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                 audioEngine.playTick(600, 250);
                 setActiveFilter(filter.id);
               }}
-              className={`relative px-4 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer flex items-center gap-2 ${
-                isActive ? 'text-white bg-gradient-to-r from-indigo-600 to-violet-600 border border-indigo-300/60 shadow-[0_0_25px_rgba(99,102,241,0.4)]'
-                  : 'text-slate-400 hover:text-slate-200 bg-[#090b16]/80 border border-white/10 hover:border-indigo-500/40'
+              className={`relative px-4 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-150 cursor-pointer flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 ${
+                isActive
+                  ? 'text-white bg-sky-600 border border-sky-400/60 shadow-md shadow-sky-950/50'
+                  : 'text-slate-400 hover:text-slate-100 bg-[#0b0e14] border border-white/10 hover:border-sky-400/40'
               }`}
             >
               <span>{filter.label}</span>
@@ -141,7 +145,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
         })}
       </div>
 
-      {/* Games Grid */}
+      {/* Projects Grid */}
       {filteredProjects.length === 0 ? (
         <div className="text-center py-20 bg-white/[0.02] border border-white/10 rounded-3xl p-8">
           <p className="text-slate-400 text-base mb-4">No projects matched your search criteria.</p>
@@ -151,7 +155,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
               setSearchQuery('');
               setActiveFilter('all');
             }}
-            className="px-5 py-2.5 rounded-xl bg-indigo-600 text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
+            className="px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
           >
             Reset Filters
           </button>
@@ -162,81 +166,80 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
             const videoSrc = project.videoPreview || project.video;
             const isLiveDemo =
               Boolean(project.links?.demo) && project.links.demo.startsWith('/games/');
+            const isLabraz = project.id === 'labraz' || project.id === 'labrats';
             const theme = getProjectTheme(project.id);
 
             return (
               <motion.div
                 key={project.id}
                 layout
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{
-                  duration: 0.3,
-                  delay: Math.min(index * 0.02, 0.15)
+                  duration: 0.25,
+                  delay: Math.min(index * 0.02, 0.12)
                 }}
                 className={`group relative rounded-2xl p-5 backdrop-blur-xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 border overflow-hidden ${theme.compactContainerClass}`}
               >
-                {/* Dynamic Compact Game Atmospheric Effect */}
                 <ProjectAtmosphere projectId={project.id} isCompact={true} />
 
                 <div className="relative z-10">
-                  {/* Media Viewport */}
+                  {/* Media Viewport (Accessible Semantic Button Trigger + Viewport-Gated SafeVideoPlayer) */}
                   <div className={`relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-950 border mb-4 transition-all ${theme.mediaHolderClass}`}>
-                    {videoSrc ? (
-                      <div
-                        onClick={() => onSelectProject({ ...project, initialLightboxIndex: null })}
-                        className="w-full h-full cursor-pointer group/thumb relative"
-                      >
-                        <video
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          preload="auto"
-                          poster={project.image ? getAssetUrl(project.image) : undefined}
-                          className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500"
-                        >
-                          <source src={getAssetUrl(videoSrc)} type="video/mp4" />
-                        </video>
-                        <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/85 backdrop-blur-md border border-emerald-500/40 text-[9px] font-mono text-emerald-300 flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                          GAMEPLAY CAPTURE
-                        </div>
-                      </div>
-                    ) : (
-                      <div
-                        onClick={() => onSelectProject({ ...project, initialLightboxIndex: 0 })}
-                        className="w-full h-full cursor-pointer group/thumb relative"
-                      >
+                    <button
+                      type="button"
+                      onClick={() =>
+                        onSelectProject({
+                          ...project,
+                          initialLightboxIndex: videoSrc ? null : 0
+                        })
+                      }
+                      aria-label={`Inspect ${project.title}`}
+                      className="w-full h-full block cursor-pointer group/thumb relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-sky-400"
+                    >
+                      {videoSrc ? (
+                        <>
+                          <SafeVideoPlayer
+                            src={videoSrc}
+                            poster={project.image}
+                            title={project.title}
+                            className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500"
+                          />
+                          <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/85 border border-emerald-500/40 text-[9px] font-mono text-emerald-300 flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 motion-safe:animate-pulse" />
+                            GAMEPLAY CAPTURE
+                          </div>
+                        </>
+                      ) : (
                         <img
                           src={getAssetUrl(project.image)}
                           alt={project.title}
                           className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500"
                           loading="lazy"
                         />
-                      </div>
-                    )}
+                      )}
+                    </button>
 
                     {/* Discipline Pill */}
-                    <div className="absolute top-2 left-2 px-2.5 py-0.5 rounded-md bg-black/85 backdrop-blur-md border border-indigo-500/40 text-[10px] font-mono font-bold text-indigo-300 pointer-events-none z-10 max-w-[70%] truncate">
+                    <div className="absolute top-2 left-2 px-2.5 py-0.5 rounded-md bg-black/85 border border-sky-400/35 text-[10px] font-mono font-bold text-sky-200 pointer-events-none z-10 max-w-[70%] truncate">
                       {project.categoryLabel}
                     </div>
 
-                    {/* Authentic Game Logos / In-Universe Insignias */}
-                    {project.id === 'labrats' && (
-                      <div className="absolute top-2 right-2 flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-black/85 backdrop-blur-md border border-emerald-400/50 shadow-[0_0_10px_rgba(52,211,153,0.3)] z-10 pointer-events-none">
+                    {/* Per-Game Insignias */}
+                    {isLabraz && (
+                      <div className="absolute top-2 right-2 flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-black/85 border border-emerald-400/50 z-10 pointer-events-none">
                         <img
                           src={getAssetUrl('/images/logos/labrats-logo-transparent.png')}
-                          alt="LabRats Logo"
-                          className="w-4 h-4 object-contain filter drop-shadow-[0_0_4px_rgba(74,222,128,0.8)]"
+                          alt="LabR@z Logo"
+                          className="w-4 h-4 object-contain"
                         />
-                        <span className="text-[9px] font-mono font-bold text-emerald-300">LABRATS</span>
+                        <span className="text-[9px] font-mono font-bold text-emerald-300">LABR@Z</span>
                       </div>
                     )}
 
                     {project.id === 'rem' && (
-                      <div className="absolute top-2 right-2 flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#070e1a]/90 backdrop-blur-md border border-cyan-400/50 shadow-[0_0_10px_rgba(6,182,212,0.3)] z-10 pointer-events-none">
+                      <div className="absolute top-2 right-2 flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#070e1a]/90 border border-cyan-400/50 z-10 pointer-events-none">
                         <img
                           src={getAssetUrl('/images/logos/myndwell-logo-white.png')}
                           alt="Myndwell Logo"
@@ -247,7 +250,7 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                     )}
 
                     {project.id === 'delirium' && (
-                      <div className="absolute top-2 right-2 flex items-center px-2 py-0.5 rounded-md bg-black/90 backdrop-blur-md border border-red-500/40 z-10 pointer-events-none">
+                      <div className="absolute top-2 right-2 flex items-center px-2 py-0.5 rounded-md bg-black/90 border border-rose-500/40 z-10 pointer-events-none">
                         <img
                           src={getAssetUrl('/images/logos/delirium-title-logo.png')}
                           alt="Delirium"
@@ -256,10 +259,10 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                       </div>
                     )}
 
-                    {/* Companion Website / Version Badge */}
+                    {/* Companion Website / Version Indicator */}
                     {project.marketingSite ? (
-                      <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-indigo-950/90 border border-indigo-400/50 text-[9px] font-mono font-bold text-indigo-200 pointer-events-none z-10">
-                        + EMBEDDED WEB PORTAL &amp; CODE
+                      <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-sky-950/90 border border-sky-400/45 text-[9px] font-mono font-bold text-sky-200 pointer-events-none z-10">
+                        + COMPANION WEB PORTAL
                       </div>
                     ) : project.versions ? (
                       <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-emerald-950/90 border border-emerald-500/40 text-[9px] font-mono font-bold text-emerald-300 pointer-events-none z-10">
@@ -270,19 +273,22 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
 
                   {/* Engine & Dates */}
                   <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-1.5">
-                    <span className="text-indigo-400 font-semibold truncate pr-2">
+                    <span className="text-sky-400 font-semibold truncate pr-2">
                       {project.engine}
                     </span>
                     <span className="shrink-0">{project.dates}</span>
                   </div>
 
-                  {/* Title */}
-                  <h3
+                  {/* Title Button */}
+                  <button
+                    type="button"
                     onClick={() => onSelectProject(project)}
-                    className="text-base font-bold text-white tracking-tight mb-2 group-hover:text-indigo-200 transition-colors line-clamp-2 cursor-pointer font-['Space_Grotesk',sans-serif]"
+                    className="text-left w-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 rounded-md"
                   >
-                    {project.title}
-                  </h3>
+                    <h3 className="text-base font-bold text-white tracking-tight mb-2 group-hover:text-sky-300 transition-colors line-clamp-2 font-['Space_Grotesk',sans-serif]">
+                      {project.title}
+                    </h3>
+                  </button>
 
                   {/* Description */}
                   <p className="text-xs text-slate-300 leading-relaxed line-clamp-3 mb-3 font-normal">
@@ -291,14 +297,14 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
 
                   {/* Exhibition Note */}
                   {project.funFact && (
-                    <div className="mb-3 px-2.5 py-2 rounded-xl bg-indigo-950/30 border border-indigo-500/25 text-[11px] text-indigo-200 flex items-start gap-2">
+                    <div className="mb-3 pl-2.5 border-l-2 border-amber-400/60 text-[11px] text-slate-300 flex items-start gap-2">
                       <Award className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
                       <span className="line-clamp-2">{project.funFact}</span>
                     </div>
                   )}
                 </div>
 
-                {/* Card Footer */}
+                {/* Card Footer (>= 36px Icon Tap Targets) */}
                 <div className="pt-3 border-t border-white/10 flex items-center justify-between gap-2 mt-auto">
                   <div className="flex items-center gap-1.5">
                     {project.links?.itch && (
@@ -307,10 +313,10 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Play on Itch.io"
-                        className="p-1.5 rounded-lg bg-rose-950/60 hover:bg-rose-900/80 text-rose-300 border border-rose-500/30 transition-all hover:scale-110"
+                        className="p-2 rounded-lg bg-rose-950/70 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/35 transition-colors"
                         title="Play on Itch.io"
                       >
-                        <Gamepad2 className="w-3.5 h-3.5 text-rose-400" />
+                        <Gamepad2 className="w-4 h-4" />
                       </a>
                     )}
 
@@ -320,10 +326,10 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Watch Video"
-                        className="p-1.5 rounded-lg bg-red-950/60 hover:bg-red-900/80 text-red-300 border border-red-500/30 transition-all hover:scale-110"
+                        className="p-2 rounded-lg bg-red-950/70 hover:bg-red-600 text-red-300 hover:text-white border border-red-500/35 transition-colors"
                         title="Watch Video"
                       >
-                        <Clapperboard className="w-3.5 h-3.5 text-red-400" />
+                        <Clapperboard className="w-4 h-4" />
                       </a>
                     )}
 
@@ -333,10 +339,10 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Source Code"
-                        className="p-1.5 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white border border-white/10 transition-all hover:scale-110"
+                        className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white border border-white/10 transition-colors"
                         title="Source Code"
                       >
-                        <GithubIcon className="w-3.5 h-3.5" />
+                        <GithubIcon className="w-4 h-4" />
                       </a>
                     )}
 
@@ -346,10 +352,10 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Play in Browser"
-                        className="p-1.5 rounded-lg bg-indigo-950/60 hover:bg-indigo-900/80 text-indigo-300 border border-indigo-500/30 transition-all hover:scale-110"
+                        className="p-2 rounded-lg bg-sky-950/70 hover:bg-sky-600 text-sky-300 hover:text-white border border-sky-500/35 transition-colors"
                         title="Play in Browser"
                       >
-                        <ExternalLink className="w-3.5 h-3.5 text-indigo-400" />
+                        <ExternalLink className="w-4 h-4" />
                       </a>
                     )}
 
@@ -359,10 +365,10 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="View on LinkedIn"
-                        className="p-1.5 rounded-lg bg-blue-950/60 hover:bg-blue-900/80 text-blue-300 border border-blue-500/30 transition-all hover:scale-110"
+                        className="p-2 rounded-lg bg-sky-950/70 hover:bg-[#0077b5] text-sky-300 hover:text-white border border-sky-500/35 transition-colors"
                         title="View on LinkedIn"
                       >
-                        <LinkedinIcon className="w-3.5 h-3.5 text-blue-400" />
+                        <LinkedinIcon className="w-4 h-4" />
                       </a>
                     )}
                   </div>
@@ -370,10 +376,10 @@ export default function AllProjectsPage({ onBackToHome, onSelectProject }) {
                   <button
                     type="button"
                     onClick={() => onSelectProject(project)}
-                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-mono font-bold uppercase tracking-wider border transition-all cursor-pointer ${theme.buttonClass}`}
+                    className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-[11px] font-mono font-bold uppercase tracking-wider border transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 ${theme.buttonClass}`}
                   >
                     <span>Overview</span>
-                    <BookOpen className="w-3 h-3" />
+                    <BookOpen className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </motion.div>

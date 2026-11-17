@@ -11,11 +11,15 @@ export default function Footer() {
   useEffect(() => {
     const handleScroll = () => {
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.scrollY / totalHeight) * 100;
+      const progress =
+        totalHeight > 0
+          ? Math.min(100, Math.max(0, (window.scrollY / totalHeight) * 100))
+          : 0;
       setScrollProgress(progress);
       setShowTopBtn(window.scrollY > 400);
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -46,8 +50,8 @@ export default function Footer() {
 
           <div className="flex flex-col sm:flex-row items-center gap-3 text-xs text-slate-400 font-mono">
             <div className="flex items-center gap-1.5">
-              <Code2 className="w-3.5 h-3.5 text-indigo-400" />
-              <span>Built with React, Vite & Tailwind CSS</span>
+              <Code2 className="w-3.5 h-3.5 text-sky-400" />
+              <span>Built with React, Vite &amp; Tailwind CSS</span>
             </div>
           </div>
 
@@ -60,29 +64,29 @@ export default function Footer() {
       {/* Floating Back to Top Button with Scroll Progress Ring */}
       {showTopBtn && (
         <button
+          type="button"
           onClick={scrollToTop}
           aria-label="Scroll to top"
-          className="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-[#0c0e1c]/90 border border-indigo-500/40 text-indigo-300 hover:text-white hover:bg-indigo-600/30 backdrop-blur-xl shadow-2xl hover:scale-110 active:scale-95 transition-all group"
+          className="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-[#0b0e14]/95 border border-sky-400/40 text-sky-300 hover:text-white hover:bg-sky-600/30 backdrop-blur-xl shadow-2xl hover:scale-110 active:scale-95 transition-all group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
         >
           <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
-          {/* Circular progress SVG */}
-          <svg className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none p-0.5">
+          <svg viewBox="0 0 44 44" className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none">
             <circle
-              cx="50%"
-              cy="50%"
-              r="20"
+              cx="22"
+              cy="22"
+              r="19"
               className="stroke-white/10"
               strokeWidth="2"
               fill="none"
             />
             <circle
-              cx="50%"
-              cy="50%"
-              r="20"
-              className="stroke-indigo-400"
+              cx="22"
+              cy="22"
+              r="19"
+              className="stroke-sky-400"
               strokeWidth="2"
-              strokeDasharray="125.6"
-              strokeDashoffset={125.6 - (125.6 * scrollProgress) / 100}
+              strokeDasharray="119.38"
+              strokeDashoffset={119.38 - (119.38 * scrollProgress) / 100}
               strokeLinecap="round"
               fill="none"
             />

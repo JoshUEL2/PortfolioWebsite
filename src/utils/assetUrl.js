@@ -11,7 +11,6 @@ export function getAssetUrl(path) {
   if (/^(https?:|data:|blob:|\/\/)/.test(path)) {
     return path;
   }
-  // Strip leading slashes and prefix with './'
   const clean = path.replace(/^\/+/, '');
   return `./${clean}`;
 }
@@ -21,27 +20,31 @@ export function getAssetUrl(path) {
  */
 export function isSpecificRepo(url) {
   if (!url || typeof url !== 'string') return false;
-  const clean = url.trim().replace(/\/+$/, '');
+  const clean = url.trim().replace(/\/+$/, '').toLowerCase();
   return (
-    clean !== 'https://github.com/JoshUEL2' &&
-    clean !== 'http://github.com/JoshUEL2' &&
+    clean !== 'https://github.com/joshuel2' &&
+    clean !== 'http://github.com/joshuel2' &&
     clean !== 'https://github.com' &&
     clean !== 'http://github.com'
   );
 }
 
 /**
- * Checks if a LinkedIn URL is a specific project/post rather than a generic profile link.
+ * Checks if a LinkedIn URL links to a specific project post/media item rather than a generic profile directory.
  */
 export function isSpecificLinkedIn(url) {
   if (!url || typeof url !== 'string') return false;
-  const clean = url.trim().replace(/\/+$/, '');
-  return (
-    clean !== 'https://www.linkedin.com/in/joshgamedev' &&
-    clean !== 'https://linkedin.com/in/joshgamedev' &&
-    clean !== 'https://www.linkedin.com/in/joshua-johnson-485543351' &&
-    clean !== 'https://linkedin.com/in/joshua-johnson-485543351' &&
-    clean !== 'https://www.linkedin.com' &&
-    clean !== 'https://linkedin.com'
-  );
+  const clean = url.trim().replace(/\/+$/, '').toLowerCase();
+  if (
+    clean === 'https://www.linkedin.com/in/joshgamedev' ||
+    clean === 'https://linkedin.com/in/joshgamedev' ||
+    clean === 'https://www.linkedin.com/in/joshua-johnson-485543351' ||
+    clean === 'https://linkedin.com/in/joshua-johnson-485543351' ||
+    clean === 'https://www.linkedin.com' ||
+    clean === 'https://linkedin.com' ||
+    clean.includes('/details/projects')
+  ) {
+    return false;
+  }
+  return true;
 }

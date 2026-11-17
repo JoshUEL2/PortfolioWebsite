@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import {
   Award,
   UserCheck,
@@ -61,24 +61,24 @@ const CREDENTIAL_THEME_STYLES = {
   },
   studio: {
     cardAccent:
-      'border-purple-500/35 hover:border-purple-400 bg-gradient-to-br from-[#160d24] via-[#0c121e] to-[#0c121e]',
-    iconBox: 'bg-purple-950/80 text-purple-300 border-purple-500/40',
-    badgeText: 'text-purple-300 bg-purple-950/70 border-purple-500/40',
+      'border-cyan-500/35 hover:border-cyan-400 bg-gradient-to-br from-[#081720] via-[#0b0e14] to-[#0b0e14]',
+    iconBox: 'bg-cyan-950/80 text-cyan-300 border-cyan-500/40',
+    badgeText: 'text-cyan-300 bg-cyan-950/70 border-cyan-500/40',
     modalBg:
-      'bg-[radial-gradient(ellipse_at_top,#2e1065_0%,#130924_60%,#07050c_100%)] border-purple-400/45',
-    headerAccent: 'text-purple-300',
-    whyBox: 'bg-purple-950/35 border-purple-400/60 text-purple-50',
+      'bg-[#081016] border-cyan-400/45',
+    headerAccent: 'text-cyan-300',
+    whyBox: 'bg-[#0b1720] border-cyan-400/45 text-cyan-50',
     replayLabel: 'Replay On-Air Broadcast'
   },
   editorial: {
     cardAccent:
-      'border-fuchsia-500/35 hover:border-fuchsia-400 bg-gradient-to-br from-[#1c0c1f] via-[#0c121e] to-[#0c121e]',
-    iconBox: 'bg-fuchsia-950/80 text-fuchsia-300 border-fuchsia-500/40',
-    badgeText: 'text-fuchsia-300 bg-fuchsia-950/70 border-fuchsia-500/40',
+      'border-amber-400/35 hover:border-amber-300 bg-gradient-to-br from-[#17120a] via-[#0b0e14] to-[#0b0e14]',
+    iconBox: 'bg-amber-950/80 text-amber-300 border-amber-400/40',
+    badgeText: 'text-amber-200 bg-amber-950/70 border-amber-400/40',
     modalBg:
-      'bg-[radial-gradient(ellipse_at_top,#4a044e_0%,#18081c_60%,#08050a_100%)] border-fuchsia-400/45',
-    headerAccent: 'text-fuchsia-300',
-    whyBox: 'bg-fuchsia-950/35 border-fuchsia-400/60 text-fuchsia-50',
+      'bg-[#100d09] border-amber-400/45',
+    headerAccent: 'text-amber-300',
+    whyBox: 'bg-[#1a140c] border-amber-400/45 text-amber-50',
     replayLabel: 'Replay Folio Flip'
   },
   cyber: {
@@ -109,6 +109,17 @@ const CREDENTIAL_THEME_STYLES = {
  * Custom Themed Entrance Animations for each credential modal
  */
 function CredentialThemeAnimation({ theme, animationKey }) {
+  const shouldReduceMotion = useReducedMotion();
+  const currentKey = `${theme}-${animationKey}`;
+  const [doneKey, setDoneKey] = useState(null);
+
+  useEffect(() => {
+    const t = window.setTimeout(() => setDoneKey(currentKey), 700);
+    return () => window.clearTimeout(t);
+  }, [currentKey]);
+
+  if (shouldReduceMotion || doneKey === currentKey) return null;
+
   if (theme === 'theatre') {
     // Stage Curtains Parting
     return (
@@ -120,9 +131,9 @@ function CredentialThemeAnimation({ theme, animationKey }) {
         <div className="absolute top-0 inset-x-0 h-5 bg-gradient-to-b from-[#7f1d1d] to-[#450a0a] border-b-2 border-amber-400/80 shadow-lg" />
         <motion.div
           initial={{ x: '0%' }}
-          animate={{ x: '-94%' }}
-          transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-4 border-amber-400/90 shadow-[25px_0_60px_rgba(0,0,0,0.95)]"
+          animate={{ x: '-96%' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
+          className="absolute top-0 bottom-0 left-0 w-1/2 border-r-2 border-amber-400/90 shadow-[25px_0_60px_rgba(0,0,0,0.95)]"
           style={{
             backgroundImage:
               'repeating-linear-gradient(90deg, #450a0a 0px, #7f1d1d 22px, #991b1b 36px, #450a0a 56px)'
@@ -132,9 +143,9 @@ function CredentialThemeAnimation({ theme, animationKey }) {
         </motion.div>
         <motion.div
           initial={{ x: '0%' }}
-          animate={{ x: '94%' }}
-          transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-4 border-amber-400/90 shadow-[-25px_0_60px_rgba(0,0,0,0.95)]"
+          animate={{ x: '96%' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
+          className="absolute top-0 bottom-0 right-0 w-1/2 border-l-2 border-amber-400/90 shadow-[-25px_0_60px_rgba(0,0,0,0.95)]"
           style={{
             backgroundImage:
               'repeating-linear-gradient(90deg, #450a0a 0px, #7f1d1d 22px, #991b1b 36px, #450a0a 56px)'
@@ -142,12 +153,6 @@ function CredentialThemeAnimation({ theme, animationKey }) {
         >
           <div className="absolute inset-y-0 left-2 w-1 bg-amber-300/40" />
         </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.1, delay: 0.4 }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(251,191,36,0.16),transparent_65%)]"
-        />
       </div>
     );
   }
@@ -186,7 +191,7 @@ function CredentialThemeAnimation({ theme, animationKey }) {
   }
 
   if (theme === 'studio') {
-    // Broadcast Studio Radio Frequency Oscilloscope & Audio Equalizer Pulse
+    // Broadcast Studio Radio Frequency Oscilloscope Pulse (Steel-Cyan Acoustic Waveform)
     return (
       <div
         key={`studio-${animationKey}`}
@@ -196,35 +201,32 @@ function CredentialThemeAnimation({ theme, animationKey }) {
         <motion.div
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
-          transition={{ duration: 0.8, delay: 0.75, ease: 'easeOut' }}
-          className="absolute inset-0 bg-[#0d0517] flex flex-col items-center justify-center p-6 text-center select-none"
+          transition={{ duration: 0.45, delay: 0.2, ease: 'easeOut' }}
+          className="absolute inset-0 bg-[#061016] flex flex-col items-center justify-center p-6 text-center select-none"
         >
-          {/* Central Cardioid Microphone Node with Radial Acoustic Soundwaves */}
           <div className="relative flex items-center justify-center mb-6">
             <motion.div
-              initial={{ scale: 0.6, opacity: 0 }}
+              initial={{ scale: 0.7, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.35, delay: 0.1 }}
-              className="w-24 h-24 rounded-full border-4 border-purple-400 bg-gradient-to-br from-purple-600 via-purple-900 to-black flex items-center justify-center shadow-[0_0_40px_rgba(168,85,247,0.9)] z-10"
+              transition={{ duration: 0.25 }}
+              className="w-20 h-20 rounded-full border-2 border-cyan-400 bg-cyan-950 flex items-center justify-center shadow-lg z-10"
             >
-              <Radio className="w-10 h-10 text-purple-200" />
+              <Radio className="w-8 h-8 text-cyan-200" />
             </motion.div>
 
-            {/* Concentric Audio Soundwave Shockwaves */}
-            {[0, 1, 2].map((i) => (
+            {[0, 1].map((i) => (
               <motion.div
                 key={i}
-                initial={{ scale: 0.3, opacity: 0.95 }}
-                animate={{ scale: 3.4, opacity: 0 }}
-                transition={{ duration: 0.8, delay: 0.15 + i * 0.15, ease: 'easeOut' }}
-                className="absolute w-24 h-24 rounded-full border-2 border-purple-400 pointer-events-none"
+                initial={{ scale: 0.4, opacity: 0.9 }}
+                animate={{ scale: 2.8, opacity: 0 }}
+                transition={{ duration: 0.45, delay: i * 0.1, ease: 'easeOut' }}
+                className="absolute w-20 h-20 rounded-full border-2 border-cyan-400 pointer-events-none"
               />
             ))}
           </div>
 
-          {/* Glowing Center Oscilloscope Sine Wave SVG */}
           <div className="w-full max-w-md h-12 mb-4 overflow-hidden">
-            <svg viewBox="0 0 400 60" preserveAspectRatio="none" className="w-full h-full stroke-purple-400 fill-none" strokeWidth="2.5">
+            <svg viewBox="0 0 400 60" preserveAspectRatio="none" className="w-full h-full stroke-cyan-400 fill-none" strokeWidth="2.5">
               <path d="M0,30 Q25,5 50,30 T100,30 T150,30 T200,5 T250,55 T300,30 T350,30 T400,30" />
             </svg>
           </div>
@@ -234,7 +236,7 @@ function CredentialThemeAnimation({ theme, animationKey }) {
   }
 
   if (theme === 'editorial') {
-    // 3D Hardcover Publication Cover Turning Open from Left Spine with CMYK Registration Marks
+    // Print Publication Cover Reveal (Warm Amber / Charcoal)
     return (
       <div
         key={`edit-${animationKey}`}
@@ -243,23 +245,13 @@ function CredentialThemeAnimation({ theme, animationKey }) {
       >
         <motion.div
           initial={{ rotateY: 0, opacity: 1 }}
-          animate={{ rotateY: -112, opacity: 0 }}
-          transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+          animate={{ rotateY: -108, opacity: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.05 }}
           style={{ transformOrigin: 'left center' }}
-          className="absolute inset-0 bg-gradient-to-br from-[#3b0742] via-[#240529] to-[#0f0212] border-r-8 border-fuchsia-400 shadow-[35px_0_70px_rgba(0,0,0,0.95)] flex flex-col items-center justify-center p-8 select-none"
+          className="absolute inset-0 bg-[#14100b] border-r-2 border-amber-400/70 shadow-2xl flex flex-col items-center justify-center p-8 select-none"
         >
-          {/* CMYK Registration Targets */}
-          <div className="absolute top-4 left-4 w-6 h-6 border border-fuchsia-300/40 rounded-full flex items-center justify-center text-[8px] font-mono text-fuchsia-300">
-            +
-          </div>
-          <div className="absolute top-4 right-4 w-6 h-6 border border-fuchsia-300/40 rounded-full flex items-center justify-center text-[8px] font-mono text-fuchsia-300">
-            +
-          </div>
-          <div className="absolute bottom-4 left-4 w-6 h-6 border border-fuchsia-300/40 rounded-full flex items-center justify-center text-[8px] font-mono text-fuchsia-300">
-            +
-          </div>
-          <div className="absolute bottom-4 right-4 w-6 h-6 border border-fuchsia-300/40 rounded-full flex items-center justify-center text-[8px] font-mono text-fuchsia-300">
-            +
+          <div className="w-12 h-12 border border-amber-400/50 rounded-full flex items-center justify-center text-xs font-mono text-amber-300">
+            FOLIO
           </div>
         </motion.div>
       </div>
@@ -403,26 +395,10 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative w-full bg-dossier-grid border-t border-slate-700/70 text-slate-100 overflow-hidden"
+      className="relative w-full bg-dossier-grid border-t border-white/10 text-slate-100 overflow-hidden"
     >
-      {/* Inline Keyframes for Smooth Infinite Revolving Showcase Strip */}
-      <style>{`
-        @keyframes showcaseMarquee {
-          0% { transform: translateX(0%); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-showcase-strip {
-          display: flex;
-          width: max-content;
-          animation: showcaseMarquee 48s linear infinite;
-        }
-        .animate-showcase-strip:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
-
-      {/* Top Atmospheric Transition from PCB (#070b09) to Studio Dossier (#080c14) */}
-      <div className="h-14 w-full bg-gradient-to-b from-[#070b09] to-transparent pointer-events-none" />
+      {/* Top Transition from Systems Workbench (#080b0f) */}
+      <div className="h-10 w-full bg-gradient-to-b from-[#080b0f] to-transparent pointer-events-none" />
 
       {/* Top Executive Dossier Identification Bar */}
       <div className="max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 pt-2">
@@ -485,90 +461,90 @@ export default function AboutSection() {
           {/* Left Column: Grounded First-Person Bio & Verified 1st Class Module Record */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45 }}
             className="lg:col-span-7 space-y-6"
           >
-            {/* Executive Statement Box */}
-            <div className="relative p-6 rounded-xl bg-[#0c121e] border-l-4 border-l-sky-400 border border-slate-700/80 shadow-lg">
+            {/* Executive Statement Card (Flat clean border — no thick side-tab) */}
+            <div className="relative p-6 rounded-xl bg-[#0b0e14] border border-sky-400/35 shadow-lg">
               <div className="text-[11px] font-mono uppercase tracking-widest text-sky-400 mb-1.5">
                 Core Engineering Creed
               </div>
               <blockquote className="text-lg sm:text-2xl font-extrabold text-white font-['Space_Grotesk',sans-serif] leading-snug">
-                &ldquo;If I don&apos;t know it, I learn it; if I need it, I make it. I don&apos;t wait for ideal conditions—I build with what I have.&rdquo;
+                &ldquo;If I don&apos;t know it, I learn it; if I need it, I make it.&rdquo;
               </blockquote>
             </div>
 
             {/* First-Person Bio Card */}
-            <div className="p-6 sm:p-7 rounded-xl bg-[#0c121e]/90 border border-slate-700/70 space-y-4 text-slate-200 leading-relaxed font-normal text-sm sm:text-base">
+            <div className="p-6 sm:p-7 rounded-xl bg-[#0b0e14] border border-white/10 space-y-4 text-slate-200 leading-relaxed font-normal text-sm sm:text-base">
               <p>
-                My approach to engineering and game design has always been simple: <strong className="text-white font-semibold">if I don&apos;t know it, I learn it; if I need it, I make it.</strong> I don&apos;t wait for ideal conditions or expensive toolkits—I build with what I have.
+                My approach to engineering and game design is straightforward: <strong className="text-white font-semibold">if I don&apos;t know it, I learn it; if I need it, I make it.</strong>
               </p>
               <p>
-                When motion-capture suits cost thousands, I built my own from an Xbox Kinect, PSVR gyros, and Python OSC. When our school had no 3D assets for our game, I taught myself Blender and rebuilt the entire campus at full scale, combining 2,377 textures so it would run smoothly. And when Unreal Engine 5&apos;s default character movement component assumed flat planar gravity, I worked out the surface normals and quaternion slerp to let players drive 360° inside and outside cylindrical pipes in <strong className="text-white font-semibold">Rastacats (92% Distinction, 1st Class)</strong>.
+                When I needed articulated upper-body motion capture in Unreal Engine 5, I built a fused Xbox Kinect + PSVR gyro + Python OSC pipeline into LiveLink. When I needed full-scale campus architecture, I mastered RenderDoc extraction and combined 2,377 textures in Blender with a 23.999203° transform matrix. And when Unreal Engine 5&apos;s default CharacterMovementComponent assumed flat planar gravity, I derived cylindrical surface normals and quaternion slerp to drive 360° pipe racing in <strong className="text-white font-semibold">Rastacats (92% Distinction, 1st Class)</strong>.
               </p>
               <p>
-                As a mixed-race developer, games became where I could build worlds from scratch, set my own rules, and create the belonging I didn&apos;t find elsewhere. That personal perspective drives my final-year dissertation, <strong className="text-sky-300 font-semibold">&ldquo;Representing the Spectrum&rdquo;</strong>, where I&apos;m auditing 100 commercial game characters to challenge the &ldquo;Illusion of Parity&rdquo; and building an open-source Unreal Engine 5 character pipeline with accurate 3C/4A hair curls and dual-heritage facial topology.
+                As a mixed-race developer, games became where I could build worlds from scratch, establish authentic rulesets, and expand who gets centered on box art. That focus drives my final-year dissertation, <strong className="text-sky-300 font-semibold">&ldquo;Representing the Spectrum&rdquo;</strong>, auditing 100 commercial game characters to challenge the &ldquo;Illusion of Parity&rdquo; and authoring an open-source MetaHuman pipeline with accurate 3C/4A curl profiles and dual-heritage topology.
               </p>
               <p>
-                That same attitude shapes how I lead. Selected through an anonymous application and panel interview as <strong className="text-white font-semibold">School Representative for the Media School</strong>, I represent thousands of students across our games and computing cohorts, sit on the Student Leadership Committee and Sextennial Review, and run weekly Unreal Engine workshops for classmates who are falling behind—because I know what it&apos;s like to learn without support.
+                Selected through panel interview as <strong className="text-white font-semibold">Elected School Representative (Architecture, Computing &amp; Engineering)</strong>, I represent students across computing and games cohorts, sit on the Curriculum Review Board, and mentor peers weekly in Unreal Engine fundamentals.
               </p>
             </div>
 
-            {/* What Sets Me Apart // Three Pillars Card */}
+            {/* Three Engineering Pillars */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
-              <div className="p-4 rounded-xl bg-[#080d17] border border-slate-800 flex flex-col justify-between">
+              <div className="p-4 rounded-xl bg-[#0b0e14] border border-white/10 flex flex-col justify-between">
                 <div>
                   <div className="text-[10px] font-mono uppercase tracking-wider text-sky-400 font-bold mb-1">
-                    01 // Scrappy Engineering
+                    01 // First-Principles R&amp;D
                   </div>
                   <h4 className="text-sm font-bold text-white mb-1.5 font-['Space_Grotesk',sans-serif]">
                     Building From Scratch
                   </h4>
                   <p className="text-xs text-slate-400 leading-relaxed">
-                    Zero waiting for budgets or proprietary black boxes. From DIY Kinect mocap rigs to 1:1 photogrammetry, I engineer practical systems with what is at hand.
+                    From Kinect + PSVR sensor fusion to raw 64-byte USB HID reverse-engineering, I write custom tooling whenever default suites fall short.
                   </p>
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#080d17] border border-slate-800 flex flex-col justify-between">
+              <div className="p-4 rounded-xl bg-[#0b0e14] border border-white/10 flex flex-col justify-between">
                 <div>
-                  <div className="text-[10px] font-mono uppercase tracking-wider text-indigo-400 font-bold mb-1">
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-bold mb-1">
                     02 // Design × Mathematics
                   </div>
                   <h4 className="text-sm font-bold text-white mb-1.5 font-['Space_Grotesk',sans-serif]">
                     Calculated Game Feel
                   </h4>
                   <p className="text-xs text-slate-400 leading-relaxed">
-                    Bridging polar coordinate gravity, WPO vertex shaders, and hierarchical state machines to turn complex maths into visceral 60+ FPS gameplay.
+                    Combining polar coordinate gravity, WPO vertex shaders, and hierarchical state machines to turn maths into responsive gameplay.
                   </p>
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#080d17] border border-slate-800 flex flex-col justify-between">
+              <div className="p-4 rounded-xl bg-[#0b0e14] border border-white/10 flex flex-col justify-between">
                 <div>
                   <div className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold mb-1">
                     03 // Peer Leadership
                   </div>
                   <h4 className="text-sm font-bold text-white mb-1.5 font-['Space_Grotesk',sans-serif]">
-                    Lifting As I Climb
+                    Lifting Cohorts Together
                   </h4>
                   <p className="text-xs text-slate-400 leading-relaxed">
-                    Running weekly Unreal workshops for struggling peers and authoring open-source research pipelines so other developers can build with care.
+                    Running weekly Unreal mentoring sessions and documenting clean open-source pipelines for fellow developers.
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Verified First-Class Honours Module Ledger */}
-            <div className="p-6 rounded-xl bg-[#0c121e] border border-slate-700/80 shadow-lg">
-              <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-slate-800">
+            <div className="p-6 rounded-xl bg-[#0b0e14] border border-white/10 shadow-lg">
+              <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-white/10">
                 <span className="text-xs font-mono uppercase tracking-wider text-sky-300 font-bold">
                   Verified Academic Transcript Ledger (UEL BSc Computer Games Design)
                 </span>
                 <span className="px-2.5 py-0.5 rounded bg-emerald-950/70 border border-emerald-500/30 text-[11px] font-mono text-emerald-300 font-semibold">
-                  8x 1st Class Honours Modules
+                  {ACADEMIC_MODULES.length}x 1st Class Honours Modules
                 </span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -625,7 +601,7 @@ export default function AboutSection() {
           {/* Right Column: 6 Dedicated Clickable Credential Dossiers */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45 }}
             className="lg:col-span-5 space-y-3"
@@ -749,7 +725,7 @@ export default function AboutSection() {
                         src={getAssetUrl(item.src)}
                         alt={item.caption}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
+                        loading="eager"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0c1322] via-transparent to-black/40" />
                       <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded bg-black/80 border border-amber-400/45 text-[10px] font-mono font-bold uppercase tracking-wider text-amber-300 backdrop-blur-sm">
@@ -783,6 +759,9 @@ export default function AboutSection() {
       <AnimatePresence>
         {activeShowcaseSlide && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label={activeShowcaseSlide.highlight}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -833,6 +812,9 @@ export default function AboutSection() {
       <AnimatePresence>
         {activeCredential && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="credential-modal-title"
             key={activeCredential.id}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -872,7 +854,10 @@ export default function AboutSection() {
                       >
                         {activeCredential.category}
                       </div>
-                      <h3 className="text-xl sm:text-3xl font-extrabold text-white font-['Space_Grotesk',sans-serif] mt-1">
+                      <h3
+                        id="credential-modal-title"
+                        className="text-xl sm:text-3xl font-extrabold text-white font-['Space_Grotesk',sans-serif] mt-1"
+                      >
                         {activeCredential.title}
                       </h3>
                       <p className="text-xs sm:text-sm text-slate-300 mt-0.5">
@@ -936,7 +921,7 @@ export default function AboutSection() {
 
                         {/* Why It Matters for Game Studios & Highlights */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                          <div className={`p-4 rounded-xl border-l-4 ${style.whyBox}`}>
+                          <div className={`p-4 rounded-xl border ${style.whyBox}`}>
                             <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider font-bold mb-1.5">
                               <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                               <span>How This Shapes My Game Development</span>
@@ -1024,7 +1009,7 @@ export default function AboutSection() {
                             </p>
                           </div>
 
-                          <div className={`p-4 rounded-xl border-l-4 ${style.whyBox}`}>
+                          <div className={`p-4 rounded-xl border ${style.whyBox}`}>
                             <div className="flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider font-bold mb-1">
                               <Sparkles className="w-3.5 h-3.5" />
                               <span>How This Shapes My Game Development</span>

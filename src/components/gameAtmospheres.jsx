@@ -7,12 +7,12 @@ export function FreezeAtmosphere({ isCompact = false }) {
     <>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(56,189,248,0.22),transparent_70%)] pointer-events-none rounded-3xl" />
 
-      {/* Physical Hanging SVG Icicle Trim along the Top Rim of the Holder (Kept to top border to prevent overlap with badges) */}
+      {/* Subtle Hanging SVG Icicle Trim kept strictly along top border so badges stay clear */}
       <div className="absolute top-0 inset-x-0 pointer-events-none z-0 overflow-hidden">
         <svg
           viewBox="0 0 600 70"
           preserveAspectRatio="none"
-          className="w-full h-4 sm:h-6 text-cyan-200/90 drop-shadow-[0_2px_6px_rgba(6,182,212,0.7)]"
+          className="w-full h-3 sm:h-3.5 text-cyan-200/75"
         >
           <defs>
             <linearGradient id="icicleFacetGrad" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -39,21 +39,8 @@ export function FreezeAtmosphere({ isCompact = false }) {
         </svg>
       </div>
 
-      {/* Frost-Etched Corner Dendritic Crystal SVGs */}
-      <div className="absolute top-2 left-2 w-14 h-14 pointer-events-none text-cyan-300/40">
-        <svg viewBox="0 0 100 100" className="w-full h-full stroke-current fill-none" strokeWidth="2.5">
-          <line x1="10" y1="10" x2="90" y2="90" />
-          <line x1="10" y1="90" x2="90" y2="100" />
-          <line x1="50" y1="10" x2="50" y2="90" />
-          <line x1="10" y1="50" x2="90" y2="50" />
-          {/* Ice Crystal Notches */}
-          <path d="M50 30 L40 20 M50 30 L60 20" />
-          <path d="M50 70 L40 80 M50 70 L60 80" />
-          <path d="M30 50 L20 40 M30 50 L20 60" />
-          <path d="M70 50 L80 40 M70 50 L80 60" />
-        </svg>
-      </div>
-      <div className="absolute top-2 right-2 w-14 h-14 pointer-events-none text-cyan-300/40 rotate-90">
+      {/* Subtle Frost-Etched Lower Corner Accent (never behind top badges) */}
+      <div className="absolute bottom-2 right-2 w-12 h-12 pointer-events-none text-cyan-300/20">
         <svg viewBox="0 0 100 100" className="w-full h-full stroke-current fill-none" strokeWidth="2.5">
           <line x1="10" y1="10" x2="90" y2="90" />
           <line x1="50" y1="10" x2="50" y2="90" />
@@ -253,9 +240,7 @@ export function AsylumAtmosphere() {
 export function DreamAtmosphere({ isCompact = false }) {
   return (
     <>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(168,85,247,0.18),transparent_65%)] pointer-events-none rounded-3xl" />
-      <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-purple-400/40 rounded-tl-3xl pointer-events-none bg-gradient-to-br from-purple-500/15 to-transparent" />
-      <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-purple-400/40 rounded-br-3xl pointer-events-none bg-gradient-to-tl from-purple-500/15 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(56,189,248,0.14),transparent_65%)] pointer-events-none rounded-2xl" />
 
       {/* Floating starry dream motes */}
       {Array.from({ length: isCompact ? 5 : 8 }).map((_, i) => (

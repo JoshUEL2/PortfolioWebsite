@@ -36,15 +36,15 @@ A systems-first game designer who unites low-level engine engineering (Unreal En
 
 ## Brand Commitments
 
-- **Tone**: Grounded, authoritative, technical, concise, authentic. Purge all corporate fluff and generic AI templates.
-- **Palette & Mood**: Deep industrial graphite/slate canvas, sharp architectural contrast, deliberate telemetry/tactile accents.
+- **Tone**: Grounded, authoritative, technical, concise, British English. Purge corporate clichés and generic AI templates.
+- **Palette & Mood**: Deep obsidian graphite/slate canvas (`#07090F` / `#0D111A`), crisp steel-cyan tactical telemetry (`#38BDF8` / `#0284C7`), per-game accent framing strictly along clean outer card rims, and 100% solid opaque game action controls.
 - **Input Feel**: High responsiveness, physical button depression states, intentional procedural sound cues with mute persistence.
 
 ## Evidence on Hand
 
-- **15 Documented Projects**: MS6032 Group Project (UE 5.8 stylized hybrid shooter), Procedural Dungeon Generator, VR Climbing Physics, HLSL Cel Shaders, Niagara VFX packs.
-- **Academic Research**: MS6033 Dissertation Proposal (*"Representing the Spectrum"*), full proposal document, and presentation slide deck.
-- **Code & Repositories**: Public and private GitHub repositories, C++ gameplay classes, and interactive Web Audio engine.
+- **Featured Games & Prototypes (16 Portfolio Entries)**: *Rastacats* (UE5 360° cylindrical gravity & Phase 2 WPO remaster, 92%), *Delirium VR* (UE5 OpenXR differential wheelchair horror), *REM* (UE5 Kuwahara shader + WPO + Myndwell ARG), *Daydream Believer* (Ousedale RenderDoc/Blender pipeline + perceptual shaders), *State Machine Showcase* (UE5 AI Behaviour Trees), *LabR@z* (MS5028 3-class asymmetrical survival level, 72%), *The Quarry* (Twine Harlowe 3.3.9 clinical interrogation thriller), *Planet Protectors* (UE5 co-op eco-action), *Dear, Hiring Manager* (Unity 6 UI Toolkit life-sim), *Rand.io* (Unity C# + Photon Random Walker), *PyBall* (custom Python 2D collision engine), *Project Isla* (Perlin terrain), *Chanceway*, *Baldi's Basics 2*, *WAIWWAI*, and *Far Cry 5: Faith Over Fear*.
+- **Hardware & Systems Engineering**: *Project K.I.N.E.T.I.C.* (Kinect v2 + PSVR Move Python OSC mocap rig), *SignalRGB USB HID* (Wireshark USBPcap Aorus P1200W plugin), *HydroScreen XC7* (C#/.NET direct HID cooler telemetry daemon), and *TfL Underground Graph Router*.
+- **Academic Research**: MS6033 Dissertation Proposal (*"Representing the Spectrum"*), full proposal `.docx`, and pitch presentation `.pptx`.
 
 ## Product Principles
 

@@ -79,6 +79,37 @@ class UIAudioEngine {
   }
 
   /**
+   * Action Control / Button Trigger Pop
+   * 26ms tactile mechanical switch release for primary project CTAs
+   */
+  playPop() {
+    if (this._isMuted) return;
+    this.init();
+    if (!this.ctx) return;
+
+    try {
+      const now = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(520, now);
+      osc.frequency.exponentialRampToValueAtTime(180, now + 0.026);
+
+      gain.gain.setValueAtTime(this.volume * 0.48, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.026);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.026);
+    } catch {
+      // Ignore if AudioContext is unavailable
+    }
+  }
+
+  /**
    * Modal Open / Telemetry Sweep
    * 120ms frequency ascent with gentle low-pass filter
    */

@@ -15,7 +15,7 @@ import { audioEngine } from '../utils/audioEngine';
 
 export default function ResearchSection() {
   const [activeSlideIdx, setActiveSlideIdx] = useState(0);
-  const [showRefs, setShowRefs] = useState(true);
+  const [showRefs, setShowRefs] = useState(false);
 
   const slides = DISSERTATION_RESEARCH.slides || [];
   const currentSlide = slides[activeSlideIdx] || slides[0];
@@ -32,11 +32,11 @@ export default function ResearchSection() {
 
   return (
     <section id="research" className="relative w-full overflow-hidden">
-      {/* Smooth Top Atmospheric Blend: Game Viewport (#06070d) -> Warm Editorial Charcoal (#111110) */}
-      <div className="h-28 w-full bg-gradient-to-b from-transparent via-[#0b0b0c]/85 to-[#111110] pointer-events-none" />
+      {/* Smooth Top Atmospheric Blend into Obsidian Editorial Surface */}
+      <div className="h-20 w-full bg-gradient-to-b from-transparent to-[#090b10] pointer-events-none" />
 
-      {/* Full-Bleed Editorial Research Paper Biome */}
-      <div className="bg-editorial-paper border-t border-[#c89d66]/30 pt-24 pb-16 relative">
+      {/* Editorial Monograph Section */}
+      <div className="bg-editorial-paper border-t border-[#c89d66]/25 pt-20 pb-16 relative">
         <div className="max-w-[1720px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
           {/* Formal Academic Journal Masthead Bar */}
           <motion.div
@@ -117,9 +117,9 @@ export default function ResearchSection() {
             {/* Left Column: Formal Abstract */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.45 }}
               className="lg:col-span-5 space-y-5"
             >
               <div className="flex items-center gap-3">
@@ -154,9 +154,9 @@ export default function ResearchSection() {
             {/* Right Column: Interactive Archival Slide Plate */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.45 }}
               className="lg:col-span-7"
             >
               <div className="rounded-xl bg-[#161514] border border-[#c89d66]/35 overflow-hidden shadow-2xl">
@@ -310,17 +310,18 @@ export default function ResearchSection() {
           </div>
 
           {/* SECTION IV: Cite Them Right Harvard Bibliography */}
-          <div className="rounded-xl bg-[#161514] border border-[#c89d66]/30 p-6">
+          <div className="rounded-xl bg-[#111318] border border-[#c89d66]/30 p-4 sm:p-6">
             <button
               type="button"
+              aria-expanded={showRefs}
               onClick={() => setShowRefs(!showRefs)}
-              className="w-full flex items-center justify-between text-left cursor-pointer"
+              className="w-full min-h-[48px] py-2 flex items-center justify-between gap-4 text-left cursor-pointer rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
             >
               <div className="flex items-center gap-2.5 text-xs sm:text-sm font-mono uppercase tracking-[0.15em] text-[#c89d66] font-bold">
-                <Library className="w-4 h-4 text-[#c89d66]" />
+                <Library className="w-4 h-4 text-[#c89d66] shrink-0" />
                 <span>Section IV // Peer-Reviewed Literature &amp; Census Sources (Harvard Format)</span>
               </div>
-              <span className="text-xs font-mono text-[#a8a29e] hover:text-[#f5f2eb]">
+              <span className="text-xs font-mono text-slate-300 hover:text-white shrink-0 px-2.5 py-1 rounded bg-white/5 border border-white/10">
                 {showRefs ? 'Collapse [-]' : 'Expand [+]'}
               </span>
             </button>

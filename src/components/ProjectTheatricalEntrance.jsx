@@ -1,5 +1,5 @@
-import { useEffect, useId, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { useEffect, useId, useRef, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { getAssetUrl } from '../utils/assetUrl';
 
 /**
@@ -211,8 +211,8 @@ function InkDrench() {
 /* ------------------------------------------------------------------ */
 /* 3. PLANET PROTECTORS: a canopy of leaves falls all the way down      */
 /* ------------------------------------------------------------------ */
-const LEAF_COLS = 14;
-const LEAF_ROWS = 12;
+const LEAF_COLS = 5;
+const LEAF_ROWS = 4;
 const LEAF_FILLS = ['#064e3b', '#047857', '#059669', '#10b981', '#15803d', '#166534', '#0f766e', '#14532d'];
 const LEAF_VEINS = ['#34d399', '#6ee7b7', '#a7f3d0', '#86efac'];
 
@@ -255,7 +255,7 @@ function LeafFall() {
             x: [0, l.sway, -l.sway, l.sway * 0.5],
             rotate: l.rot + l.spin
           }}
-          transition={{ delay: l.delay, duration: 1.6, ease: [0.45, 0, 0.85, 0.45] }}
+          transition={{ delay: l.delay * 0.25, duration: 0.65, ease: [0.45, 0, 0.85, 0.45] }}
           className="absolute pointer-events-none transform-gpu will-change-transform"
           style={{
             left: `${l.left}%`,
@@ -626,7 +626,7 @@ function AcidDissolve() {
 /* ------------------------------------------------------------------ */
 const CARD_COLS = 6;
 const CARD_ROWS = 4;
-const SUITS = ['â™ ', 'â™¥', 'â™£', 'â™¦'];
+const SUITS = ['\u2660', '\u2665', '\u2663', '\u2666'];
 
 function CardDeal() {
   return (
@@ -1404,14 +1404,28 @@ const EFFECTS = {
 };
 
 export default function ProjectTheatricalEntrance({ projectId, animationKey = 0 }) {
+  const shouldReduceMotion = useReducedMotion();
+  const currentKey = `${projectId}-${animationKey}`;
+  const [finishedKey, setFinishedKey] = useState(null);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setFinishedKey(currentKey), 720);
+    return () => window.clearTimeout(timer);
+  }, [currentKey]);
+
+  if (shouldReduceMotion || finishedKey === currentKey) return null;
+
   const Effect = EFFECTS[projectId] || WireframeGrid;
   return (
-    <div
+    <motion.div
       key={`${projectId}-${animationKey}`}
       aria-hidden="true"
+      initial={{ opacity: 0.95 }}
+      animate={{ opacity: [0.95, 0.75, 0] }}
+      transition={{ duration: 0.68, times: [0, 0.45, 1], ease: 'easeOut' }}
       className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
     >
       <Effect />
-    </div>
+    </motion.div>
   );
 }

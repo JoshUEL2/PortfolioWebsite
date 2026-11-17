@@ -1,13 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
+import { useReducedMotion } from 'framer-motion';
 import { AlertCircle } from 'lucide-react';
 import { getAssetUrl } from '../utils/assetUrl';
 
 /**
  * SafeVideoPlayer
  * Fail-safe HTML5 video player with:
- * 1. Automatic error handling and high-res poster fallback (zero black-screens).
- * 2. IntersectionObserver-based playback gating (pauses off-screen feeds to prevent GPU decode storms).
- * 3. Graceful handling of browser autoplay policies.
+ * 1. Automatic state reset when switching versions/phases.
+ * 2. IntersectionObserver-based playback gating.
+ * 3. Prefers-reduced-motion compliance (defaults to clean poster still when reduced motion is active).
  */
 export default function SafeVideoPlayer({
   src,
@@ -23,15 +24,19 @@ export default function SafeVideoPlayer({
 }) {
   const videoRef = useRef(null);
   const containerRef = useRef(null);
-  const [hasError, setHasError] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
+  const [failedSrc, setFailedSrc] = useState(null);
+  const [loadedSrc, setLoadedSrc] = useState(null);
 
   const resolvedSrc = src ? getAssetUrl(src) : null;
   const resolvedPoster = poster ? getAssetUrl(poster) : null;
+  const hasError = failedSrc === resolvedSrc;
+  const isLoaded = loadedSrc === resolvedSrc;
+  const effectiveAutoPlay = autoPlay && !shouldReduceMotion;
 
   // Viewport intersection observer: only play when in view
   useEffect(() => {
-    if (!autoPlay || hasError || !resolvedSrc) return;
+    if (!effectiveAutoPlay || hasError || !resolvedSrc) return;
     const container = containerRef.current;
     if (!container || typeof IntersectionObserver === 'undefined') return;
 
@@ -59,9 +64,9 @@ export default function SafeVideoPlayer({
     return () => {
       observer.disconnect();
     };
-  }, [autoPlay, hasError, resolvedSrc]);
+  }, [effectiveAutoPlay, hasError, resolvedSrc]);
 
-  if (hasError || !resolvedSrc) {
+  if (hasError || !resolvedSrc || (shouldReduceMotion && !controls && resolvedPoster)) {
     return (
       <div ref={containerRef} className={containerClassName}>
         {resolvedPoster ? (
@@ -73,7 +78,7 @@ export default function SafeVideoPlayer({
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center bg-slate-950 text-slate-500 font-mono text-xs gap-2 p-4">
-            <AlertCircle className="w-5 h-5 text-indigo-400/60" />
+            <AlertCircle className="w-5 h-5 text-sky-400/60" />
             <span>PLAYBACK FEED OFFLINE</span>
           </div>
         )}
@@ -87,14 +92,14 @@ export default function SafeVideoPlayer({
         ref={videoRef}
         key={resolvedSrc}
         controls={controls}
-        autoPlay={autoPlay}
+        autoPlay={effectiveAutoPlay}
         loop={loop}
         muted={muted}
         playsInline={playsInline}
         preload="metadata"
         poster={resolvedPoster}
-        onLoadedData={() => setIsLoaded(true)}
-        onError={() => setHasError(true)}
+        onLoadedData={() => setLoadedSrc(resolvedSrc)}
+        onError={() => setFailedSrc(resolvedSrc)}
         className={`${className} transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-90'}`}
       >
         <source src={resolvedSrc} type="video/mp4" />
@@ -105,7 +110,7 @@ export default function SafeVideoPlayer({
         <img
           src={resolvedPoster}
           alt={title || 'Preview'}
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none transition-opacity duration-500"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none transition-opacity duration-300"
         />
       )}
     </div>
